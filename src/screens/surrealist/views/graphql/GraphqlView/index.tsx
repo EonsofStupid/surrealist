@@ -15,7 +15,7 @@ import { useGraphqlIntrospection } from "~/hooks/graphql";
 import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { checkGraphqlSupport } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import { createBaseAuthentication } from "~/util/defaults";
 import { QueryPane } from "../QueryPane";

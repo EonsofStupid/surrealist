@@ -4,7 +4,7 @@ import { assign, debounce, isEmpty, isEqual } from "radash";
 import type { StoreApi, UseBoundStore } from "zustand";
 import { adapter } from "~/adapter";
 import { DesktopAdapter } from "~/adapter/desktop";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import type { SurrealistConfig } from "~/types";
 import { CONFIG_VERSION, createBaseConfig } from "./defaults";
 import { showDowngradeWarningModal } from "./downgrade";

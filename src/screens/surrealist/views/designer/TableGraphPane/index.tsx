@@ -70,8 +70,8 @@ import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { DiagramContext } from "~/screens/surrealist/views/designer/TableGraphPane/nodes/BaseTableNode";
-import { useConfigStore } from "~/stores/config";
-import { useInterfaceStore } from "~/stores/interface";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import type {
 	DiagramAlgorithm,
 	DiagramDirection,

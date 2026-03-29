@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import { Duration, sub } from "date-fns";
 import { CLOUD_ROLES } from "~/constants";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import {
 	CloudDeployConfig,
 	CloudOrganization,

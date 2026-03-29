@@ -60,7 +60,7 @@ import {
 	openConnection,
 	resetConnection,
 } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import { featureFlags } from "~/util/feature-flags";
 import { optional } from "~/util/helpers";

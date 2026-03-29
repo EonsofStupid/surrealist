@@ -10,7 +10,7 @@ import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 
 export interface VariablesPaneProps {
 	isValid: boolean;

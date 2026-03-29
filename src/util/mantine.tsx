@@ -59,9 +59,7 @@ export const SURREALIST_THEME: MantineThemeOverride = {
 			},
 		}),
 		Paper: Paper.extend({
-			defaultProps: {
-				variant: "filled",
-			},
+			defaultProps: {},
 		}),
 		Switch: Switch.extend({
 			defaultProps: {

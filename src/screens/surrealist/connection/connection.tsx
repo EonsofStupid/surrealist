@@ -14,9 +14,9 @@ import { fetchAPI } from "~/cloud/api";
 import { MAX_HISTORY_QUERY_LENGTH, SANDBOX } from "~/constants";
 import { hasCompletedOnboarding } from "~/hooks/onboarding";
 import { useCloudStore } from "~/stores/cloud";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { State, useDatabaseStore } from "~/stores/database";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { useQueryStore } from "~/stores/query";
 import type {
 	Authentication,

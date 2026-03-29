@@ -39,7 +39,7 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab } from "~/types";
 import { showErrorNotification, tryParseParams } from "~/util/helpers";

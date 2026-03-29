@@ -131,7 +131,7 @@ export default defineConfig(({ mode }) => {
 			"import.meta.env.VERSION": JSON.stringify(version),
 			"import.meta.env.SDB_VERSION": JSON.stringify(surreal),
 			"import.meta.env.MODE": JSON.stringify(mode),
-			"import.meta.env.GTM_ID": JSON.stringify("G-PVD8NEJ3Z2"),
+			"import.meta.env.GTM_ID": JSON.stringify(""),
 		},
 		optimizeDeps: {
 			exclude: ["@surrealdb/wasm", "@surrealdb/ql-wasm-2", "@surrealdb/ql-wasm-3"],

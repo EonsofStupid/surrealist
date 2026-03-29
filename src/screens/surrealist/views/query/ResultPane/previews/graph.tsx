@@ -32,7 +32,7 @@ import { useIsLight } from "~/hooks/theme";
 import { useToggleList } from "~/hooks/toggle";
 import { openGraphLabelEditorModal } from "~/modals/graph-labels";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { plural } from "~/util/helpers";
 import { themeColor } from "~/util/mantine";
 import classes from "../style.module.scss";

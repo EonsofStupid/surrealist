@@ -1,4 +1,4 @@
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useStable } from "./stable";
 
 /**

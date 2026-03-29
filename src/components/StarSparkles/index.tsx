@@ -1,6 +1,6 @@
 import { Box } from "@mantine/core";
 import { useEffect, useRef, useState } from "react";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import classes from "./style.module.scss";
 
 interface Star {

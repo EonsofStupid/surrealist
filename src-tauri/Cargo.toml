@@ -1,10 +1,10 @@
 [package]
-name = "surrealist"
+name = "cortex"
 version = "0.0.0"
-description = "Powerful graphical SurrealDB query playground and database explorer for Browser and Desktop"
-authors = ["SurrealDB"]
+description = "Cortex DevTools — Visual IDE for the MAESTRO pipeline"
+authors = ["DevPulse / Jesse Hall"]
 license = "MIT"
-repository = "https://github.com/surrealdb/surrealist"
+repository = "https://github.com/EonsofStupid/surrealist"
 edition = "2021"
 publish = false
 

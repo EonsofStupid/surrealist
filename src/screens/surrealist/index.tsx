@@ -10,7 +10,7 @@ import { useSetting } from "~/hooks/config";
 import { useAvailableViews } from "~/hooks/connection";
 import { useGlowOffset } from "~/hooks/glow";
 import { useStable } from "~/hooks/stable";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import type { ViewPage } from "~/types";
 import { CreateConnectionPage } from "./pages/CreateConnection";
 import { CreateOrganizationPage } from "./pages/CreateOrganization";

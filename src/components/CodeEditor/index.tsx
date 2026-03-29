@@ -10,7 +10,7 @@ import { applyAutoFolding, editorBase, editorTheme } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import { useStable } from "~/hooks/stable";
 import { useTheme } from "~/hooks/theme";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import classes from "./style.module.scss";
 
 export type StateSnapshot = {

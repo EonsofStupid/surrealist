@@ -28,7 +28,7 @@ import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { showErrorNotification, showInfo, tryParseParams } from "~/util/helpers";
 import classes from "./style.module.scss";
 

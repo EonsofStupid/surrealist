@@ -10,7 +10,7 @@ import { useConnectionAndView } from "~/hooks/routing";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { fuzzyMatch } from "~/util/helpers";
 import { syncConnectionSchema } from "~/util/schema";
 

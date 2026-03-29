@@ -25,7 +25,7 @@ import { HeadInjector } from "~/util/head";
 import { exposeDebug } from "~/util/helpers";
 import { preloadImages } from "~/util/preloader";
 import { adapter } from "../adapter";
-import { App } from "../components/App";
+import { App } from "~/shell/components/App";
 import { generateEditorIcons } from "../editor/icons";
 import { promptChangelog } from "../util/changelogs";
 

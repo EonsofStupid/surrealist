@@ -1,6 +1,6 @@
 import { compareVersions } from "compare-versions";
-import { useConfigStore } from "~/stores/config";
-import { useInterfaceStore } from "~/stores/interface";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 
 const CHANGELOGS = import.meta.glob("~/assets/changelogs/*.md", {
 	eager: true,

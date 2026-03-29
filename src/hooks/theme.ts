@@ -1,5 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import type { ColorScheme } from "~/types";
 import { useSetting } from "./config";
 

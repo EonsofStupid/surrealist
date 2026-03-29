@@ -1,6 +1,6 @@
 import { Icon, iconChevronRight } from "@surrealdb/ui";
 import { useStable } from "~/hooks/stable";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { ActionButton } from "../ActionButton";
 
 export function SidebarToggle() {

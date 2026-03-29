@@ -5,7 +5,7 @@ import { isObject } from "radash";
 import type { HTMLProps, ReactNode } from "react";
 import { useRouteMatcher } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { Entry, type EntryProps } from "../Entry";
 import classes from "./style.module.scss";
 

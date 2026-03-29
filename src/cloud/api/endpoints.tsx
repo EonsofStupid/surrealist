@@ -1,4 +1,4 @@
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { featureFlags } from "~/util/feature-flags";
 
 export function getCloudEndpoints() {

@@ -1,6 +1,6 @@
 import { RESULT_MODES } from "~/constants";
 import { executeQuery, executeUserQuery } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import type { ResultMode } from "~/types";
 import { getActiveConnection, getActiveQuery } from "./connection";

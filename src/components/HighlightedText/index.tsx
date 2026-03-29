@@ -1,6 +1,6 @@
 import { useColorScheme } from "@mantine/hooks";
 import { useMemo } from "react";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang } from "~/types";
 import { renderHighlighting } from "~/util/highlighting";
 import classes from "./style.module.scss";

@@ -4,8 +4,8 @@ import { invoke } from "@tauri-apps/api/core";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { useState } from "react";
 import { useConfirmation } from "~/providers/Confirmation";
-import { useConfigStore } from "~/stores/config";
-import { useInterfaceStore } from "~/stores/interface";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { tagEvent } from "~/util/analytics";
 import { useStable } from "./stable";
 

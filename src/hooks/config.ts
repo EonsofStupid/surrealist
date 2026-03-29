@@ -1,4 +1,4 @@
-import { type ConfigStore, useConfigStore } from "~/stores/config";
+import { type ConfigStore, useConfigStore } from "~/shell/stores/config";
 import type { Category, Settings } from "~/util/config";
 import { useStable } from "./stable";
 

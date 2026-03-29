@@ -25,7 +25,7 @@ import { SANDBOX } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { useConfirmation } from "~/providers/Confirmation";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { Connection } from "~/types";
 import { tagEvent } from "~/util/analytics";
 import { getConnectionVariant } from "~/util/connection";

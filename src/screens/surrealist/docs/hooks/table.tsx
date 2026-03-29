@@ -1,5 +1,5 @@
 import { useTables } from "~/hooks/schema";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { TableInfo } from "~/types";
 
 const EXAMPLE_TABLE: TableInfo = {

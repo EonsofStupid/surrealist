@@ -46,7 +46,7 @@ import {
 	executeQueryFirst,
 	getSurrealQL,
 } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { RecordsChangedEvent } from "~/util/global-events";
 import { showInfo } from "~/util/helpers";
 import { getTableVariant } from "~/util/schema";

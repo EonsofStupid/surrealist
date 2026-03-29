@@ -21,7 +21,7 @@ import { type Formatter, useResultFormatter } from "~/hooks/surrealql";
 import { useRefreshTimer } from "~/hooks/timer";
 import { useInspector } from "~/providers/Inspector";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import type { LiveMessage } from "~/types";
 import { ON_FOCUS_SELECT } from "~/util/helpers";
 import { attemptFormat, type PreviewProps } from ".";

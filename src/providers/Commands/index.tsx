@@ -5,7 +5,7 @@ import { createContext, type PropsWithChildren, useContext, useMemo } from "reac
 import { adapter } from "~/adapter";
 import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { tagEvent } from "~/util/analytics";
 import { dispatchIntent } from "~/util/intents";
 import { useInternalCommandBuilder } from "./commands";

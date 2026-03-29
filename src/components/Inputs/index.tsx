@@ -33,7 +33,7 @@ import { acceptWithTab, editorTheme, inputBase } from "~/editor";
 import { useKindList } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight, useTheme } from "~/hooks/theme";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { ActionButton } from "../ActionButton";
 
 export interface CodeInputProps

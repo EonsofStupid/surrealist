@@ -31,7 +31,7 @@ import { setEditorText } from "~/editor/helpers";
 import { useSavedQueryTags } from "~/hooks/connection";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import type { SavedQuery } from "~/types";
 import classes from "./style.module.scss";
 

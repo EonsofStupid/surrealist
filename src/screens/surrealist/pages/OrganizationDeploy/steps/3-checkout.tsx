@@ -48,7 +48,7 @@ import { Spacer } from "~/components/Spacer";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { getTypeCategoryName } from "~/util/cloud";
 import { SAMPLE_QUERIES } from "~/util/dataset";
 import { createBaseQuery } from "~/util/defaults";

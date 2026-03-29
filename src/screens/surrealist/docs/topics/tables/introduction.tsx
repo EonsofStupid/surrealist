@@ -2,7 +2,7 @@ import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { Article, DocsPreview } from "~/screens/surrealist/docs/components";
 import type { Snippets, TopicProps } from "~/screens/surrealist/docs/types";
-import { useInterfaceStore } from "~/stores/interface";
+import { useInterfaceStore } from "~/shell/stores/interface";
 
 export function DocsTablesIntroduction({ language }: TopicProps) {
 	const activeTable = useInterfaceStore((state) => state.docsTable);

@@ -3,7 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { fetchAPI } from "~/cloud/api";
 import { useConfirmation } from "~/providers/Confirmation";
 import { useCloudStore } from "~/stores/cloud";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { CloudInstance, Connection } from "~/types";
 import { tagEvent } from "~/util/analytics";
 import { useFeatureFlags } from "~/util/feature-flags";

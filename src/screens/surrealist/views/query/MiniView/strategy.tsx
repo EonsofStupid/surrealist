@@ -1,6 +1,6 @@
 import { adapter } from "~/adapter";
 import { DesktopAdapter } from "~/adapter/desktop";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import type { QueryTab } from "~/types";
 import { getActiveConnection } from "~/util/connection";
 import { showErrorNotification } from "~/util/helpers";

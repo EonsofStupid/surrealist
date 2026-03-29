@@ -10,7 +10,7 @@ import { Form } from "~/components/Form";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
 import { openConnection } from "~/screens/surrealist/connection/connection";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { Connection } from "~/types";
 import { getActiveConnection, isConnectionValid } from "~/util/connection";
 

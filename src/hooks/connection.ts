@@ -6,7 +6,7 @@ import { isOrganisationTerminated } from "~/cloud/helpers";
 import { useCloudInstanceList } from "~/cloud/hooks/instances";
 import { GLOBAL_PAGES, SANDBOX, VIEW_PAGES } from "~/constants";
 import { openRequiredDatabaseModal } from "~/modals/require-database";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import {
 	CloudInstance,

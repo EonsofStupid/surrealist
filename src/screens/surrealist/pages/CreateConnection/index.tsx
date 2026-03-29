@@ -31,7 +31,7 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useLastSavepoint } from "~/hooks/overview";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { Template } from "~/types";
 import { tagEvent } from "~/util/analytics";
 import { getConnectionVariant, isConnectionValid } from "~/util/connection";

@@ -19,7 +19,7 @@ import { useEventSubscription } from "~/hooks/event";
 import { usePanelMinSize } from "~/hooks/panels";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/stores/config";
+import { useConfigStore } from "~/shell/stores/config";
 import { SetQueryEvent } from "~/util/global-events";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
