@@ -17,7 +17,7 @@ import { useStable } from "~/hooks/stable";
 import { checkGraphqlSupport } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
-import { createBaseAuthentication } from "~/util/defaults";
+import { createBaseAuthentication } from "~/shared/util/defaults";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
 import { VariablesPane } from "../VariablesPane";

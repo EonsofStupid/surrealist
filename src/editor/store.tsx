@@ -1,7 +1,7 @@
 import type { Extension, StateEffectType } from "@codemirror/state";
 import { ViewPlugin } from "@codemirror/view";
 import type { StoreApi, UseBoundStore } from "zustand";
-import { watchStore } from "~/util/config";
+import { watchStore } from "~/shared/util/config";
 
 /**
  * An editor extension which listens to a store update and dispatches

@@ -1,4 +1,4 @@
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 
 export function useSupportTicketsEnvironment(): "production" | "staging" {
 	const [flags] = useFeatureFlags();

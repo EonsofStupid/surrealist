@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudDeployConfig, CloudInstance, CloudOrganization } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { resolveInstanceConnection } from "~/util/connection";
+import { tagEvent } from "~/shared/util/analytics";
+import { resolveInstanceConnection } from "~/shared/util/connection";
 import { fetchAPI } from "../api";
 import { compileDeployConfig } from "../helpers";
 

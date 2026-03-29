@@ -7,7 +7,7 @@ import "../assets/styles/global.scss";
 
 import { createRoot } from "react-dom/client";
 import { AuthCallbackScreen } from "~/screens/auth-callback";
-import { HeadInjector } from "~/util/head";
+import { HeadInjector } from "~/shared/util/head";
 
 (async () => {
 	const root = document.querySelector("#root");

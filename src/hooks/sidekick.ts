@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { RecordId, surql } from "surrealdb";
 import { useContextConnection } from "~/providers/Context";
 import { SidekickChat, SidekickChatMessage } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 
 export function useSidekickChatsQuery(search?: string) {
 	const [surreal, isAvailable] = useContextConnection();

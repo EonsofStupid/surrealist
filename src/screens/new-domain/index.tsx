@@ -2,8 +2,8 @@ import { Alert, Box, Button, Divider, Image, Paper, SimpleGrid, Stack, Text } fr
 import { Icon, iconArrowUpRight, iconDownload, pictoSurrealist } from "@surrealdb/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
-import logoDarkUrl from "~/assets/images/dark/logo.webp";
-import logoLightUrl from "~/assets/images/light/logo.webp";
+import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
+import logoLightUrl from "~/shared/assets/images/light/logo.webp";
 import { Link } from "~/components/Link";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Scaffold } from "~/components/Scaffold";
@@ -11,7 +11,7 @@ import { TopGlow } from "~/components/TopGlow";
 import { JSON_FILTER } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight, useThemeImage } from "~/hooks/theme";
-import { backupConfig } from "~/util/config";
+import { backupConfig } from "~/shared/util/config";
 
 export function NewDomainScreen() {
 	const isLight = useIsLight();

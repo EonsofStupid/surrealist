@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useConnection } from "~/hooks/connection";
 import { Article, DocsPreview } from "~/screens/surrealist/docs/components";
 import type { Snippets, TopicProps } from "~/screens/surrealist/docs/types";
-import { createBaseAuthentication } from "~/util/defaults";
+import { createBaseAuthentication } from "~/shared/util/defaults";
 
 export function DocsGlobalAuthentication({ language, topic }: TopicProps) {
 	const auth = useConnection((c) => c?.authentication ?? createBaseAuthentication());

@@ -18,9 +18,9 @@ import type {
 	SurrealistServingSettings,
 	SurrealistTemplateSettings,
 } from "~/types";
-import { createBaseConfig, createBaseQuery } from "~/util/defaults";
-import type { schema } from "~/util/feature-flags";
-import { newId, uniqueName } from "~/util/helpers";
+import { createBaseConfig, createBaseQuery } from "~/shared/util/defaults";
+import type { schema } from "~/shared/util/feature-flags";
+import { newId, uniqueName } from "~/shared/util/helpers";
 
 type ConnectionUpdater = (value: Connection) => Partial<Connection>;
 

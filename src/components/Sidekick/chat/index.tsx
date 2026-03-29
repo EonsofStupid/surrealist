@@ -17,7 +17,7 @@ import { Icon, iconChevronRight, iconCursor, iconOpen, pictoSidekick } from "@su
 import { shuffle } from "radash";
 import { useEffect, useMemo, useRef } from "react";
 import { adapter } from "~/adapter";
-import glowImg from "~/assets/images/radial-glow.png";
+import glowImg from "~/shared/assets/images/radial-glow.png";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";

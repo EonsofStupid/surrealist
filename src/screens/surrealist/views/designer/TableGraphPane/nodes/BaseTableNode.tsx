@@ -17,9 +17,9 @@ import { useIsLight } from "~/hooks/theme";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
 import { GraphWarning } from "~/screens/surrealist/views/designer/TableGraphPane/helpers";
 import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
-import { ON_STOP_PROPAGATION } from "~/util/helpers";
-import { themeColor } from "~/util/mantine";
-import { getTableVariant } from "~/util/schema";
+import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
+import { themeColor } from "~/shared/util/mantine";
+import { getTableVariant } from "~/shared/util/schema";
 import classes from "../style.module.scss";
 
 export type DiagramContextProps = {

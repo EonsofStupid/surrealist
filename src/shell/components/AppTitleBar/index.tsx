@@ -9,6 +9,8 @@ import {
 } from "@surrealdb/ui";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useState } from "react";
+import { ActionButton } from "~/components/ActionButton";
+import { Spacer } from "~/components/Spacer";
 import {
 	Command,
 	useCommandCategories,
@@ -16,10 +18,8 @@ import {
 	useCommandKeybinds,
 } from "~/providers/Commands";
 import { displayBinding } from "~/providers/Commands/keybindings";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { ActionButton } from "~/components/ActionButton";
 import { getMenuItems } from "~/shell/components/App/hooks/menu";
-import { Spacer } from "~/components/Spacer";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import classes from "./style.module.scss";
 
 export function AppTitleBar() {

@@ -278,14 +278,14 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 		id: "query",
 		name: "Query",
 		icon: iconQuery,
-		anim: import("~/assets/animation/query.json").then((x) => x.default),
+		anim: import("~/shared/assets/animation/query.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.query_view,
 	},
 	explorer: {
 		id: "explorer",
 		name: "Explorer",
 		icon: iconExplorer,
-		anim: import("~/assets/animation/explorer.json").then((x) => x.default),
+		anim: import("~/shared/assets/animation/explorer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.explorer_view,
 	},
 	graphql: {
@@ -298,14 +298,14 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 		id: "designer",
 		name: "Designer",
 		icon: iconDesigner,
-		anim: import("~/assets/animation/designer.json").then((x) => x.default),
+		anim: import("~/shared/assets/animation/designer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.designer_view,
 	},
 	authentication: {
 		id: "authentication",
 		name: "Authentication",
 		icon: iconAuth,
-		anim: import("~/assets/animation/auth.json").then((x) => x.default),
+		anim: import("~/shared/assets/animation/auth.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.auth_view,
 	},
 	parameters: {

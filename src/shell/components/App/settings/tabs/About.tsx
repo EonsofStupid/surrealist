@@ -7,7 +7,7 @@ import type { DesktopAdapter } from "~/adapter/desktop";
 import { LearnMore } from "~/components/LearnMore";
 import { useVersionCopy } from "~/hooks/debug";
 import { useStable } from "~/hooks/stable";
-import { isDevelopment, isPreview } from "~/util/environment";
+import { isDevelopment, isPreview } from "~/shared/util/environment";
 import classes from "../style.module.scss";
 
 export function AboutTab() {

@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "wouter";
 import { useCloudProfile } from "~/hooks/cloud";
 import { useCloudStore } from "~/stores/cloud";
-import { isProduction } from "~/util/environment";
+import { isProduction } from "~/shared/util/environment";
 
 export function useIntercom() {
 	const [location] = useLocation();

@@ -9,7 +9,7 @@ import {
 	type PreferenceController,
 	SelectionController,
 	TextController,
-} from "~/util/preferences";
+} from "~/shared/util/preferences";
 import { Option } from "../Option";
 
 export interface PreferenceInputProps extends BoxProps {

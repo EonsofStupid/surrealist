@@ -5,8 +5,8 @@ import { INSTANCE_PLAN_CATEGORIES } from "~/cloud/helpers";
 import { TypeVariant, useInstanceTypeRegistry } from "~/cloud/hooks/types";
 import { useIsLight } from "~/hooks/theme";
 import { CloudInstanceType, CloudOrganization, InstancePlan } from "~/types";
-import { getTypeCategoryDescription, getTypeCategoryName } from "~/util/cloud";
-import { CURRENCY_FORMAT, formatMemory } from "~/util/helpers";
+import { getTypeCategoryDescription, getTypeCategoryName } from "~/shared/util/cloud";
+import { CURRENCY_FORMAT, formatMemory } from "~/shared/util/helpers";
 import { Label } from "../Label";
 import { PrimaryTitle } from "../PrimaryTitle";
 

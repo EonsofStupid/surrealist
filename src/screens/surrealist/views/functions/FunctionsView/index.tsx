@@ -23,10 +23,10 @@ import {
 	getSurrealQL,
 } from "~/screens/surrealist/connection/connection";
 import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { createBaseAuthentication } from "~/util/defaults";
-import { showErrorNotification } from "~/util/helpers";
-import { buildFunctionDefinition, buildModelDefinition, syncConnectionSchema } from "~/util/schema";
+import { tagEvent } from "~/shared/util/analytics";
+import { createBaseAuthentication } from "~/shared/util/defaults";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { buildFunctionDefinition, buildModelDefinition, syncConnectionSchema } from "~/shared/util/schema";
 import { FunctionEditorPanel } from "../FunctionEditorPanel";
 import { FunctionPropertiesPanel } from "../FunctionPropertiesPanel";
 import { FunctionsPanel } from "../FunctionsPanel";

@@ -18,7 +18,7 @@ import { useSupportArticleQuery } from "~/cloud/queries/context";
 import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { formatRelativeDate } from "~/util/helpers";
+import { formatRelativeDate } from "~/shared/util/helpers";
 import classes from "../style.module.scss";
 
 export interface ArticlePageProps {

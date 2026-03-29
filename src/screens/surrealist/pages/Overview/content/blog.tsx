@@ -2,7 +2,7 @@ import { Anchor, Box, BoxProps, Paper, Stack, Text, UnstyledButton } from "@mant
 import { format } from "date-fns";
 import { NewsPost } from "~/hooks/newsfeed";
 import { useStable } from "~/hooks/stable";
-import { dispatchIntent } from "~/util/intents";
+import { dispatchIntent } from "~/shared/util/intents";
 
 export interface StartBlogProps extends BoxProps {
 	post: NewsPost;

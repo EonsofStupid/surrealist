@@ -4,7 +4,7 @@ import { Icon, iconCheck, iconCopy } from "@surrealdb/ui";
 import { useUpdateOrganizationMutation } from "~/cloud/mutations/update";
 import { Section } from "~/components/Section";
 import { useStable } from "~/hooks/stable";
-import { showInfo } from "~/util/helpers";
+import { showInfo } from "~/shared/util/helpers";
 import { OrganizationTabProps } from "../types";
 
 export function OrganizationSettingsTab({ organization }: OrganizationTabProps) {

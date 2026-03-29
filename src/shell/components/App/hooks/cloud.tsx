@@ -8,8 +8,8 @@ import {
 	verifyAuthentication,
 } from "~/cloud/api/auth";
 import { useIntent } from "~/hooks/routing";
-import { featureFlags } from "~/util/feature-flags";
-import { CODE_RES_KEY, STATE_RES_KEY } from "~/util/storage";
+import { featureFlags } from "~/shared/util/feature-flags";
+import { CODE_RES_KEY, STATE_RES_KEY } from "~/shared/util/storage";
 
 /**
  * Automatically set up the cloud authentication flow

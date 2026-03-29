@@ -6,7 +6,7 @@ import { REGION_FLAGS } from "~/constants";
 import { useAvailableInstanceVersions } from "~/hooks/cloud";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
-import { ON_FOCUS_SELECT } from "~/util/helpers";
+import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import { DeploySectionProps } from "../types";
 
 export function DeploymentSection({ organisation, details, setDetails }: DeploySectionProps) {

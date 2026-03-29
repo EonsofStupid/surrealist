@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useConfirmation } from "~/providers/Confirmation";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
-import { tagEvent } from "~/util/analytics";
+import { tagEvent } from "~/shared/util/analytics";
 import { useStable } from "./stable";
 
 type Phase = "idle" | "downloading" | "error";

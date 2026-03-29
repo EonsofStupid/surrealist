@@ -22,8 +22,8 @@ import { InstanceTypes } from "~/components/InstanceTypes";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
 import { CloudDeployConfig, CloudInstanceType } from "~/types";
-import { getTypeCategoryName } from "~/util/cloud";
-import { CURRENCY_FORMAT, formatMemory, optional } from "~/util/helpers";
+import { getTypeCategoryName } from "~/shared/util/cloud";
+import { CURRENCY_FORMAT, formatMemory, optional } from "~/shared/util/helpers";
 import classes from "../style.module.scss";
 import { DeploySectionProps } from "../types";
 

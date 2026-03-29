@@ -2,7 +2,7 @@ import { useColorScheme } from "@mantine/hooks";
 import { useMemo } from "react";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang } from "~/types";
-import { renderHighlighting } from "~/util/highlighting";
+import { renderHighlighting } from "~/shared/util/highlighting";
 import classes from "./style.module.scss";
 
 export interface HighlightedTextProps {

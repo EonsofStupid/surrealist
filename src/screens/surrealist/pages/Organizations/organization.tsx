@@ -24,7 +24,7 @@ import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudOrganization } from "~/types";
-import { ON_STOP_PROPAGATION, plural, showInfo } from "~/util/helpers";
+import { ON_STOP_PROPAGATION, plural, showInfo } from "~/shared/util/helpers";
 
 export interface OrganizationTileProps extends BoxProps {
 	organization: CloudOrganization;

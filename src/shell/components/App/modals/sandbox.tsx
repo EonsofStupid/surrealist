@@ -1,7 +1,7 @@
 import { Button, Divider, Image, Modal, Paper, Stack, Text } from "@mantine/core";
 import { Icon, iconChevronRight, iconClose } from "@surrealdb/ui";
 import { useEffect } from "react";
-import banner from "~/assets/images/sandbox.webp";
+import banner from "~/shared/assets/images/sandbox.webp";
 import { ActionButton } from "~/components/ActionButton";
 import { SANDBOX } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";

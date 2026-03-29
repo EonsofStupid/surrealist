@@ -30,9 +30,9 @@ import { executeQuery } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { TableVariant } from "~/types";
-import { RecordsChangedEvent } from "~/util/global-events";
-import { fuzzyMultiMatch } from "~/util/helpers";
-import { getTableVariant, syncConnectionSchema } from "~/util/schema";
+import { RecordsChangedEvent } from "~/shared/util/global-events";
+import { fuzzyMultiMatch } from "~/shared/util/helpers";
+import { getTableVariant, syncConnectionSchema } from "~/shared/util/schema";
 import classes from "./style.module.scss";
 
 const VARIANT_ORDER: TableVariant[] = ["normal", "view", "relation"];

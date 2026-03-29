@@ -1,9 +1,9 @@
 import { useLayoutEffect } from "react";
 import { useAbsoluteLocation, useSearchParams } from "~/hooks/routing";
 import { useConfigStore } from "~/shell/stores/config";
-import { tagEvent } from "~/util/analytics";
-import { handleIntentRequest } from "~/util/intents";
-import { AWS_MARKETPLACE_KEY, INVITATION_KEY, REFERRER_KEY } from "~/util/storage";
+import { tagEvent } from "~/shared/util/analytics";
+import { handleIntentRequest } from "~/shared/util/intents";
+import { AWS_MARKETPLACE_KEY, INVITATION_KEY, REFERRER_KEY } from "~/shared/util/storage";
 
 export function useAppRouter() {
 	const { setActiveResource } = useConfigStore.getState();

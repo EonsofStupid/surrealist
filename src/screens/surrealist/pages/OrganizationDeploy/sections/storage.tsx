@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useInstanceTypeRegistry } from "~/cloud/hooks/types";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { formatMemory } from "~/util/helpers";
+import { formatMemory } from "~/shared/util/helpers";
 import { DeploySectionProps } from "../types";
 
 export function StorageOptionsSection({ organisation, details, setDetails }: DeploySectionProps) {

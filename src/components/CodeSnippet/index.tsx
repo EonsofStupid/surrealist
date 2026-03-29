@@ -1,7 +1,7 @@
 import { CodeBlock, CodeBlockProps } from "@surrealdb/ui";
 import { useMemo } from "react";
 import type { CodeLang, Snippets } from "~/types";
-import { dedent } from "~/util/dedent";
+import { dedent } from "~/shared/util/dedent";
 
 export interface CodeSnippetProps extends Omit<CodeBlockProps, "value"> {
 	values: Snippets;

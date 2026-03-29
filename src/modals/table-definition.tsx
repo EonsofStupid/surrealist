@@ -4,7 +4,7 @@ import { CodeBlock } from "@surrealdb/ui";
 import { escapeIdent } from "surrealdb";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { executeQuerySingle } from "~/screens/surrealist/connection/connection";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 
 function header(name: string) {
 	return `\n\n-- ------------------------------\n-- ${name}\n-- ------------------------------ \n\n`;

@@ -9,7 +9,7 @@ import {
 	IntercomTicket,
 	IntercomTicketTypeAttribute,
 } from "~/types";
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { fetchContextAPI } from "../api/context";
 
 /**

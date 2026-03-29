@@ -27,7 +27,7 @@ import {
 	Uuid,
 } from "surrealdb";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
-import { TRUNCATE_STYLE } from "~/util/helpers";
+import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";
 import classes from "./style.module.scss";

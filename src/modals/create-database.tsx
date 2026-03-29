@@ -11,7 +11,7 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useNamespaceSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { activateDatabase, executeQuery } from "~/screens/surrealist/connection/connection";
-import { getConnection } from "~/util/connection";
+import { getConnection } from "~/shared/util/connection";
 
 export function openCreateDatabaseModal() {
 	openModal({

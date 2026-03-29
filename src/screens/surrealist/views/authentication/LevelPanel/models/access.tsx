@@ -24,8 +24,8 @@ import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import type { AccessType, Base, SchemaAccess } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
-import { readBlock, syncConnectionSchema } from "~/util/schema";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { readBlock, syncConnectionSchema } from "~/shared/util/schema";
 
 type VerifyMode = "url" | "keyalg";
 

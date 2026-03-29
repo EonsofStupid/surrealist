@@ -3,7 +3,7 @@ import { useCloudOrgUsageQuery } from "~/cloud/queries/usage";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Section } from "~/components/Section";
-import { measureComputeCost } from "~/util/cloud";
+import { measureComputeCost } from "~/shared/util/cloud";
 import classes from "../style.module.scss";
 import { OrganizationTabProps } from "../types";
 

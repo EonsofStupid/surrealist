@@ -37,7 +37,7 @@ import { useSetting } from "~/hooks/config";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { DiagnosticWithTime, useDatabaseStore } from "~/stores/database";
-import { showInfo } from "~/util/helpers";
+import { showInfo } from "~/shared/util/helpers";
 
 interface DiagnosticEntry {
 	id: string;

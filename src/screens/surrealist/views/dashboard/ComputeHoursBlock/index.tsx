@@ -1,7 +1,7 @@
 import { Box, Group, Paper, Progress, Skeleton, Stack, Text } from "@mantine/core";
 import { Spacer } from "~/components/Spacer";
 import { CloudMeasurement } from "~/types";
-import { measureComputeHistory, measureComputeTotal } from "~/util/cloud";
+import { measureComputeHistory, measureComputeTotal } from "~/shared/util/cloud";
 
 export interface ComputeHoursBlockProps {
 	usage: CloudMeasurement[] | undefined;

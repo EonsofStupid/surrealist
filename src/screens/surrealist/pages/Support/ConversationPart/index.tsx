@@ -2,7 +2,7 @@ import { Group, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
 import { Icon, iconClose, iconFile, iconPackageClosed, iconPlay } from "@surrealdb/ui";
 import { adapter } from "~/adapter";
 import { IntercomAttachment, IntercomConversation, IntercomConversationPart } from "~/types";
-import { formatFileSize, formatRelativeDate } from "~/util/helpers";
+import { formatFileSize, formatRelativeDate } from "~/shared/util/helpers";
 import { ConversationPartAuthor } from "../ConversationPartAuthor";
 import styles from "./style.module.scss";
 

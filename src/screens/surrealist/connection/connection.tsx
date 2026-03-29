@@ -13,10 +13,10 @@ import { adapter } from "~/adapter";
 import { fetchAPI } from "~/cloud/api";
 import { MAX_HISTORY_QUERY_LENGTH, SANDBOX } from "~/constants";
 import { hasCompletedOnboarding } from "~/hooks/onboarding";
-import { useCloudStore } from "~/stores/cloud";
 import { useConfigStore } from "~/shell/stores/config";
-import { State, useDatabaseStore } from "~/stores/database";
 import { useInterfaceStore } from "~/shell/stores/interface";
+import { useCloudStore } from "~/stores/cloud";
+import { State, useDatabaseStore } from "~/stores/database";
 import { useQueryStore } from "~/stores/query";
 import type {
 	Authentication,
@@ -27,26 +27,26 @@ import type {
 	SchemaInfoKV,
 	SchemaInfoNS,
 } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { getSetting } from "~/util/config";
+import { tagEvent } from "~/shared/util/analytics";
+import { getSetting } from "~/shared/util/config";
 import {
 	getActiveConnection,
 	getAuthDB,
 	getAuthNS,
 	getConnection,
 	getConnectionVariant,
-} from "~/util/connection";
+} from "~/shared/util/connection";
 import {
 	SURREAL_START_BASICS,
 	SURREAL_START_GRAPH_V2,
 	SURREAL_START_GRAPH_V3,
 	SURREAL_START_VECTOR_V2,
 	SURREAL_START_VECTOR_V3,
-} from "~/util/dataset";
-import { createBaseQuery } from "~/util/defaults";
-import { surqlDurationToSeconds } from "~/util/duration";
-import { CloudError } from "~/util/errors";
-import { ActivateDatabaseEvent, ConnectedEvent, DisconnectedEvent } from "~/util/global-events";
+} from "~/shared/util/dataset";
+import { createBaseQuery } from "~/shared/util/defaults";
+import { surqlDurationToSeconds } from "~/shared/util/duration";
+import { CloudError } from "~/shared/util/errors";
+import { ActivateDatabaseEvent, ConnectedEvent, DisconnectedEvent } from "~/shared/util/global-events";
 import {
 	__throw,
 	connectionUri,
@@ -54,11 +54,11 @@ import {
 	newId,
 	showErrorNotification,
 	showWarning,
-} from "~/util/helpers";
-import { parseIdent } from "~/util/language";
-import { syncConnectionSchema } from "~/util/schema";
-import { createSurrealQL } from "~/util/surql";
-import { SurrealQL } from "~/util/surql/surrealql";
+} from "~/shared/util/helpers";
+import { parseIdent } from "~/shared/util/language";
+import { syncConnectionSchema } from "~/shared/util/schema";
+import { createSurrealQL } from "~/shared/util/surql";
+import { SurrealQL } from "~/shared/util/surql/surrealql";
 import { composeAuthentication, getVersionTimeout } from "./helpers";
 import { createSurreal } from "./surreal";
 

@@ -9,13 +9,13 @@ import {
 	pictoSidekick,
 } from "@surrealdb/ui";
 import { forwardRef, memo, useEffect, useImperativeHandle, useRef } from "react";
-import glowImg from "~/assets/images/radial-glow.png";
+import glowImg from "~/shared/assets/images/radial-glow.png";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { Spacer } from "~/components/Spacer";
 import { useIsAuthenticated } from "~/hooks/cloud";
 import { useSetting } from "~/hooks/config";
 import { useSidekickStore } from "~/stores/sidekick";
-import { dispatchIntent } from "~/util/intents";
+import { dispatchIntent } from "~/shared/util/intents";
 import { ActionButton } from "../ActionButton";
 import { SidekickChat } from "./chat";
 import { SidekickHistory } from "./history";

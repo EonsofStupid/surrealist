@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useKeybindListener } from "~/components/App/hooks/input";
+import { useKeybindListener } from "~/shell/components/App/hooks/input";
 
 export function Globals(): ReactNode {
 	useKeybindListener();

@@ -11,8 +11,8 @@ import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useConfigStore } from "~/shell/stores/config";
-import { fuzzyMatch } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
+import { fuzzyMatch } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
 
 export async function openGraphLabelEditorModal(callback: () => void) {
 	await syncConnectionSchema();

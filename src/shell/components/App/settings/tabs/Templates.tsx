@@ -15,9 +15,9 @@ import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
 import { useConfigStore } from "~/shell/stores/config";
 import type { Connection, Template } from "~/types";
-import { createBaseConnection } from "~/util/defaults";
-import { newId, ON_STOP_PROPAGATION, uniqueName } from "~/util/helpers";
-import { USER_ICONS } from "~/util/user-icons";
+import { createBaseConnection } from "~/shared/util/defaults";
+import { newId, ON_STOP_PROPAGATION, uniqueName } from "~/shared/util/helpers";
+import { USER_ICONS } from "~/shared/util/user-icons";
 import { SettingsSection } from "../utilities";
 
 const CAT = "templates";

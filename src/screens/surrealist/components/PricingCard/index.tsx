@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { PricingConfigBase, PricingConfigCloud } from "~/cloud/queries/pricing";
 import { Label } from "~/components/Label";
 import { Spacer } from "~/components/Spacer";
-import { dispatchIntent } from "~/util/intents";
+import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 
 export type PricingCardState = "available" | "future" | "contact";

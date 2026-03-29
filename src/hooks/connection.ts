@@ -18,8 +18,8 @@ import {
 	ViewPage,
 	ViewPageInfo,
 } from "~/types";
-import { useFeatureFlags } from "~/util/feature-flags";
-import { fuzzyMatch } from "~/util/helpers";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { fuzzyMatch } from "~/shared/util/helpers";
 import { useConnectionAndView } from "./routing";
 import { useStable } from "./stable";
 

@@ -30,7 +30,7 @@ import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudMember } from "~/types";
-import { showInfo } from "~/util/helpers";
+import { showInfo } from "~/shared/util/helpers";
 import classes from "../style.module.scss";
 import { OrganizationTabProps } from "../types";
 

@@ -8,7 +8,7 @@ import { Form } from "~/components/Form";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
 import { CloudOrganization } from "~/types";
-import { EMAIL_REGEX, showErrorNotification } from "~/util/helpers";
+import { EMAIL_REGEX, showErrorNotification } from "~/shared/util/helpers";
 import { useInvitationMutation } from "../mutations/invites";
 import { useCloudRolesQuery } from "../queries/roles";
 import { openBulkInvitationModal } from "./bulk-invite";

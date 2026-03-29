@@ -1,8 +1,8 @@
 import { isFunction, shake } from "radash";
 import type { Platform, SurrealistConfig, UrlTarget } from "~/types";
-import { createFileDefinition, openAndReadFiles, openAndWriteFile } from "~/util/file-system";
-import * as idxdb from "~/util/idxdb";
-import { CONFIG_KEY } from "~/util/storage";
+import { createFileDefinition, openAndReadFiles, openAndWriteFile } from "~/shared/util/file-system";
+import * as idxdb from "~/shared/util/idxdb";
+import { CONFIG_KEY } from "~/shared/util/storage";
 import type { FileFilter, SurrealistAdapter } from "./base";
 
 /**

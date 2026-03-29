@@ -20,8 +20,8 @@ import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
 import type { FunctionDetails, SchemaFunction } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
-import { buildFunctionDefinition } from "~/util/schema";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { buildFunctionDefinition } from "~/shared/util/schema";
 
 export interface FunctionEditorPanelProps {
 	details: SchemaFunction;

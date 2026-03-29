@@ -16,10 +16,10 @@ import { useDeleteInstance, usePauseInstance, useResumeInstance } from "~/hooks/
 import { useConnectionList } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { CloudInstance, CloudOrganization } from "~/types";
-import { showErrorNotification, showInfo } from "~/util/helpers";
-import { dispatchIntent } from "~/util/intents";
-import { openResourcesLockedModal } from "../App/modals/resources-locked";
+import { showErrorNotification, showInfo } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 
 export interface InstanceActionsProps {
 	instance: CloudInstance;

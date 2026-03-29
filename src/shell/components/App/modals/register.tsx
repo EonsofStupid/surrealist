@@ -16,8 +16,8 @@ import { useStable } from "~/hooks/stable";
 import { authenticate, register } from "~/screens/surrealist/connection/connection";
 import { composeAuthentication } from "~/screens/surrealist/connection/helpers";
 import type { AccessField, SchemaAccess } from "~/types";
-import { showErrorNotification, showInfo } from "~/util/helpers";
-import { parseVariables } from "~/util/language";
+import { showErrorNotification, showInfo } from "~/shared/util/helpers";
+import { parseVariables } from "~/shared/util/language";
 
 export function RegisterUserModal() {
 	const schema = useDatabaseSchema();

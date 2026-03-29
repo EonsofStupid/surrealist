@@ -4,8 +4,8 @@ import { Icon, iconReset, iconSearch } from "@surrealdb/ui";
 import { useMemo } from "react";
 import { ActionButton } from "~/components/ActionButton";
 import { Spacer } from "~/components/Spacer";
-import { featureFlags, schema, useFeatureFlags } from "~/util/feature-flags";
-import { fuzzyMatch } from "~/util/helpers";
+import { featureFlags, schema, useFeatureFlags } from "~/shared/util/feature-flags";
+import { fuzzyMatch } from "~/shared/util/helpers";
 
 export function FeatureFlagsTab() {
 	const [flags, setFlags] = useFeatureFlags();

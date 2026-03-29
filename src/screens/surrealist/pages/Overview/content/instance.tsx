@@ -17,8 +17,8 @@ import { InstanceActions } from "~/components/InstanceActions";
 import { useConnectionList } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance, CloudOrganization, CloudRegion } from "~/types";
-import { ON_STOP_PROPAGATION } from "~/util/helpers";
-import { USER_ICONS } from "~/util/user-icons";
+import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
+import { USER_ICONS } from "~/shared/util/user-icons";
 import { StateBadge } from "../badge";
 
 export interface StartInstanceProps extends BoxProps {

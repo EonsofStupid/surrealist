@@ -11,7 +11,7 @@ import { useLastSavepoint } from "~/hooks/overview";
 import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { CloudOrganization } from "~/types";
-import { tagEvent } from "~/util/analytics";
+import { tagEvent } from "~/shared/util/analytics";
 import classes from "./style.module.scss";
 
 export function CreateOrganizationPage() {

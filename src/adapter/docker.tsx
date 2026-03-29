@@ -2,8 +2,8 @@ import * as v from "valibot";
 import { INSTANCE_CONFIG } from "~/constants";
 import { type InstanceConfig, InstanceConfigSchema } from "~/schemas";
 import type { SurrealistConfig } from "~/types";
-import { createBaseAuthentication, createBaseConnection } from "~/util/defaults";
-import { showErrorNotification } from "~/util/helpers";
+import { createBaseAuthentication, createBaseConnection } from "~/shared/util/defaults";
+import { showErrorNotification } from "~/shared/util/helpers";
 import { BrowserAdapter } from "./browser";
 
 /**

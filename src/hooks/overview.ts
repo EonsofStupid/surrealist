@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { OVERVIEW_KEY } from "~/util/storage";
+import { OVERVIEW_KEY } from "~/shared/util/storage";
 
 export const OVERVIEW: Savepoint = { path: "/overview", name: "Overview" };
 export const ORGANIZATIONS: Savepoint = { path: "/organisations", name: "Organisations" };

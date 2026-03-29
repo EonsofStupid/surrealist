@@ -4,8 +4,8 @@ import { type MouseEvent, useMemo } from "react";
 import { isDesktop } from "~/adapter";
 import { useStable } from "~/hooks/stable";
 import { useDesktopUpdater } from "~/hooks/updater";
-import { useCloudStore } from "~/stores/cloud";
 import { useInterfaceStore } from "~/shell/stores/interface";
+import { useCloudStore } from "~/stores/cloud";
 import classes from "../style.module.scss";
 
 export function CloudUpdateRequiredDialog() {

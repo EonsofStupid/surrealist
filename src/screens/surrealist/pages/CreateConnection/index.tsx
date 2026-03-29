@@ -21,7 +21,7 @@ import { useMemo } from "react";
 import { useImmer } from "use-immer";
 import { Link } from "wouter";
 import { adapter } from "~/adapter";
-import glowUrl from "~/assets/images/glow.png";
+import glowUrl from "~/shared/assets/images/glow.png";
 import { ConnectionAddressDetails } from "~/components/ConnectionDetails/address";
 import { ConnectionAuthDetails } from "~/components/ConnectionDetails/authentication";
 import { ConnectionNameDetails } from "~/components/ConnectionDetails/connection";
@@ -33,11 +33,11 @@ import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useConfigStore } from "~/shell/stores/config";
 import { Template } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { getConnectionVariant, isConnectionValid } from "~/util/connection";
-import { createBaseConnection } from "~/util/defaults";
-import { dispatchIntent } from "~/util/intents";
-import { USER_ICONS } from "~/util/user-icons";
+import { tagEvent } from "~/shared/util/analytics";
+import { getConnectionVariant, isConnectionValid } from "~/shared/util/connection";
+import { createBaseConnection } from "~/shared/util/defaults";
+import { dispatchIntent } from "~/shared/util/intents";
+import { USER_ICONS } from "~/shared/util/user-icons";
 import classes from "./style.module.scss";
 
 export function CreateConnectionPage() {

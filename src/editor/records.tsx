@@ -1,7 +1,7 @@
 import { syntaxTree } from "@codemirror/language";
 import { type Extension, Prec, RangeSetBuilder } from "@codemirror/state";
 import { Decoration, EditorView } from "@codemirror/view";
-import { isModKey } from "~/util/helpers";
+import { isModKey } from "~/shared/util/helpers";
 
 type RecordLinkCallback = (link: string) => void;
 

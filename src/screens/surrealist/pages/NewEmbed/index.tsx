@@ -19,7 +19,7 @@ import { useMemo, useRef, useState } from "react";
 import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { dedent } from "~/util/dedent";
+import { dedent } from "~/shared/util/dedent";
 import { DEFAULT_STATE, Embedder, EmbedState } from "./embedder";
 import classes from "./style.module.scss";
 

@@ -20,10 +20,10 @@ import { openConnectionDiagnosticsModal } from "~/modals/connection-diagnostics"
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { showNodeStatus } from "~/modals/node-status";
 import { useDatabaseStore } from "~/stores/database";
-import { getConnectionById } from "~/util/connection";
-import { dispatchIntent } from "~/util/intents";
-import { syncConnectionSchema } from "~/util/schema";
-import { USER_ICONS } from "~/util/user-icons";
+import { getConnectionById } from "~/shared/util/connection";
+import { dispatchIntent } from "~/shared/util/intents";
+import { syncConnectionSchema } from "~/shared/util/schema";
+import { USER_ICONS } from "~/shared/util/user-icons";
 import { closeConnection, openConnection } from "../../connection/connection";
 
 export function ConnectionStatus() {

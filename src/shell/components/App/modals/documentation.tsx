@@ -20,8 +20,8 @@ import { useBoolean } from "~/hooks/boolean";
 import { useKeyNavigation } from "~/hooks/keys";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { tagEvent } from "~/util/analytics";
-import { Y_SLIDE_TRANSITION } from "~/util/helpers";
+import { tagEvent } from "~/shared/util/analytics";
+import { Y_SLIDE_TRANSITION } from "~/shared/util/helpers";
 import classes from "../style.module.scss";
 
 const ENDPOINT = "https://surrealdb.com/api/docs/search";

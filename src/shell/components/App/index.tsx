@@ -1,8 +1,8 @@
 import { isDesktop } from "~/adapter";
+import { Scaffold } from "~/components/Scaffold";
 import { DesignerProvider } from "~/providers/Designer";
 import { InspectorProvider } from "~/providers/Inspector";
 import { SurrealistScreen } from "~/screens/surrealist";
-import { Scaffold } from "~/components/Scaffold";
 import { Globals } from "./globals";
 import { ChangelogModal } from "./modals/changelog";
 import { CloudExpiredDialog } from "./modals/cloud-expired";

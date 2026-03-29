@@ -1,6 +1,6 @@
 import { iconAuth, iconBook, iconDesigner, iconStar, iconTable } from "@surrealdb/ui";
 import type { ConnectionSchema } from "~/types";
-import { newId } from "~/util/helpers";
+import { newId } from "~/shared/util/helpers";
 import { DocsAuthAccessUserData } from "./topics/authentication/access-user-data";
 import { DocsAuthSignIn } from "./topics/authentication/sign-in";
 // import {DocsGlobalAuthentication} from "./topics/global/authentication";

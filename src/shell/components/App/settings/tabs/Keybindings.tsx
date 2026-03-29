@@ -28,7 +28,7 @@ import {
 	useCommandRegistry,
 } from "~/providers/Commands";
 import { useConfigStore } from "~/shell/stores/config";
-import { fuzzyMatch } from "~/util/helpers";
+import { fuzzyMatch } from "~/shared/util/helpers";
 
 export function KeybindingsTab() {
 	const [search, setSearch] = useInputState("");

@@ -28,7 +28,7 @@ import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useIsAuthenticated } from "~/hooks/cloud";
 import { OVERVIEW, Savepoint, useSavepoint } from "~/hooks/overview";
-import { dispatchIntent } from "~/util/intents";
+import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 import { OrganizationBillingTab } from "./tabs/billing";
 import { OrganizationInstancesTab } from "./tabs/instances";

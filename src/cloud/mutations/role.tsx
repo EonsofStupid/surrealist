@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { tagEvent } from "~/util/analytics";
+import { tagEvent } from "~/shared/util/analytics";
 import { fetchAPI } from "../api";
 
 export interface RoleUpdate {

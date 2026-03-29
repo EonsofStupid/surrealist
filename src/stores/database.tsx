@@ -3,7 +3,7 @@ import { Diagnostic } from "surrealdb";
 import { create } from "zustand";
 import type { GraphqlResponse } from "~/screens/surrealist/connection/connection";
 import type { ConnectionSchema, QueryResponse } from "~/types";
-import { createConnectionSchema } from "~/util/defaults";
+import { createConnectionSchema } from "~/shared/util/defaults";
 
 export type State = "disconnected" | "connecting" | "retrying" | "connected";
 export type DiagnosticWithTime = Diagnostic & { timestamp: number };

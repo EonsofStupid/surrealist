@@ -7,10 +7,10 @@ import { useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import type { TableInfo } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { showErrorNotification } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
-import { SDB_2_0_0 } from "~/util/versions";
+import { tagEvent } from "~/shared/util/analytics";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
+import { SDB_2_0_0 } from "~/shared/util/versions";
 import { DesignDrawer } from "./drawer";
 import { buildDefinitionQueries, isSchemaValid } from "./helpers";
 

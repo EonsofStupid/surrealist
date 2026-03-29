@@ -6,8 +6,8 @@ import { adapter } from "~/adapter";
 import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useConfigStore } from "~/shell/stores/config";
-import { tagEvent } from "~/util/analytics";
-import { dispatchIntent } from "~/util/intents";
+import { tagEvent } from "~/shared/util/analytics";
+import { dispatchIntent } from "~/shared/util/intents";
 import { useInternalCommandBuilder } from "./commands";
 import type { Command, CommandCategory, CommandPayload } from "./types";
 

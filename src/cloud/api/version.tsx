@@ -1,6 +1,6 @@
 import { compareVersions } from "compare-versions";
 import { featureFlagsLock } from "~/providers/FeatureFlags";
-import { featureFlags } from "~/util/feature-flags";
+import { featureFlags } from "~/shared/util/feature-flags";
 import { fetchAPI } from ".";
 
 interface VersionInfo {

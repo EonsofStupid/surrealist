@@ -11,8 +11,8 @@ import { useStable } from "~/hooks/stable";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
-import { useFeatureFlags } from "~/util/feature-flags";
-import { renderHighlighting } from "~/util/highlighting";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { renderHighlighting } from "~/shared/util/highlighting";
 
 function Render({
 	value,

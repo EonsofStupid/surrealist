@@ -23,7 +23,7 @@ import { useInspector } from "~/providers/Inspector";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { LiveMessage } from "~/types";
-import { ON_FOCUS_SELECT } from "~/util/helpers";
+import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import { attemptFormat, type PreviewProps } from ".";
 
 const LIVE_ACTION_COLORS: Record<string, [string, string]> = {

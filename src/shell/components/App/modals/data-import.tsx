@@ -28,9 +28,9 @@ import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { executeQuery, getSurreal, getSurrealQL } from "~/screens/surrealist/connection/connection";
-import { tagEvent } from "~/util/analytics";
-import { formatFileSize, showErrorNotification, showWarning } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
+import { tagEvent } from "~/shared/util/analytics";
+import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
 
 type DataFileFormat = "csv" | "json" | "ndjson";
 type ImportType = "sql" | DataFileFormat;

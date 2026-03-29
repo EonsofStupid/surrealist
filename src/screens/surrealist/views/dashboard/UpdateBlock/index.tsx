@@ -3,7 +3,7 @@ import { Icon, iconOpen, iconReset } from "@surrealdb/ui";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance, CloudOrganization } from "~/types";
-import { openSurrealChangelog } from "~/util/cloud";
+import { openSurrealChangelog } from "~/shared/util/cloud";
 
 export interface UpdateBlockProps {
 	instance: CloudInstance;

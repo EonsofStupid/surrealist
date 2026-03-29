@@ -20,12 +20,12 @@ import { createRoot } from "react-dom/client";
 import { invalidateSession } from "~/cloud/api/auth";
 import { clearCachedConnections } from "~/cloud/helpers";
 import { NewDomainScreen } from "~/screens/new-domain";
-import { startConfigSync } from "~/util/config";
-import { HeadInjector } from "~/util/head";
-import { exposeDebug } from "~/util/helpers";
-import { preloadImages } from "~/util/preloader";
-import { adapter } from "../adapter";
 import { App } from "~/shell/components/App";
+import { startConfigSync } from "~/shared/util/config";
+import { HeadInjector } from "~/shared/util/head";
+import { exposeDebug } from "~/shared/util/helpers";
+import { preloadImages } from "~/shared/util/preloader";
+import { adapter } from "../adapter";
 import { generateEditorIcons } from "../editor/icons";
 import { promptChangelog } from "../util/changelogs";
 

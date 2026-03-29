@@ -1,6 +1,6 @@
 import { adapter } from "~/adapter";
 import { useIsCloudEnabled } from "~/hooks/cloud";
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { CloudAccount } from "./account";
 import { NewsFeed } from "./newsfeed";
 import { DatabaseServing } from "./serving";

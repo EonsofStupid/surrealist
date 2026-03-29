@@ -24,8 +24,8 @@ import { useIsLight } from "~/hooks/theme";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { GlobalPage, SidebarMode, ViewPage } from "~/types";
-import { isMobile } from "~/util/helpers";
-import { dispatchIntent } from "~/util/intents";
+import { isMobile } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 
 const GLOBAL_NAVIGATION: GlobalPage[][] = [

@@ -1,0 +1,30 @@
+.brutalistButton {
+    background-color: var(--clr-neon-pink);
+    color: var(--clr-abyss-900);
+    border: 3px solid var(--clr-abyss-900);
+    border-radius: 4px;
+    height: 54px;
+    padding: 0 32px;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0px var(--clr-abyss-900);
+    transition: all 0.1s ease;
+    position: relative;
+    overflow: visible;
+
+    &:active {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0px var(--clr-abyss-900);
+    }
+
+    &.glow {
+        box-shadow: 4px 4px 0px var(--clr-abyss-900), 0 0 20px var(--clr-neon-pink-glow);
+    }
+}
+
+.label {
+    position: relative;
+    z-index: 2;
+}

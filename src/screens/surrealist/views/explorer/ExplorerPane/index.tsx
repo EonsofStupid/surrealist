@@ -47,9 +47,9 @@ import {
 	getSurrealQL,
 } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
-import { RecordsChangedEvent } from "~/util/global-events";
-import { showInfo } from "~/util/helpers";
-import { getTableVariant } from "~/util/schema";
+import { RecordsChangedEvent } from "~/shared/util/global-events";
+import { showInfo } from "~/shared/util/helpers";
+import { getTableVariant } from "~/shared/util/schema";
 import { type SortMode, usePaginationQuery, useRecordQuery } from "./hooks";
 import classes from "./style.module.scss";
 

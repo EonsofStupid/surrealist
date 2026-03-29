@@ -10,7 +10,7 @@ import { CommandsProvider } from "~/providers/Commands";
 import { ConfirmationProvider } from "~/providers/Confirmation";
 import { ContextProvider } from "~/providers/Context";
 import { FeatureFlagsProvider } from "~/providers/FeatureFlags";
-import { SURREALIST_THEME } from "~/util/mantine";
+import { SURREALIST_THEME } from "~/shared/util/mantine";
 import { ScaffoldErrorHandler } from "./error";
 
 const QUERY_CLIENT = new QueryClient();

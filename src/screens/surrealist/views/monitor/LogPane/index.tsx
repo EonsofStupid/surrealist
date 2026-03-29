@@ -13,7 +13,7 @@ import { ContentPane } from "~/components/Pane";
 import { MONITOR_LOG_LEVEL_INFO } from "~/constants";
 import { useConnection } from "~/hooks/connection";
 import { CloudLogLine } from "~/types";
-import { fuzzyMatch } from "~/util/helpers";
+import { fuzzyMatch } from "~/shared/util/helpers";
 import { MonitorContentProps } from "../helpers";
 import { LogActions } from "./actions";
 import { LogActivityChart } from "./chart";

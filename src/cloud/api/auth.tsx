@@ -5,10 +5,10 @@ import { sleep } from "radash";
 import { adapter } from "~/adapter";
 import { useCloudStore } from "~/stores/cloud";
 import type { CloudSignin } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { isDevelopment } from "~/util/environment";
-import { CloudAuthEvent, CloudExpiredEvent } from "~/util/global-events";
-import { fastParseJwt, showErrorNotification } from "~/util/helpers";
+import { tagEvent } from "~/shared/util/analytics";
+import { isDevelopment } from "~/shared/util/environment";
+import { CloudAuthEvent, CloudExpiredEvent } from "~/shared/util/global-events";
+import { fastParseJwt, showErrorNotification } from "~/shared/util/helpers";
 import {
 	AWS_MARKETPLACE_KEY,
 	INVITATION_KEY,
@@ -17,7 +17,7 @@ import {
 	TOKEN_ACCESS_KEY,
 	TOKEN_REFRESH_KEY,
 	VERIFIER_KEY,
-} from "~/util/storage";
+} from "~/shared/util/storage";
 import { openTermsModal } from "../onboarding/terms-and-conditions";
 import { ApiError, fetchAPI, updateCloudInformation } from ".";
 import { getCloudEndpoints } from "./endpoints";

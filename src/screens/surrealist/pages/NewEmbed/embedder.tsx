@@ -16,7 +16,7 @@ import { CodeInput } from "~/components/Inputs";
 import { Spacer } from "~/components/Spacer";
 import { ORIENTATIONS, RESULT_MODES, THEMES } from "~/constants";
 import type { ColorScheme, Orientation, ResultMode } from "~/types";
-import { isDevelopment, isProduction } from "~/util/environment";
+import { isDevelopment, isProduction } from "~/shared/util/environment";
 
 export const DEFAULT_STATE: EmbedState = {
 	dataset: "none",

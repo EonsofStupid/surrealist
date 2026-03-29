@@ -17,8 +17,8 @@ import {
 } from "~/screens/surrealist/components/SelectDatabase";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import type { Base, SchemaAccess, SchemaUser } from "~/types";
-import { ON_STOP_PROPAGATION } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
+import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import { AccessEditorModal } from "./models/access";
 import { UserEditorModal } from "./models/users";
 import classes from "./style.module.scss";

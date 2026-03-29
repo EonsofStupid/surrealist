@@ -1,7 +1,7 @@
 import { Avatar, Badge, Group, Stack, Text, UnstyledButton } from "@mantine/core";
-import surrealImg from "~/assets/images/surrealdb.png";
+import surrealImg from "~/shared/assets/images/surrealdb.png";
 import { CloudOrganization, IntercomUser } from "~/types";
-import { formatRelativeDate } from "~/util/helpers";
+import { formatRelativeDate } from "~/shared/util/helpers";
 
 export interface ConversationPartAuthorProps {
 	user?: IntercomUser;

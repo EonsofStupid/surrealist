@@ -1,7 +1,7 @@
 import { Group, Stack, Text, ThemeIcon } from "@mantine/core";
 import { Icon, iconTag } from "@surrealdb/ui";
 import { IntercomTicket } from "~/types";
-import { formatRelativeDate } from "~/util/helpers";
+import { formatRelativeDate } from "~/shared/util/helpers";
 
 export interface TicketCardProps {
 	ticket: IntercomTicket;

@@ -42,9 +42,9 @@ import { getSurrealQL } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab } from "~/types";
-import { showErrorNotification, tryParseParams } from "~/util/helpers";
-import { dispatchIntent } from "~/util/intents";
-import { parseVariables } from "~/util/language";
+import { showErrorNotification, tryParseParams } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
+import { parseVariables } from "~/shared/util/language";
 import { readQuery, writeQuery } from "../QueryView/strategy";
 
 const SERIALIZE = {

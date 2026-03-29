@@ -1,6 +1,6 @@
 import { useClipboard } from "@mantine/hooks";
 import { adapter } from "~/adapter";
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { useStable } from "./stable";
 
 export function useVersionCopy() {

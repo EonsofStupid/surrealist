@@ -7,7 +7,7 @@ import { useAbsoluteLocation, useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudInstance } from "~/types";
-import { resolveInstanceConnection } from "~/util/connection";
+import { resolveInstanceConnection } from "~/shared/util/connection";
 import { StartCreator } from "../../Overview/content/creator";
 import { StartInstance } from "../../Overview/content/instance";
 import { StartPlaceholder } from "../../Overview/content/placeholder";

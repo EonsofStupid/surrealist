@@ -33,8 +33,8 @@ import { useToggleList } from "~/hooks/toggle";
 import { openGraphLabelEditorModal } from "~/modals/graph-labels";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
-import { plural } from "~/util/helpers";
-import { themeColor } from "~/util/mantine";
+import { plural } from "~/shared/util/helpers";
+import { themeColor } from "~/shared/util/mantine";
 import classes from "../style.module.scss";
 import { type PreviewProps } from ".";
 

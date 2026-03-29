@@ -20,7 +20,7 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { createSurreal } from "~/screens/surrealist/connection/surreal";
 import { Connection, Protocol } from "~/types";
-import { connectionUri, isHostLocal } from "~/util/helpers";
+import { connectionUri, isHostLocal } from "~/shared/util/helpers";
 
 const ENDPOINT_PATTERN = /^(.+?):\/\/(.+)$/;
 

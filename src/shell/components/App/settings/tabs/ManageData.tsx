@@ -8,9 +8,9 @@ import { useConnectionList } from "~/hooks/connection";
 import { useCheckbox } from "~/hooks/events";
 import { useStable } from "~/hooks/stable";
 import { useConfigStore } from "~/shell/stores/config";
-import { backupConfig } from "~/util/config";
-import { showErrorNotification, showInfo } from "~/util/helpers";
-import { applyMigrations } from "~/util/migrator";
+import { backupConfig } from "~/shared/util/config";
+import { showErrorNotification, showInfo } from "~/shared/util/helpers";
+import { applyMigrations } from "~/shared/util/migrator";
 
 export function ManageDataTab() {
 	const connections = useConnectionList();

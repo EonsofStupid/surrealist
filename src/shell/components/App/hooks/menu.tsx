@@ -10,7 +10,7 @@ import {
 	useCommandKeybinds,
 } from "~/providers/Commands";
 import { AppMenu, AppMenuItem } from "~/types";
-import { optional } from "~/util/helpers";
+import { optional } from "~/shared/util/helpers";
 
 const SEPARATOR: AppMenuItem = {
 	id: "separator",

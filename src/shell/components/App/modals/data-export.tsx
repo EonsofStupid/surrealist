@@ -50,9 +50,9 @@ import {
 	isStreamingSupported,
 	requestDatabaseExport,
 } from "~/screens/surrealist/connection/connection";
-import { tagEvent } from "~/util/analytics";
-import { fuzzyMatch, slugify } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
+import { tagEvent } from "~/shared/util/analytics";
+import { fuzzyMatch, slugify } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
 
 function toggleSet<T>(set: Set<T>, item: T) {
 	if (set.has(item)) {

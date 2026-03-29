@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
-import { changelogs } from "~/util/changelogs";
+import { changelogs } from "~/shared/util/changelogs";
 import classes from "../style.module.scss";
 
 export function ChangelogModal() {

@@ -82,8 +82,8 @@ import type {
 	DiagramStrategy,
 	TableInfo,
 } from "~/types";
-import { showInfo } from "~/util/helpers";
-import { themeColor } from "~/util/mantine";
+import { showInfo } from "~/shared/util/helpers";
+import { themeColor } from "~/shared/util/mantine";
 import { GraphWarningLine } from "./components";
 import {
 	applyDefault,

@@ -8,8 +8,8 @@ import { ConversationTable } from "~/components/ConversationTable";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Section } from "~/components/Section";
 import { useIsLight } from "~/hooks/theme";
-import { useFeatureFlags } from "~/util/feature-flags";
-import { dispatchIntent } from "~/util/intents";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { dispatchIntent } from "~/shared/util/intents";
 import { StartCloud } from "../../Overview/content/cloud";
 import { OrganizationTabProps } from "../types";
 

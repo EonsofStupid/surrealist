@@ -6,7 +6,7 @@ import {
 } from "@mantine/core";
 import { forwardRef, useMemo } from "react";
 import { useHoverIcon } from "~/hooks/hover-icon";
-import { getIconSize } from "~/util/mantine";
+import { getIconSize } from "~/shared/util/mantine";
 import classes from "./style.module.scss";
 
 export interface HoverIconProps extends ActionIconProps {

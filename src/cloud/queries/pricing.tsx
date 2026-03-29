@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSetting } from "~/hooks/config";
 import { InstancePlan } from "~/types";
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 
 type PricingConfigCTA =
 	| {

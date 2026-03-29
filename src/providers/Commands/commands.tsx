@@ -62,15 +62,15 @@ import {
 } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
-import { featureFlags } from "~/util/feature-flags";
-import { optional } from "~/util/helpers";
-import type { IntentPayload, IntentType } from "~/util/intents";
+import { featureFlags } from "~/shared/util/feature-flags";
+import { optional } from "~/shared/util/helpers";
+import type { IntentPayload, IntentType } from "~/shared/util/intents";
 import {
 	FlagSetController,
 	type PreferenceController,
 	useComputedPreferences,
-} from "~/util/preferences";
-import { syncConnectionSchema } from "~/util/schema";
+} from "~/shared/util/preferences";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import type { CommandCategory } from "./types";
 
 /** Create a launch command */

@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import type { Uuid } from "surrealdb";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { executeQuerySingle } from "~/screens/surrealist/connection/connection";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 
 interface Node {
 	seen: number;

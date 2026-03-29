@@ -36,7 +36,7 @@ import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab, QueryType } from "~/types";
-import { uniqueName } from "~/util/helpers";
+import { uniqueName } from "~/shared/util/helpers";
 import classes from "./style.module.scss";
 
 const TYPE_ICONS: Record<QueryType, string> = {

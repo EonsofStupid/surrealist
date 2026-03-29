@@ -1,4 +1,4 @@
-import { TOKEN_ACCESS_KEY } from "~/util/storage";
+import { TOKEN_ACCESS_KEY } from "~/shared/util/storage";
 import { ApiError } from ".";
 import { getCloudEndpoints } from "./endpoints";
 

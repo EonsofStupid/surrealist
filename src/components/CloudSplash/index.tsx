@@ -1,8 +1,8 @@
 import { Button, Center, Group, Image, Stack, Text } from "@mantine/core";
 import { Icon, iconChevronRight, iconOpen, pictoSDBCloud } from "@surrealdb/ui";
 import { adapter } from "~/adapter";
-import logoDarkImg from "~/assets/images/dark/cloud-logo.svg";
-import logoLightImg from "~/assets/images/light/cloud-logo.svg";
+import logoDarkImg from "~/shared/assets/images/dark/cloud-logo.svg";
+import logoLightImg from "~/shared/assets/images/light/cloud-logo.svg";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { useThemeImage } from "~/hooks/theme";
 import { useCloudStore } from "~/stores/cloud";

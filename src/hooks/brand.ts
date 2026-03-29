@@ -1,5 +1,5 @@
-import logoDarkUrl from "~/assets/images/dark/logo.webp";
-import logoLightUrl from "~/assets/images/light/logo.webp";
+import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
+import logoLightUrl from "~/shared/assets/images/light/logo.webp";
 import { useThemeImage } from "./theme";
 
 export function useLogoUrl() {

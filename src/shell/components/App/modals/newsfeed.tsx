@@ -27,7 +27,7 @@ import { useLatestNewsQuery, useUnreadNewsPosts } from "~/hooks/newsfeed";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useConfigStore } from "~/shell/stores/config";
-import { tagEvent } from "~/util/analytics";
+import { tagEvent } from "~/shared/util/analytics";
 import classes from "../style.module.scss";
 
 interface NewsItem {

@@ -7,7 +7,7 @@ import { SidekickPanel } from "~/components/Sidekick/panel";
 import { useConnection } from "~/hooks/connection";
 import { useViewFocus } from "~/hooks/routing";
 import { useDatabaseSchema, useNamespaceSchema, useRootSchema } from "~/hooks/schema";
-import { syncConnectionSchema } from "~/util/schema";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import { LevelPanel } from "../LevelPanel";
 
 const LevelPanelLazy = memo(LevelPanel);

@@ -1,5 +1,5 @@
 import { useConfigStore } from "~/shell/stores/config";
-import { featureFlags } from "~/util/feature-flags";
+import { featureFlags } from "~/shared/util/feature-flags";
 
 export function getCloudEndpoints() {
 	const { urlAuthBase, urlApiBase, urlApiTicketsBase } = useConfigStore.getState().settings.cloud;

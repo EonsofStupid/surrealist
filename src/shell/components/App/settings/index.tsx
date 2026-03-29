@@ -36,7 +36,7 @@ import { useStable } from "~/hooks/stable";
 import { useDesktopUpdater } from "~/hooks/updater";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { Assign, FeatureCondition } from "~/types";
-import { useFeatureFlags } from "~/util/feature-flags";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 import classes from "./style.module.scss";
 import { AboutTab } from "./tabs/About";
 import { FeatureFlagsTab } from "./tabs/FeatureFlags";

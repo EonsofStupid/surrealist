@@ -13,7 +13,7 @@ import { Spacer } from "~/components/Spacer";
 import { useSetting } from "~/hooks/config";
 import { useActiveKeys } from "~/hooks/keys";
 import { useStable } from "~/hooks/stable";
-import { isSimilar } from "~/util/helpers";
+import { isSimilar } from "~/shared/util/helpers";
 
 type DynamicNode<T> = ReactNode | ((value: T) => ReactNode);
 

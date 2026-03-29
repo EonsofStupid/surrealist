@@ -31,8 +31,8 @@ import { useStable } from "~/hooks/stable";
 import { useValueValidator } from "~/hooks/surrealql";
 import { executeQuery, getSurrealQL } from "~/screens/surrealist/connection/connection";
 import type { QueryResponse } from "~/types";
-import { RecordsChangedEvent } from "~/util/global-events";
-import { extractEdgeRecords, getTableVariant } from "~/util/schema";
+import { RecordsChangedEvent } from "~/shared/util/global-events";
+import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
 
 type EdgeInfo = [string[], string[]];
 

@@ -4,8 +4,8 @@ import { Icon, iconSearch } from "@surrealdb/ui";
 import { Fragment, useMemo } from "react";
 import { PreferenceInput } from "~/components/Inputs/preference";
 import { Spacer } from "~/components/Spacer";
-import { fuzzyMatch } from "~/util/helpers";
-import { FlagSetController, Preference, useComputedPreferences } from "~/util/preferences";
+import { fuzzyMatch } from "~/shared/util/helpers";
+import { FlagSetController, Preference, useComputedPreferences } from "~/shared/util/preferences";
 
 function isTallInput(preference: Preference) {
 	return preference.controller instanceof FlagSetController;

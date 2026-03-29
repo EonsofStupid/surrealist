@@ -5,10 +5,10 @@ import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { openConnection } from "~/screens/surrealist/connection/connection";
 import { useDatabaseStore } from "~/stores/database";
-import { tagEvent } from "~/util/analytics";
-import { getConnection } from "~/util/connection";
-import { isHostLocal } from "~/util/helpers";
-import { dispatchIntent } from "~/util/intents";
+import { tagEvent } from "~/shared/util/analytics";
+import { getConnection } from "~/shared/util/connection";
+import { isHostLocal } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 import { ActionButton } from "../ActionButton";
 
 export function DatabaseServing() {

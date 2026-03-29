@@ -2,9 +2,9 @@ import { objectify } from "radash";
 import type { AccessRecordAuth, ProvidedAuth } from "surrealdb";
 import { fetchAPI } from "~/cloud/api";
 import type { Authentication } from "~/types";
-import { getSetting } from "~/util/config";
-import { CloudError } from "~/util/errors";
-import { featureFlags } from "~/util/feature-flags";
+import { getSetting } from "~/shared/util/config";
+import { CloudError } from "~/shared/util/errors";
+import { featureFlags } from "~/shared/util/feature-flags";
 
 export async function composeAuthentication(connection: Authentication): Promise<ProvidedAuth> {
 	const { mode, username, password, namespace, database, token, cloudInstance } = connection;

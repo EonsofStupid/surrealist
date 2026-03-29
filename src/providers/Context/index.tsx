@@ -3,7 +3,7 @@ import { Surreal } from "surrealdb";
 import { adapter } from "~/adapter";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
-import { __throw } from "~/util/helpers";
+import { __throw } from "~/shared/util/helpers";
 
 const CONTEXT_ENDPOINT = "wss://surreal-cloud-06bu9hntp1rdd9dgg57rc0v87s.aws-euw1.surreal.cloud";
 

@@ -3,7 +3,7 @@ import { closeModal, openModal } from "@mantine/modals";
 import { Icon, iconAuth } from "@surrealdb/ui";
 import { Spacer } from "~/components/Spacer";
 import { CloudOrganization } from "~/types";
-import { dispatchIntent } from "~/util/intents";
+import { dispatchIntent } from "~/shared/util/intents";
 
 export function openResourcesLockedModal(organisation: CloudOrganization) {
 	return openModal({

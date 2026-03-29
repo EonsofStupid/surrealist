@@ -10,9 +10,9 @@ import { useConnection, useRequireDatabase } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { CloudInstance, CloudInstanceCapabilities } from "~/types";
-import { parseCapabilities, transformCapabilities } from "~/util/capabilities";
-import { showErrorNotification } from "~/util/helpers";
-import { dispatchIntent } from "~/util/intents";
+import { parseCapabilities, transformCapabilities } from "~/shared/util/capabilities";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 import classes from "../style.module.scss";
 
 export interface ImportExportProps {

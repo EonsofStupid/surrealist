@@ -20,9 +20,9 @@ import { useNamespaceSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { openCreateDatabaseModal } from "~/modals/create-database";
 import { useConfirmation } from "~/providers/Confirmation";
-import { getAuthDB, getAuthLevel } from "~/util/connection";
-import { createBaseAuthentication } from "~/util/defaults";
-import { parseIdent } from "~/util/language";
+import { getAuthDB, getAuthLevel } from "~/shared/util/connection";
+import { createBaseAuthentication } from "~/shared/util/defaults";
+import { parseIdent } from "~/shared/util/language";
 import { activateDatabase, executeQuery } from "../../connection/connection";
 import classes from "./style.module.scss";
 

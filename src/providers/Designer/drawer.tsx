@@ -35,7 +35,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import type { TableInfo } from "~/types";
-import { getTableVariant, syncConnectionSchema } from "~/util/schema";
+import { getTableVariant, syncConnectionSchema } from "~/shared/util/schema";
 import { ChangefeedElement } from "./elements/changefeed";
 import { EventsElement } from "./elements/events";
 import { FieldsElement } from "./elements/fields";

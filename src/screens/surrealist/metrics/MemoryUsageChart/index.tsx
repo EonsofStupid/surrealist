@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { useEffect } from "react";
 import { useCloudMetricsQuery } from "~/cloud/queries/metrics";
 import { useStable } from "~/hooks/stable";
-import { formatMemory } from "~/util/helpers";
+import { formatMemory } from "~/shared/util/helpers";
 import { BaseAreaChart, CommonAreaChartProps } from "../BaseAreaChart";
 
 export function MemoryUsageChart({

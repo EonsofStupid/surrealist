@@ -17,7 +17,7 @@ import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
 import { useUpdateInstanceCapabilitiesMutation } from "~/cloud/mutations/capabilities";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance, CloudInstanceCapabilities } from "~/types";
-import { filterOptions, parseCapabilities, transformCapabilities } from "~/util/capabilities";
+import { filterOptions, parseCapabilities, transformCapabilities } from "~/shared/util/capabilities";
 import { BooleanCapability } from "../capabilities/boolean";
 import { FixedRuleSetCapability } from "../capabilities/fixed-rule-set";
 import { FreeRuleSetCapability } from "../capabilities/free-rule-set";

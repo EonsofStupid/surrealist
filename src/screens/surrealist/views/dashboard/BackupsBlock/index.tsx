@@ -4,7 +4,7 @@ import { formatDistance } from "date-fns";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { useStable } from "~/hooks/stable";
 import { CloudBackup, CloudInstance, CloudOrganization } from "~/types";
-import { tagEvent } from "~/util/analytics";
+import { tagEvent } from "~/shared/util/analytics";
 
 export interface BackupsBlockProps {
 	instance: CloudInstance | undefined;

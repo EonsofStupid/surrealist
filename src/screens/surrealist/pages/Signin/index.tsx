@@ -3,7 +3,7 @@ import { useCloudInstanceList } from "~/cloud/hooks/instances";
 import { AuthGuard } from "~/components/AuthGuard";
 import { useCloudProfile } from "~/hooks/cloud";
 import { useAbsoluteLocation } from "~/hooks/routing";
-import { withSearchParams } from "~/util/helpers";
+import { withSearchParams } from "~/shared/util/helpers";
 
 export interface SigninPageProps {
 	plan?: string;

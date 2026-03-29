@@ -3,7 +3,7 @@ import { closeAllModals, openModal } from "@mantine/modals";
 import { Icon, iconChevronRight, iconErrorCircle } from "@surrealdb/ui";
 import { ErrorBoundary } from "react-error-boundary";
 import { useImmer } from "use-immer";
-import glowUrl from "~/assets/images/glow.png";
+import glowUrl from "~/shared/assets/images/glow.png";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";

@@ -23,8 +23,8 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
 import { executeQuery } from "~/screens/surrealist/connection/connection";
 import type { Base, SchemaUser } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
-import { syncConnectionSchema } from "~/util/schema";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { syncConnectionSchema } from "~/shared/util/schema";
 
 const ROLES = [
 	{ value: "OWNER", label: "Owner" },

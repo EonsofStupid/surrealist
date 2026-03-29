@@ -28,7 +28,7 @@ import {
 } from "@surrealdb/ui";
 import { ChangeEvent } from "react";
 import { navigate } from "wouter/use-browser-location";
-import glow from "~/assets/images/glow.png";
+import glow from "~/shared/assets/images/glow.png";
 import {
 	getBillingProviderAction,
 	isBillingManaged,
@@ -36,7 +36,6 @@ import {
 } from "~/cloud/helpers";
 import { useInstanceTypeRegistry } from "~/cloud/hooks/types";
 import { useInstanceDeployMutation } from "~/cloud/mutations/deploy";
-import { openResourcesLockedModal } from "~/components/App/modals/resources-locked";
 import { BillingDetails } from "~/components/BillingDetails";
 import { EstimatedCost } from "~/components/EstimatedCost";
 import { Label } from "~/components/Label";
@@ -47,13 +46,14 @@ import { PropertyValue } from "~/components/PropertyValue";
 import { Spacer } from "~/components/Spacer";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useCloudStore } from "~/stores/cloud";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { useConfigStore } from "~/shell/stores/config";
-import { getTypeCategoryName } from "~/util/cloud";
-import { SAMPLE_QUERIES } from "~/util/dataset";
-import { createBaseQuery } from "~/util/defaults";
-import { formatMemory, plural, showErrorNotification } from "~/util/helpers";
-import { APPLY_DATA_FILE_KEY, APPLY_DATASET_KEY } from "~/util/storage";
+import { useCloudStore } from "~/stores/cloud";
+import { getTypeCategoryName } from "~/shared/util/cloud";
+import { SAMPLE_QUERIES } from "~/shared/util/dataset";
+import { createBaseQuery } from "~/shared/util/defaults";
+import { formatMemory, plural, showErrorNotification } from "~/shared/util/helpers";
+import { APPLY_DATA_FILE_KEY, APPLY_DATASET_KEY } from "~/shared/util/storage";
 import { STARTING_DATA } from "../constants";
 import classes from "../style.module.scss";
 import { StepProps } from "../types";

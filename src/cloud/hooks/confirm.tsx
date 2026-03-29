@@ -1,5 +1,5 @@
 import { useConfirmation } from "~/providers/Confirmation";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 
 /**
  * Confirm the update of an instance.

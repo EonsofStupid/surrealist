@@ -16,9 +16,9 @@ import { PropertyValue } from "~/components/PropertyValue";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudInstance, CloudOrganization } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { getTypeCategoryName } from "~/util/cloud";
-import { formatMemory, plural } from "~/util/helpers";
+import { tagEvent } from "~/shared/util/analytics";
+import { getTypeCategoryName } from "~/shared/util/cloud";
+import { formatMemory, plural } from "~/shared/util/helpers";
 
 export interface ConfigurationBlockProps {
 	instance: CloudInstance | undefined;

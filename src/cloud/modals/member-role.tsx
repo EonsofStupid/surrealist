@@ -8,7 +8,7 @@ import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
 import { CloudMember, CloudOrganization } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 import { useUpdateRoleMutation } from "../mutations/role";
 import { useCloudRolesQuery } from "../queries/roles";
 

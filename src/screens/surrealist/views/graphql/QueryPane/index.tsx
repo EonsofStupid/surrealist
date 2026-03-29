@@ -29,7 +29,7 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { getSurrealQL } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
-import { showErrorNotification, showInfo, tryParseParams } from "~/util/helpers";
+import { showErrorNotification, showInfo, tryParseParams } from "~/shared/util/helpers";
 import classes from "./style.module.scss";
 
 export interface QueryPaneProps {

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudLogs, MetricsDuration } from "~/types";
-import { withSearchParams } from "~/util/helpers";
+import { withSearchParams } from "~/shared/util/helpers";
 import { fetchAPI } from "../api";
 import { computeMetricRange } from "../helpers";
 

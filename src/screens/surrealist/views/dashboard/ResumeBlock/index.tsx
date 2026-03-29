@@ -1,9 +1,9 @@
 import { ActionIcon, Button, Center, Paper, Stack, Text, Tooltip } from "@mantine/core";
 import { Icon, iconPause, iconPlay } from "@surrealdb/ui";
 import { hasOrganizationRoles, ORG_ROLES_OWNER } from "~/cloud/helpers";
-import { openResourcesLockedModal } from "~/components/App/modals/resources-locked";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useResumeInstance } from "~/hooks/cloud";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { CloudInstance, CloudOrganization } from "~/types";
 
 export interface ResumelockProps {

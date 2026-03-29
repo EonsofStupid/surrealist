@@ -20,7 +20,7 @@ import type {
 	TableInfo,
 	TableVariant,
 } from "~/types";
-import { extractEdgeRecords, getTableVariant } from "~/util/schema";
+import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
 import { ElkStepEdge } from "./edges/ElkEdge";
 import { NormalTableNode } from "./nodes/NormalTableNode";
 import { RelationTableNode } from "./nodes/RelationTableNode";

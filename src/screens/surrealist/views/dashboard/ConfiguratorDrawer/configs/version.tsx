@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Tile } from "~/components/Tile";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance } from "~/types";
-import { openSurrealChangelog } from "~/util/cloud";
+import { openSurrealChangelog } from "~/shared/util/cloud";
 import classes from "../style.module.scss";
 
 export interface ConfigurationVersionProps {

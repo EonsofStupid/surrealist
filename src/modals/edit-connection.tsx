@@ -12,7 +12,7 @@ import { useStable } from "~/hooks/stable";
 import { openConnection } from "~/screens/surrealist/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { Connection } from "~/types";
-import { getActiveConnection, isConnectionValid } from "~/util/connection";
+import { getActiveConnection, isConnectionValid } from "~/shared/util/connection";
 
 export function openConnectionEditModal(connection: Connection) {
 	openModal({

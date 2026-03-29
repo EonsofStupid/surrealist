@@ -2,7 +2,7 @@ import { createWasmWorkerEngines } from "@surrealdb/wasm";
 import WasmWorker from "@surrealdb/wasm/worker?worker";
 import { applyDiagnostics, createRemoteEngines, Surreal } from "surrealdb";
 import { useDatabaseStore } from "~/stores/database";
-import { getSetting } from "~/util/config";
+import { getSetting } from "~/shared/util/config";
 
 /**
  * Create a new configured Surreal instance

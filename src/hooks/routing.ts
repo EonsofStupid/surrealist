@@ -4,9 +4,9 @@ import { adapter } from "~/adapter";
 import { MiniAdapter } from "~/adapter/mini";
 import { SANDBOX } from "~/constants";
 import type { ViewPage } from "~/types";
-import { getConnectionById } from "~/util/connection";
-import { IntentEvent } from "~/util/global-events";
-import { consumeIntent, type IntentPayload, type IntentType } from "~/util/intents";
+import { getConnectionById } from "~/shared/util/connection";
+import { IntentEvent } from "~/shared/util/global-events";
+import { consumeIntent, type IntentPayload, type IntentType } from "~/shared/util/intents";
 import { useEventSubscription } from "./event";
 import { useStable } from "./stable";
 

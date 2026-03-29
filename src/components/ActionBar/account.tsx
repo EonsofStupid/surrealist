@@ -10,7 +10,7 @@ import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
 import type { CloudProfile } from "~/types";
-import { showErrorNotification } from "~/util/helpers";
+import { showErrorNotification } from "~/shared/util/helpers";
 import { AccountAvatar } from "../AccountAvatar";
 import { Form } from "../Form";
 import { PrimaryTitle } from "../PrimaryTitle";

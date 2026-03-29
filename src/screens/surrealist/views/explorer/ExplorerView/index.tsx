@@ -27,9 +27,9 @@ import { useDesigner } from "~/providers/Designer";
 import { TablesPane } from "~/screens/surrealist/components/TablesPane";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
-import { ActivateDatabaseEvent, DisconnectedEvent } from "~/util/global-events";
-import { dispatchIntent } from "~/util/intents";
-import { syncConnectionSchema } from "~/util/schema";
+import { ActivateDatabaseEvent, DisconnectedEvent } from "~/shared/util/global-events";
+import { dispatchIntent } from "~/shared/util/intents";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import { CreatorDrawer } from "../CreatorDrawer";
 import { ExplorerPane } from "../ExplorerPane";
 

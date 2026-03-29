@@ -17,7 +17,7 @@ import { navigate } from "wouter/use-browser-location";
 import { useCloudOrganizationQuery } from "~/cloud/queries/organizations";
 import { SUPPORT_STATES } from "~/constants";
 import { IntercomConversation, IntercomTicket } from "~/types";
-import { formatRelativeDate } from "~/util/helpers";
+import { formatRelativeDate } from "~/shared/util/helpers";
 import { Pagination } from "../Pagination";
 import { usePagination } from "../Pagination/hook";
 import classes from "./style.module.scss";

@@ -2,7 +2,7 @@ import { compareVersions } from "compare-versions";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 
-const CHANGELOGS = import.meta.glob("~/assets/changelogs/*.md", {
+const CHANGELOGS = import.meta.glob("~/shared/assets/changelogs/*.md", {
 	eager: true,
 });
 

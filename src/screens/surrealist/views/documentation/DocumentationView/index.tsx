@@ -4,7 +4,7 @@ import { useSetting } from "~/hooks/config";
 import { useViewFocus } from "~/hooks/routing";
 import { buildDocumentation } from "~/screens/surrealist/docs";
 import { useDatabaseStore } from "~/stores/database";
-import { syncConnectionSchema } from "~/util/schema";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import { ArticlePane } from "../ArticlePane";
 import { TocPane } from "../TopicsPane";
 

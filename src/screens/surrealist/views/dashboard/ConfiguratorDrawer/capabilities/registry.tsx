@@ -1,4 +1,4 @@
-import { selectable } from "~/util/helpers";
+import { selectable } from "~/shared/util/helpers";
 
 /**
  * RPC methods

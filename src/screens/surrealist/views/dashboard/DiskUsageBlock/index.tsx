@@ -3,9 +3,9 @@ import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance, CloudMeasurement, CloudOrganization } from "~/types";
-import { tagEvent } from "~/util/analytics";
-import { measureStorageUsage } from "~/util/cloud";
-import { formatMemory } from "~/util/helpers";
+import { tagEvent } from "~/shared/util/analytics";
+import { measureStorageUsage } from "~/shared/util/cloud";
+import { formatMemory } from "~/shared/util/helpers";
 
 export interface DiskUsageBlockProps {
 	usage: CloudMeasurement[] | undefined;
