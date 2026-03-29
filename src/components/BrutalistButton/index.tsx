@@ -6,12 +6,8 @@ interface BrutalistButtonProps extends ButtonProps {
 	glow?: boolean;
 }
 
-export const BrutalistButton = createPolymorphicComponent<"button", BrutalistButtonProps>(({
-	children,
-	className,
-	glow,
-	...others
-}) => {
+export const BrutalistButton = createPolymorphicComponent<"button", BrutalistButtonProps>((props: any) => {
+	const { children, className, glow, ...others } = props;
 	return (
 		<Button
 			{...others}

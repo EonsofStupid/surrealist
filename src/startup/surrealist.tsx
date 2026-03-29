@@ -27,7 +27,7 @@ import { exposeDebug } from "~/shared/util/helpers";
 import { preloadImages } from "~/shared/util/preloader";
 import { adapter } from "../adapter";
 import { generateEditorIcons } from "../editor/icons";
-import { promptChangelog } from "../util/changelogs";
+import { promptChangelog } from "~/shared/util/changelogs";
 
 (async () => {
 	dayjs.extend(relativeTime);

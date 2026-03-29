@@ -78,7 +78,7 @@ import {
 	PythonIcon,
 	RustIcon,
 	SurrealIcon,
-} from "./util/drivers";
+} from "~/shared/util/drivers";
 
 export type StructureTab = "graph" | "builder";
 export type ProtocolOption = Selectable<Protocol> & { remote: boolean };

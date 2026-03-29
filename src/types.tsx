@@ -1,7 +1,7 @@
 import type { ElementProps, MantineColorScheme } from "@mantine/core";
 import { AboutMetadata } from "@tauri-apps/api/menu";
 import type { Duration, RecordId } from "surrealdb";
-import type { FeatureFlagMap } from "./util/feature-flags";
+import type { FeatureFlagMap } from "~/shared/util/feature-flags";
 
 export type AccessType = "JWT" | "RECORD";
 export type BannerType = "info" | "warning" | "important";
