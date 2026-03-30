@@ -2,11 +2,11 @@ import "@mantine/core/styles.layer.css";
 import "@mantine/notifications/styles.css";
 import "@surrealdb/ui/styles.css";
 
-import "../assets/styles/layers.scss";
-import "../assets/styles/fonts.scss";
-import "../assets/styles/global.scss";
-import "../assets/styles/override.scss";
-import "../assets/styles/variants.scss";
+import "~/shared/assets/styles/layers.scss";
+import "~/shared/assets/styles/fonts.scss";
+import "~/shared/assets/styles/global.scss";
+import "~/shared/assets/styles/override.scss";
+import "~/shared/assets/styles/variants.scss";
 
 import "../adapter";
 
