@@ -17,13 +17,13 @@ import {
 	THEMES,
 	VIEW_PAGES,
 } from "~/constants";
-import { Flags, type Listable, Selectable, type SurrealistConfig } from "~/types";
+import { Flags, type Listable, Selectable, type ConnectomeConfig } from "~/types";
 import { useFeatureFlags } from "./feature-flags";
 import { optional } from "./helpers";
 
 interface ReaderWriter<T> {
-	reader: (config: SurrealistConfig) => T;
-	writer: (config: SurrealistConfig, value: T) => void;
+	reader: (config: ConnectomeConfig) => T;
+	writer: (config: ConnectomeConfig, value: T) => void;
 }
 
 export type PreferenceController =

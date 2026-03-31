@@ -35,7 +35,7 @@ export async function showDowngradeWarningModal() {
 		children: (
 			<Box>
 				<Text>
-					Your config file was updated by a newer version of Surrealist and is
+					Your config file was updated by a newer version of Connectome and is
 					incompatible with this version.
 				</Text>
 				{hasBackup ? (
@@ -65,7 +65,7 @@ export async function showDowngradeWarningModal() {
 						color="red"
 						title="Note"
 					>
-						Please reset your configuration file or update your version of Surrealist to
+						Please reset your configuration file or update your version of Connectome to
 						continue.
 					</Alert>
 				)}

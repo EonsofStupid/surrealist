@@ -184,7 +184,7 @@ export interface Template {
 	labels?: string[];
 }
 
-export interface SurrealistBehaviorSettings {
+export interface ConnectomeBehaviorSettings {
 	updateChecker: boolean;
 	tableSuggest: boolean;
 	variableSuggest: boolean;
@@ -202,7 +202,7 @@ export interface SurrealistBehaviorSettings {
 	diagnosticsHistorySize: number;
 }
 
-export interface SurrealistAppearanceSettings {
+export interface ConnectomeAppearanceSettings {
 	colorScheme: MantineColorScheme;
 	syntaxTheme: SyntaxTheme;
 	windowScale: number;
@@ -228,11 +228,11 @@ export interface SurrealistAppearanceSettings {
 	disableAnimations: boolean;
 }
 
-export interface SurrealistTemplateSettings {
+export interface ConnectomeTemplateSettings {
 	list: Template[];
 }
 
-export interface SurrealistServingSettings {
+export interface ConnectomeServingSettings {
 	driver: DriverType;
 	logLevel: LogLevel;
 	storage: string;
@@ -243,7 +243,7 @@ export interface SurrealistServingSettings {
 	historySize: number;
 }
 
-export interface SurrealistCloudSettings {
+export interface ConnectomeCloudSettings {
 	databaseListMode: DatabaseListMode;
 	urlApiBase: string;
 	urlAuthBase: string;
@@ -251,7 +251,7 @@ export interface SurrealistCloudSettings {
 	urlApiTicketsBase: string;
 }
 
-export interface SurrealistGtmSettings {
+export interface ConnectomeGtmSettings {
 	preview_header: string;
 	origin: "app.surrealdb.com";
 	debug_mode: boolean;
@@ -297,16 +297,16 @@ export interface SavedQuery {
 	tags: string[];
 }
 
-export interface SurrealistSettings {
-	behavior: SurrealistBehaviorSettings;
-	appearance: SurrealistAppearanceSettings;
-	templates: SurrealistTemplateSettings;
-	serving: SurrealistServingSettings;
-	cloud: SurrealistCloudSettings;
-	gtm: SurrealistGtmSettings;
+export interface ConnectomeSettings {
+	behavior: ConnectomeBehaviorSettings;
+	appearance: ConnectomeAppearanceSettings;
+	templates: ConnectomeTemplateSettings;
+	serving: ConnectomeServingSettings;
+	cloud: ConnectomeCloudSettings;
+	gtm: ConnectomeGtmSettings;
 }
 
-export interface SurrealistConfig {
+export interface ConnectomeConfig {
 	configVersion: number;
 	previousVersion: string;
 	connections: Connection[];
@@ -315,7 +315,7 @@ export interface SurrealistConfig {
 	savedQueries: SavedQuery[];
 	lastPromptedVersion: string | null;
 	lastViewedNewsAt: number | null;
-	settings: SurrealistSettings; // TODO Rename to preferences and flatten inner objects
+	settings: ConnectomeSettings; // TODO Rename to preferences and flatten inner objects
 	keybindings: KeyBindings;
 	featureFlags: Partial<FeatureFlagMap>;
 	openDesignerPanels: string[];

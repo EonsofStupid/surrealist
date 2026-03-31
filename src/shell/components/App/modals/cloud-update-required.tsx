@@ -61,7 +61,7 @@ export function CloudUpdateRequiredDialog() {
 						fw={600}
 						c="bright"
 					>
-						Surrealist update required for SurrealDB Cloud
+						Connectome update required for SurrealDB Cloud
 					</Text>
 					<Text mt={4}>
 						{noUpdate ? (

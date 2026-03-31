@@ -1,7 +1,7 @@
 import { openDB } from "idb";
 import { CONFIG_KEY } from "./storage";
 
-const DATABASE = "surrealist";
+const DATABASE = "Connectome";
 const VERSION = 1;
 const STORE = "store";
 

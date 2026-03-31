@@ -21,7 +21,7 @@ export function getMenuItems(): AppMenu[] {
 	const isDarwin = adapter.platform === "darwin";
 	const about: AppMenuItem = {
 		id: "open-about",
-		name: "About Surrealist",
+		name: "About Connectome",
 		type: "Command",
 	};
 
@@ -31,9 +31,9 @@ export function getMenuItems(): AppMenu[] {
 		type: "Command",
 	};
 
-	const surrealistMenu: AppMenu = {
-		id: "surrealist",
-		name: "Surrealist",
+	const ConnectomeMenu: AppMenu = {
+		id: "Connectome",
+		name: "Connectome",
 		items: [
 			about,
 			SEPARATOR,
@@ -55,7 +55,7 @@ export function getMenuItems(): AppMenu[] {
 			{
 				id: "quit",
 				type: "Quit",
-				name: "Quit Surrealist",
+				name: "Quit Connectome",
 			},
 		],
 	};
@@ -226,11 +226,11 @@ export function getMenuItems(): AppMenu[] {
 				},
 			},
 			{
-				id: "surrealist_docs",
+				id: "Connectome_docs",
 				type: "Custom",
-				name: "Surrealist Docs",
+				name: "Connectome Docs",
 				action: () => {
-					adapter.openUrl("https://surrealdb.com/docs/surrealist");
+					adapter.openUrl("https://surrealdb.com/docs/Connectome");
 				},
 			},
 			SEPARATOR,
@@ -256,7 +256,7 @@ export function getMenuItems(): AppMenu[] {
 				type: "Custom",
 				name: "Report Issue",
 				action: () => {
-					adapter.openUrl("https://github.com/surrealdb/surrealist/issues/new/choose");
+					adapter.openUrl("https://github.com/surrealdb/Connectome/issues/new/choose");
 				},
 			},
 			...optional(!isDarwin && about),
@@ -264,7 +264,7 @@ export function getMenuItems(): AppMenu[] {
 	};
 
 	return [
-		...optional(isDarwin && surrealistMenu),
+		...optional(isDarwin && ConnectomeMenu),
 		fileMenu,
 		...optional(isDarwin && editMenu),
 		viewMenu,

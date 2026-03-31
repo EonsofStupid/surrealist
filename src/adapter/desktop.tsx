@@ -15,7 +15,7 @@ import { ConfigStore, useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { CloudStore } from "~/stores/cloud";
 import { useDatabaseStore } from "~/stores/database";
-import type { Platform, QueryTab, SurrealistConfig, ViewPage } from "~/types";
+import type { Platform, QueryTab, ConnectomeConfig, ViewPage } from "~/types";
 import { startCloudSync, syncCloudStore } from "~/shared/util/cloud";
 import { getSetting, overwriteConfig, watchStore } from "~/shared/util/config";
 import { getConnection } from "~/shared/util/connection";
@@ -25,7 +25,7 @@ import { NavigateViewEvent } from "~/shared/util/global-events";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { dispatchIntent, handleIntentRequest } from "~/shared/util/intents";
 import { adapter } from ".";
-import type { FileFilter, SurrealistAdapter } from "./base";
+import type { FileFilter, ConnectomeAdapter } from "./base";
 
 const WAIT_DURATION = 1000;
 interface Resource {
@@ -45,9 +45,9 @@ interface LinkResource {
 }
 
 /**
- * Surrealist adapter for running as Wails desktop app
+ * Connectome adapter for running as Wails desktop app
  */
-export class DesktopAdapter implements SurrealistAdapter {
+export class DesktopAdapter implements ConnectomeAdapter {
 	public readonly id: string = "desktop";
 
 	public isServeSupported = true;
@@ -136,7 +136,7 @@ export class DesktopAdapter implements SurrealistAdapter {
 	});
 
 	public async setWindowTitle(title: string) {
-		getCurrentWindow().setTitle(title || "Surrealist");
+		getCurrentWindow().setTitle(title || "Connectome");
 	}
 
 	public async loadConfig() {
@@ -160,11 +160,11 @@ export class DesktopAdapter implements SurrealistAdapter {
 		return JSON.parse(config);
 	}
 
-	public async processConfig(config: SurrealistConfig) {
+	public async processConfig(config: ConnectomeConfig) {
 		return config;
 	}
 
-	public saveConfig(config: SurrealistConfig) {
+	public saveConfig(config: ConnectomeConfig) {
 		return invoke<void>("save_config", {
 			config: JSON.stringify(config),
 		});

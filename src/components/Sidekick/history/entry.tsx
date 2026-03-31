@@ -71,7 +71,7 @@ export function SidekickHistoryEntry({ chat, isActive, onOpen }: SidekickHistory
 			onClick={isRenaming ? undefined : handleOpen}
 			variant="light"
 			style={{
-				border: "1px solid var(--surrealist-divider-color)",
+				border: "1px solid var(--Connectome-divider-color)",
 			}}
 			justify="start"
 			rightSection={

@@ -1,14 +1,14 @@
 import { isFunction, shake } from "radash";
-import type { Platform, SurrealistConfig, UrlTarget } from "~/types";
+import type { Platform, ConnectomeConfig, UrlTarget } from "~/types";
 import { createFileDefinition, openAndReadFiles, openAndWriteFile } from "~/shared/util/file-system";
 import * as idxdb from "~/shared/util/idxdb";
 import { CONFIG_KEY } from "~/shared/util/storage";
-import type { FileFilter, SurrealistAdapter } from "./base";
+import type { FileFilter, ConnectomeAdapter } from "./base";
 
 /**
  * Base adapter for running as web app
  */
-export class BrowserAdapter implements SurrealistAdapter {
+export class BrowserAdapter implements ConnectomeAdapter {
 	public readonly id: string = "browser";
 
 	public isServeSupported = false;
@@ -57,11 +57,11 @@ export class BrowserAdapter implements SurrealistAdapter {
 		return (await idxdb.getConfig()) || {};
 	}
 
-	public async processConfig(config: SurrealistConfig) {
+	public async processConfig(config: ConnectomeConfig) {
 		return config;
 	}
 
-	public async saveConfig(config: SurrealistConfig) {
+	public async saveConfig(config: ConnectomeConfig) {
 		await idxdb.setConfig(shake(config, isFunction));
 		localStorage.removeItem(CONFIG_KEY);
 	}

@@ -10,7 +10,7 @@ import {
 import { BillingDetails } from "~/components/BillingDetails";
 import { PaymentDetails } from "~/components/PaymentDetails";
 import { CloudOrganization } from "~/types";
-import { BillingRequiredBlock } from "../screens/surrealist/components/BillingRequiredBlock";
+import { BillingRequiredBlock } from "../screens/Connectome/components/BillingRequiredBlock";
 
 export function openBillingRequiredModal({
 	organization,

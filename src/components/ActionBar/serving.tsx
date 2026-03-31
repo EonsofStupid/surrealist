@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { adapter } from "~/adapter";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { openConnection } from "~/screens/surrealist/connection/connection";
+import { openConnection } from "~/screens/Connectome/connection/connection";
 import { useDatabaseStore } from "~/stores/database";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnection } from "~/shared/util/connection";

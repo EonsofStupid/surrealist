@@ -4,8 +4,8 @@ import type {
 	ConnectionSchema,
 	QueryTab,
 	QueryType,
-	SurrealistConfig,
-	SurrealistSettings,
+	ConnectomeConfig,
+	ConnectomeSettings,
 } from "~/types";
 
 import { HOSTNAME } from "./analytics";
@@ -13,7 +13,7 @@ import { newId } from "./helpers";
 
 export const CONFIG_VERSION = 2;
 
-export function createBaseConfig(): SurrealistConfig {
+export function createBaseConfig(): ConnectomeConfig {
 	const settings = createBaseSettings();
 
 	return {
@@ -34,7 +34,7 @@ export function createBaseConfig(): SurrealistConfig {
 	};
 }
 
-export function createBaseSettings(): SurrealistSettings {
+export function createBaseSettings(): ConnectomeSettings {
 	return {
 		behavior: {
 			updateChecker: true,
@@ -121,7 +121,7 @@ export function createBaseAuthentication(): Authentication {
 	};
 }
 
-export function createBaseConnection(settings: SurrealistSettings): Connection {
+export function createBaseConnection(settings: ConnectomeSettings): Connection {
 	const baseTab = createBaseQuery(settings, "config");
 
 	return {
@@ -156,7 +156,7 @@ export function createBaseConnection(settings: SurrealistSettings): Connection {
 	};
 }
 
-export function createBaseQuery(settings: SurrealistSettings, type: QueryType): QueryTab {
+export function createBaseQuery(settings: ConnectomeSettings, type: QueryType): QueryTab {
 	return {
 		id: newId(),
 		type,
@@ -171,7 +171,7 @@ export function createBaseQuery(settings: SurrealistSettings, type: QueryType): 
 	};
 }
 
-export function createSandboxConnection(settings: SurrealistSettings): Connection {
+export function createSandboxConnection(settings: ConnectomeSettings): Connection {
 	const base = createBaseConnection(settings);
 
 	return {

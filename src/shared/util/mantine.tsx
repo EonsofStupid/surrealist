@@ -28,7 +28,7 @@ const ICON_SIZES: Record<string, number> = {
 	xl: 1.5,
 };
 
-export const SURREALIST_THEME: MantineThemeOverride = {
+export const Connectome_THEME: MantineThemeOverride = {
 	...MANTINE_THEME,
 	components: {
 		...MANTINE_THEME.components,

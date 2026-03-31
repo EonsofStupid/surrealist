@@ -30,7 +30,7 @@ export function ManageDataTab() {
 	const saveBackup = useStable(() => {
 		adapter.saveFile(
 			"Save config backup",
-			"surrealist-backup.json",
+			"Connectome-backup.json",
 			[JSON_FILTER],
 			async () => {
 				return backupConfig({
@@ -100,7 +100,7 @@ export function ManageDataTab() {
 							mt="md"
 						>
 							<Text>
-								Generate a backup of your Surrealist configuration which can be
+								Generate a backup of your Connectome configuration which can be
 								restored later.
 								<br />
 								You can customize the backup to include sensitive details or limit
@@ -158,7 +158,7 @@ export function ManageDataTab() {
 							mt="md"
 						>
 							<Text>
-								Restore a previously generated backup of your Surrealist
+								Restore a previously generated backup of your Connectome
 								configuration.
 							</Text>
 							<Group>

@@ -39,7 +39,7 @@ export function ScaffoldErrorHandler({ error, resetErrorBoundary }: FallbackProp
 							fw={600}
 							c="bright"
 						>
-							Surrealist encountered an error
+							Connectome encountered an error
 						</Text>
 					</Group>
 
@@ -55,12 +55,12 @@ export function ScaffoldErrorHandler({ error, resetErrorBoundary }: FallbackProp
 							variant="gradient"
 							size="xs"
 						>
-							Reload Surrealist
+							Reload Connectome
 						</Button>
 						<Button
 							leftSection={<Icon path={iconBug} />}
 							onClick={() =>
-								adapter.openUrl("https://github.com/surrealdb/surrealist/issues")
+								adapter.openUrl("https://github.com/surrealdb/Connectome/issues")
 							}
 							variant="light"
 							color="obsidian"

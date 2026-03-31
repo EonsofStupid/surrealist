@@ -27,7 +27,7 @@ import { useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurreal, getSurrealQL } from "~/screens/surrealist/connection/connection";
+import { executeQuery, getSurreal, getSurrealQL } from "~/screens/Connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";

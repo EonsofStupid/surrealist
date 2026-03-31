@@ -26,7 +26,7 @@ export function openResourcesLockedModal(organisation: CloudOrganization) {
 		children: (
 			<Stack gap="lg">
 				<Text>
-					Resource configurations within Surrealist are restricted for this organisation.
+					Resource configurations within Connectome are restricted for this organisation.
 					In order to make modifications to your resources, please contact support.
 				</Text>
 				<Group>

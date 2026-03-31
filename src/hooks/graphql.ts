@@ -1,6 +1,6 @@
 import { buildClientSchema, type GraphQLSchema, getIntrospectionQuery } from "graphql";
 import { useState } from "react";
-import { sendGraphqlRequest } from "~/screens/surrealist/connection/connection";
+import { sendGraphqlRequest } from "~/screens/Connectome/connection/connection";
 import { useStable } from "./stable";
 
 /**

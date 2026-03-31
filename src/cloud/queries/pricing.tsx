@@ -25,7 +25,7 @@ export interface PricingConfigBase {
 	featuresTitle: string;
 	cta: PricingConfigCTA;
 	plus?: string[];
-	surrealist?: PricingConfigSurrealist;
+	Connectome?: PricingConfigConnectome;
 	computePrice?: PricingConfigComputePrice[];
 	storagePrice?: PricingConfigStoragePrice[];
 }
@@ -43,7 +43,7 @@ export interface PricingConfigStoragePrice {
 	price: string;
 }
 
-interface PricingConfigSurrealist {
+interface PricingConfigConnectome {
 	plan: InstancePlan;
 	defaultType?: string;
 }

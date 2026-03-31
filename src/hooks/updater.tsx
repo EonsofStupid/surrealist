@@ -72,7 +72,7 @@ export function useDesktopUpdater() {
 		skippable: true,
 		message: (
 			<>
-				The update you are about to install is a new major version of Surrealist. Are you
+				The update you are about to install is a new major version of Connectome. Are you
 				sure you want to proceed?
 				<Alert
 					mt="xl"

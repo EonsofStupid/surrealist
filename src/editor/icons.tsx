@@ -17,7 +17,7 @@ export function generateEditorIcons() {
 			`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${info.icon}" fill="${info.color}" stroke="${info.color}" stroke-width="0.75"></path></svg>`,
 		);
 
-		return `\t--surrealist-editor-icon-${info.type}: url('data:image/svg+xml;base64,${svg}')`;
+		return `\t--Connectome-editor-icon-${info.type}: url('data:image/svg+xml;base64,${svg}')`;
 	});
 
 	const css = `:root {\n${definitions.join(";\n")}}`;
@@ -26,7 +26,7 @@ export function generateEditorIcons() {
 
 	style.setAttribute("type", "text/css");
 	style.setAttribute("media", "screen");
-	style.setAttribute("class", "surrealist-editor-icons");
+	style.setAttribute("class", "Connectome-editor-icons");
 	style.append(text);
 
 	document.head.append(style);

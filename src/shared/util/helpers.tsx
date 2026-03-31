@@ -13,7 +13,7 @@ import { shake, uid } from "radash";
 import type { CSSProperties, FocusEvent, ReactNode, SyntheticEvent } from "react";
 import { adapter } from "~/adapter";
 import { Spacer } from "~/components/Spacer";
-import { getSurrealQL } from "~/screens/surrealist/connection/connection";
+import { getSurrealQL } from "~/screens/Connectome/connection/connection";
 import type { Authentication, Protocol, Selectable } from "~/types";
 import { openErrorModal } from "./errors";
 
@@ -608,8 +608,8 @@ export function startOfDate(date: DateArg<Date>, resolution: DurationUnit): Date
 }
 
 export function exposeDebug(tools: Record<string, unknown>) {
-	(window as any).Surrealist = {
-		...(window as any).Surrealist,
+	(window as any).Connectome = {
+		...(window as any).Connectome,
 		...tools,
 	};
 }

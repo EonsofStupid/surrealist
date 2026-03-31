@@ -8,7 +8,7 @@ import { DRIVERS } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/surrealist/connection/connection";
+import { getSurrealQL } from "~/screens/Connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
 import { useFeatureFlags } from "~/shared/util/feature-flags";

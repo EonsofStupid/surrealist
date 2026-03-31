@@ -2,7 +2,7 @@ import { isDesktop } from "~/adapter";
 import { Scaffold } from "~/components/Scaffold";
 import { DesignerProvider } from "~/providers/Designer";
 import { InspectorProvider } from "~/providers/Inspector";
-import { SurrealistScreen } from "~/screens/surrealist";
+import { ConnectomeScreen } from "~/screens/Connectome";
 import { Globals } from "./globals";
 import { ChangelogModal } from "./modals/changelog";
 import { CloudExpiredDialog } from "./modals/cloud-expired";
@@ -26,11 +26,11 @@ import { TableCreatorModal } from "./modals/table";
 import { UpdaterDialog } from "./modals/updater";
 import { Settings } from "./settings";
 
-function Surrealist() {
+function Connectome() {
 	return (
 		<InspectorProvider>
 			<DesignerProvider>
-				<SurrealistScreen />
+				<ConnectomeScreen />
 			</DesignerProvider>
 		</InspectorProvider>
 	);
@@ -41,7 +41,7 @@ export function App() {
 		<Scaffold>
 			<Globals />
 
-			<Surrealist />
+			<Connectome />
 
 			<Settings />
 

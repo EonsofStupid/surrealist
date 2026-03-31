@@ -138,7 +138,7 @@ function SettingsSidebar({
 			h="100%"
 			w={250}
 			style={{
-				borderRight: withBorder ? "1px solid var(--surrealist-divider-color)" : undefined,
+				borderRight: withBorder ? "1px solid var(--Connectome-divider-color)" : undefined,
 			}}
 			gap={0}
 			{...other}

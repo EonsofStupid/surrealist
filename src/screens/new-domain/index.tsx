@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Divider, Image, Paper, SimpleGrid, Stack, Text } from "@mantine/core";
-import { Icon, iconArrowUpRight, iconDownload, pictoSurrealist } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight, iconDownload, pictoConnectome } from "@surrealdb/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
 import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
@@ -21,7 +21,7 @@ export function NewDomainScreen() {
 		setTargetLink("https://app.surrealdb.com?intent=open-settings:tab=manage-data");
 		adapter.saveFile(
 			"Save config backup",
-			"surrealist-backup.json",
+			"Connectome-backup.json",
 			[JSON_FILTER],
 			async () => {
 				return backupConfig({
@@ -53,7 +53,7 @@ export function NewDomainScreen() {
 						gap={0}
 					>
 						<Image
-							src={pictoSurrealist}
+							src={pictoConnectome}
 							w={85}
 						/>
 
@@ -70,7 +70,7 @@ export function NewDomainScreen() {
 						mx="auto"
 					>
 						<Stack gap="xl">
-							<PrimaryTitle fz={32}>Surrealist has moved!</PrimaryTitle>
+							<PrimaryTitle fz={32}>Connectome has moved!</PrimaryTitle>
 							<Text fz="lg">
 								We've moved to{" "}
 								<Link
@@ -79,7 +79,7 @@ export function NewDomainScreen() {
 								>
 									app.surrealdb.com
 								</Link>{" "}
-								as part of our ongoing efforts to improve Surrealist and consolidate
+								as part of our ongoing efforts to improve Connectome and consolidate
 								our products into a single, unified platform.
 							</Text>
 							<Divider />

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useConnectionAndView } from "~/hooks/routing";
-import { closeConnection, openConnection } from "~/screens/surrealist/connection/connection";
+import { closeConnection, openConnection } from "~/screens/Connectome/connection/connection";
 
 /**
  * Watch for connection changes and open the connection

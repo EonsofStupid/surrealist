@@ -1,8 +1,8 @@
 {
 	"$schema": "../gen/schemas/desktop-schema.json",
-	"identifier": "surrealist",
-	"description": "default surrealist permissions",
-	"windows": ["surrealist-*"],
+	"identifier": "Connectome",
+	"description": "default Connectome permissions",
+	"windows": ["Connectome-*"],
 	"permissions": [
 		"core:path:default",
 		"core:event:default",

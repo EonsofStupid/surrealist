@@ -47,10 +47,10 @@ export const editorBase = (): Extension => [
 	crosshairCursor(),
 	indentationMarkers({
 		colors: {
-			light: "var(--surrealist-indent-color)",
-			dark: "var(--surrealist-indent-color)",
-			activeLight: "var(--surrealist-indent-active-color)",
-			activeDark: "var(--surrealist-indent-active-color)",
+			light: "var(--Connectome-indent-color)",
+			dark: "var(--Connectome-indent-color)",
+			activeLight: "var(--Connectome-indent-active-color)",
+			activeDark: "var(--Connectome-indent-active-color)",
 		},
 	}),
 	highlightSelectionMatches({

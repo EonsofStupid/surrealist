@@ -81,10 +81,10 @@ export async function tagEvent(name: string, payload: Record<string, unknown> = 
 		params.append("debug_mode", "1");
 	}
 
-	params.append("ep.surrealist_version", import.meta.env.VERSION);
-	params.append("ep.surrealist_platform", adapter.platform);
-	params.append("ep.surrealist_adapter", adapter.id);
-	params.append("ep.surrealist_mode", import.meta.env.MODE);
+	params.append("ep.Connectome_version", import.meta.env.VERSION);
+	params.append("ep.Connectome_platform", adapter.platform);
+	params.append("ep.Connectome_adapter", adapter.id);
+	params.append("ep.Connectome_mode", import.meta.env.MODE);
 
 	for (const [key, value] of Object.entries(payload)) {
 		params.append(`epn.${key}`, `${value}`);

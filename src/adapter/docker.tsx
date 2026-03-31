@@ -1,7 +1,7 @@
 import * as v from "valibot";
 import { INSTANCE_CONFIG } from "~/constants";
 import { type InstanceConfig, InstanceConfigSchema } from "~/schemas";
-import type { SurrealistConfig } from "~/types";
+import type { ConnectomeConfig } from "~/types";
 import { createBaseAuthentication, createBaseConnection } from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { BrowserAdapter } from "./browser";
@@ -17,7 +17,7 @@ export class DockerAdapter extends BrowserAdapter {
 	public cloudAuthEndpoint = "";
 	public cloudApiEndpoint = "";
 
-	public async processConfig(config: SurrealistConfig) {
+	public async processConfig(config: ConnectomeConfig) {
 		this.log("Adapter", "Fetching instance config");
 
 		const instanceConfigJson = await this.fetchInstanceConfig();
@@ -68,7 +68,7 @@ export class DockerAdapter extends BrowserAdapter {
 		}
 	}
 
-	private applyInstanceConfig(config: SurrealistConfig, instanceConfig: InstanceConfig) {
+	private applyInstanceConfig(config: ConnectomeConfig, instanceConfig: InstanceConfig) {
 		const { connections } = instanceConfig;
 
 		// Synchronize connections

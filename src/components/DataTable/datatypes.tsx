@@ -26,7 +26,7 @@ import {
 	RecordId,
 	Uuid,
 } from "surrealdb";
-import { getSurrealQL } from "~/screens/surrealist/connection/connection";
+import { getSurrealQL } from "~/screens/Connectome/connection/connection";
 import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";

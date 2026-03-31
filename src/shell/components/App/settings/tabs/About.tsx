@@ -48,7 +48,7 @@ export function AboutTab() {
 
 	return (
 		<Box m="xs">
-			<Text c="obsidian">Surrealist &copy; {format(currDate, "yyyy")} SurrealDB Ltd</Text>
+			<Text c="obsidian">Connectome &copy; {format(currDate, "yyyy")} SurrealDB Ltd</Text>
 			<Stack
 				gap="xs"
 				mt="xl"
@@ -67,11 +67,11 @@ export function AboutTab() {
 				))}
 			</Stack>
 			<Stack mt="xl">
-				<LearnMore href="https://github.com/surrealdb/surrealist/">
+				<LearnMore href="https://github.com/surrealdb/Connectome/">
 					GitHub Repository
 				</LearnMore>
-				<LearnMore href="https://surrealdb.com/docs/surrealist">
-					Surrealist Documentation
+				<LearnMore href="https://surrealdb.com/docs/Connectome">
+					Connectome Documentation
 				</LearnMore>
 			</Stack>
 			<Stack

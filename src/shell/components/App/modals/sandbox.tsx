@@ -53,13 +53,13 @@ export function SandboxModal() {
 						fw={500}
 						fz="xl"
 					>
-						The Surrealist Sandbox provides an easy to use playground to test,
+						The Connectome Sandbox provides an easy to use playground to test,
 						experiment, and learn SurrealQL.
 					</Text>
 
 					<Text>
 						The sandbox lets you experiment without setting up a database. Your data
-						will be cleared when you close Surrealist. You can also use the toolbar
+						will be cleared when you close Connectome. You can also use the toolbar
 						buttons to manually reset the sandbox or load an official dataset.
 					</Text>
 

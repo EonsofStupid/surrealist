@@ -1,11 +1,11 @@
-import type { Platform, SurrealistConfig, UrlTarget } from "~/types";
+import type { Platform, ConnectomeConfig, UrlTarget } from "~/types";
 
 export interface FileFilter {
 	name: string;
 	extensions: string[];
 }
 
-export interface SurrealistAdapter {
+export interface ConnectomeAdapter {
 	/**
 	 * Identifier for this adapter
 	 */
@@ -70,14 +70,14 @@ export interface SurrealistAdapter {
 	 *
 	 * @param config The config to process
 	 */
-	processConfig(config: SurrealistConfig): Result<SurrealistConfig>;
+	processConfig(config: ConnectomeConfig): Result<ConnectomeConfig>;
 
 	/**
 	 * Save the config to the adapter
 	 *
 	 * @param config The config to save
 	 */
-	saveConfig(config: SurrealistConfig): Promise<void>;
+	saveConfig(config: ConnectomeConfig): Promise<void>;
 
 	/**
 	 * Start the database with the given parameters

@@ -19,7 +19,7 @@ import { SENSITIVE_ACCESS_FIELDS } from "~/constants";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
-import { openConnection } from "~/screens/surrealist/connection/connection";
+import { openConnection } from "~/screens/Connectome/connection/connection";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { getConnection, getConnectionById } from "~/shared/util/connection";
 

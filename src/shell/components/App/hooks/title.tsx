@@ -5,7 +5,7 @@ import { useConnection, useView } from "~/hooks/connection";
 import { useInterfaceStore } from "~/shell/stores/interface";
 
 const NAME =
-	import.meta.env.VITE_SURREALIST_PREVIEW === "true" ? "Surrealist Preview" : "Surrealist";
+	import.meta.env.VITE_Connectome_PREVIEW === "true" ? "Connectome Preview" : "Connectome";
 
 /**
  * Synchronize the title of the window with the current view

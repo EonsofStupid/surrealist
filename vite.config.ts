@@ -121,7 +121,7 @@ export default defineConfig(({ mode }) => {
 			},
 			preprocessorOptions: {
 				scss: {
-					additionalData: '@use "~/assets/styles/mixins" as *;',
+					additionalData: '@use "~/shared/assets/styles/mixins" as *;',
 					api: "modern-compiler",
 				},
 			},

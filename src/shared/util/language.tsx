@@ -36,7 +36,7 @@ export function compareIdents(a: string, b: string) {
 
 /**
  * This is hard coded to the deal-store dataset and bad,
- * but will be replaced in Surrealist 4.0 with a fully dynamic system
+ * but will be replaced in Connectome 4.0 with a fully dynamic system
  */
 export function getDatasetURL(version: string) {
 	const base = `https://datasets.surrealdb.com/datasets/surreal-deal-store`;

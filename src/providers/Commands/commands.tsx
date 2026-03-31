@@ -36,7 +36,7 @@ import {
 	iconStar,
 	iconStarPlus,
 	iconStop,
-	iconSurrealist,
+	iconConnectome,
 	iconText,
 	iconTextBoxMinus,
 	iconTextBoxPlus,
@@ -59,7 +59,7 @@ import {
 	closeConnection,
 	openConnection,
 	resetConnection,
-} from "~/screens/surrealist/connection/connection";
+} from "~/screens/Connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import { featureFlags } from "~/shared/util/feature-flags";
@@ -599,12 +599,12 @@ export function useInternalCommandBuilder(): CommandCategory[] {
 					{
 						id: "open-overview",
 						name: "Go to overview",
-						icon: iconSurrealist,
+						icon: iconConnectome,
 						action: navigate("/overview"),
 					},
 					{
 						id: "open-search",
-						name: "Open Surrealist Search",
+						name: "Open Connectome Search",
 						icon: iconSearch,
 						binding: ["mod", "k"],
 						unlisted: true,

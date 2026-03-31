@@ -1,5 +1,5 @@
 import { isArray, isObject } from "radash";
-import type { SurrealistConfig } from "~/types";
+import type { ConnectomeConfig } from "~/types";
 
 /**
  * Apply migrations to the config object
@@ -10,7 +10,7 @@ import type { SurrealistConfig } from "~/types";
  * - Non-backwards-breaking changes must be compatible with the previous version
  * - Additions to the config should have a default value in defaults, or computed here
  */
-export function applyMigrations(config: any): SurrealistConfig {
+export function applyMigrations(config: any): ConnectomeConfig {
 	const version = config.configVersion ?? -1;
 
 	// 2.0.0 -> 3.0.0: Convert the old connection format to the new one

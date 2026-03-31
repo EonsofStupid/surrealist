@@ -160,7 +160,7 @@ export function CommandPaletteModal() {
 						path={iconSearch}
 						size="sm"
 					/>
-					<Text>Surrealist Search</Text>
+					<Text>Connectome Search</Text>
 				</Group>
 				<TextInput
 					flex={1}

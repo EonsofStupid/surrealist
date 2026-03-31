@@ -24,14 +24,14 @@ import { useConnectionAndView } from "./routing";
 import { useStable } from "./stable";
 
 /**
- * Returns whether Surrealist is connected to a database
+ * Returns whether Connectome is connected to a database
  */
 export function useIsConnected() {
 	return useDatabaseStore((s) => s.currentState === "connected");
 }
 
 /**
- * Returns whether Surrealist is connecting to a database
+ * Returns whether Connectome is connecting to a database
  */
 export function useIsConnecting() {
 	return useDatabaseStore(

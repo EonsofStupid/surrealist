@@ -54,7 +54,7 @@ export function ServingTab() {
 					mb="xl"
 					maw={500}
 				>
-					You can use Surrealist Desktop to serve SurrealDB on your local machine.
+					You can use Connectome Desktop to serve SurrealDB on your local machine.
 					<br />
 					This page allows you to customize the settings for the database.
 				</Text>

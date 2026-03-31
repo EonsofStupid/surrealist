@@ -96,7 +96,7 @@ export async function openErrorModal(
 						<Button
 							leftSection={<Icon path={iconBug} />}
 							onClick={() =>
-								adapter.openUrl("https://github.com/surrealdb/surrealist/issues")
+								adapter.openUrl("https://github.com/surrealdb/Connectome/issues")
 							}
 							variant="light"
 							color="obsidian"

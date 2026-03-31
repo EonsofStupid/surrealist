@@ -10,7 +10,7 @@ import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useRootSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { activateDatabase, executeQuery } from "~/screens/surrealist/connection/connection";
+import { activateDatabase, executeQuery } from "~/screens/Connectome/connection/connection";
 
 export function openCreateNamespaceModal() {
 	openModal({

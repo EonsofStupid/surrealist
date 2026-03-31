@@ -2,8 +2,8 @@ import type { MantineColorScheme } from "@mantine/core";
 import { createWasmEngines } from "@surrealdb/wasm";
 import { Surreal } from "surrealdb";
 import { ORIENTATIONS, RESULT_MODES } from "~/constants";
-import { executeQuery, executeUserQuery } from "~/screens/surrealist/connection/connection";
-import type { MiniAppearance, Orientation, ResultMode, SurrealistConfig } from "~/types";
+import { executeQuery, executeUserQuery } from "~/screens/Connectome/connection/connection";
+import type { MiniAppearance, Orientation, ResultMode, ConnectomeConfig } from "~/types";
 import { dedent } from "~/shared/util/dedent";
 import { createBaseQuery, createBaseSettings, createSandboxConnection } from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
@@ -178,7 +178,7 @@ export class MiniAdapter extends BrowserAdapter {
 				activeQuery: mainTab.id,
 				queries: [mainTab],
 			},
-		} satisfies DeepPartial<SurrealistConfig>;
+		} satisfies DeepPartial<ConnectomeConfig>;
 	}
 
 	public async saveConfig() {

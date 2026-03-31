@@ -26,7 +26,7 @@ export function useLatestNewsQuery() {
 	return useQuery<NewsPost[]>({
 		queryKey: ["newsfeed", newsfeedBase],
 		queryFn: async () => {
-			const response = await fetch(`${newsfeedBase}/feed/surrealist.rss`);
+			const response = await fetch(`${newsfeedBase}/feed/Connectome.rss`);
 			const body = await response.text();
 			const result = new DOMParser().parseFromString(body, "text/xml");
 

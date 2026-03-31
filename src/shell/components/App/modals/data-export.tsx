@@ -49,7 +49,7 @@ import { useStable } from "~/hooks/stable";
 import {
 	isStreamingSupported,
 	requestDatabaseExport,
-} from "~/screens/surrealist/connection/connection";
+} from "~/screens/Connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { fuzzyMatch, slugify } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";

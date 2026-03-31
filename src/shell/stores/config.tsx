@@ -10,13 +10,13 @@ import type {
 	QueryTab,
 	QueryType,
 	SavedQuery,
-	SurrealistAppearanceSettings,
-	SurrealistBehaviorSettings,
-	SurrealistCloudSettings,
-	SurrealistConfig,
-	SurrealistGtmSettings,
-	SurrealistServingSettings,
-	SurrealistTemplateSettings,
+	ConnectomeAppearanceSettings,
+	ConnectomeBehaviorSettings,
+	ConnectomeCloudSettings,
+	ConnectomeConfig,
+	ConnectomeGtmSettings,
+	ConnectomeServingSettings,
+	ConnectomeTemplateSettings,
 } from "~/types";
 import { createBaseConfig, createBaseQuery } from "~/shared/util/defaults";
 import type { schema } from "~/shared/util/feature-flags";
@@ -49,7 +49,7 @@ function modifyConnection(state: ConfigStore, connection: string, modifier: Conn
 	};
 }
 
-export type ConfigStore = SurrealistConfig & {
+export type ConfigStore = ConnectomeConfig & {
 	applyPreference: <T>(updater: (state: ConfigStore, value: T) => void, value: T) => void;
 	addConnection: (connection: Connection) => void;
 	removeConnection: (connectionId: string) => void;
@@ -66,12 +66,12 @@ export type ConfigStore = SurrealistConfig & {
 	setLastPromptedVersion: (lastPromptedVersion: string) => void;
 	addHistoryEntry: (connectionId: string, entry: HistoryQuery) => void;
 	toggleTablePin: (connectionId: string, table: string) => void;
-	updateBehaviorSettings: (settings: Partial<SurrealistBehaviorSettings>) => void;
-	updateAppearanceSettings: (settings: Partial<SurrealistAppearanceSettings>) => void;
-	updateTemplateSettings: (settings: Partial<SurrealistTemplateSettings>) => void;
-	updateServingSettings: (settings: Partial<SurrealistServingSettings>) => void;
-	updateCloudSettings: (settings: Partial<SurrealistCloudSettings>) => void;
-	updateGtmSettings: (settings: Partial<SurrealistGtmSettings>) => void;
+	updateBehaviorSettings: (settings: Partial<ConnectomeBehaviorSettings>) => void;
+	updateAppearanceSettings: (settings: Partial<ConnectomeAppearanceSettings>) => void;
+	updateTemplateSettings: (settings: Partial<ConnectomeTemplateSettings>) => void;
+	updateServingSettings: (settings: Partial<ConnectomeServingSettings>) => void;
+	updateCloudSettings: (settings: Partial<ConnectomeCloudSettings>) => void;
+	updateGtmSettings: (settings: Partial<ConnectomeGtmSettings>) => void;
 	setFeatureFlag: <T extends FeatureFlag<typeof schema>>(
 		key: T,
 		value: FeatureFlagOption<typeof schema, T>,

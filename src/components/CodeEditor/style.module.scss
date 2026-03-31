@@ -202,7 +202,7 @@
 
 @each $icon in $icons {
 	:global(.cm-completionIcon-#{$icon})::after {
-		content: var(--surrealist-editor-icon-#{$icon});
+		content: var(--Connectome-editor-icon-#{$icon});
 	}
 }
 
@@ -212,7 +212,7 @@
 }
 
 :global(.cm-completionDetail) {
-	color: var(--surrealist-kind-color);
+	color: var(--Connectome-kind-color);
 }
 
 :global(.cm-tooltip-autocomplete) ul li[aria-selected] :global(.cm-completionIcon)::after {

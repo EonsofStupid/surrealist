@@ -5,15 +5,15 @@ import type { StoreApi, UseBoundStore } from "zustand";
 import { adapter } from "~/adapter";
 import { DesktopAdapter } from "~/adapter/desktop";
 import { useConfigStore } from "~/shell/stores/config";
-import type { SurrealistConfig } from "~/types";
+import type { ConnectomeConfig } from "~/types";
 import { CONFIG_VERSION, createBaseConfig } from "./defaults";
 import { showDowngradeWarningModal } from "./downgrade";
 import { applyMigrations } from "./migrator";
 
-export type Category = keyof SurrealistConfig["settings"];
-export type Settings<T extends Category> = SurrealistConfig["settings"][T];
+export type Category = keyof ConnectomeConfig["settings"];
+export type Settings<T extends Category> = ConnectomeConfig["settings"][T];
 export type StoreType<T> = T extends UseBoundStore<StoreApi<infer I>> ? I : never;
-export type ConfigFields = (keyof SurrealistConfig)[];
+export type ConfigFields = (keyof ConnectomeConfig)[];
 
 /**
  * Watch a store for changes and invoke the callback when the
@@ -64,7 +64,7 @@ export async function startConfigSync() {
 	const preAssignedConfig = isEmpty(loadedConfig) ? createBaseConfig() : loadedConfig;
 	const migrateConfig = applyMigrations(preAssignedConfig);
 	const processed = await adapter.processConfig(migrateConfig);
-	const config = assign<SurrealistConfig>(useConfigStore.getState(), processed);
+	const config = assign<ConnectomeConfig>(useConfigStore.getState(), processed);
 	const compatible = config.configVersion <= CONFIG_VERSION;
 
 	// Handle incompatible config versions
@@ -78,7 +78,7 @@ export async function startConfigSync() {
 		{
 			delay: 250,
 		},
-		(state: SurrealistConfig) => {
+		(state: ConnectomeConfig) => {
 			adapter.saveConfig(state);
 		},
 	);
@@ -112,7 +112,7 @@ export async function startConfigSync() {
 /**
  * Overwrite the config store without triggering a save
  */
-export function overwriteConfig(config: SurrealistConfig) {
+export function overwriteConfig(config: ConnectomeConfig) {
 	if (!skipConfigSave) {
 		try {
 			skipConfigSave = true;
@@ -133,7 +133,7 @@ export interface ConfigBackupOptions {
  */
 export function backupConfig({ stripSensitive, connections }: ConfigBackupOptions) {
 	const current = useConfigStore.getState();
-	const config = klona<Partial<SurrealistConfig>>(current);
+	const config = klona<Partial<ConnectomeConfig>>(current);
 
 	// Omit unnecessary fields
 	config.previousVersion = undefined;

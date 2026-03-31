@@ -18,7 +18,7 @@ import { Updater } from "use-immer";
 import { CONNECTION_PROTOCOLS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { createSurreal } from "~/screens/surrealist/connection/surreal";
+import { createSurreal } from "~/screens/Connectome/connection/surreal";
 import { Connection, Protocol } from "~/types";
 import { connectionUri, isHostLocal } from "~/shared/util/helpers";
 
@@ -162,8 +162,8 @@ export function ConnectionAddressDetails({
 									<Tooltip
 										label={
 											status
-												? "Surrealist is able to connect"
-												: "Surrealist is unable to connect"
+												? "Connectome is able to connect"
+												: "Connectome is unable to connect"
 										}
 									>
 										<Indicator

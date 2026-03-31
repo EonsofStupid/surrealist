@@ -16,7 +16,7 @@ import type {
 	GeometryPoint,
 	GeometryPolygon,
 } from "surrealdb";
-import { getSurrealQL } from "~/screens/surrealist/connection/connection";
+import { getSurrealQL } from "~/screens/Connectome/connection/connection";
 
 // leaflet is a tragedy
 delete (window.L.Icon.Default.prototype as any)._getIconUrl;

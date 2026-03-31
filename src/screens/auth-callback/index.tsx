@@ -3,7 +3,7 @@ import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useThemePreference } from "~/hooks/theme";
 import { isDevelopment } from "~/shared/util/environment";
-import { SURREALIST_THEME } from "~/shared/util/mantine";
+import { Connectome_THEME } from "~/shared/util/mantine";
 import { CODE_RES_KEY, STATE_RES_KEY } from "~/shared/util/storage";
 import classes from "./style.module.scss";
 
@@ -25,9 +25,9 @@ export function AuthCallbackScreen() {
 		const state = stateRef.current;
 
 		if (code && state) {
-			location.href = `surrealist://?intent=cloud-auth:code=${code},state=${state}`;
+			location.href = `Connectome://?intent=cloud-auth:code=${code},state=${state}`;
 		} else {
-			location.href = `surrealist://?intent=cloud-signout`;
+			location.href = `Connectome://?intent=cloud-signout`;
 		}
 	}, []);
 
@@ -95,7 +95,7 @@ export function AuthCallbackScreen() {
 	return (
 		<MantineProvider
 			withCssVariables
-			theme={SURREALIST_THEME}
+			theme={Connectome_THEME}
 			forceColorScheme={colorScheme}
 		>
 			<Stack
@@ -107,7 +107,7 @@ export function AuthCallbackScreen() {
 				{result === "redirect" ? (
 					<Text fz="lg">Redirecting...</Text>
 				) : result === "close" ? (
-					<Text fz="lg">You can now safely close this page and return to Surrealist</Text>
+					<Text fz="lg">You can now safely close this page and return to Connectome</Text>
 				) : result === "verify" ? (
 					<Paper p="xl">
 						<Stack maw={300}>
@@ -119,7 +119,7 @@ export function AuthCallbackScreen() {
 							<List>
 								<List.Item>Open your email inbox and find the email</List.Item>
 								<List.Item>Press the button to verify your email</List.Item>
-								<List.Item>Return to Surrealist to enter SurrealDB Cloud</List.Item>
+								<List.Item>Return to Connectome to enter SurrealDB Cloud</List.Item>
 							</List>
 							<Text
 								mt="md"
@@ -151,7 +151,7 @@ export function AuthCallbackScreen() {
 					</Text>
 				) : result === "launch" ? (
 					<>
-						<Text fz="lg">Opening Surrealist...</Text>
+						<Text fz="lg">Opening Connectome...</Text>
 						<Text
 							className={classes.launch}
 							onClick={launchApp}
