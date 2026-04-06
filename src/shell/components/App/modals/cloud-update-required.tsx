@@ -53,7 +53,7 @@ export function CloudUpdateRequiredDialog() {
 			<Group>
 				<Image
 					src={pictoSDBCloud}
-					alt="SurrealDB Cloud"
+					alt="ConnectomeDB Cloud"
 					w={48}
 				/>
 				<Box flex="1">
@@ -61,7 +61,7 @@ export function CloudUpdateRequiredDialog() {
 						fw={600}
 						c="bright"
 					>
-						Connectome update required for SurrealDB Cloud
+						Connectome update required for ConnectomeDB Cloud
 					</Text>
 					<Text mt={4}>
 						{noUpdate ? (

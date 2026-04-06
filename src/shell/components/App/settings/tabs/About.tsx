@@ -33,7 +33,7 @@ export function AboutTab() {
 			["Build date", format(import.meta.env.DATE, "MMMM do, yyyy")],
 			["Build time", format(import.meta.env.DATE, "HH:mm:ss OOO")],
 			["Build mode", import.meta.env.MODE],
-			["Compatibility", `SurrealDB ${import.meta.env.SDB_VERSION}+`],
+			["Compatibility", `ConnectomeDB ${import.meta.env.SDB_VERSION}+`],
 		],
 		[versionText],
 	);
@@ -48,7 +48,7 @@ export function AboutTab() {
 
 	return (
 		<Box m="xs">
-			<Text c="obsidian">Connectome &copy; {format(currDate, "yyyy")} SurrealDB Ltd</Text>
+			<Text c="obsidian">Connectome &copy; {format(currDate, "yyyy")} DevPulse</Text>
 			<Stack
 				gap="xs"
 				mt="xl"
@@ -67,10 +67,10 @@ export function AboutTab() {
 				))}
 			</Stack>
 			<Stack mt="xl">
-				<LearnMore href="https://github.com/surrealdb/Connectome/">
+				<LearnMore href="https://github.com/EonsofStupid/surrealist/">
 					GitHub Repository
 				</LearnMore>
-				<LearnMore href="https://surrealdb.com/docs/Connectome">
+				<LearnMore href="https://devpulse.app/docs/connectome">
 					Connectome Documentation
 				</LearnMore>
 			</Stack>

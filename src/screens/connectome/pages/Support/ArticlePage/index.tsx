@@ -132,7 +132,7 @@ export function ArticlePage({ id }: ArticlePageProps) {
 											fw={600}
 											c="surreal"
 										>
-											{article?.author?.name ?? "SurrealDB Team"}
+											{article?.author?.name ?? "ConnectomeDB Team"}
 										</Text>
 									</Group>
 									<Text
@@ -169,7 +169,7 @@ export function ArticlePage({ id }: ArticlePageProps) {
 								rightSection={<Icon path={iconOpen} />}
 								onClick={() => adapter.openUrl(article.url)}
 							>
-								View on SurrealDB Support
+								View on ConnectomeDB Support
 							</Button>
 						</Group>
 					</Stack>

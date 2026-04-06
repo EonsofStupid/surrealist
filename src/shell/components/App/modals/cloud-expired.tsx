@@ -41,7 +41,7 @@ export function CloudExpiredDialog() {
 			<Group>
 				<Image
 					src={pictoSDBCloud}
-					alt="SurrealDB Cloud"
+					alt="ConnectomeDB Cloud"
 					w={48}
 				/>
 				<Box flex="1">

@@ -76,7 +76,7 @@ export function ConnectBlock({ instance, isLoading }: ConnectBlockProps) {
 	return (
 		<Stack gap="xl">
 			<ConnectAction
-				title="Connect with Surreal CLI"
+				title="Connect with Connectome CLI"
 				subtitle="For commandline environments"
 				icon={iconConsole}
 				isLoading={isLoading}
@@ -84,7 +84,7 @@ export function ConnectBlock({ instance, isLoading }: ConnectBlockProps) {
 			/>
 			<ConnectAction
 				title="Connect with an SDK"
-				subtitle="For integrating SurrealDB"
+				subtitle="For integrating ConnectomeDB"
 				icon={iconXml}
 				isLoading={isLoading}
 				onClick={() => instance && openConnectSdk(instance, namespace, database)}

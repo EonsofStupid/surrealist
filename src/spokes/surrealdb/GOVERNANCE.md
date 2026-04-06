@@ -1,12 +1,12 @@
 # GOVERNANCE REGISTRY — SurrealDB Spoke
 
-> **Boundary**: `src/spokes/surrealdb/` | **Date**: 2026-03-28
+> **Boundary**: `src/spokes/connectomedb/` | **Date**: 2026-04-04
 
 ---
 
 ## Scope
 
-The SurrealDB spoke contains the 80% legacy Surrealist codebase (query playground, explorer, designer, metrics, etc.). It connects directly to a SurrealDB instance and executes standard `surreal_query` IPC commands.
+The ConnectomeDB spoke contains the 80% legacy Cortex DevTools codebase (query playground, explorer, designer, metrics, etc.). It connects directly to a ConnectomeDB instance and executes standard `surreal_query` IPC commands.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ This spoke must expose exactly one component to the Shell: `Root.tsx`. All inner
 ## Import Rules (Strict Isolation)
 
 1. **CAN Import**: `src/shared/`
-2. **CAN Import**: `src/spokes/surrealdb/`
+2. **CAN Import**: `src/spokes/connectomedb/`
 3. **CANNOT Import**: `src/shell/`
 4. **CANNOT Import**: Any other spoke directory (`src/spokes/qdrant/`, etc.)
 

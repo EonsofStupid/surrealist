@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import type { RecordId } from "surrealdb";
 import { useStable } from "~/hooks/stable";
 import { useInspector } from "~/providers/Inspector";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { HighlightedText } from "../HighlightedText";
 
 export interface RecordLinkProps extends BoxProps, ElementProps<"div"> {
@@ -21,7 +21,7 @@ export function RecordLink({ value, withOpen, ...rest }: RecordLinkProps) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getSurrealQL().formatValue(value);
+			const result = await getRroQL().formatValue(value);
 			if (!cancelled) {
 				setRecordText(result);
 			}

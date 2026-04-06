@@ -64,7 +64,7 @@ const RESERVED_VARIABLES = new Set([
 ]);
 
 /**
- * Parse variables from the given SurrealQL tree
+ * Parse variables from the given rroQL tree
  *
  * @param tree The parse tree
  * @param extract The function to extract the variable name

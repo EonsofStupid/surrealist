@@ -19,7 +19,7 @@ import { useSaveable } from "~/hooks/save";
 import { useStable } from "~/hooks/stable";
 import { useValueValidator } from "~/hooks/surrealql";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getRroQL } from "~/screens/Connectome/connection/connection";
 import { useConfirmation } from "../Confirmation";
 import classes from "./style.module.scss";
 import { ContentTab } from "./tabs/content";
@@ -102,10 +102,10 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 			{ id },
 		);
 
-		const formatted = await getSurrealQL().formatValue(content, false, true);
+		const formatted = await getRroQL().formatValue(content, false, true);
 
 		setError("");
-		setRecordId(await getSurrealQL().formatValue(id));
+		setRecordId(await getRroQL().formatValue(id));
 		setCurrentRecord({
 			isEdge: !!content?.in && !!content?.out,
 			exists: !!content,
@@ -128,7 +128,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const gotoRecord = useStable(async () => {
-		const id = await getSurrealQL().parseValue(recordId);
+		const id = await getRroQL().parseValue(recordId);
 
 		if (id instanceof RecordId) {
 			history.push(id);
@@ -141,7 +141,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 		skippable: true,
 		onConfirm: async () => {
 			await executeQuery(
-				/* surql */ `DELETE ${await getSurrealQL().formatValue(history.current)}`,
+				/* surql */ `DELETE ${await getRroQL().formatValue(history.current)}`,
 			);
 
 			history.clear();

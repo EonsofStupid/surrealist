@@ -16,7 +16,7 @@ export function ConversationPartAuthor({
 }: ConversationPartAuthorProps) {
 	return (
 		<ConversationUser
-			name={user?.name ?? "SurrealDB Team"}
+			name={user?.name ?? "ConnectomeDB Team"}
 			type={user?.type ?? "user"}
 			image={user?.avatar}
 			updated_at={updated_at}

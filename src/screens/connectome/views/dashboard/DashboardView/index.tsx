@@ -422,7 +422,7 @@ export function DashboardView() {
 									<Box mt={32}>
 										<PrimaryTitle>Your instance</PrimaryTitle>
 										<Text>
-											Customise and connect to your SurrealDB Cloud instance
+											Customise and connect to your ConnectomeDB Cloud instance
 										</Text>
 									</Box>
 
@@ -668,13 +668,13 @@ function LoadingScreen() {
 				ta="center"
 				my={38}
 			>
-				<PrimaryTitle>Deploying your SurrealDB Cloud instance...</PrimaryTitle>
+				<PrimaryTitle>Deploying your ConnectomeDB Cloud instance...</PrimaryTitle>
 
 				<Text
 					fz="xl"
 					mt="sm"
 				>
-					While you wait, feel free to explore SurrealDB Cloud
+					While you wait, feel free to explore ConnectomeDB Cloud
 				</Text>
 			</Box>
 
@@ -687,19 +687,19 @@ function LoadingScreen() {
 			>
 				<GettingStartedLink
 					title="Cloud Documentation"
-					description="Learn more about SurrealDB Cloud features and capabilities."
+					description="Learn more about ConnectomeDB Cloud features and capabilities."
 					image={pictoDocument}
-					href="https://surrealdb.com/docs/cloud"
+					href="https://devpulse.app/docs/cloud"
 				/>
 				<GettingStartedLink
 					title="Join the Community"
 					description="Get help from the community and share your experiences."
 					image={pictoHandsOn}
-					href="https://surrealdb.com/community"
+					href="https://devpulse.app/community"
 				/>
 				<GettingStartedLink
 					title="Quick Start Tutorial"
-					description="Watch a quick tutorial to get started with SurrealDB Cloud."
+					description="Watch a quick tutorial to get started with ConnectomeDB Cloud."
 					image={pictoPlay}
 					href="https://www.youtube.com/watch?v=S04qOKkVcmE"
 				/>

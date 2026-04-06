@@ -251,7 +251,7 @@ export function DataExportModal() {
 						icon={<Icon path={iconHelp} />}
 						color="blue"
 					>
-						You are exporting your database for use with SurrealDB 3.0.
+						You are exporting your database for use with ConnectomeDB 3.0.
 					</Alert>
 				)}
 
@@ -265,7 +265,7 @@ export function DataExportModal() {
 						color="orange"
 					>
 						Your {isBrowser ? "browser" : "environment"} does not support streaming
-						exports. For larger exports, please use the SurrealDB CLI.
+						exports. For larger exports, please use the ConnectomeDB CLI.
 					</Alert>
 				) : streamSupport === "unsupported-engine" ? (
 					<Alert

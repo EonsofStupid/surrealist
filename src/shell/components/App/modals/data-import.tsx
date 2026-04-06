@@ -27,7 +27,7 @@ import { useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurreal, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getSurreal, getRroQL } from "~/screens/Connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
@@ -225,7 +225,7 @@ const convertValueToType = async (value: any, type: SurrealKind): Promise<any> =
 	switch (type) {
 		case "any":
 			try {
-				return await getSurrealQL().parseValue(value);
+				return await getRroQL().parseValue(value);
 			} catch {
 				return value;
 			}

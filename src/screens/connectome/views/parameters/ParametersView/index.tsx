@@ -198,7 +198,7 @@ export function ParametersView() {
 								icon={iconVariable}
 								snippet={{
 									language: "surrealql",
-									title: "SurrealQL",
+									title: "rroQL",
 									code: `
 										-- Define your parameters with ease
 										DEFINE PARAM $hello VALUE "world";
@@ -231,7 +231,7 @@ export function ParametersView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/param",
+												"https://devpulse.app/docs/rroql/statements/define/param",
 											)
 										}
 									>

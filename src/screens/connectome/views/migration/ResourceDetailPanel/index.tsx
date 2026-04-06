@@ -28,7 +28,7 @@ import { RecordLink } from "~/components/RecordLink";
 import { Spacer } from "~/components/Spacer";
 import { SURQL_FILTER } from "~/constants";
 import { useIsLight } from "~/hooks/theme";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { MigrationKind, MigrationResourceType, MigrationSeverity } from "~/types";
 import { kindMeta } from "../MigrationView/kinds";
 import { DiagnosticEntry, DiagnosticResource } from "../MigrationView/organizer";
@@ -378,7 +378,7 @@ function GroupedKindCard({ index, group, resolvedIds, onToggleAll }: GroupedKind
 
 	const handleDownloadRecords = async () => {
 		const recordIds = group.entries.map((entry) => entry.record).filter(Boolean);
-		const surql = await getSurrealQL().formatValue(recordIds, false, true);
+		const surql = await getRroQL().formatValue(recordIds, false, true);
 		const kindSlug = group.kind.replace(/\s+/g, "-").toLowerCase();
 
 		adapter.saveFile(

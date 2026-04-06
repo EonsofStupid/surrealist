@@ -220,9 +220,9 @@ export function getMenuItems(): AppMenu[] {
 			{
 				id: "surrealdb_docs",
 				type: "Custom",
-				name: "SurrealDB Docs",
+				name: "ConnectomeDB Docs",
 				action: () => {
-					adapter.openUrl("https://surrealdb.com/docs/surrealdb");
+					adapter.openUrl("https://devpulse.app/docs/connectomedb");
 				},
 			},
 			{
@@ -230,7 +230,7 @@ export function getMenuItems(): AppMenu[] {
 				type: "Custom",
 				name: "Connectome Docs",
 				action: () => {
-					adapter.openUrl("https://surrealdb.com/docs/Connectome");
+					adapter.openUrl("https://devpulse.app/docs/connectome");
 				},
 			},
 			SEPARATOR,
@@ -256,7 +256,7 @@ export function getMenuItems(): AppMenu[] {
 				type: "Custom",
 				name: "Report Issue",
 				action: () => {
-					adapter.openUrl("https://github.com/surrealdb/Connectome/issues/new/choose");
+					adapter.openUrl("https://github.com/EonsofStupid/surrealist/issues/new/choose");
 				},
 			},
 			...optional(!isDarwin && about),

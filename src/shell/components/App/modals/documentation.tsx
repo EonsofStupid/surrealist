@@ -116,7 +116,7 @@ export function DocumentationModal() {
 						path={iconBook}
 						size="sm"
 					/>
-					<Text>SurrealDB Documentation</Text>
+					<Text>ConnectomeDB Documentation</Text>
 					{isFetching && (
 						<Loader
 							ml="sm"

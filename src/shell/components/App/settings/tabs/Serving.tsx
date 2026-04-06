@@ -54,7 +54,7 @@ export function ServingTab() {
 					mb="xl"
 					maw={500}
 				>
-					You can use Connectome Desktop to serve SurrealDB on your local machine.
+					You can use Connectome Desktop to serve ConnectomeDB on your local machine.
 					<br />
 					This page allows you to customize the settings for the database.
 				</Text>
@@ -90,7 +90,7 @@ export function ServingTab() {
 
 					<TextInput
 						w="unset"
-						label="SurrealDB executable path"
+						label="ConnectomeDB executable path"
 						value={executable}
 						spellCheck={false}
 						onChange={(e) => setExecutable(e.target.value)}

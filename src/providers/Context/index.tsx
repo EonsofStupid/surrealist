@@ -14,7 +14,7 @@ const ContextContext = createContext<{
 } | null>(null);
 
 /**
- * Access the Surreal Context connection
+ * Access the Connectome Context connection
  */
 export function useContextConnection() {
 	const ctx = useContext(ContextContext) ?? __throw("Missing ContextProvider");
@@ -35,16 +35,16 @@ export function ContextProvider({ children }: PropsWithChildren) {
 		if (initializedRef.current) return;
 
 		surreal.subscribe("connecting", () => {
-			adapter.log("Context", "Attempting to connect to SurrealDB Cloud instance");
+			adapter.log("Context", "Attempting to connect to ConnectomeDB Cloud instance");
 		});
 
 		surreal.subscribe("connected", () => {
-			adapter.log("Context", "Connected to SurrealDB Cloud instance");
+			adapter.log("Context", "Connected to ConnectomeDB Cloud instance");
 			setConnected(true);
 		});
 
 		surreal.subscribe("disconnected", () => {
-			adapter.log("Context", "Disconnected from SurrealDB Cloud instance");
+			adapter.log("Context", "Disconnected from ConnectomeDB Cloud instance");
 			setConnected(false);
 			setTimeout(connect, 3000);
 		});
@@ -55,7 +55,7 @@ export function ContextProvider({ children }: PropsWithChildren) {
 
 		initializedRef.current = true;
 
-		adapter.log("Context", "Connecting to SurrealDB Cloud instance");
+		adapter.log("Context", "Connecting to ConnectomeDB Cloud instance");
 		surreal.connect(CONTEXT_ENDPOINT, {
 			namespace: "surrealdb",
 			database: "cloud",

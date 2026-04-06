@@ -412,7 +412,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							mx="auto"
 							size="lg"
 						/>
-						Execute a SurrealQL query to view the results here
+						Execute a rroQL query to view the results here
 					</Stack>
 				</Center>
 			) : (

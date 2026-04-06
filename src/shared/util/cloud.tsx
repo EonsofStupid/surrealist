@@ -106,7 +106,7 @@ export function getTypeCategoryName(category: string) {
 export function getTypeCategoryDescription(category: string) {
 	switch (category) {
 		case "free":
-			return "Explore SurrealDB with a free instance";
+			return "Explore ConnectomeDB with a free instance";
 		case "development":
 			return "Burstable instances for development";
 		case "production":

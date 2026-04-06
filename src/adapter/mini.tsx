@@ -9,7 +9,7 @@ import { createBaseQuery, createBaseSettings, createSandboxConnection } from "~/
 import { showErrorNotification } from "~/shared/util/helpers";
 import { getDatasetURL } from "~/shared/util/language";
 import { broadcastMessage } from "~/shared/util/messaging";
-import { createSurrealQL } from "~/shared/util/surql";
+import { createRroQL } from "~/shared/util/surql";
 import { BrowserAdapter } from "./browser";
 
 const THEMES = new Set(["light", "dark", "auto"]);
@@ -33,7 +33,7 @@ export class MiniAdapter extends BrowserAdapter {
 		const mainTab = createBaseQuery(settings, "config");
 		const params = new URL(document.location.toString()).searchParams;
 		const version = await this.#getEmbeddedVersion();
-		const surrealql = createSurrealQL(version);
+		const surrealql = createRroQL(version);
 
 		const {
 			ref,

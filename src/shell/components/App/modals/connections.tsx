@@ -221,7 +221,7 @@ export function ConnectionsModal() {
 									path={iconCircle}
 									c="obsidian"
 								/>
-								<Text>SurrealDB Cloud</Text>
+								<Text>ConnectomeDB Cloud</Text>
 							</Group>
 							{org.instances.map((instance) => (
 								<InstanceEntry

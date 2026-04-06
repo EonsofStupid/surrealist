@@ -19,7 +19,7 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 		showUpdate && (
 			<>
 				<Box mt={32}>
-					<PrimaryTitle>SurrealDB 3.0 is here!</PrimaryTitle>
+					<PrimaryTitle>ConnectomeDB 3.0 is here!</PrimaryTitle>
 					<Text>Enjoy the latest features and improvements</Text>
 				</Box>
 				<Paper>
@@ -34,7 +34,7 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 						<Box>
 							<PrimaryTitle>Check compatibility</PrimaryTitle>
 							<Text>
-								Check if your database is compatible with SurrealDB 3.0 and start
+								Check if your database is compatible with ConnectomeDB 3.0 and start
 								your migration.
 							</Text>
 							<Group mt="md">

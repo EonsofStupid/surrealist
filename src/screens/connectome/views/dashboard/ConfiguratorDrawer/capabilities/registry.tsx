@@ -47,7 +47,7 @@ export const ENDPOINT_TARGETS = [
 ];
 
 /**
- * SurrealDB experiments
+ * ConnectomeDB experiments
  */
 export const EXPERIMENT_TARGETS = [
 	{ label: "GraphQL", value: "graphql", until: "3.0.0" },

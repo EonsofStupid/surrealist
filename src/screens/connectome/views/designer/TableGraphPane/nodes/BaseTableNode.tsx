@@ -14,7 +14,7 @@ import { Spacer } from "~/components/Spacer";
 import { TABLE_VARIANT_ICONS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { GraphWarning } from "~/screens/Connectome/views/designer/TableGraphPane/helpers";
 import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
@@ -362,13 +362,13 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 
 		const loadRecords = async () => {
 			if (inField) {
-				const records = await getSurrealQL().extractKindRecords(inField.kind ?? "");
+				const records = await getRroQL().extractKindRecords(inField.kind ?? "");
 				if (!cancelled) {
 					setInRecords(records.join(", "));
 				}
 			}
 			if (outField) {
-				const records = await getSurrealQL().extractKindRecords(outField.kind ?? "");
+				const records = await getRroQL().extractKindRecords(outField.kind ?? "");
 				if (!cancelled) {
 					setOutRecords(records.join(", "));
 				}

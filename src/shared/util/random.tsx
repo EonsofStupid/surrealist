@@ -25,7 +25,7 @@ export const ADJECTIVE_LIST = [
 	"vivid",
 	"wild",
 	"zealous",
-	"surreal",
+	"connectome",
 	"ethereal",
 	"mystic",
 ];

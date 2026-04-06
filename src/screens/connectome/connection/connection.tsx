@@ -57,8 +57,8 @@ import {
 } from "~/shared/util/helpers";
 import { parseIdent } from "~/shared/util/language";
 import { syncConnectionSchema } from "~/shared/util/schema";
-import { createSurrealQL } from "~/shared/util/surql";
-import { SurrealQL } from "~/shared/util/surql/surrealql";
+import { createRroQL } from "~/shared/util/surql";
+import { rroQL } from "~/shared/util/surql/surrealql";
 import { composeAuthentication, getVersionTimeout } from "./helpers";
 import { createSurreal } from "./surreal";
 
@@ -80,7 +80,7 @@ export interface GraphqlResponse {
 let retryTask: any;
 let openedConnection: Connection;
 let instance = new Surreal();
-let surrealql: SurrealQL | null = null;
+let surrealql: rroQL | null = null;
 
 const LQ_SUPPORTED = new Set<Protocol>(["ws", "wss", "mem", "indxdb"]);
 const LIVE_QUERIES = new Map<string, Set<Uuid>>();
@@ -218,7 +218,7 @@ export async function openConnection(options?: ConnectOptions) {
 
 		adapter.log("DB", `Database version ${version ?? "unknown"}`);
 
-		surrealql = createSurrealQL(version);
+		surrealql = createRroQL(version);
 
 		setVersion(version);
 		setCurrentState("connected");
@@ -505,11 +505,11 @@ export async function executeUserQuery(options?: UserQueryOptions) {
 
 		let liveIndexes: number[];
 
-		const variablesObject = await getSurrealQL().parseValue<Record<string, unknown>>(variables);
+		const variablesObject = await getRroQL().parseValue<Record<string, unknown>>(variables);
 		const response = await executeQuery(query, variablesObject);
 
 		try {
-			liveIndexes = await getSurrealQL().getLiveQueries(query, response);
+			liveIndexes = await getRroQL().getLiveQueries(query, response);
 		} catch (err: any) {
 			adapter.warn("DB", `Failed to parse live queries: ${err.message}`);
 			liveIndexes = [];
@@ -970,6 +970,6 @@ export function hasSurrealQL() {
 	return surrealql !== null;
 }
 
-export function getSurrealQL() {
-	return surrealql ?? __throw("No SurrealQL instance available");
+export function getRroQL() {
+	return surrealql ?? __throw("No rroQL instance available");
 }

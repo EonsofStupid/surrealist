@@ -8,7 +8,7 @@ import {
 	Stack,
 	UnstyledButton,
 } from "@mantine/core";
-import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoConnectome } from "@surrealdb/ui";
+import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoSurrealist } from "@surrealdb/ui";
 import clsx from "clsx";
 import { Fragment, useMemo } from "react";
 import { useCloudUnreadConversationsQuery } from "~/cloud/queries/context";
@@ -173,7 +173,7 @@ export function ConnectomeSidebar({ sidebarMode, className, ...other }: Connecto
 					>
 						<Image
 							my={-9}
-							src={pictoConnectome}
+							src={pictoSurrealist}
 							w={42}
 							className={classes.hat}
 						/>

@@ -29,7 +29,7 @@ import { surqlLinting } from "~/editor";
 import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useValueValidator } from "~/hooks/surrealql";
-import { executeQuery, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getRroQL } from "~/screens/Connectome/connection/connection";
 import type { QueryResponse } from "~/types";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
@@ -115,7 +115,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		if (opened) {
 			const initializeBody = async () => {
 				const bodyText = content
-					? await getSurrealQL().formatValue(
+					? await getRroQL().formatValue(
 							omit(content, ["id", "in", "out"]),
 							true,
 							true,

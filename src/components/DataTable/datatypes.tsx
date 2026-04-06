@@ -26,7 +26,7 @@ import {
 	RecordId,
 	Uuid,
 } from "surrealdb";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";
@@ -220,7 +220,7 @@ function ObjectCell(props: { value: any }) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getSurrealQL().formatValue(props.value, false, true);
+			const result = await getRroQL().formatValue(props.value, false, true);
 			if (!cancelled) {
 				setFormatted(result);
 			}

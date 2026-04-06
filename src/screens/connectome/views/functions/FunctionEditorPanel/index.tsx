@@ -18,7 +18,7 @@ import {
 import { useSetting } from "~/hooks/config";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildFunctionDefinition } from "~/shared/util/schema";
@@ -48,7 +48,7 @@ export function FunctionEditorPanel({
 	});
 
 	const formatFunction = useStable(async () => {
-		const isFunctionBlockInvalid = await getSurrealQL().validateQuery(details.block);
+		const isFunctionBlockInvalid = await getRroQL().validateQuery(details.block);
 		if (isFunctionBlockInvalid) {
 			showErrorNotification({
 				title: "Failed to format",
@@ -56,7 +56,7 @@ export function FunctionEditorPanel({
 			});
 			return;
 		}
-		const formattedFunctionBlock = await getSurrealQL().formatQuery(details.block);
+		const formattedFunctionBlock = await getRroQL().formatQuery(details.block);
 		onChange((draft) => {
 			(draft.details as SchemaFunction).block = formattedFunctionBlock;
 		});

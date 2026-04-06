@@ -88,7 +88,7 @@ export function ReferralPage() {
 
 	const referralLink = `https://app.surrealdb.com/referral?code=${referralCodeQuery.data}`;
 	const shareOptions = {
-		title: "SurrealDB Cloud",
+		title: "ConnectomeDB Cloud",
 		text: "Use my referral link to get started today!",
 		url: referralLink,
 	};
@@ -171,10 +171,10 @@ export function ReferralPage() {
 								>
 									<Box>
 										<PrimaryTitle>
-											Share SurrealDB Cloud and earn rewards
+											Share ConnectomeDB Cloud and earn rewards
 										</PrimaryTitle>
 										<Text mt={2}>
-											The SurrealDB Cloud referral program allows you to
+											The ConnectomeDB Cloud referral program allows you to
 											invite a friend in exchange for benefits.
 										</Text>
 									</Box>

@@ -38,7 +38,7 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab } from "~/types";
@@ -146,11 +146,11 @@ export function QueryPane({
 			const document = editor.state.doc;
 			const formatted = hasSelection
 				? document.sliceString(0, selection.from) +
-					(await getSurrealQL().formatQuery(
-						document.sliceString(selection.from, selection.to),
+					(await getRroQL().formatQuery(
+						editor.state.sliceDoc(selection.from, selection.to),
 					)) +
 					document.sliceString(selection.to)
-				: await getSurrealQL().formatQuery(document.toString());
+				: await getRroQL().formatQuery(document.toString());
 
 			setEditorText(editor, formatted);
 		} catch {
@@ -185,7 +185,7 @@ export function QueryPane({
 		-setShowVariables(true);
 		updateQueryTab(connection, {
 			id: activeTab.id,
-			variables: await getSurrealQL().formatValue(mergedVars, false, true),
+			variables: await getRroQL().formatValue(mergedVars, false, true),
 		});
 	});
 

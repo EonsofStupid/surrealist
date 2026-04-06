@@ -55,7 +55,7 @@ export function ConfigurationVersion({ instance, onUpdate, onClose }: Configurat
 								mt="sm"
 								fz="lg"
 							>
-								Update your instance to a newer version of SurrealDB to access the
+								Update your instance to a newer version of ConnectomeDB to access the
 								latest features and improvements. Select an available version from
 								the list to update to.
 							</Text>
@@ -77,7 +77,7 @@ export function ConfigurationVersion({ instance, onUpdate, onClose }: Configurat
 											fz="xl"
 											flex={1}
 										>
-											SurrealDB {version}
+											ConnectomeDB {version}
 										</Text>
 										<Button
 											size="xs"

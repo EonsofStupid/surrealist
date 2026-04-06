@@ -4,7 +4,7 @@ import { createContext, type PropsWithChildren, useContext, useState } from "rea
 import { RecordId } from "surrealdb";
 import { type HistoryHandle, useHistory } from "~/hooks/history";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { InspectorDrawer } from "./drawer";
@@ -45,7 +45,7 @@ export function InspectorProvider({ children }: PropsWithChildren) {
 	const inspect = useStable(async (record: RecordId | string) => {
 		const recordId =
 			typeof record === "string"
-				? await getSurrealQL().parseValue(record)
+				? await getRroQL().parseValue(record)
 				: new RecordId(record.table, record.id);
 
 		if (!(recordId instanceof RecordId)) {

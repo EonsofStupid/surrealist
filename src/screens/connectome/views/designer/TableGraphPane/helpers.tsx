@@ -9,7 +9,7 @@ import {
 	Rect,
 } from "@xyflow/react";
 import { elementToSVG, inlineResources } from "dom-to-svg";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import type {
 	DiagramAlgorithm,
 	DiagramDirection,
@@ -260,7 +260,7 @@ export async function buildFlowNodes(
 					continue;
 				}
 
-				const targets = await getSurrealQL().extractKindRecords(field.kind);
+				const targets = await getRroQL().extractKindRecords(field.kind);
 
 				for (const target of targets) {
 					if (!nodeIndex.has(target)) {

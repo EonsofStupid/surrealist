@@ -33,7 +33,7 @@ export function ModelPanel({ details, onDownload }: ModelPanelProps) {
 			rightSection={<Text c="obsidian">Version {details.version}</Text>}
 		>
 			<Text>
-				Upload your SurrealML models directly to SurrealDB and use the power of Machine
+				Upload your SurrealML models directly to ConnectomeDB and use the power of Machine
 				Learning within your queries.
 			</Text>
 			<Group>

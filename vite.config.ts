@@ -6,7 +6,7 @@ import { defineConfig, type PluginOption } from "vite";
 import { compression } from "vite-plugin-compression2";
 import { ViteImageOptimizer as images } from "vite-plugin-image-optimizer";
 import { Mode, plugin as markdown } from "vite-plugin-markdown";
-import { surreal, version } from "./package.json";
+import { connectomedb as surreal, version } from "./package.json";
 
 const isTauri = !!process.env.TAURI_ENV_PLATFORM;
 const isCompress = process.env.VITE_SURREALIST_COMPRESS !== "false";

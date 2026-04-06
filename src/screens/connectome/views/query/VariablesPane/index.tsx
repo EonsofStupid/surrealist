@@ -14,7 +14,7 @@ import { useActiveQuery } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 
 export interface VariablesPaneProps {
@@ -53,7 +53,7 @@ export function VariablesPane({
 		});
 
 		try {
-			const parsed = await getSurrealQL().parseValue(json);
+			const parsed = await getRroQL().parseValue(json);
 
 			if (typeof parsed !== "object" || Array.isArray(parsed)) {
 				throw new TypeError("Must be object");

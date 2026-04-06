@@ -6,7 +6,7 @@
 
 ## Scope
 
-Governs the 4 screen directories and 12 views + 12 pages within the main surrealist screen. In Phase 1, views become spokes and pages are triaged.
+Governs the 4 screen directories and 12 views + 12 pages within the main connectome screen. In Phase 1, views become spokes and pages are triaged.
 
 ## Current Screen Structure
 
@@ -15,7 +15,7 @@ src/screens/
 ├── auth-callback/      # OAuth callback handler
 ├── mini-embed/         # Embeddable mini query editor
 ├── new-domain/         # Domain redirect handler
-└── surrealist/         # Main application screen
+└── connectome/         # Main application screen
     ├── components/     # Screen-specific shared components
     ├── connection/     # Connection management
     ├── docs/           # Documentation viewer
@@ -60,7 +60,7 @@ src/screens/
 
 ## Terminology
 
-- **Screen**: A top-level entrypoint (surrealist, mini-embed, auth-callback)
+- **Screen**: A top-level entrypoint (connectome, mini-embed, auth-callback)
 - **View**: A feature tab within the main screen (query, explorer, designer...)
 - **Page**: A cloud/organization management page (will mostly be stripped)
 

@@ -88,8 +88,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				
 				// Create record
 				await db.create(new Table("project"), {
-					name: "SurrealDB Dashboard",
-					description: "A modern admin interface for SurrealDB",
+					name: "ConnectomeDB Dashboard",
+					description: "A modern admin interface for ConnectomeDB",
 					status: "in_progress",
 					priority: "high",
 					tags: ["typescript", "react", "database"],
@@ -117,8 +117,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				// Create record
 				var project = new Project
 				{
-					Name = "SurrealDB Dashboard",
-					Description = "A modern admin interface for SurrealDB",
+					Name = "ConnectomeDB Dashboard",
+					Description = "A modern admin interface for ConnectomeDB",
 					Status = "in_progress",
 					Priority = "high",
 					Tags = new[] { "typescript", "react", "database" },
@@ -142,8 +142,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 					# Create a record
 					db.create(RecordID("project", "1"), {
-						"name": "SurrealDB Dashboard",
-						"description": "A modern admin interface for SurrealDB",
+						"name": "ConnectomeDB Dashboard",
+						"description": "A modern admin interface for ConnectomeDB",
 						"status": "in_progress",
 						"priority": "high",
 						"tags": ["typescript", "react", "database"],
@@ -170,8 +170,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 				// Create a record
 				$db->create("project", [
-					"name" => "SurrealDB Dashboard",
-					"description" => "A modern admin interface for SurrealDB",
+					"name" => "ConnectomeDB Dashboard",
+					"description" => "A modern admin interface for ConnectomeDB",
 					"status" => "in_progress",
 					"priority" => "high",
 					"tags" => ["typescript", "react", "database"],
@@ -209,8 +209,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 				// Create a record
 				let project = Project {
-					name: "SurrealDB Dashboard".to_string(),
-					description: "A modern admin interface for SurrealDB".to_string(),
+					name: "ConnectomeDB Dashboard".to_string(),
+					description: "A modern admin interface for ConnectomeDB".to_string(),
 					status: "in_progress".to_string(),
 					priority: "high".to_string(),
 					tags: vec!["typescript".to_string(), "react".to_string(), "database".to_string()],
@@ -233,8 +233,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 					// Create a record
 					Map<String, Object> project = Map.of(
-						"name", "SurrealDB Dashboard",
-						"description", "A modern admin interface for SurrealDB",
+						"name", "ConnectomeDB Dashboard",
+						"description", "A modern admin interface for ConnectomeDB",
 						"status", "in_progress",
 						"priority", "high",
 						"tags", List.of("typescript", "react", "database"),
@@ -255,7 +255,7 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 		<Stack>
 			<Text size="lg">
 				You can connect to this instance with your preferred language using one of our
-				SurrealDB Client SDKs.
+				ConnectomeDB Client SDKs.
 			</Text>
 
 			<Text

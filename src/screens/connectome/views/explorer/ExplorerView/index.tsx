@@ -179,7 +179,7 @@ export function ExplorerView() {
 								icon={iconExplorer}
 								snippet={{
 									language: "surrealql",
-									title: "SurrealQL",
+									title: "rroQL",
 									code: `
 										-- Declare a new table
 										DEFINE TABLE person;
@@ -210,7 +210,7 @@ export function ExplorerView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/table",
+												"https://devpulse.app/docs/rroql/statements/define/table",
 											)
 										}
 									>

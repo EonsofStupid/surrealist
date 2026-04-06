@@ -80,7 +80,7 @@ export function SupportPage() {
 						ta="center"
 						fz={32}
 					>
-						SurrealDB Help Centre
+						ConnectomeDB Help Centre
 					</PrimaryTitle>
 
 					<TextInput
@@ -164,7 +164,7 @@ export function SupportPage() {
 											<PrimaryTitle>Need expert answers fast?</PrimaryTitle>
 											<Text>
 												Upgrade your organisation's Support Plan to get
-												expedited support from the SurrealDB team, so you're
+												expedited support from the ConnectomeDB team, so you're
 												never left stramded when it matters the most.
 											</Text>
 										</Group>
@@ -218,14 +218,14 @@ export function SupportPage() {
 							mx="auto"
 						>
 							<ResourceTile
-								name="SurrealDB Documentation"
-								description="Learn everything there is to know about all SurrealDB products"
+								name="ConnectomeDB Documentation"
+								description="Learn everything there is to know about all ConnectomeDB products"
 								image={pictoSurrealDB}
 								onClick={() => adapter.openUrl("https://surrealdb.com/docs")}
 							/>
 							<ResourceTile
-								name="SurrealDB YouTube"
-								description="Learn about SurrealDB through live streams and video tutorials"
+								name="ConnectomeDB YouTube"
+								description="Learn about ConnectomeDB through live streams and video tutorials"
 								image={pictoPlay}
 								onClick={() =>
 									adapter.openUrl("https://www.youtube.com/@SurrealDB")
@@ -233,7 +233,7 @@ export function SupportPage() {
 							/>
 							<ResourceTile
 								name="University: Fundamentals"
-								description="Learn the fundamentals of SurrealDB in as little as 3 hours"
+								description="Learn the fundamentals of ConnectomeDB in as little as 3 hours"
 								image={pictoUniversity}
 								onClick={() =>
 									adapter.openUrl("https://surrealdb.com/learn/fundamentals")
@@ -241,7 +241,7 @@ export function SupportPage() {
 							/>
 							<ResourceTile
 								name="University: Book"
-								description="Become a SurrealQL expert through Aeon's Surreal Renaissance"
+								description="Become a rroQL expert through Aeon's Surreal Renaissance"
 								image={pictoDocument}
 								onClick={() => adapter.openUrl("https://surrealdb.com/learn/book")}
 							/>

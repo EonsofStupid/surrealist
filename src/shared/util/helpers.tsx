@@ -13,7 +13,7 @@ import { shake, uid } from "radash";
 import type { CSSProperties, FocusEvent, ReactNode, SyntheticEvent } from "react";
 import { adapter } from "~/adapter";
 import { Spacer } from "~/components/Spacer";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import type { Authentication, Protocol, Selectable } from "~/types";
 import { openErrorModal } from "./errors";
 
@@ -344,7 +344,7 @@ export async function tryParseParams(paramString: string) {
 	let params: any = {};
 
 	try {
-		const parsed = await getSurrealQL().parseValue(paramString);
+		const parsed = await getRroQL().parseValue(paramString);
 
 		if (typeof parsed !== "object" || Array.isArray(parsed)) {
 			throw new TypeError("Must be object");

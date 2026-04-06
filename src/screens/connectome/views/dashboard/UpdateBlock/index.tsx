@@ -36,7 +36,7 @@ export function UpdateBlock({
 				icon={<Icon path={iconReset} />}
 				mb={6}
 			>
-				<Box>Your instance can be updated to SurrealDB {latest}</Box>
+				<Box>Your instance can be updated to ConnectomeDB {latest}</Box>
 				<Group mt="md">
 					<Button
 						size="xs"

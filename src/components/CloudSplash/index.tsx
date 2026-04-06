@@ -28,7 +28,7 @@ export function CloudSplash() {
 				/>
 				<Image
 					src={logoImg}
-					alt="SurrealDB Cloud"
+					alt="ConnectomeDB Cloud"
 					maw={450}
 					my="xl"
 				/>
@@ -38,8 +38,8 @@ export function CloudSplash() {
 					maw={520}
 					ta="center"
 				>
-					SurrealDB Cloud redefines the database experience, offering the power and
-					flexibility of SurrealDB without the pain of managing infrastructure.
+					ConnectomeDB Cloud redefines the database experience, offering the power and
+					flexibility of ConnectomeDB without the pain of managing infrastructure.
 				</Text>
 				<Group
 					mt={42}
@@ -60,7 +60,7 @@ export function CloudSplash() {
 						color="obsidian"
 						variant="light"
 						rightSection={<Icon path={iconOpen} />}
-						onClick={() => adapter.openUrl("https://surrealdb.com/cloud")}
+						onClick={() => adapter.openUrl("https://devpulse.app/cloud")}
 					>
 						Learn more
 					</Button>

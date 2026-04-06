@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Divider, Image, Paper, SimpleGrid, Stack, Text } from "@mantine/core";
-import { Icon, iconArrowUpRight, iconDownload, pictoConnectome } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight, iconDownload, pictoSurrealist } from "@surrealdb/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
 import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
@@ -53,7 +53,7 @@ export function NewDomainScreen() {
 						gap={0}
 					>
 						<Image
-							src={pictoConnectome}
+							src={pictoSurrealist}
 							w={85}
 						/>
 

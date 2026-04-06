@@ -3,7 +3,7 @@ import { QueryResponse } from "~/types";
 /**
  * An interface providing SurrealQL functionality
  */
-export interface SurrealQL {
+export interface rroQL {
 	/**
 	 * Validate a query and return an error message if invalid
 	 */

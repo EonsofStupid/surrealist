@@ -2,9 +2,9 @@ import { Value, SurrealQL as Wasm } from "@surrealdb/ql-wasm-3";
 import { CborCodec } from "surrealdb";
 import { adapter } from "~/adapter";
 import { QueryResponse } from "~/types";
-import { SurrealQL } from "./surrealql";
+import { rroQL } from "./surrealql";
 
-export class SurrealQLV3 implements SurrealQL {
+export class rroQLV3 implements rroQL {
 	constructor() {
 		adapter.log("SurrealQL", "Initializing SurrealQL V3");
 	}

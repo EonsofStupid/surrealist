@@ -95,7 +95,7 @@ export function createBaseSettings(): ConnectomeSettings {
 			databaseListMode: "grid",
 			urlAuthBase: "",
 			urlApiBase: "",
-			urlWebsiteBase: "https://surrealdb.com",
+			urlWebsiteBase: "https://devpulse.app",
 			urlApiTicketsBase: "",
 		},
 		gtm: {

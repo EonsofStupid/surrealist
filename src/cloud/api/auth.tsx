@@ -83,7 +83,7 @@ export async function openCloudAuthentication() {
 		code_challenge: pkce.challenge,
 		scope: "openid profile email offline_access",
 		state,
-		audience: "https://surrealdb.us.auth0.com/api/v2/",
+		audience: "https://devpulse.us.auth0.com/api/v2/",
 	});
 
 	adapter.log("Cloud", `Opening cloud authentication page (re: ${CALLBACK_ENDPOINT})`);
@@ -316,7 +316,7 @@ export async function acquireSession(accessToken: string, initial: boolean) {
 		} else {
 			showErrorNotification({
 				title: "Failed to authenticate",
-				content: "Please try signing into SurrealDB Cloud again",
+				content: "Please try signing into ConnectomeDB Cloud again",
 			});
 		}
 	} finally {

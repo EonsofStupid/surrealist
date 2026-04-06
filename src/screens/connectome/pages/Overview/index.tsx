@@ -32,7 +32,7 @@ import {
 	pictoSDBCloud,
 	pictoSidekick,
 	pictoSurrealDB,
-	pictoConnectome,
+	pictoSurrealist,
 	pictoUniversity,
 } from "@surrealdb/ui";
 import { MouseEvent, useState } from "react";
@@ -162,7 +162,7 @@ export function OverviewPage() {
 								mb={52}
 							>
 								<Image
-									src={pictoConnectome}
+									src={pictoSurrealist}
 									w={74}
 								/>
 
@@ -352,7 +352,7 @@ export function OverviewPage() {
 										<Box key={organization.info.id}>
 											<Group gap="xl">
 												<Box>
-													<Text>SurrealDB Cloud</Text>
+													<Text>ConnectomeDB Cloud</Text>
 													<Link href={`/o/${organization.info.id}`}>
 														<Group
 															gap="sm"
@@ -489,7 +489,7 @@ export function OverviewPage() {
 										mt={36}
 										fz={22}
 									>
-										Sign in to SurrealDB Cloud
+										Sign in to ConnectomeDB Cloud
 									</PrimaryTitle>
 									<StartCloud
 										action="Sign in"
@@ -502,10 +502,10 @@ export function OverviewPage() {
 											inherit
 											c="bright"
 										>
-											SurrealDB Cloud
+											ConnectomeDB Cloud
 										</Text>{" "}
 										redefines the database experience, offering the power and
-										flexibility of SurrealDB without the pain of managing
+										flexibility of ConnectomeDB without the pain of managing
 										infrastructure. Get your own free instance today.
 									</StartCloud>
 								</>
@@ -526,7 +526,7 @@ export function OverviewPage() {
 							>
 								<StartResource
 									title="Documentation"
-									subtitle="Explore the SurrealDB documentation"
+									subtitle="Explore the ConnectomeDB documentation"
 									image={pictoSurrealDB}
 									onClick={() =>
 										adapter.openUrl("https://surrealdb.com/docs/surrealdb")

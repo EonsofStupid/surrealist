@@ -302,7 +302,7 @@ export function extractEdgeRecords(table: TableInfo): [string[], string[]] {
  * Display a single schema permission
  *
  * @param permission Either a string which will be transformed into `WHERE ${permission}`, or a boolean representing FULL/NONE
- * @returns A string which is the permission in SurrealQL format
+ * @returns A string which is the permission in rroQL format
  */
 export function displaySchemaPermission(permission: string | boolean) {
 	return typeof permission === "string" ? `WHERE ${permission}` : permission ? "FULL" : "NONE";

@@ -20,7 +20,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import {
 	composeHttpConnection,
 	executeQuery,
-	getSurrealQL,
+	getRroQL,
 } from "~/screens/Connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
@@ -144,8 +144,8 @@ export function FunctionsView() {
 			});
 		} else {
 			const f = func.details as SchemaFunction;
-			const isInvalid = await getSurrealQL().validateQuery(f.block);
-			const block = isInvalid ? f.block : await getSurrealQL().formatQuery(f.block);
+			const isInvalid = await getRroQL().validateQuery(f.block);
+			const block = isInvalid ? f.block : await getRroQL().formatQuery(f.block);
 
 			setActive({
 				type: "function",
@@ -298,7 +298,7 @@ export function FunctionsView() {
 								icon={iconFunction}
 								snippet={{
 									language: "surrealql",
-									title: "SurrealQL",
+									title: "rroQL",
 									code: `
 										-- Define your functions with ease
 										DEFINE FUNCTION fn::greet($name: string) {
@@ -334,7 +334,7 @@ export function FunctionsView() {
 											rightSection={<Icon path={iconOpen} />}
 											onClick={() =>
 												adapter.openUrl(
-													"https://surrealdb.com/docs/surrealql/statements/define/function",
+													"https://devpulse.app/docs/rroql/statements/define/function",
 												)
 											}
 										>

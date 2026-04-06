@@ -337,7 +337,7 @@ export function ConnectomeToolbar() {
 					size="xs"
 					onClick={openCloudAuthentication}
 				>
-					Sign in to SurrealDB Cloud
+					Sign in to ConnectomeDB Cloud
 				</Button>
 			)}
 
@@ -536,7 +536,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {import.meta.env.SDB_VERSION}
+								ConnectomeDB {import.meta.env.SDB_VERSION}
 							</Text>
 						</Text>
 						<Text>
@@ -545,7 +545,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {version}
+								ConnectomeDB {version}
 							</Text>
 						</Text>
 					</HoverCard.Dropdown>

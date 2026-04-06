@@ -27,7 +27,7 @@ import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { showErrorNotification, showInfo, tryParseParams } from "~/shared/util/helpers";
 import classes from "./style.module.scss";
@@ -137,7 +137,7 @@ export function QueryPane({
 			setShowVariables(true);
 			updateConnection({
 				id: connection,
-				graphqlVariables: await getSurrealQL().formatValue(mergedVars, false, true),
+				graphqlVariables: await getRroQL().formatValue(mergedVars, false, true),
 			});
 		} catch {
 			showErrorNotification({
@@ -234,9 +234,9 @@ export function QueryPane({
 					title="GraphQL is not enabled on this remote instance"
 				>
 					<Stack>
-						Visit the SurrealDB documentation to learn how to enable GraphQL on your
+						Visit the ConnectomeDB documentation to learn how to enable GraphQL on your
 						instance
-						<Link href="https://surrealdb.com/docs/surrealdb/querying/graphql/Connectome">
+						<Link href="https://devpulse.app/docs/connectomedb/querying/graphql">
 							<Button
 								color="obsidian"
 								variant="light"

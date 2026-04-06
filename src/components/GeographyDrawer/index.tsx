@@ -8,7 +8,7 @@ import { Label } from "~/components/Label";
 import { LoadingContainer } from "~/components/LoadingContainer";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRroQL } from "~/screens/Connectome/connection/connection";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { CodeEditor } from "../CodeEditor";
 import type { GeographyInput } from "../GeographyMap";
@@ -27,7 +27,7 @@ export function GeographyDrawer({ opened, data, onClose }: GeographyDrawerProps)
 
 	useEffect(() => {
 		const loadData = async () => {
-			setGeoJSON(await getSurrealQL().formatValue(data));
+			setGeoJSON(await getRroQL().formatValue(data));
 		};
 		loadData();
 	}, [data]);
@@ -42,7 +42,7 @@ export function GeographyDrawer({ opened, data, onClose }: GeographyDrawerProps)
 
 		const parseCoords = async () => {
 			try {
-				const parsed = await getSurrealQL().parseValue<any>(geoJSON);
+				const parsed = await getRroQL().parseValue<any>(geoJSON);
 
 				if (cancelled) return;
 

@@ -85,7 +85,7 @@ export function SupportCapability({ name, description }: CapabilityBaseProps) {
 								</Text>
 								<Text>
 									This capability is only supported in a newer version of
-									SurrealDB.
+									ConnectomeDB.
 								</Text>
 							</Box>
 						</Group>

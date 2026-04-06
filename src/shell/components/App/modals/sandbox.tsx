@@ -54,7 +54,7 @@ export function SandboxModal() {
 						fz="xl"
 					>
 						The Connectome Sandbox provides an easy to use playground to test,
-						experiment, and learn SurrealQL.
+						experiment, and learn rroQL.
 					</Text>
 
 					<Text>

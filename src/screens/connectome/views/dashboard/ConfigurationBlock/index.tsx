@@ -100,7 +100,7 @@ export function ConfigurationBlock({
 						<PropertyValue
 							title="Version"
 							icon={iconTag}
-							value={`SurrealDB ${instance?.version}`}
+							value={`ConnectomeDB ${instance?.version}`}
 						/>
 						<PropertyValue
 							title="Backups"
