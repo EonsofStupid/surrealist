@@ -1,6 +1,6 @@
 import { Button, Checkbox, Group, Stack, Text } from "@mantine/core";
 import { closeAllModals, openModal } from "@mantine/modals";
-import { Icon, iconCheck } from "@surrealdb/ui";
+import { Icon, iconCheck } from "@rrflow/ui";
 import { Fragment, useState } from "react";
 import glowUrl from "~/shared/assets/images/glow.png";
 import { Link } from "~/components/Link";
@@ -85,7 +85,7 @@ function TermsModal({ conditions }: TermsModalProps) {
 	return (
 		<Stack>
 			<Text fz="lg">
-				Please accept our terms and conditions before getting started with SurrealDB Cloud.
+				Please accept our terms and conditions before getting started with RRFlow Cloud.
 			</Text>
 			<Checkbox
 				mt="xl"
@@ -113,7 +113,7 @@ function TermsModal({ conditions }: TermsModalProps) {
 			<Checkbox
 				checked={newsChecked}
 				onChange={updateNewsChecked}
-				label="By subscribing to SurrealDB, you will receive carefully curated content, information on new products and features plus details of educational events where you can engage with our team and community."
+				label="By subscribing to RRFlow, you will receive carefully curated content, information on new products and features plus details of educational events where you can engage with our team and community."
 			/>
 			<Group mt="xl">
 				<Button

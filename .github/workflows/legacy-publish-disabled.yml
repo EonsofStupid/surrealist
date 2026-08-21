@@ -13,5 +13,5 @@ jobs:
     steps:
       - name: Explain disabled upstream publishers
         run: |
-          echo "The inherited Surrealist Docker and S3 publishers are disabled."
+          echo "The inherited Connectome Docker and S3 publishers are disabled."
           echo "Configure RRFlow-owned registries and hosting before adding a replacement."

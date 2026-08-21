@@ -10,7 +10,7 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
-import { Icon, iconDownload, iconReset, iconTransfer, pictoBadgeAccess } from "@surrealdb/ui";
+import { Icon, iconDownload, iconReset, iconTransfer, pictoBadgeAccess } from "@rrflow/ui";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { LearnMore } from "~/components/LearnMore";
@@ -18,7 +18,7 @@ import { Spacer } from "~/components/Spacer";
 import { StarSparkles } from "~/components/StarSparkles";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
-import { getSurreal } from "~/screens/connectome/connection/connection";
+import { getRRFlow } from "~/screens/connectome/connection/connection";
 import { MigrationDiagnosticResult, MigrationResourceType } from "~/types";
 import { dispatchIntent } from "~/shared/util/intents";
 import { ResourceDetailPanel } from "../ResourceDetailPanel";
@@ -45,7 +45,7 @@ export function MigrationView() {
 		enabled: false,
 		refetchOnWindowFocus: false,
 		queryFn: async () => {
-			const [diagnostics] = await getSurreal()
+			const [diagnostics] = await getRRFlow()
 				.query("migration::diagnose()")
 				.collect<[MigrationDiagnosticResult[]]>();
 
@@ -126,10 +126,10 @@ export function MigrationView() {
 					<Stack>
 						<Group>
 							<Icon path={iconTransfer} />
-							<Title c="bright">Migrate to SurrealDB 3.0</Title>
+							<Title c="bright">Migrate to RRFlow 3.0</Title>
 						</Group>
 						<Text mt="sm">
-							To ensure a smooth migration to SurrealDB 3.0, this tool will help you
+							To ensure a smooth migration to RRFlow 3.0, this tool will help you
 							diagnose any issues with your database and ensure a smooth upgrade.
 						</Text>
 						<Group mt="md">
@@ -140,7 +140,7 @@ export function MigrationView() {
 							>
 								Check compatibility
 							</Button>
-							<Anchor href="https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x">
+							<Anchor href="https://github.com/EonsofStupid/connectome">
 								<Button
 									variant="light"
 									color="slate"
@@ -178,7 +178,7 @@ export function MigrationView() {
 								>
 									<Image
 										src={pictoBadgeAccess}
-										alt="SurrealDB"
+										alt="RRFlow"
 										w={52}
 									/>
 								</StarSparkles>
@@ -195,11 +195,11 @@ export function MigrationView() {
 						{hasResolvedIssues ? (
 							<Text fz="lg">
 								You have addressed all migration issues. Your database is ready to
-								be upgraded to SurrealDB 3.0.
+								be upgraded to RRFlow 3.0.
 							</Text>
 						) : (
 							<Text fz="lg">
-								Your database is already compatible with SurrealDB 3.0, no changes
+								Your database is already compatible with RRFlow 3.0, no changes
 								are required to upgrade.
 							</Text>
 						)}
@@ -207,14 +207,14 @@ export function MigrationView() {
 							fz="lg"
 							c="bright"
 						>
-							You will need to export your database and restore it in a SurrealDB 3.0
+							You will need to export your database and restore it in a RRFlow 3.0
 							instance.
 						</Text>
 						<LearnMore
 							my="md"
-							href="https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x"
+							href="https://github.com/EonsofStupid/connectome"
 						>
-							Learn more about upgrading to SurrealDB 3.0
+							Learn more about upgrading to RRFlow 3.0
 						</LearnMore>
 						<Group>
 							<Button

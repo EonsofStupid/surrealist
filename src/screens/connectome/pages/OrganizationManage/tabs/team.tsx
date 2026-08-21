@@ -7,7 +7,7 @@ import {
 	iconDotsVertical,
 	iconExitToAp,
 	iconServerSecure,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import {

@@ -136,7 +136,7 @@ fn main() {
             let process = state.0.lock().unwrap().take();
 
             if let Some(child) = process {
-                database::kill_surreal_process(child.id())
+                database::kill_rrflow_process(child.id())
             }
         }
         _ => (),

@@ -1,6 +1,6 @@
 import { Accordion, Badge, Center, Group, ScrollArea, Stack, Text } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
-import { surrealql } from "@surrealdb/codemirror";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import {
 	Icon,
 	iconBroadcastOff,
@@ -11,13 +11,13 @@ import {
 	iconHammer,
 	iconHelp,
 	iconPlus,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useContextMenu } from "mantine-contextmenu";
 import { useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { RelativeTime } from "~/components/RelativeTime";
-import { surqlRecordLinks } from "~/editor";
-import { type Formatter, useResultFormatter } from "~/hooks/surrealql";
+import { vyrmqlRecordLinks } from "~/editor";
+import { type Formatter, useResultFormatter } from "~/hooks/vyrmql";
 import { useRefreshTimer } from "~/hooks/timer";
 import { useInspector } from "~/providers/Inspector";
 import { executeQuery } from "~/screens/connectome/connection/connection";
@@ -27,7 +27,7 @@ import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import { attemptFormat, type PreviewProps } from ".";
 
 const LIVE_ACTION_COLORS: Record<string, [string, string]> = {
-	CREATE: ["surreal.3", iconPlus],
+	CREATE: ["rrflow.3", iconPlus],
 	UPDATE: ["orange", iconHammer],
 	DELETE: ["red", iconDelete],
 	CLOSE: ["obsidian", iconClose],
@@ -89,7 +89,7 @@ export function LivePreview({ query, isLive }: PreviewProps) {
 
 	const { showContextMenu } = useContextMenu();
 	const [format] = useResultFormatter();
-	const extensions = useMemo(() => [surrealql(), surqlRecordLinks(inspect)], [inspect]);
+	const extensions = useMemo(() => [vyrmql(), vyrmqlRecordLinks(inspect)], [inspect]);
 
 	useRefreshTimer(30_000);
 

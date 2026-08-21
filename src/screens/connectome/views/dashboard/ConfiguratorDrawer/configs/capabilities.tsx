@@ -9,7 +9,7 @@ import {
 	ThemeIcon,
 	Tooltip,
 } from "@mantine/core";
-import { Icon, iconWarning } from "@surrealdb/ui";
+import { Icon, iconWarning } from "@rrflow/ui";
 import { compareVersions, satisfies } from "compare-versions";
 import equal from "fast-deep-equal";
 import { useMemo, useState } from "react";
@@ -226,7 +226,7 @@ export function ConfigurationCapabilities({ instance, onClose }: ConfigurationCa
 								<FixedRuleSetCapability
 									data={ARBITRARY_QUERY_TARGETS}
 									name="Arbitrary queries"
-									description="Enable experimental SurrealDB functionality"
+									description="Enable experimental RRFlow functionality"
 									value={value}
 									onChange={setValue}
 									allowedField="allowed_arbitrary_query"
@@ -241,7 +241,7 @@ export function ConfigurationCapabilities({ instance, onClose }: ConfigurationCa
 						<FixedRuleSetCapability
 							data={experimentTargets}
 							name="Preview features"
-							description="Enable experimental SurrealDB functionality"
+							description="Enable experimental RRFlow functionality"
 							value={value}
 							onChange={setValue}
 							allowedField="allowed_experimental"

@@ -19,7 +19,7 @@ import {
 	iconReset,
 	iconStar,
 	iconTable,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect, useState } from "react";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { INSTANCE_PLAN_SUGGESTIONS, isOrganisationBillable } from "~/cloud/helpers";
@@ -319,7 +319,7 @@ export function ConnectomeToolbar() {
 		readChangelog();
 	});
 
-	const [isSupported, version] = useMinimumVersion(import.meta.env.SDB_VERSION);
+	const [isSupported, version] = useMinimumVersion(import.meta.env.RRFLOW_VERSION);
 	const isSandbox = id === "sandbox";
 	const showNS = !isSandbox && id && isConnected;
 	const showDB = showNS && namespace;
@@ -338,7 +338,7 @@ export function ConnectomeToolbar() {
 					size="xs"
 					onClick={openCloudAuthentication}
 				>
-					Sign in to SurrealDB Cloud
+					Sign in to RRFlow Cloud
 				</Button>
 			)}
 
@@ -537,7 +537,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {import.meta.env.SDB_VERSION}
+								RRFlow {import.meta.env.RRFLOW_VERSION}
 							</Text>
 						</Text>
 						<Text>
@@ -546,7 +546,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {version}
+								RRFlow {version}
 							</Text>
 						</Text>
 					</HoverCard.Dropdown>
@@ -620,11 +620,11 @@ export function ConnectomeToolbar() {
 
 					<Select
 						placeholder="Select a dataset"
-						value="surreal-deal-store-mini"
+						value="rrflow-deal-store-mini"
 						data={[
 							{
-								label: "Surreal Deal Store (Mini)",
-								value: "surreal-deal-store-mini",
+								label: "RRFlow Deal Store (Mini)",
+								value: "rrflow-deal-store-mini",
 							},
 						]}
 					/>

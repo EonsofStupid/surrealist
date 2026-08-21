@@ -16,7 +16,7 @@ import {
 	TextInput,
 	Tooltip,
 } from "@mantine/core";
-import { Icon, iconCheck, iconCopy, iconHelp, pictoChatHeart } from "@surrealdb/ui";
+import { Icon, iconCheck, iconCopy, iconHelp, pictoChatHeart } from "@rrflow/ui";
 import { ReactNode } from "react";
 import tier1DarkUrl from "~/shared/assets/images/dark/referral-tier-1.png";
 import tier2DarkUrl from "~/shared/assets/images/dark/referral-tier-2.png";
@@ -86,9 +86,9 @@ export function ReferralPage() {
 	const isAuthed = useIsAuthenticated();
 	const isLight = useIsLight();
 
-	const referralLink = `https://app.surrealdb.com/referral?code=${referralCodeQuery.data}`;
+	const referralLink = "https://github.com/EonsofStupid/connectome";
 	const shareOptions = {
-		title: "SurrealDB Cloud",
+		title: "RRFlow Cloud",
 		text: "Use my referral link to get started today!",
 		url: referralLink,
 	};
@@ -171,10 +171,10 @@ export function ReferralPage() {
 								>
 									<Box>
 										<PrimaryTitle>
-											Share SurrealDB Cloud and earn rewards
+											Share RRFlow Cloud and earn rewards
 										</PrimaryTitle>
 										<Text mt={2}>
-											The SurrealDB Cloud referral program allows you to
+											The RRFlow Cloud referral program allows you to
 											invite a friend in exchange for benefits.
 										</Text>
 									</Box>

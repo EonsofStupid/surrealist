@@ -10,7 +10,7 @@ export function DocsAuthTokens({ language }: TopicProps) {
 			await db.authenticate("...");
 		`,
 			rust: `
-			use surrealdb::opt::auth::Jwt;
+			use rrflow::opt::auth::Jwt;
 
 			let jwt = Jwt::from("...");
 			db.authenticate(jwt).await?;
@@ -42,8 +42,8 @@ export function DocsAuthTokens({ language }: TopicProps) {
 		<Article title="Tokens">
 			<div>
 				<p>
-					When signin in or up to SurrealDB, you receive a JWT token. This JWT, for the
-					time it lives, can be used to authenticate future sessions to SurrealDB. As an
+					When signin in or up to RRFlow, you receive a JWT token. This JWT, for the
+					time it lives, can be used to authenticate future sessions to RRFlow. As an
 					integrator, you are expected yourself to persist this token, if you need to
 					retrieve it at a later moment in time.
 				</p>

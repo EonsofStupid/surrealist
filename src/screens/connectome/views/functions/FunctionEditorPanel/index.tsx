@@ -1,24 +1,24 @@
 import type { EditorView } from "@codemirror/view";
 import { Alert, Badge, Box, Group, Stack } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconDownload, iconJSON, iconText, iconWarning } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconDownload, iconJSON, iconText, iconWarning } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import type { Updater } from "use-immer";
 import { adapter } from "~/adapter";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { SURQL_FILTER } from "~/constants";
+import { VYRMQL_FILTER } from "~/constants";
 import {
-	surqlCustomFunctionCompletion,
-	surqlLinting,
-	surqlTableCompletion,
-	surqlVariableCompletion,
+	vyrmqlCustomFunctionCompletion,
+	vyrmqlLinting,
+	vyrmqlTableCompletion,
+	vyrmqlVariableCompletion,
 } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildFunctionDefinition } from "~/shared/util/schema";
@@ -39,16 +39,16 @@ export function FunctionEditorPanel({
 	const [hasLineNumbers] = useSetting("appearance", "functionLineNumbers");
 
 	const [editor, setEditor] = useState<EditorView | null>(null);
-	const surqlVersion = useDatabaseVersionLinter(editor);
+	const vyrmqlVersion = useDatabaseVersionLinter(editor);
 
 	const downloadBody = useStable(() => {
-		adapter.saveFile(`Save function`, `${details.name}.surql`, [SURQL_FILTER], () =>
+		adapter.saveFile(`Save function`, `${details.name}.vyrmql`, [VYRMQL_FILTER], () =>
 			buildFunctionDefinition(details),
 		);
 	});
 
 	const formatFunction = useStable(async () => {
-		const isFunctionBlockInvalid = await getSurrealQL().validateQuery(details.block);
+		const isFunctionBlockInvalid = await getVyrmQL().validateQuery(details.block);
 		if (isFunctionBlockInvalid) {
 			showErrorNotification({
 				title: "Failed to format",
@@ -56,7 +56,7 @@ export function FunctionEditorPanel({
 			});
 			return;
 		}
-		const formattedFunctionBlock = await getSurrealQL().formatQuery(details.block);
+		const formattedFunctionBlock = await getVyrmQL().formatQuery(details.block);
 		onChange((draft) => {
 			(draft.details as SchemaFunction).block = formattedFunctionBlock;
 		});
@@ -74,14 +74,14 @@ export function FunctionEditorPanel({
 
 	const extensions = useMemo(
 		() => [
-			surrealql(),
-			surqlVersion,
-			surqlLinting(),
-			surqlVariableCompletion(resolveVariables),
-			surqlCustomFunctionCompletion(),
-			surqlTableCompletion(),
+			vyrmql(),
+			vyrmqlVersion,
+			vyrmqlLinting(),
+			vyrmqlVariableCompletion(resolveVariables),
+			vyrmqlCustomFunctionCompletion(),
+			vyrmqlTableCompletion(),
 		],
-		[surqlVersion],
+		[vyrmqlVersion],
 	);
 
 	return (

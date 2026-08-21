@@ -32,15 +32,15 @@ import {
 	iconSearch,
 	iconWarning,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
-import { SqlExportOptions } from "surrealdb";
+import { SqlExportOptions } from "~/vendor/rrflow-client";
 import { adapter, isBrowser } from "~/adapter";
 import { Option } from "~/components/Option";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { SURQL_FILTER } from "~/constants";
+import { VYRMQL_FILTER } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useConnection, useMinimumVersion } from "~/hooks/connection";
 import { useIntent } from "~/hooks/routing";
@@ -115,7 +115,7 @@ export function DataExportModal() {
 	const exportFlags = useSet<ExportFlag>();
 	const exportTables = useSet<string>();
 
-	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.surql`;
+	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.vyrmql`;
 
 	const handleExport = useStable(async () => {
 		openedHandle.close();
@@ -137,7 +137,7 @@ export function DataExportModal() {
 			const success = await adapter.saveFile(
 				"Save database export",
 				fileName,
-				[SURQL_FILTER],
+				[VYRMQL_FILTER],
 				async () => {
 					return requestDatabaseExport({
 						users: exportFlags.has("users"),
@@ -170,7 +170,7 @@ export function DataExportModal() {
 				if (exportV3) {
 					tagEvent("migration_export");
 				} else {
-					tagEvent("export", { extension: "surql" });
+					tagEvent("export", { extension: "vyrmql" });
 				}
 			} else {
 				updateNotification({
@@ -251,7 +251,7 @@ export function DataExportModal() {
 						icon={<Icon path={iconHelp} />}
 						color="blue"
 					>
-						You are exporting your database for use with SurrealDB 3.0.
+						You are exporting your database for use with RRFlow 3.0.
 					</Alert>
 				)}
 
@@ -265,7 +265,7 @@ export function DataExportModal() {
 						color="orange"
 					>
 						Your {isBrowser ? "browser" : "environment"} does not support streaming
-						exports. For larger exports, please use the SurrealDB CLI.
+						exports. For larger exports, please use the RRFlow CLI.
 					</Alert>
 				) : streamSupport === "unsupported-engine" ? (
 					<Alert

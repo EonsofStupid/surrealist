@@ -10,7 +10,7 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useDebouncedValue, useInputState } from "@mantine/hooks";
-import { Icon, iconBook } from "@surrealdb/ui";
+import { Icon, iconBook } from "@rrflow/ui";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import { adapter } from "~/adapter";
@@ -24,7 +24,7 @@ import { tagEvent } from "~/shared/util/analytics";
 import { Y_SLIDE_TRANSITION } from "~/shared/util/helpers";
 import classes from "../style.module.scss";
 
-const ENDPOINT = "https://surrealdb.com/api/docs/search";
+const ENDPOINT = "https://github.com/EonsofStupid/connectome";
 
 interface Result {
 	id: string;
@@ -52,7 +52,7 @@ export function DocumentationModal() {
 
 			const params = new URLSearchParams();
 
-			params.append("hostname", "main--surrealdb-docs.netlify.app");
+			params.append("hostname", "main--rrflow-docs.netlify.app");
 			params.append("query", searchQuery);
 
 			const response = await fetch(`${ENDPOINT}?${params.toString()}`);
@@ -76,7 +76,7 @@ export function DocumentationModal() {
 
 	const openDocumentation = useStable((doc: Result) => {
 		openHandle.close();
-		adapter.openUrl(`https://surrealdb.com${doc.url}`);
+		adapter.openUrl(doc.url);
 	});
 
 	const [handleKeyDown, selected] = useKeyNavigation(data ?? [], openDocumentation);
@@ -116,7 +116,7 @@ export function DocumentationModal() {
 						path={iconBook}
 						size="sm"
 					/>
-					<Text>SurrealDB Documentation</Text>
+					<Text>RRFlow Documentation</Text>
 					{isFetching && (
 						<Loader
 							ml="sm"

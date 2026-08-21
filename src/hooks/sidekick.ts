@@ -1,11 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { RecordId, surql } from "surrealdb";
+import { RecordId, vyrmql } from "~/vendor/rrflow-client";
 import { useContextConnection } from "~/providers/Context";
 import { SidekickChat, SidekickChatMessage } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 
 export function useSidekickChatsQuery(search?: string) {
-	const [surreal, isAvailable] = useContextConnection();
+	const [rrflow, isAvailable] = useContextConnection();
 
 	return useQuery({
 		queryKey: ["sidekick", "chats", { search }],
@@ -13,8 +13,8 @@ export function useSidekickChatsQuery(search?: string) {
 		refetchInterval: 30_000,
 		queryFn: async () => {
 			try {
-				const [conversations] = await surreal
-					.query(surql`
+				const [conversations] = await rrflow
+					.query(vyrmql`
 					SELECT *
 					FROM sidekick_chat
 					WHERE !${search} || title = <regex>${search} || <-sent_in<-sidekick_message.content ?= <regex>${search}
@@ -37,13 +37,13 @@ export function useSidekickChatsQuery(search?: string) {
 }
 
 export function useSidekickMessagesMutation() {
-	const [surreal] = useContextConnection();
+	const [rrflow] = useContextConnection();
 
 	return useMutation({
 		mutationFn: async (chatId: RecordId) => {
 			try {
-				const [messages] = await surreal
-					.query(surql`
+				const [messages] = await rrflow
+					.query(vyrmql`
 					SELECT * FROM ${chatId}<-sent_in<-sidekick_message ORDER BY id ASC;
 				`)
 					.collect<[SidekickChatMessage[]]>();
@@ -63,12 +63,12 @@ export function useSidekickMessagesMutation() {
 }
 
 export function useSidekickRenameMutation() {
-	const [surreal] = useContextConnection();
+	const [rrflow] = useContextConnection();
 	const queryClient = useQueryClient();
 
 	return useMutation({
 		mutationFn: async ({ chatId, newName }: { chatId: RecordId; newName: string }) => {
-			await surreal.query(surql`UPDATE ${chatId} SET title = ${newName}`);
+			await rrflow.query(vyrmql`UPDATE ${chatId} SET title = ${newName}`);
 		},
 		onMutate: async ({ chatId, newName }) => {
 			await queryClient.cancelQueries({ queryKey: ["sidekick", "chats"] });
@@ -89,13 +89,13 @@ export function useSidekickRenameMutation() {
 }
 
 export function useSidekickDeleteMutation() {
-	const [surreal] = useContextConnection();
+	const [rrflow] = useContextConnection();
 	const queryClient = useQueryClient();
 
 	return useMutation({
 		mutationFn: async (chatId: RecordId) => {
 			try {
-				await surreal.query(surql`
+				await rrflow.query(vyrmql`
 					DELETE ${chatId}<-sent_in<-sidekick_message, ${chatId}
 				`);
 			} catch (error) {

@@ -1,5 +1,5 @@
 import { Badge, Group, Image, Select, Stack, TextInput } from "@mantine/core";
-import { Icon, iconCheck } from "@surrealdb/ui";
+import { Icon, iconCheck } from "@rrflow/ui";
 import { ChangeEvent, useLayoutEffect } from "react";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { REGION_FLAGS } from "~/constants";
@@ -30,7 +30,7 @@ export function DeploymentSection({ organisation, details, setDetails }: DeployS
 	const versionSource = details.startingData.backupOptions?.backup?.valid_versions ?? versions;
 	const versionList = versionSource.map((ver) => ({
 		value: ver,
-		label: `SurrealDB ${ver}`,
+		label: `RRFlow ${ver}`,
 	}));
 
 	const updateName = useStable((event: ChangeEvent<HTMLInputElement>) => {
@@ -111,7 +111,7 @@ export function DeploymentSection({ organisation, details, setDetails }: DeployS
 			<Select
 				label="Version"
 				placeholder="Loading versions..."
-				description="Select the SurrealDB version for your instance"
+				description="Select the RRFlow version for your instance"
 				data={versionList}
 				value={details.version}
 				onChange={updateVersion}

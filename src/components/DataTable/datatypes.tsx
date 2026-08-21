@@ -7,7 +7,7 @@ import {
 	iconExplorer,
 	iconFile,
 	iconXml,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { convert } from "geo-coordinates-parser";
 import { useEffect, useState } from "react";
@@ -25,8 +25,8 @@ import {
 	GeometryPolygon,
 	RecordId,
 	Uuid,
-} from "surrealdb";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+} from "~/vendor/rrflow-client";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";
@@ -220,7 +220,7 @@ function ObjectCell(props: { value: any }) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getSurrealQL().formatValue(props.value, false, true);
+			const result = await getVyrmQL().formatValue(props.value, false, true);
 			if (!cancelled) {
 				setFormatted(result);
 			}

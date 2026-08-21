@@ -1,5 +1,5 @@
 import { Box, Button, Paper, Text, Title } from "@mantine/core";
-import { Icon, iconOpen } from "@surrealdb/ui";
+import { Icon, iconOpen } from "@rrflow/ui";
 import { adapter } from "~/adapter";
 import { DriverSelector } from "~/components/DriverSelector";
 import { DRIVERS } from "~/constants";
@@ -14,8 +14,8 @@ export function DocsGlobalIntroduction() {
 		<Article>
 			<div>
 				<p>
-					SurrealDB offers a rich set of client libraries and connection protocols to make
-					it easy to integrate SurrealDB into your application. This page provides
+					RRFlow offers a rich set of client libraries and connection protocols to make
+					it easy to integrate RRFlow into your application. This page provides
 					documentation for using these libraries and protocols within the context of your
 					database and schema. You can change the language of the code examples by
 					selecting a different language from the dropdown in the top right corner of this
@@ -28,7 +28,7 @@ export function DocsGlobalIntroduction() {
 					Client libraries
 				</Title>
 				<p>
-					Client libraries provide the most streamlined way to interact with SurrealDB.
+					Client libraries provide the most streamlined way to interact with RRFlow.
 					They handle the low-level details of the connection and provide a high-level API
 					for interacting with the database. We provide client libraries for a variety of
 					languages, including Rust, JavaScript, Python, and many more.
@@ -40,7 +40,7 @@ export function DocsGlobalIntroduction() {
 					Using the CLI
 				</Title>
 				<p>
-					The SurrealDB CLI provides a convenient way to interact with your database on
+					The RRFlow CLI provides a convenient way to interact with your database on
 					the command line. It provides a simple interface for executing queries, which is
 					especially useful for limited environments.
 				</p>

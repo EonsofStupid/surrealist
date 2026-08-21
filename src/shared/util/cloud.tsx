@@ -79,8 +79,8 @@ export function measureComputeCost(measurements: CloudMeasurement[]) {
 /**
  * Open the changelog for the given version
  */
-export function openSurrealChangelog(version: string) {
-	adapter.openUrl(`https://surrealdb.com/releases#v${version.replaceAll(".", "-")}`);
+export function openRRFlowChangelog(version: string) {
+	adapter.openUrl(`https://github.com/EonsofStupid/connectome/releases/tag/v${version}`);
 }
 
 /**
@@ -106,7 +106,7 @@ export function getTypeCategoryName(category: string) {
 export function getTypeCategoryDescription(category: string) {
 	switch (category) {
 		case "free":
-			return "Explore SurrealDB with a free instance";
+			return "Explore RRFlow with a free instance";
 		case "development":
 			return "Burstable instances for development";
 		case "production":

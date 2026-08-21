@@ -1,6 +1,6 @@
-# Sprint #001 — Identity Rebrand (Surrealist → Cortex DevTools)
+# Sprint #001 — Identity Rebrand (Connectome → Cortex DevTools)
 
-> **Goal**: Update all branding touchpoints from Surrealist to Cortex DevTools
+> **Goal**: Update all branding touchpoints from Connectome to Cortex DevTools
 > **Source**: Parking Lot #001 (COMMITTED)
 > **Priority**: P0
 > **Scope**: Identity files only — no directory restructure in this sprint
@@ -14,11 +14,11 @@
 - **Lines**: 2, 7-8
 - **Current code**:
     ```json
-    "name": "surrealist",
+    "name": "connectome",
     ```
     ```json
     "authors": [
-        "SurrealDB"
+        "RRFlow"
     ],
     ```
 - **Target code**:
@@ -41,17 +41,17 @@
 - **Lines**: 2, 4, 79, 72-74
 - **Current code**:
     ```json
-    "productName": "Surrealist",
+    "productName": "Connectome",
     ```
     ```json
-    "identifier": "com.surrealdb.surrealist",
+    "identifier": "com.rrflow.connectome",
     ```
     ```json
-    "schemes": ["surrealist"]
+    "schemes": ["connectome"]
     ```
     ```json
     "endpoints": [
-        "https://app.surrealdb.com/latest.json"
+        "https://127.0.0.1:8000/latest.json"
     ]
     ```
 - **Target code**:
@@ -80,12 +80,12 @@
 - **Lines**: 2-7
 - **Current code**:
     ```toml
-    name = "surrealist"
+    name = "connectome"
     version = "0.0.0"
-    description = "Powerful graphical SurrealDB query playground and database explorer for Browser and Desktop"
-    authors = ["SurrealDB"]
+    description = "Powerful graphical RRFlow query playground and database explorer for Browser and Desktop"
+    authors = ["RRFlow"]
     license = "MIT"
-    repository = "https://github.com/surrealdb/surrealist"
+    repository = "https://github.com/EonsofStupid/connectome"
     ```
 - **Target code**:
     ```toml
@@ -94,7 +94,7 @@
     description = "Cortex DevTools — Visual IDE for the MAESTRO pipeline"
     authors = ["DevPulse / Jesse Hall"]
     license = "MIT"
-    repository = "https://github.com/EonsofStupid/surrealist"
+    repository = "https://github.com/EonsofStupid/connectome"
     ```
 - **Rationale**: Cortex engine identity, Jesse's fork repo
 
@@ -104,7 +104,7 @@
 
 #### `index.html`
 
-- **Current code**: Contains `<title>Surrealist</title>` (exact line TBD — read file first)
+- **Current code**: Contains `<title>Connectome</title>` (exact line TBD — read file first)
 - **Target code**: `<title>Cortex DevTools</title>`
 - **Rationale**: Window title change
 

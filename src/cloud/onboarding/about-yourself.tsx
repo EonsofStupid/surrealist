@@ -1,6 +1,6 @@
 import { Alert, Button, Group, Select, Stack, Text, TextInput } from "@mantine/core";
 import { closeAllModals, openModal } from "@mantine/modals";
-import { Icon, iconChevronRight, iconErrorCircle } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconErrorCircle } from "@rrflow/ui";
 import { ErrorBoundary } from "react-error-boundary";
 import { useImmer } from "use-immer";
 import glowUrl from "~/shared/assets/images/glow.png";

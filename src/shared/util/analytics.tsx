@@ -6,7 +6,7 @@ import { featureFlags } from "./feature-flags";
 
 let incrementalId = 1;
 
-export const HOSTNAME = "app.surrealdb.com";
+export const HOSTNAME = "127.0.0.1:8000";
 
 function generateGaCookieValue() {
 	const randomNumber = Math.floor(Math.random() * 2147483647);

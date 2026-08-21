@@ -77,7 +77,7 @@ export function useCloudPricingQuery() {
 		queryKey: ["cloud", "pricing"],
 		queryFn: async () => {
 			const isCustom = flags.website_base === "custom";
-			const websiteBase = isCustom ? websiteSetting : "https://surrealdb.com";
+			const websiteBase = isCustom ? websiteSetting : "https://github.com/EonsofStupid/connectome";
 			const response = await fetch(`${websiteBase}/api/cloud/pricing.json`);
 			const plans: PricingResult = await response.json();
 

@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Divider, Group, ScrollArea, Slider, Stack, Text } from "@mantine/core";
-import { Icon, iconChevronRight, iconClock, iconHelp, iconWarning } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconClock, iconHelp, iconWarning } from "@rrflow/ui";
 import { add, formatDistance } from "date-fns";
 import { useMemo, useState } from "react";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
@@ -131,8 +131,8 @@ export function ConfigurationStorage({ instance, onClose, onUpgrade }: Configura
 										icon={<Icon path={iconHelp} />}
 									>
 										If you require more storage space, please contact support at{" "}
-										<Link href="mailto:support@surrealdb.com">
-											support@surrealdb.com
+										<Link href="mailto:developer@example.com">
+											developer@example.com
 										</Link>
 									</Alert>
 								) : (

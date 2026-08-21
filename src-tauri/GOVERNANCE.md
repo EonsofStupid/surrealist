@@ -32,7 +32,7 @@ Currently registered plugins:
 ## Future Tauri Commands (Phase 1+)
 
 Per the roadmap (`docs/roadmap/clyffy/architecture.md`):
-- `surreal_query` — SurrealDB spoke
+- `rrflow_query` — RRFlow spoke
 - `qdrant_search` — Qdrant spoke
 - `rro_inspect` — RRO spoke
 - `pipeline_config` — Pipeline spoke

@@ -10,7 +10,7 @@ import {
 	iconQuery,
 	iconRelation,
 	iconTag,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { PropertyValue } from "~/components/PropertyValue";
 import { useStable } from "~/hooks/stable";
@@ -100,7 +100,7 @@ export function ConfigurationBlock({
 						<PropertyValue
 							title="Version"
 							icon={iconTag}
-							value={`SurrealDB ${instance?.version}`}
+							value={`RRFlow ${instance?.version}`}
 						/>
 						<PropertyValue
 							title="Backups"

@@ -1,16 +1,16 @@
 # Cortex DevTools — Spoke Specifications
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
-## SurrealDB Spoke
+## RRFlow Spoke
 
-**Inheritance**: ~80% from Surrealist
+**Inheritance**: ~80% from Connectome
 
 ### What We Inherit
-- Query editor (CodeMirror with SurrealQL syntax)
+- Query editor (CodeMirror with VyrmQL syntax)
 - Table explorer
 - Schema designer
 - Graph visualization (Sigma.js)
@@ -19,13 +19,13 @@
 ### What We Add
 - Teaching annotations on every schema concept
 - Terminology engine integration (see [terminology-engine.md](./terminology-engine.md))
-- Rust bridge integration via `surreal_query` command
+- Rust bridge integration via `rrflow_query` command
 - Graph viz reuse for RRO entity relationships
 
 ### What We Strip
 - Cloud connection management
 - Multi-instance SaaS management
-- Auth UI for Surreal Cloud
+- Auth UI for RRFlow Cloud
 - Intercom integration
 
 ---
@@ -85,7 +85,7 @@ Interactive @xyflow/react graph showing **entity → sentence → passage** rela
 
 ### Complexity Heatmap
 All RROs colored by complexity score:
-- **Red** = will escalate to SurrealDB graph traversal
+- **Red** = will escalate to RRFlow graph traversal
 - **Blue** = handled locally by Qdrant vector search
 - Visual explanation of the threshold-gated routing
 

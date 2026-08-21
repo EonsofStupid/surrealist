@@ -1,5 +1,5 @@
 import { Box, Button, Group, Paper, Stack, Text } from "@mantine/core";
-import { Icon, iconOpen, iconPlus, pictoHealthChat } from "@surrealdb/ui";
+import { Icon, iconOpen, iconPlus, pictoHealthChat } from "@rrflow/ui";
 import { navigate } from "wouter/use-browser-location";
 import { adapter } from "~/adapter";
 import { useCloudOrganizationTicketsQuery } from "~/cloud/queries/context";
@@ -79,7 +79,7 @@ export function OrganizationSupportTab({ organization }: OrganizationTabProps) {
 								<PrimaryTitle>Support Plan required</PrimaryTitle>
 								<Text>
 									Upgrade to a Support Plan to get expedited support directly from
-									the SurrealDB team, so you're never left hanging when it matters
+									the RRFlow team, so you're never left hanging when it matters
 									the most.
 								</Text>
 							</Group>
@@ -114,7 +114,7 @@ function SupportPlan({ name, description, organization }: SupportPlanProps) {
 						if (flags.support_tickets) {
 							navigate(`/o/${organization}/support-plans`);
 						} else {
-							adapter.openUrl("https://surrealdb.com/pricing#support");
+							adapter.openUrl("https://github.com/EonsofStupid/connectome");
 						}
 					}}
 					rightSection={

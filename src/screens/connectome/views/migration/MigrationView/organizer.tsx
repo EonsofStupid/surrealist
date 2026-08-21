@@ -1,4 +1,4 @@
-import { RecordId } from "surrealdb";
+import { RecordId } from "~/vendor/rrflow-client";
 import { MigrationDiagnosticResult, MigrationResourceType } from "~/types";
 
 /*

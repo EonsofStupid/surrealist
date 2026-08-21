@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Divider, Image, Paper, SimpleGrid, Stack, Text } from "@mantine/core";
-import { Icon, iconArrowUpRight, iconDownload, pictoBrain } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight, iconDownload, pictoBrain } from "@rrflow/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
 import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
@@ -15,10 +15,10 @@ import { backupConfig } from "~/shared/util/config";
 
 export function NewDomainScreen() {
 	const isLight = useIsLight();
-	const [targetLink, setTargetLink] = useState("https://app.surrealdb.com");
+	const [targetLink, setTargetLink] = useState("https://github.com/EonsofStupid/connectome");
 
 	const saveBackup = useStable(() => {
-		setTargetLink("https://app.surrealdb.com?intent=open-settings:tab=manage-data");
+		setTargetLink("https://github.com/EonsofStupid/connectome");
 		adapter.saveFile(
 			"Save config backup",
 			"Connectome-backup.json",
@@ -75,9 +75,9 @@ export function NewDomainScreen() {
 								We've moved to{" "}
 								<Link
 									inherit
-									href="https://app.surrealdb.com"
+									href="https://github.com/EonsofStupid/connectome"
 								>
-									app.surrealdb.com
+									127.0.0.1:8000
 								</Link>{" "}
 								as part of our ongoing efforts to improve Connectome and consolidate
 								our products into a single, unified platform.
@@ -88,7 +88,7 @@ export function NewDomainScreen() {
 								title="Export your web configuration"
 							>
 								You can export your current web app configuration and import it into
-								app.surrealdb.com to keep your existing connections, queries, and
+								127.0.0.1:8000 to keep your existing connections, queries, and
 								other settings.
 							</Alert>
 							<SimpleGrid cols={2}>
@@ -107,7 +107,7 @@ export function NewDomainScreen() {
 										fullWidth
 										flex={1}
 									>
-										Go to app.surrealdb.com
+										Go to 127.0.0.1:8000
 									</Button>
 								</a>
 							</SimpleGrid>

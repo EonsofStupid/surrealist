@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Modal, Select, SimpleGrid, Stack } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -8,7 +8,7 @@ import { DRIVERS } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
@@ -118,10 +118,10 @@ function HighlightTool({ value, onChange, lang }: HighlightToolProps) {
 	const syntaxTheme = useConfigStore((state) => state.settings.appearance.syntaxTheme);
 
 	const format = useCallback(async () => {
-		onChange(await getSurrealQL().formatQuery(value));
+		onChange(await getVyrmQL().formatQuery(value));
 	}, [value, onChange]);
 
-	const extensions = useMemo(() => (lang === "cli" ? [surrealql()] : []), [lang]);
+	const extensions = useMemo(() => (lang === "cli" ? [vyrmql()] : []), [lang]);
 
 	// const editorController = useEditor({
 	// 	extensions,

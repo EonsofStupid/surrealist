@@ -44,7 +44,7 @@ import {
 	iconTune,
 	iconUpload,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { dash } from "radash";
 import { useMemo } from "react";

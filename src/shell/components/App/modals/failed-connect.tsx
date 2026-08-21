@@ -1,5 +1,5 @@
 import { ActionIcon, Box, Dialog, Group, Text, ThemeIcon } from "@mantine/core";
-import { Icon, iconClose, iconWarning } from "@surrealdb/ui";
+import { Icon, iconClose, iconWarning } from "@rrflow/ui";
 import { useStable } from "~/hooks/stable";
 import { useCloudStore } from "~/stores/cloud";
 import classes from "../style.module.scss";
@@ -47,7 +47,7 @@ export function FailedConnectDialog() {
 						fw={600}
 						c="bright"
 					>
-						Failed to connect to SurrealDB Cloud
+						Failed to connect to RRFlow Cloud
 					</Text>
 					<Text mt={4}>
 						<Text c="gray.5">

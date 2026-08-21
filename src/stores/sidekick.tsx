@@ -1,4 +1,4 @@
-import { RecordId } from "surrealdb";
+import { RecordId } from "~/vendor/rrflow-client";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { chatOf, messageOf } from "~/components/Sidekick/helpers";

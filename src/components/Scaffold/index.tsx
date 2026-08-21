@@ -8,7 +8,6 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useIsLight, useThemePreference } from "~/hooks/theme";
 import { CommandsProvider } from "~/providers/Commands";
 import { ConfirmationProvider } from "~/providers/Confirmation";
-import { ContextProvider } from "~/providers/Context";
 import { FeatureFlagsProvider } from "~/providers/FeatureFlags";
 import { Connectome_THEME } from "~/shared/util/mantine";
 import { ScaffoldErrorHandler } from "./error";
@@ -40,9 +39,7 @@ export function Scaffold({ children }: PropsWithChildren) {
 						>
 							<ConfirmationProvider>
 								<ModalsProvider>
-									<CommandsProvider>
-										<ContextProvider>{children}</ContextProvider>
-									</CommandsProvider>
+									<CommandsProvider>{children}</CommandsProvider>
 								</ModalsProvider>
 							</ConfirmationProvider>
 						</ContextMenuProvider>

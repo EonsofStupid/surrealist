@@ -11,7 +11,7 @@ import {
 	Text,
 	UnstyledButton,
 } from "@mantine/core";
-import { Icon, iconArrowLeft, iconOpen } from "@surrealdb/ui";
+import { Icon, iconArrowLeft, iconOpen } from "@rrflow/ui";
 import { navigate } from "wouter/use-browser-location";
 import { adapter } from "~/adapter";
 import { useSupportArticleQuery } from "~/cloud/queries/context";
@@ -130,9 +130,9 @@ export function ArticlePage({ id }: ArticlePageProps) {
 										<Text
 											fz="sm"
 											fw={600}
-											c="surreal"
+											c="rrflow"
 										>
-											{article?.author?.name ?? "SurrealDB Team"}
+											{article?.author?.name ?? "RRFlow Team"}
 										</Text>
 									</Group>
 									<Text
@@ -169,7 +169,7 @@ export function ArticlePage({ id }: ArticlePageProps) {
 								rightSection={<Icon path={iconOpen} />}
 								onClick={() => adapter.openUrl(article.url)}
 							>
-								View on SurrealDB Support
+								View on RRFlow Support
 							</Button>
 						</Group>
 					</Stack>

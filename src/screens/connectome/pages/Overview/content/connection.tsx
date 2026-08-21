@@ -17,9 +17,9 @@ import {
 	iconDelete,
 	iconDotsVertical,
 	iconEdit,
-	iconSurreal,
+	iconDatabase,
 	Spacer,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { PropsWithChildren, useRef } from "react";
 import { SANDBOX } from "~/constants";
 import { useStable } from "~/hooks/stable";
@@ -126,7 +126,7 @@ export function StartConnection({
 							>
 								<Icon
 									size={isSandbox ? "lg" : "md"}
-									path={isSandbox ? iconSurreal : USER_ICONS[connection.icon]}
+									path={isSandbox ? iconDatabase : USER_ICONS[connection.icon]}
 								/>
 							</ThemeIcon>
 							<Stack gap={0}>
@@ -153,7 +153,7 @@ export function StartConnection({
 									)}
 								</Group>
 								<Text truncate>
-									{isSandbox ? "Offline RRFlow-compatible playground" : target}
+									{isSandbox ? "Offline RRFlow sandbox" : target}
 								</Text>
 							</Stack>
 						</Group>

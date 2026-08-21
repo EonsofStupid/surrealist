@@ -13,9 +13,9 @@ import {
 } from "@mantine/core";
 
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconCheck, iconPlus } from "@surrealdb/ui";
+import { Icon, iconCheck, iconPlus } from "@rrflow/ui";
 import { useLayoutEffect, useState } from "react";
-import { escapeIdent } from "surrealdb";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { Form } from "~/components/Form";
 import { CodeInput } from "~/components/Inputs";
 import { LearnMore } from "~/components/LearnMore";
@@ -193,7 +193,7 @@ export function UserEditorModal({ level, existing, opened, onClose }: UserEditor
 								onChange={setSessionDuration}
 							/>
 
-							<LearnMore href="https://surrealdb.com/docs/surrealdb/security/authentication#expiration">
+							<LearnMore href="https://github.com/EonsofStupid/connectome">
 								Learn more about session and token durations
 							</LearnMore>
 						</Stack>

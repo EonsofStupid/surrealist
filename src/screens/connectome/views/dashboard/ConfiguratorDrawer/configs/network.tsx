@@ -11,7 +11,7 @@ import {
 	Switch,
 	Text,
 } from "@mantine/core";
-import { Icon, iconAuth, iconTarget, Spacer } from "@surrealdb/ui";
+import { Icon, iconAuth, iconTarget, Spacer } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
 import { useUpdateInstanceAccessTypeMutation } from "~/cloud/mutations/network";
@@ -177,7 +177,7 @@ function TrafficCard({ icon, label, description, value, onChange }: TrafficCardP
 				role="radio"
 				withBorder
 				style={{
-					borderColor: value ? "var(--surreal-focus-outline)" : undefined,
+					borderColor: value ? "var(--rrflow-focus-outline)" : undefined,
 					cursor: "pointer",
 				}}
 			>

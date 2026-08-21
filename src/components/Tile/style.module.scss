@@ -13,7 +13,7 @@
 	}
 
 	&[data-active] {
-		border-color: var(--mantine-color-surreal-6);
+		border-color: var(--mantine-color-rrflow-6);
 	}
 
 	&:focus-visible {
@@ -21,7 +21,7 @@
 		border-color: var(--mantine-color-obsidian-3);
 
 		&[data-active] {
-			border-color: var(--mantine-color-surreal-3);
+			border-color: var(--mantine-color-rrflow-3);
 		}
 	}
 }

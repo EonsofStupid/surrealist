@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Group, Paper, ScrollArea, Stack, Text } from "@mantine/core";
-import { Icon, iconDownload, iconUpload } from "@surrealdb/ui";
+import { Icon, iconDownload, iconUpload } from "@rrflow/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
@@ -180,7 +180,7 @@ export function ImportExport({ instance, onClose }: ImportExportProps) {
 										mt="sm"
 										fz="lg"
 									>
-										Save or restore your instance's database from a surql file.
+										Save or restore your instance's database from a vyrmql file.
 										This only exports or imports data from or to the selected
 										namespace and database.
 									</Text>
@@ -188,13 +188,13 @@ export function ImportExport({ instance, onClose }: ImportExportProps) {
 								<Stack>
 									<ImportExportCard
 										title="Import"
-										description="Import data into the selected database from a surql file"
+										description="Import data into the selected database from a vyrmql file"
 										icon={iconUpload}
 										onClick={handleSchemaImport}
 									/>
 									<ImportExportCard
 										title="Export"
-										description="Export the selected database to a surql file"
+										description="Export the selected database to a vyrmql file"
 										icon={iconDownload}
 										onClick={handleSchemaExport}
 									/>

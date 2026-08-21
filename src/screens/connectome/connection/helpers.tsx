@@ -1,5 +1,5 @@
 import { objectify } from "radash";
-import type { AccessRecordAuth, ProvidedAuth } from "surrealdb";
+import type { AccessRecordAuth, ProvidedAuth } from "~/vendor/rrflow-client";
 import { fetchAPI } from "~/cloud/api";
 import type { Authentication } from "~/types";
 import { getSetting } from "~/shared/util/config";

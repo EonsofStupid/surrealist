@@ -3,7 +3,7 @@
 interface ImportMetaEnv {
 	DATE: string;
 	VERSION: string;
-	SDB_VERSION: string;
+	RRFLOW_VERSION: string;
 	MODE: string;
 	GTM_ID: string;
 }

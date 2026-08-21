@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a bug in Surrealist
+description: Report a bug in Connectome
 title: "Bug: "
 labels: ["Bug", "Triage"]
 type: "Bug"
@@ -37,7 +37,7 @@ body:
   - type: textarea
     id: Environment
     attributes:
-      label: Surrealist Environment
+      label: Connectome Environment
       description: |
         Paste your environment here by following these steps
         1. Open the settings menu
@@ -58,7 +58,7 @@ body:
     type: checkboxes
     attributes:
       label: Is there an existing issue for this?
-      description: Please search [our issues](https://github.com/surrealdb/surrealist/issues) to see if this bug already exists.
+      description: Please search [our issues](https://github.com/EonsofStupid/connectome) to see if this bug already exists.
       options:
         - label: I have searched the existing issues
           required: true
@@ -66,7 +66,7 @@ body:
     type: checkboxes
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/surrealdb/surrealist/blob/main/CODE_OF_CONDUCT.md)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/EonsofStupid/connectome)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true

@@ -1,11 +1,11 @@
 import { type BoxProps, type ElementProps, Group } from "@mantine/core";
-import { Icon, iconArrowUpRight } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight } from "@rrflow/ui";
 import type { MouseEvent } from "react";
 import { useEffect, useState } from "react";
-import type { RecordId } from "surrealdb";
+import type { RecordId } from "~/vendor/rrflow-client";
 import { useStable } from "~/hooks/stable";
 import { useInspector } from "~/providers/Inspector";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { HighlightedText } from "../HighlightedText";
 
 export interface RecordLinkProps extends BoxProps, ElementProps<"div"> {
@@ -21,7 +21,7 @@ export function RecordLink({ value, withOpen, ...rest }: RecordLinkProps) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getSurrealQL().formatValue(value);
+			const result = await getVyrmQL().formatValue(value);
 			if (!cancelled) {
 				setRecordText(result);
 			}
@@ -53,7 +53,7 @@ export function RecordLink({ value, withOpen, ...rest }: RecordLinkProps) {
 				cursor: withOpen !== false ? "pointer" : undefined,
 			}}
 		>
-			<HighlightedText language="surrealql">{recordText}</HighlightedText>
+			<HighlightedText language="vyrmql">{recordText}</HighlightedText>
 			{withOpen !== false && <Icon path={iconArrowUpRight} />}
 		</Group>
 	);

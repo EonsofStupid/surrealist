@@ -1,5 +1,5 @@
 import { ScrollArea, Stack } from "@mantine/core";
-import { iconAPI } from "@surrealdb/ui";
+import { iconAPI } from "@rrflow/ui";
 import type { RefObject } from "react";
 import { ContentPane } from "~/components/Pane";
 import { ScrollFader } from "~/components/ScrollFader";

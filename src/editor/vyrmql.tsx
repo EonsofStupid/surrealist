@@ -2,7 +2,7 @@ import { syntaxTree } from "@codemirror/language";
 import { linter } from "@codemirror/lint";
 import type { Extension } from "@codemirror/state";
 import type { EditorView } from "@codemirror/view";
-import { getSurrealQL, hasSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL, hasVyrmQL } from "~/screens/connectome/connection/connection";
 import { getSetting } from "~/shared/util/config";
 
 const findStatement = (stack: any): [number, number] | null => {
@@ -47,21 +47,21 @@ export const getQueryRange = (view: EditorView, head?: number): [number, number]
 };
 
 /**
- * SurrealQL error linting
+ * VyrmQL error linting
  *
  * @param onValidate Callback to run when the query is validated
  */
-export const surqlLinting = (onValidate?: (status: string) => void): Extension =>
+export const vyrmqlLinting = (onValidate?: (status: string) => void): Extension =>
 	linter(
 		async (view) => {
 			const isEnabled = getSetting("behavior", "queryErrorChecker");
 			const content = view.state.doc.toString();
 
-			if (!isEnabled || !content || !hasSurrealQL()) {
+			if (!isEnabled || !content || !hasVyrmQL()) {
 				return [];
 			}
 
-			const message = (await getSurrealQL().validateQuery(content)) || "";
+			const message = (await getVyrmQL().validateQuery(content)) || "";
 			const match = message.match(/^Parse error: (.+)?\s+-->\s+\[(\d+):(\d+)\]/i);
 
 			if (match) {
@@ -81,14 +81,14 @@ export const surqlLinting = (onValidate?: (status: string) => void): Extension =
 								to: word.to,
 								message: reason,
 								severity: "error",
-								source: "SurrealQL",
+								source: "VyrmQL",
 							}
 						: {
 								from: position,
 								to: position + 1,
 								message: reason,
 								severity: "error",
-								source: "SurrealQL",
+								source: "VyrmQL",
 							},
 				];
 			}

@@ -1,4 +1,4 @@
-import { iconHistory, iconNamespace, iconRelation, iconUpload } from "@surrealdb/ui";
+import { iconHistory, iconNamespace, iconRelation, iconUpload } from "@rrflow/ui";
 import { StartingData } from "~/types";
 import { StartingDataInfo } from "./types";
 
@@ -12,19 +12,19 @@ export const STARTING_DATA: Record<StartingData, StartingDataInfo> = {
 	dataset: {
 		id: "dataset",
 		title: "Demo dataset",
-		description: "Explore SurrealDB Cloud with one of our demo datasets.",
+		description: "Explore RRFlow Cloud with one of our demo datasets.",
 		icon: iconRelation,
 	},
 	upload: {
 		id: "upload",
 		title: "Upload from file",
-		description: "Get started by uploading a surql file from your local device.",
+		description: "Get started by uploading a vyrmql file from your local device.",
 		icon: iconUpload,
 	},
 	restore: {
 		id: "restore",
 		title: "Restore from backup",
-		description: "Restore from a backup of an existing SurrealDB Cloud instance.",
+		description: "Restore from a backup of an existing RRFlow Cloud instance.",
 		icon: iconHistory,
 	},
 };

@@ -104,33 +104,36 @@ importers:
       '@replit/codemirror-indentation-markers':
         specifier: ^6.5.0
         version: 6.5.3(@codemirror/language@6.12.3)(@codemirror/state@6.6.0)(@codemirror/view@6.40.0)
+      '@rrflow/cbor':
+        specifier: npm:@surrealdb/cbor@^2.0.0-alpha.1
+        version: '@surrealdb/cbor@2.0.0-alpha.1'
+      '@rrflow/client':
+        specifier: npm:surrealdb@^2.0.2
+        version: surrealdb@2.0.3(tslib@2.8.1)(typescript@5.9.3)
+      '@rrflow/ui':
+        specifier: npm:@surrealdb/ui@^1.0.87
+        version: '@surrealdb/ui@1.0.93(jlwk5vxhtdcjvi7lx4kmzukeqi)'
+      '@rrflow/vyrmql-editor':
+        specifier: npm:@surrealdb/codemirror@1.0.3
+        version: '@surrealdb/codemirror@1.0.3'
+      '@rrflow/vyrmql-parser':
+        specifier: npm:@surrealdb/lezer@1.0.3
+        version: '@surrealdb/lezer@1.0.3'
+      '@rrflow/vyrmql-wasm-v2':
+        specifier: npm:@surrealdb/ql-wasm@0.2.0-beta.11
+        version: '@surrealdb/ql-wasm@0.2.0-beta.11'
+      '@rrflow/vyrmql-wasm-v3':
+        specifier: npm:@surrealdb/ql-wasm@0.3.1
+        version: '@surrealdb/ql-wasm@0.3.1'
+      '@rrflow/wasm':
+        specifier: npm:@surrealdb/wasm@^3.0.3
+        version: '@surrealdb/wasm@3.0.3(surrealdb@2.0.3(tslib@2.8.1)(typescript@5.9.3))'
       '@sigma/edge-curve':
         specifier: ^3.1.0
         version: 3.1.0(sigma@3.0.2(graphology-types@0.24.8))
       '@sigma/node-border':
         specifier: ^3.0.0
         version: 3.0.0(sigma@3.0.2(graphology-types@0.24.8))
-      '@surrealdb/cbor':
-        specifier: ^2.0.0-alpha.1
-        version: 2.0.0-alpha.1
-      '@surrealdb/codemirror':
-        specifier: 1.0.3
-        version: 1.0.3
-      '@surrealdb/lezer':
-        specifier: 1.0.3
-        version: 1.0.3
-      '@surrealdb/ql-wasm-2':
-        specifier: npm:@surrealdb/ql-wasm@0.2.0-beta.11
-        version: '@surrealdb/ql-wasm@0.2.0-beta.11'
-      '@surrealdb/ql-wasm-3':
-        specifier: npm:@surrealdb/ql-wasm@0.3.1
-        version: '@surrealdb/ql-wasm@0.3.1'
-      '@surrealdb/ui':
-        specifier: ^1.0.87
-        version: 1.0.93(jlwk5vxhtdcjvi7lx4kmzukeqi)
-      '@surrealdb/wasm':
-        specifier: ^3.0.3
-        version: 3.0.3(surrealdb@2.0.3(tslib@2.8.1)(typescript@5.9.3))
       '@tanstack/react-query':
         specifier: ^5.37.1
         version: 5.95.2(react@18.3.1)
@@ -287,9 +290,6 @@ importers:
       sigma:
         specifier: ^3.0.0
         version: 3.0.2(graphology-types@0.24.8)
-      surrealdb:
-        specifier: ^2.0.2
-        version: 2.0.3(tslib@2.8.1)(typescript@5.9.3)
       turndown:
         specifier: ^7.2.1
         version: 7.2.2
@@ -1805,6 +1805,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@vitejs/plugin-react@4.7.0':
     resolution: {integrity: sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA==}
@@ -3088,6 +3089,7 @@ packages:
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
     engines: {node: ^18 || >=20}
+    deprecated: unmaintained
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0

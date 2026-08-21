@@ -7,7 +7,7 @@ import {
 	iconPin,
 	iconPinOff,
 	pictoSidekick,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { forwardRef, memo, useEffect, useImperativeHandle, useRef } from "react";
 import glowImg from "~/shared/assets/images/radial-glow.png";
 import { openCloudAuthentication } from "~/cloud/api/auth";

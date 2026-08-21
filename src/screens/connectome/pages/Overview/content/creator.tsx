@@ -32,13 +32,13 @@ export function StartCreator({ organization, ...other }: PropsWithChildren<Start
 									fw={600}
 									fz="lg"
 								>
-									Deploy a SurrealDB Cloud instance
+									Deploy a RRFlow Cloud instance
 								</Text>
 								<Text
 									mt="xs"
 									fz="xs"
 								>
-									Click to configure and deploy a SurrealDB Cloud instance in this
+									Click to configure and deploy a RRFlow Cloud instance in this
 									organisation.
 								</Text>
 							</Box>

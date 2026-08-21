@@ -1,5 +1,5 @@
 import { Anchor, Badge, Group, Paper, SimpleGrid, Stack, Switch, Text } from "@mantine/core";
-import { Icon, iconAuth, iconTarget, Spacer, useStable } from "@surrealdb/ui";
+import { Icon, iconAuth, iconTarget, Spacer, useStable } from "@rrflow/ui";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { DeploySectionProps } from "../types";
 
@@ -70,7 +70,7 @@ function TrafficCard({ icon, label, description, value, onChange }: TrafficCardP
 				role="radio"
 				withBorder
 				style={{
-					borderColor: value ? "var(--surreal-focus-outline)" : undefined,
+					borderColor: value ? "var(--rrflow-focus-outline)" : undefined,
 					cursor: "pointer",
 				}}
 			>

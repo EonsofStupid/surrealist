@@ -1,20 +1,20 @@
 import { Prec } from "@codemirror/state";
 import { type EditorView, keymap } from "@codemirror/view";
 import { Badge, Group } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconClose, iconDollar, iconReset } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconClose, iconDollar, iconReset } from "@rrflow/ui";
 import { useEffect, useMemo, useState } from "react";
 import { type HtmlPortalNode, OutPortal } from "react-reverse-portal";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { runQueryKeymap, surqlLinting } from "~/editor";
+import { runQueryKeymap, vyrmqlLinting } from "~/editor";
 import { queryEditorField, setQueryEditor } from "~/editor/query";
 import { useActiveQuery } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 
 export interface VariablesPaneProps {
@@ -53,7 +53,7 @@ export function VariablesPane({
 		});
 
 		try {
-			const parsed = await getSurrealQL().parseValue(json);
+			const parsed = await getVyrmQL().parseValue(json);
 
 			if (typeof parsed !== "object" || Array.isArray(parsed)) {
 				throw new TypeError("Must be object");
@@ -77,7 +77,7 @@ export function VariablesPane({
 	}, [variableEditor, editor]);
 
 	const extensions = useMemo(
-		() => [surrealql(), surqlLinting(), queryEditorField, Prec.high(keymap.of(runQueryKeymap))],
+		() => [vyrmql(), vyrmqlLinting(), queryEditorField, Prec.high(keymap.of(runQueryKeymap))],
 		[],
 	);
 

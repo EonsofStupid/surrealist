@@ -10,7 +10,7 @@ import {
 	iconLive,
 	iconQuery,
 	iconUpload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { unparse } from "papaparse";
 import { isArray, isObject } from "radash";
@@ -412,7 +412,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							mx="auto"
 							size="lg"
 						/>
-						Execute a SurrealQL query to view the results here
+						Execute a VyrmQL query to view the results here
 					</Stack>
 				</Center>
 			) : (

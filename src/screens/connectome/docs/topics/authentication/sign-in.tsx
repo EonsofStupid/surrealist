@@ -14,45 +14,45 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 	const esc_database = JSON.stringify(auth.database);
 
 	const descriptions = {
-		cli: `With the CLI's surreal sql command, you can sign in as a system (Root, Namespace and Database) users. This example shows a command on how to sign in as a root user with the username and password left blank.`,
-		_: `With SurrealDB's SDKs, you can signin both system (Root, Namespace and Database) users and scope users. The example shows how to sigin a new user based on the credentials required for access.`,
+		cli: `With the CLI's rrflow sql command, you can sign in as a system (Root, Namespace and Database) users. This example shows a command on how to sign in as a root user with the username and password left blank.`,
+		_: `With RRFlow's SDKs, you can signin both system (Root, Namespace and Database) users and scope users. The example shows how to sigin a new user based on the credentials required for access.`,
 	};
 
 	const snippets = useMemo<Snippets>(
 		() => ({
 			cli: `
-			surreal sql  -e ${esc_endpoint} --ns ${esc_namespace} --db ${esc_database} --user ... --pass ...
+			rrflow sql  -e ${esc_endpoint} --ns ${esc_namespace} --db ${esc_database} --user ... --pass ...
 		`,
 			js: `
 		// Authenticate with a root user
 		await db.signin({
 			username: 'root',
-			password: 'surrealdb',
+			password: 'rrflow',
 		});
 
 		// Authenticate with a Namespace user
 		await db.signin({
-			namespace: 'surrealdb',
+			namespace: 'rrflow',
 			username: 'tobie',
-			password: 'surrealdb',
+			password: 'rrflow',
 		});
 
 		// Authenticate with a Database user
 		await db.signin({
-			namespace: 'surrealdb',
+			namespace: 'rrflow',
 			database: 'docs',
 			username: 'tobie',
-			password: 'surrealdb',
+			password: 'rrflow',
 		});
 
 		// Authenticate with a Scope user
 		await db.signin({
-			namespace: 'surrealdb',
+			namespace: 'rrflow',
 			database: 'docs',
 			scope: 'user',
 
 			// Also pass any properties required by the scope definition
-			email: 'info@surrealdb.com',
+			email: 'developer@example.com',
 			pass: '123456',
 		});
 		`,
@@ -60,7 +60,7 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 		// Sign in a Root user
 		db.signin(Root {
 			params: Credentials {
-				email: "info@surrealdb.com",
+				email: "developer@example.com",
 				pass: "123456",
 			},
 		}).await?;
@@ -69,7 +69,7 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 		db.signin(Namespace {
 			namespace: "test",
 			params: Credentials {
-				email: "info@surrealdb.com",
+				email: "developer@example.com",
 				pass: "123456",
 			},
 		}).await?;
@@ -79,7 +79,7 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 			namespace: "test",
 			database: "test",
 			params: Credentials {
-				email: "info@surrealdb.com",
+				email: "developer@example.com",
 				pass: "123456",
 			},
 		}).await?;
@@ -90,7 +90,7 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 			database: "test",
 			access: "user",
 			params: Credentials {
-				email: "info@surrealdb.com",
+				email: "developer@example.com",
 				pass: "123456",
 			},
 		}).await?;
@@ -99,39 +99,39 @@ export function DocsAuthSignIn({ language }: TopicProps) {
 		# Authenticate with a root user
 db.signin({
 	"database": 'root',
-	"password": 'surrealdb',
+	"password": 'rrflow',
 })
 
 # Authenticate with a Namespace user
 db.signin({
-	"namespace": 'surrealdb',
+	"namespace": 'rrflow',
 	"username": 'tobie',
-	"password": 'surrealdb',
+	"password": 'rrflow',
 })
 
 # Authenticate with a Database user
 db.signin({
-	"namespace": 'surrealdb',
+	"namespace": 'rrflow',
 	"database": 'docs',
 	"username": 'tobie',
-	"password": 'surrealdb',
+	"password": 'rrflow',
 })
 
 # Authenticate with a Access method 
 db.signin({
-	"namespace": 'surrealdb',
+	"namespace": 'rrflow',
 	"database": 'docs',
 	"access": 'user',
    # Also pass any properties required by the access definition
 	"variables": {
-        "email": 'info@surrealdb.com',
+        "email": 'developer@example.com',
         "password": '123456'
     }
 })
 		`,
 			go: `
 	// Sign in as a root user
-	authData := &surrealdb.Auth{
+	authData := &rrflow.Auth{
 		Username: "root", // use your setup username
 		Password: "root", // use your setup password
 	}
@@ -141,7 +141,7 @@ db.signin({
 	}
 
 	// Sign in to authentication db using the namespace user
-	authData := &surrealdb.Auth{
+	authData := &rrflow.Auth{
 		Username: "root", // use your setup username
 		Password: "root", // use your setup password
         Namespace = "test", 
@@ -152,7 +152,7 @@ db.signin({
 	}
 
 	// Sign in to authentication db using the database user
-	authData := &surrealdb.Auth{
+	authData := &rrflow.Auth{
 		Username: "root", // use your setup username
 		Password: "root", // use your setup password
         Namespace = "test", 
@@ -164,13 +164,13 @@ db.signin({
 	}
 
 	// Sign in to authentication db using the record accessmethod
-	authData := &surrealdb.Auth{
+	authData := &rrflow.Auth{
 		Username: "root", // use your setup username
 		Password: "root", // use your setup password
         Namespace = "test", 
         Database = "test",
 		Access = "user",
-        Email = "info@surrealdb.com",
+        Email = "developer@example.com",
         Password = "123456"
 		}
 		token, err := db.SignIn(authData)
@@ -215,7 +215,7 @@ db.signin({
 			Namespace = "test",
 			Database = "test",
 			Scope = "user",
-			Email = "info@surrealdb.com",
+			Email = "developer@example.com",
 			Password = "123456"
 		};
 

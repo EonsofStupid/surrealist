@@ -59,7 +59,7 @@ We are moving the "Hub" (the root shell) into its governed boundary. Since we ar
 
 ## Task 5: Remap the Mount Entrypoint
 
-#### `src/startup/surrealist.tsx`
+#### `src/startup/connectome.tsx`
 - **Current code**:
   ```tsx
   import { App } from "../components/App";

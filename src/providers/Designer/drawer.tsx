@@ -20,10 +20,10 @@ import {
 	iconDelete,
 	iconDesigner,
 	iconWarning,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { capitalize } from "radash";
 import { useState } from "react";
-import { escapeIdent } from "surrealdb";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import type { Updater } from "use-immer";
 import { ActionButton } from "~/components/ActionButton";
 import { DrawerResizer } from "~/components/DrawerResizer";

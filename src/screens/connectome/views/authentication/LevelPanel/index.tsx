@@ -1,8 +1,8 @@
 import { ActionIcon, Badge, Box, Group, Menu, ScrollArea, Stack, Text } from "@mantine/core";
-import { Icon, iconAccount, iconDotsVertical, iconKey, iconPlus } from "@surrealdb/ui";
+import { Icon, iconAccount, iconDotsVertical, iconKey, iconPlus } from "@rrflow/ui";
 import { capitalize } from "radash";
 import { type ReactNode, useState } from "react";
-import { escapeIdent } from "surrealdb";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { Entry } from "~/components/Entry";
 import { ContentPane } from "~/components/Pane";

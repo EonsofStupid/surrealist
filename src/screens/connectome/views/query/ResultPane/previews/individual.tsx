@@ -1,10 +1,10 @@
 import { Text } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
-import { surqlRecordLinks } from "~/editor";
+import { vyrmqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
-import { useResultFormatter } from "~/hooks/surrealql";
+import { useResultFormatter } from "~/hooks/vyrmql";
 import { useInspector } from "~/providers/Inspector";
 import { attemptFormat, type PreviewProps } from ".";
 
@@ -34,7 +34,7 @@ export function IndividualPreview({ responses, selected }: PreviewProps) {
 		};
 	}, [result, format]);
 
-	const extensions = useMemo(() => [surrealql(), surqlRecordLinks(inspect)], [inspect]);
+	const extensions = useMemo(() => [vyrmql(), vyrmqlRecordLinks(inspect)], [inspect]);
 
 	return success ? (
 		<CodeEditor

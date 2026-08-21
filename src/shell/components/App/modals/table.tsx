@@ -9,9 +9,9 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconPlus, iconRelation, iconSearch, iconTable } from "@surrealdb/ui";
+import { Icon, iconPlus, iconRelation, iconSearch, iconTable } from "@rrflow/ui";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { escapeIdent } from "surrealdb";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { Form } from "~/components/Form";
 import { CodeInput } from "~/components/Inputs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -112,7 +112,6 @@ export function TableCreatorModal() {
 		>
 			<SegmentedControl
 				fullWidth
-				variant="surreal"
 				data={[
 					{
 						value: "normal",

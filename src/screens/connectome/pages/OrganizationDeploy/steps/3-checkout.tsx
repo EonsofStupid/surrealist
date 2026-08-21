@@ -25,7 +25,7 @@ import {
 	iconRelation,
 	iconTag,
 	pictoSDBCloud,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { ChangeEvent } from "react";
 import { navigate } from "wouter/use-browser-location";
 import glow from "~/shared/assets/images/glow.png";
@@ -75,7 +75,7 @@ export function CheckoutStep({ organisation, details, setDetails, setStep }: Ste
 			if (details.startingData.type === "dataset") {
 				sessionStorage.setItem(
 					`${APPLY_DATASET_KEY}:${instance.id}`,
-					"surreal-deal-store-mini",
+					"rrflow-deal-store-mini",
 				);
 
 				const queries = SAMPLE_QUERIES.map((query) => ({
@@ -220,7 +220,7 @@ export function CheckoutStep({ organisation, details, setDetails, setStep }: Ste
 							<PropertyValue
 								title="Version"
 								icon={iconTag}
-								value={`SurrealDB ${details?.version}`}
+								value={`RRFlow ${details?.version}`}
 							/>
 						</SimpleGrid>
 					) : (
@@ -244,7 +244,7 @@ export function CheckoutStep({ organisation, details, setDetails, setStep }: Ste
 							<PropertyValue
 								title="Version"
 								icon={iconTag}
-								value={`SurrealDB ${details?.version}`}
+								value={`RRFlow ${details?.version}`}
 							/>
 							<PropertyValue
 								title="Backups"
@@ -302,7 +302,7 @@ export function CheckoutStep({ organisation, details, setDetails, setStep }: Ste
 							mt="sm"
 							maw={400}
 						>
-							Your free SurrealDB Cloud instance is ready to deploy. Upgrades are
+							Your free RRFlow Cloud instance is ready to deploy. Upgrades are
 							available at any time once you have deployed your instance.
 						</Box>
 					</Stack>
@@ -398,14 +398,14 @@ export function CheckoutStep({ organisation, details, setDetails, setStep }: Ste
 
 			<Checkbox
 				mt="md"
-				label={<Label>This instance is used to migrate to SurrealDB 3.0</Label>}
-				description="Instances used to migrate to SurrealDB 3.0 may be eligible for compensation"
+				label={<Label>This instance is used to migrate to RRFlow 3.0</Label>}
+				description="Instances used to migrate to RRFlow 3.0 may be eligible for compensation"
 				checked={details.migration ?? false}
 				onChange={updateMigration}
 			/>
 
 			<Box mt="xl">
-				<LearnMore href="https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x">
+				<LearnMore href="https://github.com/EonsofStupid/connectome">
 					Learn more about the migration process
 				</LearnMore>
 			</Box>

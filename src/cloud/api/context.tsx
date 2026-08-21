@@ -20,7 +20,7 @@ export async function fetchContextAPI<T = unknown>(
 
 	if (token) {
 		headers.Authorization = `Bearer ${token}`;
-		headers["X-SurrealDB-Cloud-Environment"] = environment;
+		headers["X-RRFlow-Cloud-Environment"] = environment;
 	}
 
 	try {

@@ -10,11 +10,11 @@ import {
 	iconPlus,
 	iconReset,
 	iconSearch,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { type ContextMenuItemOptions, useContextMenu } from "mantine-contextmenu";
 import { sort } from "radash";
 import { useMemo } from "react";
-import { escapeIdent } from "surrealdb";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { Entry } from "~/components/Entry";
 import { ContentPane } from "~/components/Pane";

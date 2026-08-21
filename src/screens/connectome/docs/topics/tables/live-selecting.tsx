@@ -46,7 +46,7 @@ table_name
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
 
@@ -82,11 +82,11 @@ table_name
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[table.schema.name],

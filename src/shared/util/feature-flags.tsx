@@ -51,9 +51,6 @@ export const schema = {
 	highlight_tool: {
 		options: [false, true],
 	},
-	legacy_serve: {
-		options: [false, true],
-	},
 	cloud_enabled: {
 		options: [false, true],
 	},
@@ -100,6 +97,7 @@ export const featureFlags = new FeatureFlags({
 	schema,
 	defaults: {
 		development: {
+			changelog: "hidden",
 			feature_flags: true,
 			query_view: true,
 			explorer_view: true,
@@ -117,11 +115,11 @@ export const featureFlags = new FeatureFlags({
 			syntax_themes: true,
 			sidebar_customization: true,
 			gtm_debug: false,
-			sidekick_ai: true,
+			sidekick_ai: false,
 			support_tickets: false,
 			v3_migration_tooling: true,
 			support_tickets_endpoint: "staging",
-			sandbox_deploy: true,
+			sandbox_deploy: false,
 		},
 		preview: {
 			query_view: true,
@@ -140,11 +138,11 @@ export const featureFlags = new FeatureFlags({
 			themes: true,
 			sidebar_customization: true,
 			gtm_debug: false,
-			sidekick_ai: true,
+			sidekick_ai: false,
 			support_tickets: false,
 			v3_migration_tooling: true,
 			support_tickets_endpoint: "staging",
-			sandbox_deploy: true,
+			sandbox_deploy: false,
 		},
 		production: {
 			query_view: true,
@@ -162,11 +160,11 @@ export const featureFlags = new FeatureFlags({
 			newsfeed: false,
 			themes: true,
 			gtm_debug: false,
-			sidekick_ai: true,
+			sidekick_ai: false,
 			support_tickets: false,
 			v3_migration_tooling: true,
 			support_tickets_endpoint: "production",
-			sandbox_deploy: true,
+			sandbox_deploy: false,
 		},
 	},
 	overrides: (flag) => {

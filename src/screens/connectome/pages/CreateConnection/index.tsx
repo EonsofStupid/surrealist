@@ -5,10 +5,13 @@ import {
 	Group,
 	Menu,
 	Paper,
+	PasswordInput,
 	ScrollArea,
+	SegmentedControl,
 	SimpleGrid,
 	Stack,
 	Text,
+	TextInput,
 	ThemeIcon,
 } from "@mantine/core";
 import {
@@ -20,10 +23,10 @@ import {
 	iconHomePlus,
 	iconQuery,
 	iconRelation,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useMemo } from "react";
 import { useImmer } from "use-immer";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { adapter } from "~/adapter";
 import { ConnectionAddressDetails } from "~/components/ConnectionDetails/address";
 import { ConnectionAuthDetails } from "~/components/ConnectionDetails/authentication";
@@ -34,24 +37,28 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useLastSavepoint } from "~/hooks/overview";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
-import { Template } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnectionVariant, isConnectionValid } from "~/shared/util/connection";
 import { createBaseConnection } from "~/shared/util/defaults";
 import { dispatchIntent } from "~/shared/util/intents";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useConfigStore } from "~/shell/stores/config";
+import { Template } from "~/types";
 import classes from "./style.module.scss";
 
 export function CreateConnectionPage() {
 	const { settings, addConnection } = useConfigStore.getState();
+	const [, navigate] = useLocation();
 
 	const [connection, setConnection] = useImmer(() => {
 		const draft = createBaseConnection(settings);
 
-		draft.name = "Local RRFlow";
+		const runtime = new URLSearchParams(window.location.search).get("runtime");
+		draft.name = runtime ? "Managed RRFlow" : "Local RRFlow";
 		draft.authentication.protocol = "ws";
-		draft.authentication.hostname = `localhost:${settings.serving.port}`;
+		draft.authentication.hostname = runtime
+			? runtime.replace(/^wss?:\/\//, "")
+			: `localhost:${settings.serving.port}`;
 		draft.authentication.username = settings.serving.username;
 		draft.authentication.password = settings.serving.password;
 
@@ -60,12 +67,25 @@ export function CreateConnectionPage() {
 	const navigateConnection = useConnectionNavigator();
 
 	const isValid = useMemo(() => {
+		if (connection.target === "control-plane") {
+			return Boolean(
+				connection.name &&
+					connection.authentication.hostname &&
+					connection.authentication.token,
+			);
+		}
+
 		return connection.name && isConnectionValid(connection.authentication);
-	}, [connection.authentication, connection.name]);
+	}, [connection.authentication, connection.name, connection.target]);
 
 	const handleCreate = useStable(() => {
 		addConnection(connection);
-		navigateConnection(connection.id);
+
+		if (connection.target === "control-plane") {
+			navigate(`/control/${connection.id}`);
+		} else {
+			navigateConnection(connection.id);
+		}
 
 		tagEvent("connection_created", {
 			protocol: connection.authentication.protocol.toString(),
@@ -73,6 +93,30 @@ export function CreateConnectionPage() {
 			is_local: connection.authentication.hostname.includes("localhost"),
 		});
 	});
+
+	const setTarget = (target: string) => {
+		setConnection((draft) => {
+			draft.target = target === "control-plane" ? "control-plane" : "runtime";
+			if (draft.target === "control-plane") {
+				draft.name = "RRFlow Enterprise";
+				draft.authentication.protocol = "https";
+				draft.authentication.hostname = "";
+				draft.authentication.mode = "token";
+				draft.authentication.username = "";
+				draft.authentication.password = "";
+				draft.authentication.namespace = "";
+				draft.authentication.database = "";
+			} else {
+				draft.name = "Local RRFlow";
+				draft.authentication.protocol = "ws";
+				draft.authentication.hostname = `localhost:${settings.serving.port}`;
+				draft.authentication.mode = "root";
+				draft.authentication.username = settings.serving.username;
+				draft.authentication.password = settings.serving.password;
+				draft.authentication.token = "";
+			}
+		});
+	};
 
 	const applyTemplate = (template: Template) => {
 		setConnection((draft) => {
@@ -251,6 +295,21 @@ export function CreateConnectionPage() {
 							</Menu>
 						</Group>
 					</Box>
+					<SegmentedControl
+						fullWidth
+						value={connection.target ?? "runtime"}
+						onChange={setTarget}
+						data={[
+							{
+								value: "runtime",
+								label: "Project runtime",
+							},
+							{
+								value: "control-plane",
+								label: "Enterprise control plane",
+							},
+						]}
+					/>
 					<Paper
 						p="xl"
 						className={classes.instanceHero}
@@ -265,13 +324,15 @@ export function CreateConnectionPage() {
 										variant="light"
 										color="violet"
 									>
-										Native control surface
+										{connection.target === "control-plane"
+											? "Optional enterprise plane"
+											: "Native control surface"}
 									</Badge>
 									<Badge
 										variant="dot"
 										color="green"
 									>
-										Surreal-compatible transport
+										RRFlow native protocol
 									</Badge>
 								</Group>
 								<Text
@@ -280,15 +341,17 @@ export function CreateConnectionPage() {
 									c="bright"
 									mt="md"
 								>
-									Attach Connectome to an RRFlow runtime
+									{connection.target === "control-plane"
+										? "Attach Connectome to an RRFlow enterprise control plane"
+										: "Attach Connectome to an RRFlow runtime"}
 								</Text>
 								<Text
 									maw={720}
 									mt={4}
 								>
-									The profile is stored locally. Once the runtime answers the
-									handshake, Connectome opens the same live instance through its
-									query, data, graph, schema, and diagnostic lenses.
+									{connection.target === "control-plane"
+										? "The profile is stored locally. Connectome performs a strict RRFlow control handshake, then loads managed instances, deployment state, versions, regions, and control capabilities."
+										: "The profile is stored locally. Once the runtime answers the RRFlow handshake, Connectome opens that project instance through its query, data, graph, schema, and diagnostic lenses."}
 								</Text>
 							</Box>
 							<Box className={classes.runtimePulse}>
@@ -306,7 +369,7 @@ export function CreateConnectionPage() {
 							{[
 								[iconDatabase, "Data", "Tables & records"],
 								[iconRelation, "Graph", "Relations & paths"],
-								[iconQuery, "Query", "SurrealQL studio"],
+								[iconQuery, "Query", "VyrmQL studio"],
 								[iconChart, "Diagnose", "Connection & schema"],
 							].map(([icon, label, detail]) => (
 								<Group
@@ -354,30 +417,70 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Runtime endpoint
+							{connection.target === "control-plane"
+								? "Enterprise endpoint"
+								: "Runtime endpoint"}
 						</Text>
 						<Text>
-							Connect locally or over the network using RRFlow's compatible endpoint
+							{connection.target === "control-plane"
+								? "Connect to the optional RRFlow enterprise management plane"
+								: "Connect locally or over the network using the RRFlow endpoint"}
 						</Text>
 					</Box>
-					<ConnectionAddressDetails
-						value={connection}
-						onChange={setConnection}
-					/>
-					<Box mt={24}>
-						<Text
-							fz="xl"
-							fw={600}
-							c="bright"
+					{connection.target === "control-plane" ? (
+						<Paper
+							p="lg"
+							mt="md"
 						>
-							Runtime access
-						</Text>
-						<Text>Provide the credentials and initial namespace/database scope</Text>
-					</Box>
-					<ConnectionAuthDetails
-						value={connection}
-						onChange={setConnection}
-					/>
+							<Stack>
+								<TextInput
+									label="Control-plane host"
+									placeholder="control.example.com"
+									value={connection.authentication.hostname}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.hostname = event.target.value;
+										})
+									}
+								/>
+								<PasswordInput
+									label="Enterprise access token"
+									placeholder="rrf_ent_…"
+									value={connection.authentication.token}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.token = event.target.value;
+										})
+									}
+								/>
+							</Stack>
+						</Paper>
+					) : (
+						<ConnectionAddressDetails
+							value={connection}
+							onChange={setConnection}
+						/>
+					)}
+					{connection.target !== "control-plane" && (
+						<Box mt={24}>
+							<Text
+								fz="xl"
+								fw={600}
+								c="bright"
+							>
+								Runtime access
+							</Text>
+							<Text>
+								Provide the credentials and initial namespace/database scope
+							</Text>
+						</Box>
+					)}
+					{connection.target !== "control-plane" && (
+						<ConnectionAuthDetails
+							value={connection}
+							onChange={setConnection}
+						/>
+					)}
 					<Box mt={24}>
 						<Text
 							fz="xl"
@@ -407,7 +510,9 @@ export function CreateConnectionPage() {
 							disabled={!isValid}
 							onClick={handleCreate}
 						>
-							Save & connect
+							{connection.target === "control-plane"
+								? "Save & open enterprise"
+								: "Save & connect"}
 						</Button>
 					</Group>
 				</Stack>

@@ -14,7 +14,7 @@ import {
 	iconSearch,
 	iconStar,
 	iconText,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import clsx from "clsx";
 import { useContextMenu } from "mantine-contextmenu";
 import { useState } from "react";

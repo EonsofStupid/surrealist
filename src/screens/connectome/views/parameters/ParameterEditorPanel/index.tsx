@@ -1,13 +1,13 @@
 import { EditorView } from "@codemirror/view";
 import { Alert, Badge, Box, Stack } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconTune, iconWarning } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconTune, iconWarning } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import type { Updater } from "use-immer";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { surqlLinting } from "~/editor/surrealql";
-import { surqlTableCompletion } from "~/editor/tables";
+import { vyrmqlLinting } from "~/editor/vyrmql";
+import { vyrmqlTableCompletion } from "~/editor/tables";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
 import type { SchemaParameter } from "~/types";
@@ -26,11 +26,11 @@ export function ParameterEditorPanel({
 	onChange,
 }: ParameterEditorPanelProps) {
 	const [editor, setEditor] = useState<EditorView | null>(null);
-	const surqlVersion = useDatabaseVersionLinter(editor);
+	const vyrmqlVersion = useDatabaseVersionLinter(editor);
 
 	const extensions = useMemo(
-		() => [surrealql(), surqlVersion, surqlLinting(), surqlTableCompletion()],
-		[surqlVersion],
+		() => [vyrmql(), vyrmqlVersion, vyrmqlLinting(), vyrmqlTableCompletion()],
+		[vyrmqlVersion],
 	);
 
 	const handleChange = useStable((value: string) => {

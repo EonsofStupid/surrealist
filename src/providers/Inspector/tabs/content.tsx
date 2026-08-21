@@ -1,10 +1,10 @@
 import { Alert, Paper } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconWarning } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconWarning } from "@rrflow/ui";
 import { useMemo } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { SaveBox } from "~/components/SaveBox";
-import { surqlLinting, surqlRecordLinks } from "~/editor";
+import { vyrmqlLinting, vyrmqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import type { SaveableHandle } from "~/hooks/save";
 import { useInspector } from "..";
@@ -21,7 +21,7 @@ export function ContentTab({ value, error, onChange, saveHandle }: ContentTabPro
 	const [hasLineNumbers] = useSetting("appearance", "inspectorLineNumbers");
 
 	const extensions = useMemo(
-		() => [surrealql(), surqlLinting(), surqlRecordLinks(inspect)],
+		() => [vyrmql(), vyrmqlLinting(), vyrmqlRecordLinks(inspect)],
 		[inspect],
 	);
 

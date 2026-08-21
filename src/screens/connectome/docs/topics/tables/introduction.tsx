@@ -31,7 +31,7 @@ export function DocsTablesIntroduction({ language }: TopicProps) {
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		$db->create("${activeTable}");

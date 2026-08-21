@@ -29,7 +29,7 @@ import {
 	pictoHandsOn,
 	pictoPlay,
 	pictoSDBCloud,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { memo, useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import { Redirect } from "wouter";
@@ -175,10 +175,10 @@ export function DashboardView() {
 			});
 
 			await executeQuery(
-				"DEFINE NAMESPACE demo; USE NS demo; DEFINE DATABASE surreal_deal_store;",
+				"DEFINE NAMESPACE demo; USE NS demo; DEFINE DATABASE rrflow_deal_store;",
 			);
 
-			await activateDatabase("demo", "surreal_deal_store");
+			await activateDatabase("demo", "rrflow_deal_store");
 			await applyDataset(version);
 		} catch (error) {
 			showErrorNotification({
@@ -422,7 +422,7 @@ export function DashboardView() {
 									<Box mt={32}>
 										<PrimaryTitle>Your instance</PrimaryTitle>
 										<Text>
-											Customise and connect to your SurrealDB Cloud instance
+											Customise and connect to your RRFlow Cloud instance
 										</Text>
 									</Box>
 
@@ -668,13 +668,13 @@ function LoadingScreen() {
 				ta="center"
 				my={38}
 			>
-				<PrimaryTitle>Deploying your SurrealDB Cloud instance...</PrimaryTitle>
+				<PrimaryTitle>Deploying your RRFlow Cloud instance...</PrimaryTitle>
 
 				<Text
 					fz="xl"
 					mt="sm"
 				>
-					While you wait, feel free to explore SurrealDB Cloud
+					While you wait, feel free to explore RRFlow Cloud
 				</Text>
 			</Box>
 
@@ -687,19 +687,19 @@ function LoadingScreen() {
 			>
 				<GettingStartedLink
 					title="Cloud Documentation"
-					description="Learn more about SurrealDB Cloud features and capabilities."
+					description="Learn more about RRFlow Cloud features and capabilities."
 					image={pictoDocument}
-					href="https://surrealdb.com/docs/cloud"
+					href="https://github.com/EonsofStupid/connectome"
 				/>
 				<GettingStartedLink
 					title="Join the Community"
 					description="Get help from the community and share your experiences."
 					image={pictoHandsOn}
-					href="https://surrealdb.com/community"
+					href="https://github.com/EonsofStupid/connectome"
 				/>
 				<GettingStartedLink
 					title="Quick Start Tutorial"
-					description="Watch a quick tutorial to get started with SurrealDB Cloud."
+					description="Watch a quick tutorial to get started with RRFlow Cloud."
 					image={pictoPlay}
 					href="https://www.youtube.com/watch?v=S04qOKkVcmE"
 				/>

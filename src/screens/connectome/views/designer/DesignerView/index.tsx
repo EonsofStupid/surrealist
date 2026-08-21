@@ -1,5 +1,5 @@
 import { Box, Button, Group, Text } from "@mantine/core";
-import { Icon, iconDesigner, iconEye, iconOpen, iconPlus } from "@surrealdb/ui";
+import { Icon, iconDesigner, iconEye, iconOpen, iconPlus } from "@rrflow/ui";
 import { ReactFlowProvider } from "@xyflow/react";
 import { memo, useEffect } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
@@ -124,8 +124,8 @@ export function DesignerView() {
 							title="Designer"
 							icon={iconDesigner}
 							snippet={{
-								language: "surrealql",
-								title: "SurrealQL",
+								language: "vyrmql",
+								title: "VyrmQL",
 								code: `
 									-- Declare a new table
 									DEFINE TABLE person;
@@ -160,7 +160,7 @@ export function DesignerView() {
 									rightSection={<Icon path={iconOpen} />}
 									onClick={() =>
 										adapter.openUrl(
-											"https://surrealdb.com/docs/surrealql/statements/define/table",
+											"https://github.com/EonsofStupid/connectome",
 										)
 									}
 								>

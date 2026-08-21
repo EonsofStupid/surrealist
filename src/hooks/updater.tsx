@@ -1,5 +1,5 @@
 import { Alert, Group } from "@mantine/core";
-import { Icon, iconDownload } from "@surrealdb/ui";
+import { Icon, iconDownload } from "@rrflow/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { relaunch } from "@tauri-apps/plugin-process";
 import { useState } from "react";
@@ -79,7 +79,7 @@ export function useDesktopUpdater() {
 					color="orange"
 					title="Warning"
 				>
-					An upgrade could result in incompatibility with older versions of SurrealDB.
+					An upgrade could result in incompatibility with older versions of RRFlow.
 				</Alert>
 			</>
 		),

@@ -12,13 +12,30 @@ Connectome currently provides:
 - local or remote endpoint probing over HTTP(S) and WebSocket transports;
 - root, namespace, database, record-access, token, and anonymous authentication;
 - namespace and database selection;
-- a SurrealQL query studio with table, graph, JSON, and live-result lenses;
+- a VyrmQL query studio with table, graph, JSON, and live-result lenses;
 - record and table exploration;
 - visual data-model and relationship design;
 - authentication, parameter, function, GraphQL, and runtime-diagnostics tools;
+- separate project-runtime and optional enterprise-control-plane profiles;
 - multi-window native desktop operation.
 
-RRFlow currently exposes a SurrealDB-compatible protocol for this control path. That compatibility is an implementation boundary, not the product identity. RRFlow-specific lifecycle, vector, trace, and reasoning-run capabilities will be negotiated through an explicit capability handshake as those engine APIs stabilize.
+Connectome uses RRFlow-native runtime and control-plane contracts. A runtime
+connection opens one project instance for VyrmQL, data, graph, schema, trace,
+and lifecycle work. The optional enterprise control-plane connection manages
+fleets, deployments, upgrades, audit activity, and availability policy. There
+is no compatibility fallback.
+
+The enterprise contract is deliberately separate from the runtime query
+protocol:
+
+- `GET /rrflow/v1/control/handshake` must identify `rrflow-control` protocol
+  version `1`;
+- `GET /rrflow/v1/control/instances` returns the project runtimes managed by
+  that control plane;
+- requests use bearer authentication and the `RRFlow-Control-Protocol: 1`
+  header;
+- an invalid or mismatched handshake is rejected and is never routed into the
+  runtime query client.
 
 ## Repository boundary
 
@@ -29,7 +46,10 @@ RRFlow engine repository
 └── apps/connectome  ← this repository (git submodule)
 ```
 
-Connectome visualizes and controls one or more RRFlow instances. Cloud fleet management remains a later layer and is intentionally disabled in the local-first alpha.
+Connectome visualizes and controls project RRFlow instances. The optional
+enterprise profile connects to a distinct control plane for fleet and
+deployment management; it does not change or proxy the project-runtime
+contract.
 
 ## Development
 
@@ -63,4 +83,4 @@ The Tauri bundle configuration emits NSIS installers for Windows, app/DMG bundle
 
 ## Origin and license
 
-Connectome began from the Surrealist desktop codebase so its mature query, schema, graph, and connection tooling could be preserved while the product evolves around RRFlow. See [LICENSE](LICENSE) and the repository history for attribution.
+Connectome preserves a mature desktop query, schema, graph, and connection shell while the product evolves around RRFlow. See [LICENSE](LICENSE), third-party notices, and the repository history for attribution.

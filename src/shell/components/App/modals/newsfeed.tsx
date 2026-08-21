@@ -16,7 +16,7 @@ import {
 	UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconArrowLeft, iconArrowUpRight, iconClose, Markdown } from "@surrealdb/ui";
+import { Icon, iconArrowLeft, iconArrowUpRight, iconClose, Markdown } from "@rrflow/ui";
 import { format } from "date-fns";
 import dayjs from "dayjs";
 import { Fragment, useState } from "react";
@@ -186,7 +186,7 @@ export function NewsFeedDrawer() {
 													fw={600}
 													fz={14}
 												>
-													Read on surrealdb.com
+											Read project update
 													<Icon path={iconArrowUpRight} />
 												</Text>
 											</Link>

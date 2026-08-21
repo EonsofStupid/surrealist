@@ -1,10 +1,7 @@
 import type { ReactNode } from "react";
 import { adapter } from "~/adapter";
-import { useIsCloudEnabled } from "~/hooks/cloud";
-import { useCloudAuthentication } from "./hooks/cloud";
 import { useConnectionSwitch } from "./hooks/connection";
 import { useKeybindListener, useModKeyTracker } from "./hooks/input";
-import { useIntercom } from "./hooks/intercom";
 import { useNativeMenuBar } from "./hooks/menu";
 import { useAppRouter } from "./hooks/routing";
 import { useTitleSync } from "./hooks/title";
@@ -12,17 +9,13 @@ import { useViewSync } from "./hooks/view";
 import { useWindowSettings } from "./hooks/window";
 
 export function Globals(): ReactNode {
-	const cloudEnabled = useIsCloudEnabled();
-
 	useModKeyTracker();
 	useKeybindListener();
 	useWindowSettings();
 	useConnectionSwitch();
-	useCloudAuthentication(cloudEnabled);
 	useTitleSync();
 	useViewSync();
 	useAppRouter();
-	useIntercom();
 
 	// While calling hooks conditionally is usually not a good idea,
 	// this is an exception since the adapter will never change.

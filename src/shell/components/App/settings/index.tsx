@@ -23,7 +23,7 @@ import {
 	iconServer,
 	iconTransfer,
 	iconTune,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useState } from "react";
 import { isDesktop } from "~/adapter";
 import { ActionButton } from "~/components/ActionButton";

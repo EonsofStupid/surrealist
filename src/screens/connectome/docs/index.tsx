@@ -1,4 +1,4 @@
-import { iconAuth, iconBook, iconDesigner, iconStar, iconTable } from "@surrealdb/ui";
+import { iconAuth, iconBook, iconDesigner, iconStar, iconTable } from "@rrflow/ui";
 import type { ConnectionSchema } from "~/types";
 import { newId } from "~/shared/util/helpers";
 import { DocsAuthAccessUserData } from "./topics/authentication/access-user-data";
@@ -8,7 +8,7 @@ import { DocsAuthSignIn } from "./topics/authentication/sign-in";
 import { DocsAuthSignUp } from "./topics/authentication/sign-up";
 import { DocsAuthTokens } from "./topics/authentication/tokens";
 import { DocsConceptsFullTextSearch } from "./topics/concepts/full-text-search";
-import { DocsConceptsSurrealML } from "./topics/concepts/surrealml";
+import { DocsConceptsRRFlowML } from "./topics/concepts/vyrmml";
 import { DocsGlobalConnecting } from "./topics/global/connecting";
 import { DocsGlobalDatabases } from "./topics/global/databases";
 import { DocsGlobalInit } from "./topics/global/initialize";
@@ -250,8 +250,8 @@ export function buildDocumentation(_schema: ConnectionSchema): DocsTopic[] {
 				// },
 				{
 					id: newId(),
-					title: "SurrealML",
-					component: DocsConceptsSurrealML,
+					title: "RRFlowML",
+					component: DocsConceptsRRFlowML,
 				},
 			],
 		},
@@ -264,17 +264,17 @@ export function buildDocumentation(_schema: ConnectionSchema): DocsTopic[] {
 				{
 					id: newId(),
 					title: "Documentation",
-					link: "https://surrealdb.com/docs/surrealdb/",
+					link: "https://github.com/EonsofStupid/connectome",
 				},
 				{
 					id: newId(),
-					title: "SurrealQL",
-					link: "https://surrealdb.com/docs/surrealql/",
+					title: "VyrmQL",
+					link: "https://github.com/EonsofStupid/connectome",
 				},
 				{
 					id: newId(),
 					title: "Integration",
-					link: "https://surrealdb.com/docs/surrealdb/integration/",
+					link: "https://github.com/EonsofStupid/connectome",
 				},
 			],
 		},

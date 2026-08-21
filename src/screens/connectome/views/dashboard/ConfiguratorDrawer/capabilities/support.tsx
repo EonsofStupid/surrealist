@@ -8,7 +8,7 @@ import {
 	Tooltip,
 	UnstyledButton,
 } from "@mantine/core";
-import { Icon, iconChevronDown, iconChevronUp, iconDownload, iconHelp } from "@surrealdb/ui";
+import { Icon, iconChevronDown, iconChevronUp, iconDownload, iconHelp } from "@rrflow/ui";
 import { Spacer } from "~/components/Spacer";
 import { useBoolean } from "~/hooks/boolean";
 import { useIsLight } from "~/hooks/theme";
@@ -85,7 +85,7 @@ export function SupportCapability({ name, description }: CapabilityBaseProps) {
 								</Text>
 								<Text>
 									This capability is only supported in a newer version of
-									SurrealDB.
+									RRFlow.
 								</Text>
 							</Box>
 						</Group>

@@ -1,6 +1,6 @@
 import type { CompletionSource } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
-import { surrealqlLanguage } from "@surrealdb/codemirror";
+import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 
 type Resolver = () => string[] | Promise<string[]>;
 
@@ -9,7 +9,7 @@ type Resolver = () => string[] | Promise<string[]>;
  *
  * @param resolver A function that returns the list of variables
  */
-export const surqlVariableCompletion = (resolver: Resolver): Extension => {
+export const vyrmqlVariableCompletion = (resolver: Resolver): Extension => {
 	const autocomplete: CompletionSource = async (context) => {
 		const match = context.matchBefore(/\$\w*/i);
 
@@ -29,5 +29,5 @@ export const surqlVariableCompletion = (resolver: Resolver): Extension => {
 		};
 	};
 
-	return surrealqlLanguage.data.of({ autocomplete });
+	return vyrmqlLanguage.data.of({ autocomplete });
 };

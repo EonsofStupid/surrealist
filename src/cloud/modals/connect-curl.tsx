@@ -1,7 +1,7 @@
 import { Group, Paper, SimpleGrid, Stack, Text, TextInput } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { openModal } from "@mantine/modals";
-import { CodeBlock, Icon, iconTransfer } from "@surrealdb/ui";
+import { CodeBlock, Icon, iconTransfer } from "@rrflow/ui";
 import { LearnMore } from "~/components/LearnMore";
 import { Link } from "~/components/Link";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -43,11 +43,11 @@ function ConnectCurlModal({ instance, namespace, database }: ConnectCurlModalPro
 	let command = `curl -X GET "https://${instance.host}/version"`;
 
 	if (namespace) {
-		command += ` \\\n  -H "Surreal-NS: ${namespace}"`;
+		command += ` \\\n  -H "RRFlow-NS: ${namespace}"`;
 	}
 
 	if (database) {
-		command += ` \\\n  -H "Surreal-DB: ${database}"`;
+		command += ` \\\n  -H "RRFlow-DB: ${database}"`;
 	}
 
 	if (username || password) {
@@ -58,7 +58,7 @@ function ConnectCurlModal({ instance, namespace, database }: ConnectCurlModalPro
 		<Stack>
 			<Text size="lg">
 				You can connect to this instance using{" "}
-				<Link href="https://surrealdb.com/docs/surrealdb/integration/http">
+				<Link href="https://github.com/EonsofStupid/connectome">
 					HTTP requests
 				</Link>
 				. The following example demonstrates how to use cURL to communicate with this
@@ -100,7 +100,7 @@ function ConnectCurlModal({ instance, namespace, database }: ConnectCurlModalPro
 					/>
 				</SimpleGrid>
 
-				<LearnMore href="https://surrealdb.com/docs/surrealdb/security/authentication">
+				<LearnMore href="https://github.com/EonsofStupid/connectome">
 					Learn more about authentication
 				</LearnMore>
 			</Paper>
@@ -123,7 +123,7 @@ function ConnectCurlModal({ instance, namespace, database }: ConnectCurlModalPro
 
 			<LearnMore
 				mt="sm"
-				href="https://surrealdb.com/docs/surrealdb/integration/http"
+				href="https://github.com/EonsofStupid/connectome"
 			>
 				Learn more about the HTTP protocol
 			</LearnMore>

@@ -1,6 +1,6 @@
 import { Box, Button, Group, Modal, Stack, Text, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconChevronRight, iconOpen, iconPlus, iconVariable } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconOpen, iconPlus, iconVariable } from "@rrflow/ui";
 import { type ChangeEvent, memo, useRef, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { useImmer } from "use-immer";
@@ -197,8 +197,8 @@ export function ParametersView() {
 								title="Parameters"
 								icon={iconVariable}
 								snippet={{
-									language: "surrealql",
-									title: "SurrealQL",
+									language: "vyrmql",
+									title: "VyrmQL",
 									code: `
 										-- Define your parameters with ease
 										DEFINE PARAM $hello VALUE "world";
@@ -231,7 +231,7 @@ export function ParametersView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/param",
+												"https://github.com/EonsofStupid/connectome",
 											)
 										}
 									>

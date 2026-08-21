@@ -1,6 +1,6 @@
 import { type CompletionSource, snippetCompletion } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
-import { surrealqlLanguage } from "@surrealdb/codemirror";
+import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 import { useDatabaseStore } from "~/stores/database";
 
 const CUSTOM_FUNCTION_SOURCE: CompletionSource = (context) => {
@@ -27,8 +27,8 @@ const CUSTOM_FUNCTION_SOURCE: CompletionSource = (context) => {
 /**
  * An extension used to autocomplete table names
  */
-export const surqlCustomFunctionCompletion = (): Extension => {
-	return surrealqlLanguage.data.of({
+export const vyrmqlCustomFunctionCompletion = (): Extension => {
+	return vyrmqlLanguage.data.of({
 		autocomplete: CUSTOM_FUNCTION_SOURCE,
 	});
 };

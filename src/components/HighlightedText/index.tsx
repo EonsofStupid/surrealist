@@ -7,10 +7,10 @@ import classes from "./style.module.scss";
 
 export interface HighlightedTextProps {
 	children: string;
-	language?: CodeLang | "surrealql";
+	language?: CodeLang | "vyrmql";
 }
 
-export function HighlightedText({ children, language = "surrealql" }: HighlightedTextProps) {
+export function HighlightedText({ children, language = "vyrmql" }: HighlightedTextProps) {
 	const colorScheme = useColorScheme();
 	const syntaxTheme = useConfigStore((state) => state.settings.appearance.syntaxTheme);
 

@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Documentation
-    url: https://github.com/surrealdb/docs.surrealdb.com/issues/new/choose
+    url: https://github.com/EonsofStupid/connectome
     about: Report issues with the documentation here.
   - name: Security issues
-    url: https://surrealdb.com/legal/security
+    url: https://github.com/EonsofStupid/connectome/security/policy
     about: Report security vulnerabilities here.

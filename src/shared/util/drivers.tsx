@@ -1,13 +1,13 @@
 import type { ElementProps } from "@mantine/core";
 
-export function SurrealIcon(props: ElementProps<"svg">) {
+export function RRFlowIcon(props: ElementProps<"svg">) {
 	return (
 		<svg
 			viewBox="0 0 128 128"
 			height={32}
 			{...props}
 		>
-			<title>Surreal icon</title>
+			<title>RRFlow icon</title>
 			<linearGradient
 				id="violet"
 				x1="1"
@@ -23,7 +23,7 @@ export function SurrealIcon(props: ElementProps<"svg">) {
 				/>
 			</linearGradient>
 			<path
-				fill="url(#surreal)"
+				fill="url(#rrflow)"
 				d="M48.9819 45.8954L10.1163 6.4375L1.49123 15.194L40.3037 54.5981C43.9144 58.2638 43.9144 64.2225 40.3037 67.8881L1.49121 107.292L10.1163 116.049L48.9819 76.5908C57.3351 68.1102 57.3351 54.376 48.9819 45.8954ZM126.5 108.315H44.9116V121.5H126.5V108.315Z"
 			/>
 		</svg>

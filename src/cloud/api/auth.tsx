@@ -1,6 +1,6 @@
 import { shutdown } from "@intercom/messenger-js-sdk";
 import { showNotification } from "@mantine/notifications";
-import { Icon, iconCheck } from "@surrealdb/ui";
+import { Icon, iconCheck } from "@rrflow/ui";
 import { sleep } from "radash";
 import { adapter } from "~/adapter";
 import { useCloudStore } from "~/stores/cloud";
@@ -83,7 +83,7 @@ export async function openCloudAuthentication() {
 		code_challenge: pkce.challenge,
 		scope: "openid profile email offline_access",
 		state,
-		audience: "https://surrealdb.us.auth0.com/api/v2/",
+		audience: "https://rrflow.us.auth0.com/api/v2/",
 	});
 
 	adapter.log("Cloud", `Opening cloud authentication page (re: ${CALLBACK_ENDPOINT})`);
@@ -316,7 +316,7 @@ export async function acquireSession(accessToken: string, initial: boolean) {
 		} else {
 			showErrorNotification({
 				title: "Failed to authenticate",
-				content: "Please try signing into SurrealDB Cloud again",
+				content: "Please try signing into RRFlow Cloud again",
 			});
 		}
 	} finally {

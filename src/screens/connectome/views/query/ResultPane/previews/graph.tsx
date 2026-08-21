@@ -12,13 +12,13 @@ import {
 	Text,
 } from "@mantine/core";
 import { indexParallelEdgesIndex } from "@sigma/edge-curve";
-import { Icon, iconBraces, iconFilter, iconRelation, iconTag } from "@surrealdb/ui";
+import { Icon, iconBraces, iconFilter, iconRelation, iconTag } from "@rrflow/ui";
 import { inferSettings } from "graphology-layout-forceatlas2";
 import FA2LayoutSupervisor from "graphology-layout-forceatlas2/worker";
 import iwanthue, { ColorSpaceArray } from "iwanthue";
 import { isArray, isNumber, isObject } from "radash";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { equals, escapeIdent, RecordId } from "surrealdb";
+import { equals, escapeIdent, RecordId } from "~/vendor/rrflow-client";
 import { Label } from "~/components/Label";
 import { newRelationalGraph, RelationGraph } from "~/components/RelationGraph";
 import { NodeCircle } from "~/components/RelationGraph/node";
@@ -40,7 +40,7 @@ import { type PreviewProps } from ".";
 
 const CURVE_AMP = 3.5;
 const CURVE_SCALE = 0.15;
-const SURREAL_SPACE: ColorSpaceArray = [180, 10, 50, 100, 40, 100];
+const RRFLOW_SPACE: ColorSpaceArray = [180, 10, 50, 100, 40, 100];
 
 function jitter(value?: number) {
 	return value !== undefined ? value + (Math.random() - 0.5) * 0.001 : value;
@@ -164,7 +164,7 @@ export function GraphPreview({ responses, selected }: PreviewProps) {
 		const colorMap = new Map<string, string>();
 		const palette = iwanthue(9, {
 			seed: "Connectome",
-			colorSpace: SURREAL_SPACE,
+			colorSpace: RRFLOW_SPACE,
 		});
 
 		// Assign previously used colors

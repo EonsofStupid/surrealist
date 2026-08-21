@@ -10,7 +10,7 @@ import {
 	iconSandbox,
 	iconUpload,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useState } from "react";
 import { SANDBOX } from "~/constants";
 import { useConnection, useRequireDatabase } from "~/hooks/connection";

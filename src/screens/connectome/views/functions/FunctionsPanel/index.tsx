@@ -10,7 +10,7 @@ import {
 	iconPlus,
 	iconSearch,
 	iconUpload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useContextMenu } from "mantine-contextmenu";
 import { useMemo } from "react";
 import { ActionButton } from "~/components/ActionButton";

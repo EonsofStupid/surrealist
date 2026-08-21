@@ -7,7 +7,7 @@ export function DocsSchemaScopes({ language }: TopicProps) {
 	const snippets = useMemo<Snippets>(
 		() => ({
 			cli: `
-		-- Enable scope authentication directly in SurrealDB
+		-- Enable scope authentication directly in RRFlow
 		DEFINE SCOPE account SESSION 24h
 		SIGNUP (
 			CREATE user SET email = $email, pass = crypto::argon2::generate($pass)
@@ -17,12 +17,12 @@ export function DocsSchemaScopes({ language }: TopicProps) {
 		);
 		`,
 			js: `
-		import { Surreal } from 'surrealdb';
+		import { RRFlow } from '~/vendor/rrflow-client';
 
-		const db = new Surreal();
+		const db = new RRFlow();
 
-		import { Surreal } from 'surrealdb';
-		const db = new Surreal();
+		import { RRFlow } from '~/vendor/rrflow-client';
+		const db = new RRFlow();
 		await db.connect('<the actual address of the connection>/rpc', {
 			namespace: '<the actual ns of the connection>',
 			database: '<the action db of the connection>'
@@ -33,26 +33,26 @@ export function DocsSchemaScopes({ language }: TopicProps) {
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
 		# Connect to a local endpoint
-		db = Surreal()
+		db = RRFlow()
 		await db.connect('http://127.0.0.1:8000/rpc')
 		# Connect to a remote endpoint
-		db = Surreal()
-		await db.connect('https://cloud.surrealdb.com/rpc')
+		db = RRFlow()
+		await db.connect('http://127.0.0.1:8000/rpc')
 		`,
 			go: `
 		// Connect to a local endpoint
-		surrealdb.New("ws://localhost:8000/rpc");
+		rrflow.New("ws://localhost:8000/rpc");
 		// Connect to a remote endpoint
-		surrealdb.New("ws://cloud.surrealdb.com/rpc");
+		rrflow.New("ws://127.0.0.1:8000/rpc");
 		`,
 			csharp: `
 		await db.RawQuery(
 			"""
-				-- Enable scope authentication directly in SurrealDB
+				-- Enable scope authentication directly in RRFlow
 				DEFINE SCOPE account SESSION 24h
 				SIGNUP (
 					CREATE user SET email = $email, pass = crypto::argon2::generate($pass)
@@ -65,11 +65,11 @@ export function DocsSchemaScopes({ language }: TopicProps) {
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		$db->query('
-			-- Enable scope authentication directly in SurrealDB
+			-- Enable scope authentication directly in RRFlow
 			DEFINE SCOPE account SESSION 24h
 			SIGNUP (
 				CREATE user SET email = $email, pass = crypto::argon2::generate($pass)
@@ -87,7 +87,7 @@ export function DocsSchemaScopes({ language }: TopicProps) {
 		<Article title="Scopes">
 			<div>
 				<p>
-					Within SurrealDB, accesses are a way to manage access to data. They are defined
+					Within RRFlow, accesses are a way to manage access to data. They are defined
 					within the schema and can be used to restrict access to certain parts of the
 					data. To access data within an access, you must first sign in with the
 					appropriate credentials.

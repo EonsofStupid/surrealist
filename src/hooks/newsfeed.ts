@@ -15,13 +15,13 @@ export interface NewsPost {
 }
 
 /**
- * Fetch the latest news from the SurrealDB blog.
+ * Fetch the latest news from the RRFlow blog.
  */
 export function useLatestNewsQuery() {
 	const [flags] = useFeatureFlags();
 	const [websiteSetting] = useSetting("cloud", "urlWebsiteBase");
 	const isCustom = flags.website_base === "custom";
-	const newsfeedBase = isCustom ? websiteSetting : "https://surrealdb.com";
+	const newsfeedBase = isCustom ? websiteSetting : "https://github.com/EonsofStupid/connectome";
 
 	return useQuery<NewsPost[]>({
 		queryKey: ["newsfeed", newsfeedBase],

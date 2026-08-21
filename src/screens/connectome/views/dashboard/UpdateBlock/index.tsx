@@ -1,9 +1,9 @@
 import { Alert, Box, Button, Group } from "@mantine/core";
-import { Icon, iconOpen, iconReset } from "@surrealdb/ui";
+import { Icon, iconOpen, iconReset } from "@rrflow/ui";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { useStable } from "~/hooks/stable";
 import { CloudInstance, CloudOrganization } from "~/types";
-import { openSurrealChangelog } from "~/shared/util/cloud";
+import { openRRFlowChangelog } from "~/shared/util/cloud";
 
 export interface UpdateBlockProps {
 	instance: CloudInstance;
@@ -36,7 +36,7 @@ export function UpdateBlock({
 				icon={<Icon path={iconReset} />}
 				mb={6}
 			>
-				<Box>Your instance can be updated to SurrealDB {latest}</Box>
+				<Box>Your instance can be updated to RRFlow {latest}</Box>
 				<Group mt="md">
 					<Button
 						size="xs"
@@ -50,7 +50,7 @@ export function UpdateBlock({
 						color="obsidian"
 						variant="light"
 						rightSection={<Icon path={iconOpen} />}
-						onClick={() => openSurrealChangelog(latest)}
+						onClick={() => openRRFlowChangelog(latest)}
 					>
 						View changelog
 					</Button>

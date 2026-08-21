@@ -1,5 +1,5 @@
 import { Avatar, Badge, Group, Stack, Text, UnstyledButton } from "@mantine/core";
-import surrealImg from "~/shared/assets/images/surrealdb.png";
+import rrflowImg from "~/shared/assets/images/rrflow.png";
 import { CloudOrganization, IntercomUser } from "~/types";
 import { formatRelativeDate } from "~/shared/util/helpers";
 
@@ -16,7 +16,7 @@ export function ConversationPartAuthor({
 }: ConversationPartAuthorProps) {
 	return (
 		<ConversationUser
-			name={user?.name ?? "SurrealDB Team"}
+			name={user?.name ?? "RRFlow Team"}
 			type={user?.type ?? "user"}
 			image={user?.avatar}
 			updated_at={updated_at}
@@ -76,8 +76,8 @@ export function ConversationUser({
 					radius="md"
 					size={36}
 					name={name}
-					src={image ?? (type === "admin" || type === "bot" ? surrealImg : undefined)}
-					bg={type === "admin" || type === "bot" ? "surreal.0" : undefined}
+					src={image ?? (type === "admin" || type === "bot" ? rrflowImg : undefined)}
+					bg={type === "admin" || type === "bot" ? "rrflow.0" : undefined}
 					component={UnstyledButton}
 					style={{
 						cursor: "default",

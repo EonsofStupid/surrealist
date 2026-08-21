@@ -26,7 +26,7 @@ import {
 	iconRefresh,
 	iconRelation,
 	iconReset,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import {
 	Background,
 	type Edge,
@@ -697,7 +697,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 								</Text>
 							</Popover.Dropdown>
 						</Popover>
-						<Link href="https://surrealdb.com/docs/Connectome/concepts/designing-the-database-schema">
+						<Link href="https://github.com/EonsofStupid/connectome">
 							<ActionButton label="Designer help">
 								<Icon path={iconHelp} />
 							</ActionButton>

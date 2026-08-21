@@ -18,7 +18,7 @@ import {
 	TextInput,
 	Title,
 } from "@mantine/core";
-import { MANTINE_THEME } from "@surrealdb/ui";
+import { MANTINE_THEME } from "@rrflow/ui";
 
 const ICON_SIZES: Record<string, number> = {
 	xs: 0.5,
@@ -30,6 +30,10 @@ const ICON_SIZES: Record<string, number> = {
 
 export const Connectome_THEME: MantineThemeOverride = {
 	...MANTINE_THEME,
+	colors: {
+		...MANTINE_THEME.colors,
+		rrflow: MANTINE_THEME.colors?.violet!,
+	},
 	components: {
 		...MANTINE_THEME.components,
 		Autocomplete: Autocomplete.extend({
@@ -111,7 +115,7 @@ export const Connectome_THEME: MantineThemeOverride = {
 		}),
 		Notification: Notification.extend({
 			defaultProps: {
-				variant: "surreal",
+				variant: "spaced",
 			},
 		}),
 		Indicator: Indicator.extend({

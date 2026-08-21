@@ -10,7 +10,7 @@ import {
 	iconPlus,
 	iconTable,
 	iconUpload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { adapter } from "~/adapter";
@@ -178,8 +178,8 @@ export function ExplorerView() {
 								title="Explorer"
 								icon={iconExplorer}
 								snippet={{
-									language: "surrealql",
-									title: "SurrealQL",
+									language: "vyrmql",
+									title: "VyrmQL",
 									code: `
 										-- Declare a new table
 										DEFINE TABLE person;
@@ -210,7 +210,7 @@ export function ExplorerView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/table",
+												"https://github.com/EonsofStupid/connectome",
 											)
 										}
 									>

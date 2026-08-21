@@ -2,8 +2,8 @@ import type { SelectionRange } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { Box, Button, Group, Modal, Stack, TagsInput, Text, TextInput } from "@mantine/core";
 import { useDisclosure, useInputState } from "@mantine/hooks";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconCheck } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconCheck } from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { Form } from "~/components/Form";
@@ -297,7 +297,7 @@ export function QueryView() {
 								onChange={setSaveContent}
 								multiline
 								placeholder="SELECT * FROM something..."
-								extensions={[surrealql()]}
+								extensions={[vyrmql()]}
 							/>
 						)}
 

@@ -18,8 +18,8 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { clamp, useInputState } from "@mantine/hooks";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconCancel, iconCheck } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconCancel, iconCheck } from "@rrflow/ui";
 import clsx from "clsx";
 import {
 	type FocusEvent,
@@ -97,7 +97,7 @@ export function CodeInput({
 			extensions: [
 				inputBase(),
 				changeHandler,
-				extensions || surrealql(),
+				extensions || vyrmql(),
 				themeComp.of(editorTheme(colorScheme, syntaxTheme)),
 				readOnlyComp.of(EditorState.readOnly.of(!!disabled || !!readOnly)),
 				fallbackComp.of(placeholder ? ph(placeholder) : []),
@@ -262,7 +262,7 @@ export function PermissionInput({
 			value={textValue}
 			onChange={handleChange}
 			rightSectionWidth={70}
-			extensions={[surrealql("permission")]}
+			extensions={[vyrmql("permission")]}
 			rightSection={
 				<Group
 					gap="xs"

@@ -7,9 +7,9 @@ import {
 	iconDelete,
 	iconRefresh,
 	iconSearch,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect, useState } from "react";
-import { RecordId } from "surrealdb";
+import { RecordId } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { DrawerResizer } from "~/components/DrawerResizer";
 import { CodeInput } from "~/components/Inputs";
@@ -17,9 +17,9 @@ import { Spacer } from "~/components/Spacer";
 import type { HistoryHandle } from "~/hooks/history";
 import { useSaveable } from "~/hooks/save";
 import { useStable } from "~/hooks/stable";
-import { useValueValidator } from "~/hooks/surrealql";
+import { useValueValidator } from "~/hooks/vyrmql";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurrealQL } from "~/screens/connectome/connection/connection";
+import { executeQuery, getVyrmQL } from "~/screens/connectome/connection/connection";
 import { useConfirmation } from "../Confirmation";
 import classes from "./style.module.scss";
 import { ContentTab } from "./tabs/content";
@@ -72,7 +72,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 			const id = history.current;
 
 			const [{ success, result }] = await executeQuery(
-				/* surql */ `UPDATE $id CONTENT $body`,
+				/* vyrmql */ `UPDATE $id CONTENT $body`,
 				{
 					id,
 					body,
@@ -93,19 +93,19 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const fetchRecord = useStable(async (id: RecordId) => {
-		const contentQuery = /* surql */ `SELECT * FROM ONLY $id`;
-		const inputQuery = /* surql */ `SELECT VALUE <-? FROM ONLY $id`;
-		const outputsQuery = /* surql */ `SELECT VALUE ->? FROM ONLY $id`;
+		const contentQuery = /* vyrmql */ `SELECT * FROM ONLY $id`;
+		const inputQuery = /* vyrmql */ `SELECT VALUE <-? FROM ONLY $id`;
+		const outputsQuery = /* vyrmql */ `SELECT VALUE ->? FROM ONLY $id`;
 
 		const [{ result: content }, { result: inputs }, { result: outputs }] = await executeQuery(
 			`${contentQuery};${inputQuery};${outputsQuery}`,
 			{ id },
 		);
 
-		const formatted = await getSurrealQL().formatValue(content, false, true);
+		const formatted = await getVyrmQL().formatValue(content, false, true);
 
 		setError("");
-		setRecordId(await getSurrealQL().formatValue(id));
+		setRecordId(await getVyrmQL().formatValue(id));
 		setCurrentRecord({
 			isEdge: !!content?.in && !!content?.out,
 			exists: !!content,
@@ -128,7 +128,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const gotoRecord = useStable(async () => {
-		const id = await getSurrealQL().parseValue(recordId);
+		const id = await getVyrmQL().parseValue(recordId);
 
 		if (id instanceof RecordId) {
 			history.push(id);
@@ -141,7 +141,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 		skippable: true,
 		onConfirm: async () => {
 			await executeQuery(
-				/* surql */ `DELETE ${await getSurrealQL().formatValue(history.current)}`,
+				/* vyrmql */ `DELETE ${await getVyrmQL().formatValue(history.current)}`,
 			);
 
 			history.clear();

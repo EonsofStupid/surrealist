@@ -1,5 +1,5 @@
 import { Box } from "@mantine/core";
-import { iconDatabaseSecure, iconFolderSecure, iconServerSecure } from "@surrealdb/ui";
+import { iconDatabaseSecure, iconFolderSecure, iconServerSecure } from "@rrflow/ui";
 import { memo, useMemo } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { PanelDragger } from "~/components/Pane/dragger";
@@ -72,7 +72,7 @@ export function AuthenticationView() {
 				<Panel minSize={15}>
 					<LevelPanelLazy
 						level="DATABASE"
-						color="var(--surreal-energy)"
+						color="var(--rrflow-energy)"
 						icon={iconDatabaseSecure}
 						users={databaseUsers}
 						accesses={databaseAccesses}

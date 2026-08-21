@@ -31,10 +31,9 @@ import {
 	pictoHandsOn,
 	pictoSDBCloud,
 	pictoSidekick,
-	pictoSurrealDB,
 	pictoBrain,
 	pictoUniversity,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { MouseEvent, useState } from "react";
 import { Link } from "wouter";
 import { adapter } from "~/adapter";
@@ -356,7 +355,7 @@ export function OverviewPage() {
 										<Box key={organization.info.id}>
 											<Group gap="xl">
 												<Box>
-													<Text>SurrealDB Cloud</Text>
+													<Text>RRFlow Cloud</Text>
 													<Link href={`/o/${organization.info.id}`}>
 														<Group
 															gap="sm"
@@ -493,7 +492,7 @@ export function OverviewPage() {
 										mt={36}
 										fz={22}
 									>
-										Sign in to SurrealDB Cloud
+										Sign in to RRFlow Cloud
 									</PrimaryTitle>
 									<StartCloud
 										action="Sign in"
@@ -506,10 +505,10 @@ export function OverviewPage() {
 											inherit
 											c="bright"
 										>
-											SurrealDB Cloud
+											RRFlow Cloud
 										</Text>{" "}
 										redefines the database experience, offering the power and
-										flexibility of SurrealDB without the pain of managing
+										flexibility of RRFlow without the pain of managing
 										infrastructure. Get your own free instance today.
 									</StartCloud>
 								</>
@@ -529,11 +528,11 @@ export function OverviewPage() {
 								}}
 							>
 								<StartResource
-									title="Wire compatibility"
-									subtitle="SurrealQL transport and query reference"
-									image={pictoSurrealDB}
+									title="Runtime protocol"
+									subtitle="RRFlow transport and VyrmQL reference"
+									image={pictoBrain}
 									onClick={() =>
-										adapter.openUrl("https://surrealdb.com/docs/surrealdb")
+										adapter.openUrl("https://github.com/EonsofStupid/connectome")
 									}
 								/>
 								<StartResource
@@ -542,7 +541,7 @@ export function OverviewPage() {
 									image={pictoHandsOn}
 									onClick={() =>
 										adapter.openUrl(
-											"https://github.com/EonsofStupid/surrealist",
+											"https://github.com/EonsofStupid/connectome",
 										)
 									}
 								/>

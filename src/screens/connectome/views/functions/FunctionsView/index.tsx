@@ -1,6 +1,6 @@
 import { Box, Button, Group, Modal, Stack, Text, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconChevronRight, iconFunction, iconOpen, iconPlus } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconFunction, iconOpen, iconPlus } from "@rrflow/ui";
 import { type ChangeEvent, memo, useEffect, useRef, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { useImmer } from "use-immer";
@@ -20,7 +20,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import {
 	composeHttpConnection,
 	executeQuery,
-	getSurrealQL,
+	getVyrmQL,
 } from "~/screens/connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
@@ -34,8 +34,8 @@ import { ModelPanel } from "../ModelPanel";
 
 const SURML_FILTERS = [
 	{
-		name: "SurrealML Model",
-		extensions: ["surml", "surrealml"],
+		name: "RRFlowML Model",
+		extensions: ["surml", "vyrmml"],
 	},
 ];
 
@@ -144,8 +144,8 @@ export function FunctionsView() {
 			});
 		} else {
 			const f = func.details as SchemaFunction;
-			const isInvalid = await getSurrealQL().validateQuery(f.block);
-			const block = isInvalid ? f.block : await getSurrealQL().formatQuery(f.block);
+			const isInvalid = await getVyrmQL().validateQuery(f.block);
+			const block = isInvalid ? f.block : await getVyrmQL().formatQuery(f.block);
 
 			setActive({
 				type: "function",
@@ -203,7 +203,7 @@ export function FunctionsView() {
 	});
 
 	const uploadModel = useRequireDatabase(async () => {
-		const files = await adapter.openFile("Select a SurrealML model", SURML_FILTERS, true);
+		const files = await adapter.openFile("Select a RRFlowML model", SURML_FILTERS, true);
 		const { endpoint, headers } = composeHttpConnection(auth, "/ml/import", {
 			Accept: "application/json",
 		});
@@ -228,7 +228,7 @@ export function FunctionsView() {
 		);
 
 		await adapter.saveFile(
-			"Save SurrealML model",
+			"Save RRFlowML model",
 			`${model.name}-${model.version}.surml`,
 			SURML_FILTERS,
 			() =>
@@ -297,8 +297,8 @@ export function FunctionsView() {
 								title="Functions"
 								icon={iconFunction}
 								snippet={{
-									language: "surrealql",
-									title: "SurrealQL",
+									language: "vyrmql",
+									title: "VyrmQL",
 									code: `
 										-- Define your functions with ease
 										DEFINE FUNCTION fn::greet($name: string) {
@@ -314,7 +314,7 @@ export function FunctionsView() {
 									Functions allow you to define stored procedures that can be
 									reused throughout your queries. This view allows you to
 									effortlessly create and manage your functions, or upload
-									SurrealML models to use in your queries.
+									RRFlowML models to use in your queries.
 								</Text>
 								<Stack>
 									<Group>
@@ -334,7 +334,7 @@ export function FunctionsView() {
 											rightSection={<Icon path={iconOpen} />}
 											onClick={() =>
 												adapter.openUrl(
-													"https://surrealdb.com/docs/surrealql/statements/define/function",
+													"https://github.com/EonsofStupid/connectome",
 												)
 											}
 										>

@@ -12,12 +12,12 @@ Governs the 7 Zustand state stores. In Phase 1, stores will be triaged: some mov
 
 | Store | File | Purpose | Phase 1 Destination |
 |-------|------|---------|-------------------|
-| Cloud | `cloud.tsx` | Surreal Cloud state | STRIP (not needed) |
+| Cloud | `cloud.tsx` | RRFlow Cloud state | STRIP (not needed) |
 | Config | `config.tsx` | App configuration | Shell |
-| Database | `database.tsx` | SurrealDB connection state | SurrealDB spoke |
+| Database | `database.tsx` | RRFlow connection state | RRFlow spoke |
 | Deploy | `deploy.tsx` | Cloud deployment state | STRIP (not needed) |
 | Interface | `interface.tsx` | UI layout/panel state | Shell |
-| Query | `query.tsx` | Active query state | SurrealDB spoke |
+| Query | `query.tsx` | Active query state | RRFlow spoke |
 | Sidekick | `sidekick.tsx` | AI assistant state | Shell (→ Clyffy) |
 
 ## Zustand Store Pattern

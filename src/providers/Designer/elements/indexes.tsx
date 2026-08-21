@@ -1,5 +1,5 @@
 import { Accordion, Flex, Text, TextInput } from "@mantine/core";
-import { iconIndex } from "@surrealdb/ui";
+import { iconIndex } from "@rrflow/ui";
 import { CodeInput } from "~/components/Inputs";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";

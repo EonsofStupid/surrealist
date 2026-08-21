@@ -13,7 +13,7 @@
 | **Parent** | RRFlow engine repository (`apps/connectome` submodule) |
 | **AI Product** | Clyffy — local and frontier AI harness managed through this control surface |
 | **Data Architecture** | RRFlow — persistent reasoning runtime, storage, query, and lifecycle kernel |
-| **Fork Source** | surrealdb/surrealist |
+| **Fork Source** | rrflow/connectome |
 | **Classification** | PUBLIC ALPHA |
 | **Purpose** | Native instance connector, data/model explorer, live observatory, and visual debugger for RRFlow |
 
@@ -62,9 +62,9 @@ The following Biome rules are intentionally disabled in `biome.json`. Each has b
 | Rule | Status | Rationale |
 |------|--------|-----------|
 | `a11y/useSemanticElements` | `off` | Desktop app — not a public web page. Devtool UI uses custom components extensively. |
-| `suspicious/noExplicitAny` | `off` | Inherited from Surrealist. Parking lot item — should be progressively tightened as we refactor. |
-| `suspicious/noThenProperty` | `off` | SurrealDB SDK uses `.then` patterns on result objects. Cannot remove without breaking SDK usage. |
-| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in SurrealQL regex patterns. |
+| `suspicious/noExplicitAny` | `off` | Inherited from Connectome. Parking lot item — should be progressively tightened as we refactor. |
+| `suspicious/noThenProperty` | `off` | RRFlow SDK uses `.then` patterns on result objects. Cannot remove without breaking SDK usage. |
+| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in VyrmQL regex patterns. |
 | `suspicious/noArrayIndexKey` | `off` | Inherited. Used in list rendering where items lack stable IDs. Should be revisited per-component. |
 | `style/noUnusedTemplateLiteral` | `off` | The `urql` schema parser triggers this. |
 | `style/useImportType` | `off` | Inherited. TypeScript `import type` enforcement conflicts with some patterns. |

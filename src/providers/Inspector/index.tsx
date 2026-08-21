@@ -1,10 +1,10 @@
 import { noop } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { createContext, type PropsWithChildren, useContext, useState } from "react";
-import { RecordId } from "surrealdb";
+import { RecordId } from "~/vendor/rrflow-client";
 import { type HistoryHandle, useHistory } from "~/hooks/history";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { InspectorDrawer } from "./drawer";
@@ -45,7 +45,7 @@ export function InspectorProvider({ children }: PropsWithChildren) {
 	const inspect = useStable(async (record: RecordId | string) => {
 		const recordId =
 			typeof record === "string"
-				? await getSurrealQL().parseValue(record)
+				? await getVyrmQL().parseValue(record)
 				: new RecordId(record.table, record.id);
 
 		if (!(recordId instanceof RecordId)) {

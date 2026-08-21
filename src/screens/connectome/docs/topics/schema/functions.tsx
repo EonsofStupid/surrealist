@@ -17,12 +17,12 @@ export function DocsSchemaFunctions({ language }: TopicProps) {
 		RETURN fn::greet("BOB");
 		`,
 			js: `
-		import { Surreal } from 'surrealdb';
+		import { RRFlow } from '~/vendor/rrflow-client';
 
-		const db = new Surreal();
+		const db = new RRFlow();
 
-		import { Surreal } from 'surrealdb';
-		const db = new Surreal();
+		import { RRFlow } from '~/vendor/rrflow-client';
+		const db = new RRFlow();
 		await db.connect('<the actual address of the connection>/rpc', {
 			namespace: '<the actual ns of the connection>',
 			database: '<the action db of the connection>'
@@ -33,21 +33,21 @@ export function DocsSchemaFunctions({ language }: TopicProps) {
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
 		# Connect to a local endpoint
-		db = Surreal()
+		db = RRFlow()
 		await db.connect('http://127.0.0.1:8000/rpc')
 		# Connect to a remote endpoint
-		db = Surreal()
-		await db.connect('https://cloud.surrealdb.com/rpc')
+		db = RRFlow()
+		await db.connect('http://127.0.0.1:8000/rpc')
 		`,
 			go: `
 		// Connect to a local endpoint
-		surrealdb.New("ws://localhost:8000/rpc");
+		rrflow.New("ws://localhost:8000/rpc");
 		// Connect to a remote endpoint
-		surrealdb.New("ws://cloud.surrealdb.com/rpc");
+		rrflow.New("ws://127.0.0.1:8000/rpc");
 		`,
 			csharp: `
 			await db.RawQuery(
@@ -65,11 +65,11 @@ export function DocsSchemaFunctions({ language }: TopicProps) {
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[],
@@ -81,7 +81,7 @@ export function DocsSchemaFunctions({ language }: TopicProps) {
 				<p>
 					Functions are a way to encapsulate logic in a database. To define functions you
 					have to be a system user (namespace, database, or root). They can be used to
-					perform calculations, manipulate data, or perform other operations. In SurrealDB
+					perform calculations, manipulate data, or perform other operations. In RRFlow
 					functions can be written just as you would in your programming language of
 					choice.
 				</p>

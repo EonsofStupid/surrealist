@@ -16,13 +16,13 @@ export function DocsGlobalInit({ language }: TopicProps) {
 	const snippets = useMemo<Snippets>(
 		() => ({
 			cli: `
-			surreal sql --endpoint ${esc_endpoint} --namespace ${esc_namespace} --database ${esc_database}
+			rrflow sql --endpoint ${esc_endpoint} --namespace ${esc_namespace} --database ${esc_database}
 		`,
 			js: `
-			import Surreal from 'surrealdb';
+			import RRFlow from '~/vendor/rrflow-client';
 
-			// Create a new Surreal instance
-			const db = new Surreal();
+			// Create a new RRFlow instance
+			const db = new RRFlow();
 
 			// Connect to the database
 			await db.connect(${esc_endpoint}, {
@@ -31,7 +31,7 @@ export function DocsGlobalInit({ language }: TopicProps) {
 			});
 		`,
 			rust: `
-			use surrealdb::engine::any;
+			use rrflow::engine::any;
 
 			// Connect to the database
 			let db = any::connect(${esc_endpoint}).await?;
@@ -41,32 +41,32 @@ export function DocsGlobalInit({ language }: TopicProps) {
 		`,
 			py: `
 			# Connect to a local endpoint with http protocol
-			db = Surreal('http://127.0.0.1:8000')
+			db = RRFlow('http://127.0.0.1:8000')
 
 			# Connect to a remote endpoint with ws protocol
-			db = AsyncSurreal('wss://cloud.surrealdb.com')
+			db = AsyncRRFlow('wss://127.0.0.1:8000')
 		`,
 			go: `
 		// Connect to a local endpoint
-		surrealdb.New("ws://localhost:8000/rpc");
+		rrflow.New("ws://localhost:8000/rpc");
 		// Connect to a remote endpoint
-		surrealdb.New("wss://cloud.surrealdb.com/rpc");
+		rrflow.New("ws://127.0.0.1:8000/rpc");
 		`,
 			csharp: `
-			using SurrealDb.Net;
+			using RRFlow.Net;
 			
 			// Connect to a local endpoint
-			var db = new SurrealDbClient("http://127.0.0.1:8000");
+			var db = new RRFlowClient("http://127.0.0.1:8000");
 
 			// Connect to a remote endpoint
-			var db = new SurrealDbClient("wss://cloud.surrealdb.com/rpc");
+			var db = new RRFlowClient("ws://127.0.0.1:8000/rpc");
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
-		$db = new \\Surreal\\Surreal();
+		$db = new \\RRFlow\\RRFlow();
 		`,
 		}),
 		[esc_endpoint, esc_namespace, esc_database],
@@ -76,9 +76,9 @@ export function DocsGlobalInit({ language }: TopicProps) {
 		<Article title="Initialising">
 			<div>
 				<p>
-					To initialise a connection to SurrealDB, you need to create a new instance of a
-					SurrealDB client and connect. This will allow you to interact with the database
-					and run queries to the database. Do this by importing the Surreal class and
+					To initialise a connection to RRFlow, you need to create a new instance of a
+					RRFlow client and connect. This will allow you to interact with the database
+					and run queries to the database. Do this by importing the RRFlow class and
 					create a new instance of the class. Then, use the connect method to connect to
 					the database.
 				</p>

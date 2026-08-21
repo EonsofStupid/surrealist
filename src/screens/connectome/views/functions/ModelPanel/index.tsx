@@ -1,5 +1,5 @@
 import { Button, Group, Text } from "@mantine/core";
-import { Icon, iconDownload, iconModuleML, iconOpen } from "@surrealdb/ui";
+import { Icon, iconDownload, iconModuleML, iconOpen } from "@rrflow/ui";
 import { useMemo } from "react";
 import { adapter } from "~/adapter";
 import { Introduction } from "~/components/Introduction";
@@ -14,9 +14,9 @@ export function ModelPanel({ details, onDownload }: ModelPanelProps) {
 	const snippet = useMemo(
 		() => ({
 			title: `Using the model`,
-			language: "surrealql",
+			language: "vyrmql",
 			code: `
-			# Use the SurrealML model in your queries
+			# Use the RRFlowML model in your queries
 			ml::${details.name}<${details.version}>({
 				# Your variables here
 			})					
@@ -33,7 +33,7 @@ export function ModelPanel({ details, onDownload }: ModelPanelProps) {
 			rightSection={<Text c="obsidian">Version {details.version}</Text>}
 		>
 			<Text>
-				Upload your SurrealML models directly to SurrealDB and use the power of Machine
+				Upload your RRFlowML models directly to RRFlow and use the power of Machine
 				Learning within your queries.
 			</Text>
 			<Group>
@@ -50,7 +50,7 @@ export function ModelPanel({ details, onDownload }: ModelPanelProps) {
 					color="obsidian"
 					variant="light"
 					rightSection={<Icon path={iconOpen} />}
-					onClick={() => adapter.openUrl("https://surrealdb.com/docs/surrealml")}
+					onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
 				>
 					Learn more
 				</Button>

@@ -9,7 +9,7 @@ const CAT = "serving";
 const DRIVERS = [
 	{ label: "Memory", value: "memory" },
 	{ label: "RocksDB", value: "file" },
-	{ label: "SurrealKV", value: "surrealkv" },
+	{ label: "RRFlowKV", value: "rrflowkv" },
 	{ label: "TiKV", value: "tikv" },
 ];
 
@@ -31,7 +31,7 @@ export function ServingTab() {
 	const [historySize, setHistorySize] = useSetting(CAT, "historySize");
 	const [port, setPort] = useSetting(CAT, "port");
 
-	const isFileDriver = driver === "file" || driver === "surrealkv";
+	const isFileDriver = driver === "file" || driver === "rrflowkv";
 
 	const updatePort = useStable((value: string | number) => {
 		setPort(value as number);
@@ -54,7 +54,7 @@ export function ServingTab() {
 					mb="xl"
 					maw={500}
 				>
-					You can use Connectome Desktop to serve SurrealDB on your local machine.
+					You can use Connectome Desktop to serve RRFlow on your local machine.
 					<br />
 					This page allows you to customize the settings for the database.
 				</Text>
@@ -90,7 +90,7 @@ export function ServingTab() {
 
 					<TextInput
 						w="unset"
-						label="SurrealDB executable path"
+						label="RRFlow executable path"
 						value={executable}
 						spellCheck={false}
 						onChange={(e) => setExecutable(e.target.value)}
@@ -136,7 +136,7 @@ export function ServingTab() {
 						onChange={setDriver as any}
 					/>
 
-					{(driver === "file" || driver === "tikv" || driver === "surrealkv") && (
+					{(driver === "file" || driver === "tikv" || driver === "rrflowkv") && (
 						<TextInput
 							w="unset"
 							label={isFileDriver ? "Storage path" : "Storage cluster address"}

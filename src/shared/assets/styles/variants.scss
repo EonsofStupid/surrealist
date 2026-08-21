@@ -34,8 +34,8 @@
 	transform: scale(1.01);
 	box-shadow: var(--mantine-shadow-sm) !important;
 	border-color: rgba(255, 255, 255, 0.15) !important;
-	outline: 2px solid var(--mantine-color-surreal-6);
-	box-shadow: 0 5px 35px 0 rgb(from var(--mantine-color-surreal-6) r g b / 0.25) !important;
+	outline: 2px solid var(--mantine-color-rrflow-6);
+	box-shadow: 0 5px 35px 0 rgb(from var(--mantine-color-rrflow-6) r g b / 0.25) !important;
 	cursor: pointer;
 
 	@include light {

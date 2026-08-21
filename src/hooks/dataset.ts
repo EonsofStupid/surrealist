@@ -1,6 +1,6 @@
 import { sleep } from "radash";
 import { useState } from "react";
-import { getSurreal } from "~/screens/connectome/connection/connection";
+import { getRRFlow } from "~/screens/connectome/connection/connection";
 import { showInfo } from "~/shared/util/helpers";
 import { getDatasetURL } from "~/shared/util/language";
 import { syncConnectionSchema } from "~/shared/util/schema";
@@ -21,7 +21,7 @@ export function useDatasets() {
 			const dataset = await response.blob();
 
 			await sleep(50);
-			await getSurreal().import(dataset);
+			await getRRFlow().import(dataset);
 			await syncConnectionSchema();
 
 			showInfo({

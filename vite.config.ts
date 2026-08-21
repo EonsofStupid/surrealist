@@ -6,24 +6,20 @@ import { defineConfig, type PluginOption } from "vite";
 import { compression } from "vite-plugin-compression2";
 import { ViteImageOptimizer as images } from "vite-plugin-image-optimizer";
 import { Mode, plugin as markdown } from "vite-plugin-markdown";
-import { surreal, version } from "./package.json";
+import { engineProtocol, version } from "./package.json";
 
 const isTauri = !!process.env.TAURI_ENV_PLATFORM;
-const isCompress = process.env.VITE_SURREALIST_COMPRESS !== "false";
-const isPreview = process.env.VITE_SURREALIST_PREVIEW === "true";
-const isDocker = process.env.VITE_SURREALIST_DOCKER === "true";
+const isCompress = process.env.VITE_CONNECTOME_COMPRESS !== "false";
+const isPreview = process.env.VITE_CONNECTOME_PREVIEW === "true";
+const isDocker = process.env.VITE_CONNECTOME_DOCKER === "true";
 
 const ENTRYPOINTS = {
-	surrealist: "/index.html",
+	connectome: "/index.html",
 	mini_embed: "/tools/mini-embed.html",
-	auth_callback: "/tools/auth-callback.html",
-	cloud_referral: "/tools/cloud-referral.html",
 };
 
 const TOOLS = {
 	"tools/mini-embed.html": "mini/run/index.html",
-	"tools/auth-callback.html": "cloud/callback/index.html", // TODO rename to cloud/callback
-	"tools/cloud-referral.html": "cloud/referral/index.html",
 };
 
 export default defineConfig(({ mode }) => {
@@ -90,16 +86,16 @@ export default defineConfig(({ mode }) => {
 						react: ["react", "react-dom"],
 						codemirror: [
 							"codemirror",
-							"@surrealdb/codemirror",
-							"@surrealdb/lezer",
+							"@rrflow/vyrmql-editor",
+							"@rrflow/vyrmql-parser",
 							"@replit/codemirror-indentation-markers",
 						],
 						mantime: ["@mantine/core", "@mantine/hooks", "@mantine/notifications"],
-						surreal: [
-							"surrealdb",
-							"@surrealdb/wasm",
-							"@surrealdb/ql-wasm-2",
-							"@surrealdb/ql-wasm-3",
+						rrflow: [
+							"@rrflow/client",
+							"@rrflow/wasm",
+							"@rrflow/vyrmql-wasm-v2",
+							"@rrflow/vyrmql-wasm-v3",
 						],
 					},
 				},
@@ -129,20 +125,20 @@ export default defineConfig(({ mode }) => {
 		define: {
 			"import.meta.env.DATE": JSON.stringify(new Date()),
 			"import.meta.env.VERSION": JSON.stringify(version),
-			"import.meta.env.SDB_VERSION": JSON.stringify(surreal),
+			"import.meta.env.RRFLOW_VERSION": JSON.stringify(engineProtocol),
 			"import.meta.env.MODE": JSON.stringify(mode),
 			"import.meta.env.GTM_ID": JSON.stringify(""),
 		},
 		optimizeDeps: {
-			exclude: ["@surrealdb/wasm", "@surrealdb/ql-wasm-2", "@surrealdb/ql-wasm-3"],
+			exclude: ["@rrflow/wasm", "@rrflow/vyrmql-wasm-v2", "@rrflow/vyrmql-wasm-v3"],
 			esbuildOptions: {
 				target: "esnext",
 			},
 		},
 		assetsInclude: [
-			"**/@surrealdb/wasm/dist/*.wasm",
-			"**/@surrealdb/ql-wasm-2/dist/*.wasm",
-			"**/@surrealdb/ql-wasm-3/dist/*.wasm",
+			"**/@rrflow/wasm/dist/*.wasm",
+			"**/@rrflow/vyrmql-wasm-v2/dist/*.wasm",
+			"**/@rrflow/vyrmql-wasm-v3/dist/*.wasm",
 		],
 	};
 });

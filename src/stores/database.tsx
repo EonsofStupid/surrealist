@@ -1,5 +1,5 @@
 import { omit } from "radash";
-import { Diagnostic } from "surrealdb";
+import { Diagnostic } from "~/vendor/rrflow-client";
 import { create } from "zustand";
 import type { GraphqlResponse } from "~/screens/connectome/connection/connection";
 import type { ConnectionSchema, QueryResponse } from "~/types";

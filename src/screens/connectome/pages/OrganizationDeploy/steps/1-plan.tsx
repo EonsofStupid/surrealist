@@ -1,5 +1,5 @@
 import { Box, Button, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
-import { Icon, iconArrowUpRight } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight } from "@rrflow/ui";
 import { useLayoutEffect } from "react";
 import { useSearchParams } from "wouter";
 import { isInstancePlan } from "~/cloud/helpers";
@@ -125,7 +125,7 @@ export function PlanStep({ organisation, instances, setDetails, setStep }: StepP
 			>
 				<Text>Looking for more pricing options and information?</Text>
 				<a
-					href="https://surrealdb.com/pricing"
+					href="https://github.com/EonsofStupid/connectome"
 					target="_blank"
 					rel="noreferrer"
 				>

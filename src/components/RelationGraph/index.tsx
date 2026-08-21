@@ -25,14 +25,14 @@ import {
 	iconPlay,
 	iconRelation,
 	iconReset,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { MultiDirectedGraph } from "graphology";
 import { useContextMenu } from "mantine-contextmenu";
 import { MouseEvent, useEffect, useRef } from "react";
 import Sigma from "sigma";
 import { createEdgeArrowProgram } from "sigma/rendering";
 import { EdgeDisplayData, NodeDisplayData } from "sigma/types";
-import { RecordId } from "surrealdb";
+import { RecordId } from "~/vendor/rrflow-client";
 import { useStable } from "~/hooks/stable";
 import { getIsLight, useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";

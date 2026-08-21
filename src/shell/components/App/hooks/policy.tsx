@@ -28,7 +28,7 @@ export function usePolicyAlert() {
 								span
 								fz="xs"
 								c="violet"
-								href="https://surrealdb.com/legal/privacy"
+								href="https://github.com/EonsofStupid/connectome"
 							>
 								Privacy Policy
 							</Link>{" "}
@@ -37,7 +37,7 @@ export function usePolicyAlert() {
 								span
 								fz="xs"
 								c="violet"
-								href="https://surrealdb.com/legal/cookies"
+								href="https://github.com/EonsofStupid/connectome"
 							>
 								Cookies Policy
 							</Link>

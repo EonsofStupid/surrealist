@@ -1,5 +1,5 @@
 import { Anchor, Box, Button, Group, Image, Paper, Text } from "@mantine/core";
-import { Icon, iconArrowUpRight, pictoFullTextSearch } from "@surrealdb/ui";
+import { Icon, iconArrowUpRight, pictoFullTextSearch } from "@rrflow/ui";
 import { satisfies } from "compare-versions";
 import { Link } from "wouter";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
@@ -19,7 +19,7 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 		showUpdate && (
 			<>
 				<Box mt={32}>
-					<PrimaryTitle>SurrealDB 3.0 is here!</PrimaryTitle>
+					<PrimaryTitle>RRFlow 3.0 is here!</PrimaryTitle>
 					<Text>Enjoy the latest features and improvements</Text>
 				</Box>
 				<Paper>
@@ -34,7 +34,7 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 						<Box>
 							<PrimaryTitle>Check compatibility</PrimaryTitle>
 							<Text>
-								Check if your database is compatible with SurrealDB 3.0 and start
+								Check if your database is compatible with RRFlow 3.0 and start
 								your migration.
 							</Text>
 							<Group mt="md">
@@ -46,7 +46,7 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 										Start migration
 									</Button>
 								</Link>
-								<Anchor href="https://surrealdb.com/3.0">
+								<Anchor href="https://github.com/EonsofStupid/connectome">
 									<Button
 										variant="light"
 										color="slate"

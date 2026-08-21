@@ -1,11 +1,11 @@
 import { Compartment } from "@codemirror/state";
 import type { EditorView } from "@codemirror/view";
-import { surrealqlVersionLinter } from "@surrealdb/codemirror";
+import { vyrmqlVersionLinter } from "~/vendor/vyrmql-editor";
 import { useEffect, useMemo, useRef } from "react";
 import { useDatabaseStore } from "~/stores/database";
 
 /**
- * Returns an editor compartment used to lint the database version against the SurrealQL syntax tree
+ * Returns an editor compartment used to lint the database version against the VyrmQL syntax tree
  */
 export function useDatabaseVersionLinter(editor: EditorView | null) {
 	const compartment = useRef(new Compartment());
@@ -14,7 +14,7 @@ export function useDatabaseVersionLinter(editor: EditorView | null) {
 	useEffect(() => {
 		editor?.dispatch({
 			effects: compartment.current.reconfigure(
-				version ? surrealqlVersionLinter(version) : [],
+				version ? vyrmqlVersionLinter(version) : [],
 			),
 		});
 	}, [editor, version]);

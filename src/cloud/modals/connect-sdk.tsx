@@ -1,6 +1,6 @@
 import { Group, Stack, Text } from "@mantine/core";
 import { openModal } from "@mantine/modals";
-import { Icon, iconXml } from "@surrealdb/ui";
+import { Icon, iconXml } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import { CodeSnippet } from "~/components/CodeSnippet";
 import { DriverSelector } from "~/components/DriverSelector";
@@ -43,26 +43,26 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 	const installation = useMemo<Snippets>(
 		() => ({
-			js: `npm install --save surrealdb`,
-			csharp: `dotnet add package SurrealDb.Net`,
-			py: `pip install surrealdb`,
-			php: `composer require surrealdb/surrealdb.php`,
+			js: `npm install --save rrflow`,
+			csharp: `dotnet add package RRFlow.Net`,
+			py: `pip install rrflow`,
+			php: `composer require rrflow/rrflow.php`,
 			rust: `
-				cargo add surrealdb;
+				cargo add rrflow;
 				cargo add tokio --features macros,rt-multi-thread
 				cargo add serde --features derive
 			`,
 			java: `
 				// Maven
 				<dependency>
-					<groupId>com.surrealdb</groupId>
-					<artifactId>surrealdb</artifactId>
+					<groupId>com.rrflow</groupId>
+					<artifactId>rrflow</artifactId>
 					<version>0.2.1</version>
 				</dependency>
 
 				// Gradle
 				dependencies {
-					implementation "com.surrealdb:surrealdb:0.2.1"
+					implementation "com.rrflow:rrflow:0.2.1"
 				}
 			`,
 		}),
@@ -72,9 +72,9 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 	const snippets = useMemo<Snippets>(
 		() => ({
 			js: `
-				import { Surreal, Table } from "surrealdb";
+				import { RRFlow, Table } from "~/vendor/rrflow-client";
 
-				const db = new Surreal();
+				const db = new RRFlow();
 
 				// Open a connection and authenticate
 				await db.connect("wss://${instance.host}", {
@@ -88,8 +88,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				
 				// Create record
 				await db.create(new Table("project"), {
-					name: "SurrealDB Dashboard",
-					description: "A modern admin interface for SurrealDB",
+					name: "RRFlow Dashboard",
+					description: "A modern admin interface for RRFlow",
 					status: "in_progress",
 					priority: "high",
 					tags: ["typescript", "react", "database"],
@@ -102,14 +102,14 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				await db.close();
 			`,
 			csharp: `
-				using SurrealDb.Net;
-				using SurrealDb.Net.Models;
-				using SurrealDb.Net.Models.Auth;
+				using RRFlow.Net;
+				using RRFlow.Net.Models;
+				using RRFlow.Net.Models.Auth;
 				using System.Text.Json;
 				
 				const string TABLE = "project";
 				
-				using var db = new SurrealDbClient("wss://${instance.host}/rpc");
+				using var db = new RRFlowClient("wss://${instance.host}/rpc");
 
 				// Select namespace and database
 				await db.Use("${namespace}", "${database}");
@@ -117,8 +117,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				// Create record
 				var project = new Project
 				{
-					Name = "SurrealDB Dashboard",
-					Description = "A modern admin interface for SurrealDB",
+					Name = "RRFlow Dashboard",
+					Description = "A modern admin interface for RRFlow",
 					Status = "in_progress",
 					Priority = "high",
 					Tags = new[] { "typescript", "react", "database" },
@@ -128,11 +128,11 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				await db.Create(TABLE, project);
 			`,
 			py: `
-				from surrealdb import Surreal, RecordID
+				from rrflow import RRFlow, RecordID
 				from datetime import datetime
 
 				# Open a connection
-				with Surreal(url="wss://${instance.host}") as db:
+				with RRFlow(url="wss://${instance.host}") as db:
 
 					# Select namespace and database
 					await db.use("${namespace}", "${database}")
@@ -142,8 +142,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 					# Create a record
 					db.create(RecordID("project", "1"), {
-						"name": "SurrealDB Dashboard",
-						"description": "A modern admin interface for SurrealDB",
+						"name": "RRFlow Dashboard",
+						"description": "A modern admin interface for RRFlow",
 						"status": "in_progress",
 						"priority": "high",
 						"tags": ["typescript", "react", "database"],
@@ -154,7 +154,7 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 					print(db.select(RecordID("project", "1")))
 			`,
 			php: `
-				$db = new \\Surreal\\Surreal();
+				$db = new \\RRFlow\\RRFlow();
 
 				// Open a connection
 				$db->connect("wss://${instance.host}", [
@@ -170,8 +170,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 				// Create a record
 				$db->create("project", [
-					"name" => "SurrealDB Dashboard",
-					"description" => "A modern admin interface for SurrealDB",
+					"name" => "RRFlow Dashboard",
+					"description" => "A modern admin interface for RRFlow",
 					"status" => "in_progress",
 					"priority" => "high",
 					"tags" => ["typescript", "react", "database"],
@@ -180,8 +180,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 			`,
 			rust: `
 				use serde::{Deserialize, Serialize};
-				use surrealdb::engine::any;
-				use surrealdb::opt::auth::Root;
+				use rrflow::engine::any;
+				use rrflow::opt::auth::Root;
 				use tokio;
 				use chrono::{DateTime, Utc};
 
@@ -209,8 +209,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 				// Create a record
 				let project = Project {
-					name: "SurrealDB Dashboard".to_string(),
-					description: "A modern admin interface for SurrealDB".to_string(),
+					name: "RRFlow Dashboard".to_string(),
+					description: "A modern admin interface for RRFlow".to_string(),
 					status: "in_progress".to_string(),
 					priority: "high".to_string(),
 					tags: vec!["typescript".to_string(), "react".to_string(), "database".to_string()],
@@ -220,7 +220,7 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 				db.create("project").content(project).await?;
 			`,
 			java: `
-				try (final Surreal db = new Surreal()) {
+				try (final RRFlow db = new RRFlow()) {
 					
 					// Open a connection
 					db.connect("wss://${instance.host}");
@@ -233,8 +233,8 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 
 					// Create a record
 					Map<String, Object> project = Map.of(
-						"name", "SurrealDB Dashboard",
-						"description", "A modern admin interface for SurrealDB",
+						"name", "RRFlow Dashboard",
+						"description", "A modern admin interface for RRFlow",
 						"status", "in_progress",
 						"priority", "high",
 						"tags", List.of("typescript", "react", "database"),
@@ -255,7 +255,7 @@ function ConnectSdkModal({ instance, namespace, database }: ConnectSdkModalProps
 		<Stack>
 			<Text size="lg">
 				You can connect to this instance with your preferred language using one of our
-				SurrealDB Client SDKs.
+				RRFlow Client SDKs.
 			</Text>
 
 			<Text

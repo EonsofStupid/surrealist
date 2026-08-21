@@ -13,11 +13,11 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconClose, iconPlus, iconWarning } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconClose, iconPlus, iconWarning } from "@rrflow/ui";
 import { omit } from "radash";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { RecordId, StringRecordId, Table } from "surrealdb";
+import { RecordId, StringRecordId, Table } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { DrawerResizer } from "~/components/DrawerResizer";
@@ -25,11 +25,11 @@ import { CodeInput } from "~/components/Inputs";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { surqlLinting } from "~/editor";
+import { vyrmqlLinting } from "~/editor";
 import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { useValueValidator } from "~/hooks/surrealql";
-import { executeQuery, getSurrealQL } from "~/screens/connectome/connection/connection";
+import { useValueValidator } from "~/hooks/vyrmql";
+import { executeQuery, getVyrmQL } from "~/screens/connectome/connection/connection";
 import type { QueryResponse } from "~/types";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
@@ -77,14 +77,14 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 				out: to,
 			};
 
-			response = await executeQuery(/* surql */ `RELATE $from->$id->$to CONTENT $content`, {
+			response = await executeQuery(/* vyrmql */ `RELATE $from->$id->$to CONTENT $content`, {
 				from,
 				id,
 				to,
 				content,
 			});
 		} else {
-			response = await executeQuery(/* surql */ `CREATE $id CONTENT $body`, { id, body });
+			response = await executeQuery(/* vyrmql */ `CREATE $id CONTENT $body`, { id, body });
 		}
 
 		const errors = response.flatMap((r) => {
@@ -115,7 +115,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		if (opened) {
 			const initializeBody = async () => {
 				const bodyText = content
-					? await getSurrealQL().formatValue(
+					? await getVyrmQL().formatValue(
 							omit(content, ["id", "in", "out"]),
 							true,
 							true,
@@ -134,7 +134,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		}
 	}, [opened, table, content]);
 
-	const extensions = useMemo(() => [surrealql(), surqlLinting()], []);
+	const extensions = useMemo(() => [vyrmql(), vyrmqlLinting()], []);
 	const isFullyValid = isValid && (!isRelation || (recordFrom && recordTo));
 	const [width, setWidth] = useState(650);
 

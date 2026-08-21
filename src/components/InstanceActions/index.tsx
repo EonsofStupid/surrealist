@@ -7,7 +7,7 @@ import {
 	iconOrganization,
 	iconPause,
 	iconPlay,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { PropsWithChildren, useMemo } from "react";
 import { Link } from "wouter";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";

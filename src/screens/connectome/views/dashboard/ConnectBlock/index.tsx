@@ -1,5 +1,5 @@
 import { Anchor, Box, Group, Paper, Skeleton, Stack, Text, ThemeIcon } from "@mantine/core";
-import { Icon, iconChevronRight, iconConsole, iconTransfer, iconXml } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconConsole, iconTransfer, iconXml } from "@rrflow/ui";
 import { openConnectCli } from "~/cloud/modals/connect-cli";
 import { openConnectCurl } from "~/cloud/modals/connect-curl";
 import { openConnectSdk } from "~/cloud/modals/connect-sdk";
@@ -76,7 +76,7 @@ export function ConnectBlock({ instance, isLoading }: ConnectBlockProps) {
 	return (
 		<Stack gap="xl">
 			<ConnectAction
-				title="Connect with Surreal CLI"
+				title="Connect with RRFlow CLI"
 				subtitle="For commandline environments"
 				icon={iconConsole}
 				isLoading={isLoading}
@@ -84,7 +84,7 @@ export function ConnectBlock({ instance, isLoading }: ConnectBlockProps) {
 			/>
 			<ConnectAction
 				title="Connect with an SDK"
-				subtitle="For integrating SurrealDB"
+				subtitle="For integrating RRFlow"
 				icon={iconXml}
 				isLoading={isLoading}
 				onClick={() => instance && openConnectSdk(instance, namespace, database)}

@@ -1,6 +1,6 @@
 import type { EditorView } from "@codemirror/view";
 import { ActionIcon, Button, Center, Group, Paper, Stack, Text } from "@mantine/core";
-import { Icon, iconCursor, iconGraphql, iconOpen, iconWarning } from "@surrealdb/ui";
+import { Icon, iconCursor, iconGraphql, iconOpen, iconWarning } from "@rrflow/ui";
 import clsx from "clsx";
 import { memo, useMemo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
@@ -80,11 +80,11 @@ export function GraphqlView() {
 			code: `
 			# Execute a curl request
 			curl -X POST -u "root:root" \\
-				-H "Surreal-NS: ${namespace}" \\
-				-H "Surreal-DB: ${database}" \\
+				-H "RRFlow-NS: ${namespace}" \\
+				-H "RRFlow-DB: ${database}" \\
 				-H "Accept: application/json" \\
 				-d '{"query": "{ person(filter: {age: {age_gt: 18}}) { id name age } }"}' \\
-				http://surrealdb.example.com/graphql
+				http://rrflow.example.com/graphql
 		`,
 		}),
 		[namespace, database],
@@ -211,7 +211,7 @@ export function GraphqlView() {
 				variant="light"
 				rightSection={<Icon path={iconOpen} />}
 				onClick={() =>
-					adapter.openUrl("https://surrealdb.com/docs/surrealdb/querying/graphql")
+					adapter.openUrl("https://github.com/EonsofStupid/connectome")
 				}
 			>
 				Learn more

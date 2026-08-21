@@ -34,9 +34,9 @@
 		],
 		"fileAssociations": [
 			{
-				"ext": ["surql", "surrealql"],
-				"name": "SurrealQL",
-				"mimeType": "text/x-surrealql"
+				"ext": ["vyrmql"],
+				"name": "VyrmQL",
+				"mimeType": "text/x-vyrmql"
 			}
 		],
 		"linux": {

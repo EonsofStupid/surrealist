@@ -98,11 +98,6 @@ export function getMenuItems(): AppMenu[] {
 				type: "Command",
 			},
 			{
-				id: "open-docs",
-				name: "Open Documentation Search",
-				type: "Command",
-			},
-			{
 				id: "open-connections",
 				name: "Open Connection List",
 				type: "Command",
@@ -193,61 +188,11 @@ export function getMenuItems(): AppMenu[] {
 		name: "Help",
 		items: [
 			{
-				id: "discord",
-				type: "Custom",
-				name: "Discord",
-				action: () => {
-					adapter.openUrl("https://discord.gg/surrealdb");
-				},
-			},
-			{
 				id: "github",
 				type: "Custom",
-				name: "GitHub",
+				name: "RRFlow Source",
 				action: () => {
-					adapter.openUrl("https://github.com/surrealdb");
-				},
-			},
-			{
-				id: "youtube",
-				type: "Custom",
-				name: "YouTube",
-				action: () => {
-					adapter.openUrl("https://www.youtube.com/@surrealdb");
-				},
-			},
-			SEPARATOR,
-			{
-				id: "surrealdb_docs",
-				type: "Custom",
-				name: "SurrealDB Docs",
-				action: () => {
-					adapter.openUrl("https://surrealdb.com/docs/surrealdb");
-				},
-			},
-			{
-				id: "Connectome_docs",
-				type: "Custom",
-				name: "Connectome Docs",
-				action: () => {
-					adapter.openUrl("https://surrealdb.com/docs/Connectome");
-				},
-			},
-			SEPARATOR,
-			{
-				id: "fundamentals",
-				type: "Custom",
-				name: "Fundamentals Course",
-				action: () => {
-					adapter.openUrl("https://surrealdb.com/learn/fundamentals");
-				},
-			},
-			{
-				id: "book",
-				type: "Custom",
-				name: "Book",
-				action: () => {
-					adapter.openUrl("https://surrealdb.com/learn/book");
+					adapter.openUrl("https://github.com/EonsofStupid/connectome");
 				},
 			},
 			SEPARATOR,
@@ -256,7 +201,9 @@ export function getMenuItems(): AppMenu[] {
 				type: "Custom",
 				name: "Report Issue",
 				action: () => {
-					adapter.openUrl("https://github.com/surrealdb/Connectome/issues/new/choose");
+					adapter.openUrl(
+						"https://github.com/EonsofStupid/connectome/issues/new/choose",
+					);
 				},
 			},
 			...optional(!isDarwin && about),

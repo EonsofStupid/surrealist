@@ -1,6 +1,6 @@
 import { Button, Group, Select, Stack, Text } from "@mantine/core";
 import { closeModal, openModal } from "@mantine/modals";
-import { Icon, iconTag } from "@surrealdb/ui";
+import { Icon, iconTag } from "@rrflow/ui";
 import { capitalize } from "radash";
 import { useState } from "react";
 import { Form } from "~/components/Form";
@@ -84,7 +84,7 @@ function RoleModal({ organization, member }: RoleModalProps) {
 					onChange={setRole as any}
 				/>
 
-				<LearnMore href="https://surrealdb.com/docs/cloud/advanced-topics/manage-organisation-permissions">
+				<LearnMore href="https://github.com/EonsofStupid/connectome">
 					Learn more about roles and permissions
 				</LearnMore>
 

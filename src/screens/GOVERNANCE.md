@@ -6,7 +6,7 @@
 
 ## Scope
 
-Governs the 4 screen directories and 12 views + 12 pages within the main surrealist screen. In Phase 1, views become spokes and pages are triaged.
+Governs the 4 screen directories and 12 views + 12 pages within the main connectome screen. In Phase 1, views become spokes and pages are triaged.
 
 ## Current Screen Structure
 
@@ -15,7 +15,7 @@ src/screens/
 ├── auth-callback/      # OAuth callback handler
 ├── mini-embed/         # Embeddable mini query editor
 ├── new-domain/         # Domain redirect handler
-└── surrealist/         # Main application screen
+└── connectome/         # Main application screen
     ├── components/     # Screen-specific shared components
     ├── connection/     # Connection management
     ├── docs/           # Documentation viewer
@@ -30,15 +30,15 @@ src/screens/
 |------|---------|-------------------|
 | authentication | Auth management | STRIP |
 | dashboard | Overview dashboard | Shell |
-| designer | Schema designer | SurrealDB spoke |
+| designer | Schema designer | RRFlow spoke |
 | documentation | Docs viewer | Shared |
-| explorer | Table/record explorer | SurrealDB spoke |
-| functions | Function editor | SurrealDB spoke |
-| graphql | GraphQL playground | SurrealDB spoke |
-| migration | Schema migration | SurrealDB spoke |
-| monitor | Live query monitor | SurrealDB spoke |
-| parameters | Variable editor | SurrealDB spoke |
-| query | Query editor | SurrealDB spoke |
+| explorer | Table/record explorer | RRFlow spoke |
+| functions | Function editor | RRFlow spoke |
+| graphql | GraphQL playground | RRFlow spoke |
+| migration | Schema migration | RRFlow spoke |
+| monitor | Live query monitor | RRFlow spoke |
+| parameters | Variable editor | RRFlow spoke |
+| query | Query editor | RRFlow spoke |
 | sidekick | AI assistant | Shell (→ Clyffy) |
 
 ## Page Inventory (12) → Triage
@@ -60,7 +60,7 @@ src/screens/
 
 ## Terminology
 
-- **Screen**: A top-level entrypoint (surrealist, mini-embed, auth-callback)
+- **Screen**: A top-level entrypoint (connectome, mini-embed, auth-callback)
 - **View**: A feature tab within the main screen (query, explorer, designer...)
 - **Page**: A cloud/organization management page (will mostly be stripped)
 

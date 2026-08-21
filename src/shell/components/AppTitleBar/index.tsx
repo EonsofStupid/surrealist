@@ -6,7 +6,7 @@ import {
 	iconMinimize,
 	iconRestore,
 	pictoBrain,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useState } from "react";
 import { ActionButton } from "~/components/ActionButton";

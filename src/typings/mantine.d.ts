@@ -1,6 +1,6 @@
 import type { DefaultMantineColor, Tuple } from "@mantine/core";
 
-type ExtendedCustomColors = "surreal" | "obsidian" | DefaultMantineColor;
+type ExtendedCustomColors = "rrflow" | "obsidian" | DefaultMantineColor;
 
 declare module "@mantine/core" {
 	export interface MantineThemeColorsOverride {

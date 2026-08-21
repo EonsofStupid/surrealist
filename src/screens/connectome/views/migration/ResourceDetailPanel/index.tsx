@@ -20,15 +20,15 @@ import {
 	iconChevronLeft,
 	iconClose,
 	iconDownload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useMemo } from "react";
 import { adapter } from "~/adapter";
 import { ActionButton } from "~/components/ActionButton";
 import { RecordLink } from "~/components/RecordLink";
 import { Spacer } from "~/components/Spacer";
-import { SURQL_FILTER } from "~/constants";
+import { VYRMQL_FILTER } from "~/constants";
 import { useIsLight } from "~/hooks/theme";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { MigrationKind, MigrationResourceType, MigrationSeverity } from "~/types";
 import { kindMeta } from "../MigrationView/kinds";
 import { DiagnosticEntry, DiagnosticResource } from "../MigrationView/organizer";
@@ -346,7 +346,7 @@ function EntryCard({ index, entry, isResolved, onToggleResolved }: EntryCardProp
 					{source.location && (
 						<CodeBlock
 							value={source.location.source}
-							lang="surrealql"
+							lang="vyrmql"
 							bg="obsidian.8"
 							p="sm"
 						/>
@@ -378,14 +378,14 @@ function GroupedKindCard({ index, group, resolvedIds, onToggleAll }: GroupedKind
 
 	const handleDownloadRecords = async () => {
 		const recordIds = group.entries.map((entry) => entry.record).filter(Boolean);
-		const surql = await getSurrealQL().formatValue(recordIds, false, true);
+		const vyrmql = await getVyrmQL().formatValue(recordIds, false, true);
 		const kindSlug = group.kind.replace(/\s+/g, "-").toLowerCase();
 
 		adapter.saveFile(
 			"Save affected records",
-			`${kindSlug}-affected-records.surql`,
-			[SURQL_FILTER],
-			() => surql,
+			`${kindSlug}-affected-records.vyrmql`,
+			[VYRMQL_FILTER],
+			() => vyrmql,
 		);
 	};
 

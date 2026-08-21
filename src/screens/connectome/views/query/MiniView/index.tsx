@@ -1,7 +1,7 @@
 import type { SelectionRange } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { Box, Group, Image, noop, SegmentedControl, Stack } from "@mantine/core";
-import { pictoBrain } from "@surrealdb/ui";
+import { pictoBrain } from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { createHtmlPortalNode, InPortal } from "react-reverse-portal";
@@ -100,7 +100,7 @@ export function MiniQueryView() {
 
 				{miniAppearance === "normal" && (
 					<Group>
-						<Link href="https://surrealdb.com/Connectome">
+						<Link href="https://github.com/EonsofStupid/connectome">
 							<Group>
 								<Image
 									h={32}

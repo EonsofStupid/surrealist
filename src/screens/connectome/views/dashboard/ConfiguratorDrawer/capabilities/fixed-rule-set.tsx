@@ -17,7 +17,7 @@ import {
 	iconChevronDown,
 	iconChevronUp,
 	iconHelp,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect, useState } from "react";
 import { Spacer } from "~/components/Spacer";
 import { useBoolean } from "~/hooks/boolean";

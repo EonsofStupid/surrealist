@@ -1,6 +1,6 @@
 import { Center, Stack, Text } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconQuery } from "@surrealdb/ui";
+import { vyrmql } from "~/vendor/vyrmql-editor";
+import { Icon, iconQuery } from "@rrflow/ui";
 import { useMemo } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
@@ -11,7 +11,7 @@ export function ResultPane() {
 	const [connection] = useConnectionAndView();
 	const response = useDatabaseStore((s) => s.graphqlResponse[connection ?? ""]);
 
-	const extensions = useMemo(() => [surrealql()], []);
+	const extensions = useMemo(() => [vyrmql()], []);
 
 	return (
 		<ContentPane

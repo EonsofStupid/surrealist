@@ -1,6 +1,6 @@
 import { useDebouncedValue } from "@mantine/hooks";
 import { useEffect, useState } from "react";
-import { getSurrealQL } from "~/screens/connectome/connection/connection";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import type { ResultFormat } from "~/types";
 import { useActiveQuery } from "./connection";
 import { useStable } from "./stable";
@@ -8,21 +8,21 @@ import { useStable } from "./stable";
 export type Formatter = (value: any) => Promise<string>;
 
 /**
- * A hook used to format SurrealQL structures into strings
+ * A hook used to format VyrmQL structures into strings
  */
 export function useResultFormatter(): [Formatter, ResultFormat] {
 	const query = useActiveQuery();
 	const format = query?.resultFormat || "sql";
 
 	const formatter = useStable(async (value: any) => {
-		return await getSurrealQL().formatValue(value, format === "json", true);
+		return await getVyrmQL().formatValue(value, format === "json", true);
 	});
 
 	return [formatter, format];
 }
 
 /**
- * Returns whether the given value is valid SurrealQL or not
+ * Returns whether the given value is valid VyrmQL or not
  *
  * @param value The value to check
  * @param objectRoot Whether the value should be an object
@@ -39,7 +39,7 @@ export function useValueValidator(value: string, objectRoot?: boolean): [boolean
 		const validate = async () => {
 			setIsLoading(true);
 			try {
-				const value = await getSurrealQL().parseValue(bodyCache);
+				const value = await getVyrmQL().parseValue(bodyCache);
 
 				if (cancelled) return;
 

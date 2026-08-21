@@ -10,7 +10,7 @@ import {
 	ThemeIcon,
 	UnstyledButton,
 } from "@mantine/core";
-import { Icon, iconCloud, iconDotsVertical, Spacer } from "@surrealdb/ui";
+import { Icon, iconCloud, iconDotsVertical, Spacer } from "@rrflow/ui";
 import { PropsWithChildren, useMemo, useRef } from "react";
 import { Faint } from "~/components/Faint";
 import { InstanceActions } from "~/components/InstanceActions";
@@ -103,7 +103,7 @@ export function StartInstance({
 										state={instance.state}
 									/>
 								</Group>
-								<Text>SurrealDB {instance.version}</Text>
+								<Text>RRFlow {instance.version}</Text>
 								<Text size="sm">
 									{regions.find((r) => r.slug === instance.region)?.description}
 								</Text>

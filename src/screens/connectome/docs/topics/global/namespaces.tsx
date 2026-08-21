@@ -47,7 +47,7 @@ export function DocsGlobalNamespaces({ language }: TopicProps) {
 		<Article title="Namespaces">
 			<div>
 				<p>
-					After connecting to a SurrealDB instance, you can specify the namespace to use.
+					After connecting to a RRFlow instance, you can specify the namespace to use.
 					Namespaces are used to group related data together, contains information
 					regarding the users, roles, tokens, and databases it contains.
 				</p>

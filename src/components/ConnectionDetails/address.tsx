@@ -18,7 +18,7 @@ import { Updater } from "use-immer";
 import { CONNECTION_PROTOCOLS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { createSurreal } from "~/screens/connectome/connection/surreal";
+import { createRRFlow } from "~/screens/connectome/connection/rrflow";
 import { Connection, Protocol } from "~/types";
 import { connectionUri, isHostLocal } from "~/shared/util/helpers";
 
@@ -103,7 +103,7 @@ export function ConnectionAddressDetails({
 		queryKey: ["connect-status", { protocol, hostname }],
 		enabled: !!protocol && !!hostname,
 		queryFn: async ({ signal }) => {
-			const test = await createSurreal();
+			const test = await createRRFlow();
 
 			await sleep(500);
 			if (signal.aborted) return;

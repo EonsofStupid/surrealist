@@ -149,7 +149,7 @@ export function DocsGlobalSchemaTables({ language }: TopicProps) {
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[],
@@ -159,7 +159,7 @@ export function DocsGlobalSchemaTables({ language }: TopicProps) {
 		<Article title="Tables">
 			<div>
 				<p>
-					When interacting with SurrealDB, you will be working with tables. Tables are the
+					When interacting with RRFlow, you will be working with tables. Tables are the
 					primary storage in a database. They contain the data that you want to store and
 					retrieve. You can create, read, update, and delete data from tables. You can
 					also create indexes on tables to speed up queries.
