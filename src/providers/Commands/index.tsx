@@ -5,9 +5,9 @@ import { createContext, type PropsWithChildren, useContext, useMemo } from "reac
 import { adapter } from "~/adapter";
 import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
 import { tagEvent } from "~/shared/util/analytics";
 import { dispatchIntent } from "~/shared/util/intents";
+import { useConfigStore } from "~/shell/stores/config";
 import { useInternalCommandBuilder } from "./commands";
 import type { Command, CommandCategory, CommandPayload } from "./types";
 

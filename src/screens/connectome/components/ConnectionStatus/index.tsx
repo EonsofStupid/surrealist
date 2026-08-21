@@ -19,11 +19,11 @@ import { useStable } from "~/hooks/stable";
 import { openConnectionDiagnosticsModal } from "~/modals/connection-diagnostics";
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { showNodeStatus } from "~/modals/node-status";
-import { useDatabaseStore } from "~/stores/database";
 import { getConnectionById } from "~/shared/util/connection";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useDatabaseStore } from "~/stores/database";
 import { closeConnection, openConnection } from "../../connection/connection";
 
 export function ConnectionStatus() {

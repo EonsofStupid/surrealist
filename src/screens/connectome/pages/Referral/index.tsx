@@ -18,6 +18,13 @@ import {
 } from "@mantine/core";
 import { Icon, iconCheck, iconCopy, iconHelp, pictoChatHeart } from "@rrflow/ui";
 import { ReactNode } from "react";
+import { useCloudReferralCodeQuery, useCloudReferralQuery } from "~/cloud/queries/referral";
+import { CloudSplash } from "~/components/CloudSplash";
+import { Label } from "~/components/Label";
+import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
+import { PrimaryTitle } from "~/components/PrimaryTitle";
+import { useIsAuthenticated } from "~/hooks/cloud";
+import { useIsLight } from "~/hooks/theme";
 import tier1DarkUrl from "~/shared/assets/images/dark/referral-tier-1.png";
 import tier2DarkUrl from "~/shared/assets/images/dark/referral-tier-2.png";
 import tier3DarkUrl from "~/shared/assets/images/dark/referral-tier-3.png";
@@ -29,13 +36,6 @@ import tier3LightUrl from "~/shared/assets/images/light/referral-tier-3.png";
 import tier4LightUrl from "~/shared/assets/images/light/referral-tier-4.png";
 import tier5LightUrl from "~/shared/assets/images/light/referral-tier-5.png";
 import glowImage from "~/shared/assets/images/radial-glow.png";
-import { useCloudReferralCodeQuery, useCloudReferralQuery } from "~/cloud/queries/referral";
-import { CloudSplash } from "~/components/CloudSplash";
-import { Label } from "~/components/Label";
-import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
-import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { useIsAuthenticated } from "~/hooks/cloud";
-import { useIsLight } from "~/hooks/theme";
 import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import classes from "./style.module.scss";
 
@@ -174,8 +174,8 @@ export function ReferralPage() {
 											Share RRFlow Cloud and earn rewards
 										</PrimaryTitle>
 										<Text mt={2}>
-											The RRFlow Cloud referral program allows you to
-											invite a friend in exchange for benefits.
+											The RRFlow Cloud referral program allows you to invite a
+											friend in exchange for benefits.
 										</Text>
 									</Box>
 

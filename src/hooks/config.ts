@@ -1,5 +1,5 @@
-import { type ConfigStore, useConfigStore } from "~/shell/stores/config";
 import type { Category, Settings } from "~/shared/util/config";
+import { type ConfigStore, useConfigStore } from "~/shell/stores/config";
 import { useStable } from "./stable";
 
 const ACTIONS = {

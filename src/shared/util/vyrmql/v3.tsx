@@ -1,7 +1,7 @@
 import Wasm, { Value } from "@rrflow/vyrmql-wasm-v3";
-import { CborCodec } from "~/vendor/rrflow-client";
 import { adapter } from "~/adapter";
 import { QueryResponse } from "~/types";
+import { CborCodec } from "~/vendor/rrflow-client";
 import { VyrmQL } from "./contract";
 
 export class VyrmQLV3 implements VyrmQL {

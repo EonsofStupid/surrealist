@@ -1,16 +1,10 @@
 import { Group, HoverCard, Stack, Text } from "@mantine/core";
-import {
-	Icon,
-	iconCheck,
-	iconClock,
-	iconClose,
-	iconExplorer,
-	iconFile,
-	iconXml,
-} from "@rrflow/ui";
+import { Icon, iconCheck, iconClock, iconClose, iconExplorer, iconFile, iconXml } from "@rrflow/ui";
 import dayjs from "dayjs";
 import { convert } from "geo-coordinates-parser";
 import { useEffect, useState } from "react";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import {
 	DateTime,
 	Decimal,
@@ -26,8 +20,6 @@ import {
 	RecordId,
 	Uuid,
 } from "~/vendor/rrflow-client";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
-import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";
 import classes from "./style.module.scss";

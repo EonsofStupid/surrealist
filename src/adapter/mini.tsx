@@ -1,15 +1,19 @@
 import type { MantineColorScheme } from "@mantine/core";
 import { createWasmEngines } from "@rrflow/wasm";
-import { RRFlow } from "~/vendor/rrflow-client";
 import { ORIENTATIONS, RESULT_MODES } from "~/constants";
 import { executeQuery, executeUserQuery } from "~/screens/connectome/connection/connection";
-import type { MiniAppearance, Orientation, ResultMode, ConnectomeConfig } from "~/types";
 import { dedent } from "~/shared/util/dedent";
-import { createBaseQuery, createBaseSettings, createSandboxConnection } from "~/shared/util/defaults";
+import {
+	createBaseQuery,
+	createBaseSettings,
+	createSandboxConnection,
+} from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { getDatasetURL } from "~/shared/util/language";
 import { broadcastMessage } from "~/shared/util/messaging";
 import { createVyrmQL } from "~/shared/util/vyrmql";
+import type { ConnectomeConfig, MiniAppearance, Orientation, ResultMode } from "~/types";
+import { RRFlow } from "~/vendor/rrflow-client";
 import { BrowserAdapter } from "./browser";
 
 const THEMES = new Set(["light", "dark", "auto"]);

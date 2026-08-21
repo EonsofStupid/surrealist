@@ -56,12 +56,12 @@ import { MemoryUsageChart } from "~/screens/connectome/metrics/MemoryUsageChart"
 import { NetworkEgressChart } from "~/screens/connectome/metrics/NetworkEgressChart";
 import { NetworkIngressChart } from "~/screens/connectome/metrics/NetworkIngressChart";
 import { StateBadge } from "~/screens/connectome/pages/Overview/badge";
-import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
-import { useDatabaseStore } from "~/stores/database";
-import { useDeployStore } from "~/stores/deploy";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
 import { APPLY_DATA_FILE_KEY, APPLY_DATASET_KEY } from "~/shared/util/storage";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
+import { useDatabaseStore } from "~/stores/database";
+import { useDeployStore } from "~/stores/deploy";
 import { MonitorMetricOptions } from "../../monitor/helpers";
 import { MetricActions } from "../../monitor/MetricPane/actions";
 import { BackupsBlock } from "../BackupsBlock";

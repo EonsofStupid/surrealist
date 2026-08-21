@@ -18,8 +18,8 @@ import { useMemo } from "react";
 import { Updater } from "use-immer";
 import { AUTH_MODES, SENSITIVE_ACCESS_FIELDS } from "~/constants";
 import { useStable } from "~/hooks/stable";
-import { AuthMode, Connection } from "~/types";
 import { fastParseJwt } from "~/shared/util/helpers";
+import { AuthMode, Connection } from "~/types";
 import { ActionButton } from "../ActionButton";
 import { PrimaryTitle } from "../PrimaryTitle";
 

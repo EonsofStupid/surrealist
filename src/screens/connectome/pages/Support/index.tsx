@@ -16,13 +16,13 @@ import {
 	Icon,
 	iconPlus,
 	iconSearch,
+	pictoBrain,
 	pictoDiscord,
 	pictoDocument,
 	pictoGitHub,
 	pictoHealthChat,
 	pictoPlay,
 	pictoSidekick,
-	pictoBrain,
 	pictoUniversity,
 } from "@rrflow/ui";
 import { useEffect } from "react";
@@ -221,15 +221,15 @@ export function SupportPage() {
 								name="RRFlow Documentation"
 								description="Learn everything there is to know about all RRFlow products"
 								image={pictoBrain}
-								onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
+								onClick={() =>
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
+								}
 							/>
 							<ResourceTile
 								name="RRFlow YouTube"
 								description="Learn about RRFlow through live streams and video tutorials"
 								image={pictoPlay}
-								onClick={() =>
-									adapter.openUrl("https://www.youtube.com/@RRFlow")
-								}
+								onClick={() => adapter.openUrl("https://www.youtube.com/@RRFlow")}
 							/>
 							<ResourceTile
 								name="University: Fundamentals"
@@ -243,7 +243,9 @@ export function SupportPage() {
 								name="University: Book"
 								description="Become a VyrmQL expert through Aeon's RRFlow Renaissance"
 								image={pictoDocument}
-								onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
+								onClick={() =>
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
+								}
 							/>
 						</SimpleGrid>
 					</Box>
@@ -279,7 +281,9 @@ export function SupportPage() {
 								name="GitHub"
 								description="Report issues or submit feature requests"
 								image={pictoGitHub}
-								onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
+								onClick={() =>
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
+								}
 							/>
 							{flags.support_tickets && (
 								<ResourceTile

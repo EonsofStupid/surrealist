@@ -36,8 +36,8 @@ import { JSON_FILTER } from "~/constants";
 import { useSetting } from "~/hooks/config";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { DiagnosticWithTime, useDatabaseStore } from "~/stores/database";
 import { showInfo } from "~/shared/util/helpers";
+import { DiagnosticWithTime, useDatabaseStore } from "~/stores/database";
 
 interface DiagnosticEntry {
 	id: string;

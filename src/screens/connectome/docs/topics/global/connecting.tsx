@@ -71,10 +71,10 @@ export function DocsGlobalConnecting({ language }: TopicProps) {
 		<Article title="Connecting">
 			<div>
 				<p>
-					The connection API is used to establish a connection to a RRFlow instance.
-					The connection is used to interact with the database and perform operations on
-					the data. While connecting to the database, the user can specify the namespace
-					and database to connect to, as well as the authentication details for the
+					The connection API is used to establish a connection to a RRFlow instance. The
+					connection is used to interact with the database and perform operations on the
+					data. While connecting to the database, the user can specify the namespace and
+					database to connect to, as well as the authentication details for the
 					connection.
 				</p>
 			</div>

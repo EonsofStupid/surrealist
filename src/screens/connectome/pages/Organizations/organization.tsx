@@ -22,9 +22,9 @@ import { useCloudProfile } from "~/hooks/cloud";
 import { useAbsoluteLocation } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
+import { ON_STOP_PROPAGATION, plural, showInfo } from "~/shared/util/helpers";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudOrganization } from "~/types";
-import { ON_STOP_PROPAGATION, plural, showInfo } from "~/shared/util/helpers";
 
 export interface OrganizationTileProps extends BoxProps {
 	organization: CloudOrganization;

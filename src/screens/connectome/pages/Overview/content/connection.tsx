@@ -14,10 +14,10 @@ import {
 import {
 	Icon,
 	iconCopy,
+	iconDatabase,
 	iconDelete,
 	iconDotsVertical,
 	iconEdit,
-	iconDatabase,
 	Spacer,
 } from "@rrflow/ui";
 import { PropsWithChildren, useRef } from "react";
@@ -25,12 +25,12 @@ import { SANDBOX } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { useConfirmation } from "~/providers/Confirmation";
-import { useConfigStore } from "~/shell/stores/config";
-import { Connection } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnectionVariant } from "~/shared/util/connection";
 import { newId, ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useConfigStore } from "~/shell/stores/config";
+import { Connection } from "~/types";
 
 export interface StartConnectionProps extends BoxProps {
 	connection: Connection;

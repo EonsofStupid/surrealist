@@ -1,11 +1,11 @@
 import { Text } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { vyrmqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import { useResultFormatter } from "~/hooks/vyrmql";
 import { useInspector } from "~/providers/Inspector";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { attemptFormat, type PreviewProps } from ".";
 
 export function IndividualPreview({ responses, selected }: PreviewProps) {

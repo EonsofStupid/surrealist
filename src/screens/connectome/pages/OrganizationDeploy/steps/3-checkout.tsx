@@ -28,7 +28,6 @@ import {
 } from "@rrflow/ui";
 import { ChangeEvent } from "react";
 import { navigate } from "wouter/use-browser-location";
-import glow from "~/shared/assets/images/glow.png";
 import {
 	getBillingProviderAction,
 	isBillingManaged,
@@ -46,14 +45,15 @@ import { PropertyValue } from "~/components/PropertyValue";
 import { Spacer } from "~/components/Spacer";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
-import { useConfigStore } from "~/shell/stores/config";
-import { useCloudStore } from "~/stores/cloud";
+import glow from "~/shared/assets/images/glow.png";
 import { getTypeCategoryName } from "~/shared/util/cloud";
 import { SAMPLE_QUERIES } from "~/shared/util/dataset";
 import { createBaseQuery } from "~/shared/util/defaults";
 import { formatMemory, plural, showErrorNotification } from "~/shared/util/helpers";
 import { APPLY_DATA_FILE_KEY, APPLY_DATASET_KEY } from "~/shared/util/storage";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
+import { useConfigStore } from "~/shell/stores/config";
+import { useCloudStore } from "~/stores/cloud";
 import { STARTING_DATA } from "../constants";
 import classes from "../style.module.scss";
 import { StepProps } from "../types";

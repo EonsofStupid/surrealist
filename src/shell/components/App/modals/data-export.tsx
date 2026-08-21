@@ -35,7 +35,6 @@ import {
 } from "@rrflow/ui";
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
-import { SqlExportOptions } from "~/vendor/rrflow-client";
 import { adapter, isBrowser } from "~/adapter";
 import { Option } from "~/components/Option";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -53,6 +52,7 @@ import {
 import { tagEvent } from "~/shared/util/analytics";
 import { fuzzyMatch, slugify } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { SqlExportOptions } from "~/vendor/rrflow-client";
 
 function toggleSet<T>(set: Set<T>, item: T) {
 	if (set.has(item)) {

@@ -9,8 +9,8 @@ import {
 	useCommandDispatcher,
 	useCommandKeybinds,
 } from "~/providers/Commands";
-import { AppMenu, AppMenuItem } from "~/types";
 import { optional } from "~/shared/util/helpers";
+import { AppMenu, AppMenuItem } from "~/types";
 
 const SEPARATOR: AppMenuItem = {
 	id: "separator",
@@ -201,9 +201,7 @@ export function getMenuItems(): AppMenu[] {
 				type: "Custom",
 				name: "Report Issue",
 				action: () => {
-					adapter.openUrl(
-						"https://github.com/EonsofStupid/connectome/issues/new/choose",
-					);
+					adapter.openUrl("https://github.com/EonsofStupid/connectome/issues/new/choose");
 				},
 			},
 			...optional(!isDarwin && about),

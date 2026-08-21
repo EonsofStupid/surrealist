@@ -1,16 +1,16 @@
 import { EditorView } from "@codemirror/view";
 import { Alert, Badge, Box, Stack } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconTune, iconWarning } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import type { Updater } from "use-immer";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { vyrmqlLinting } from "~/editor/vyrmql";
 import { vyrmqlTableCompletion } from "~/editor/tables";
+import { vyrmqlLinting } from "~/editor/vyrmql";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
 import type { SchemaParameter } from "~/types";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export interface ParameterEditorPanelProps {
 	details: SchemaParameter;

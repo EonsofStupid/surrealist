@@ -19,8 +19,8 @@ import { StarSparkles } from "~/components/StarSparkles";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { getRRFlow } from "~/screens/connectome/connection/connection";
-import { MigrationDiagnosticResult, MigrationResourceType } from "~/types";
 import { dispatchIntent } from "~/shared/util/intents";
+import { MigrationDiagnosticResult, MigrationResourceType } from "~/types";
 import { ResourceDetailPanel } from "../ResourceDetailPanel";
 import { ResourceOverviewPanel } from "../ResourceOverviewPanel";
 import { DiagnosticResource, organizeDiagnostics, ResourceMap } from "./organizer";
@@ -199,8 +199,8 @@ export function MigrationView() {
 							</Text>
 						) : (
 							<Text fz="lg">
-								Your database is already compatible with RRFlow 3.0, no changes
-								are required to upgrade.
+								Your database is already compatible with RRFlow 3.0, no changes are
+								required to upgrade.
 							</Text>
 						)}
 						<Text

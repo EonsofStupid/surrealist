@@ -70,6 +70,8 @@ import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { DiagramContext } from "~/screens/connectome/views/designer/TableGraphPane/nodes/BaseTableNode";
+import { showInfo } from "~/shared/util/helpers";
+import { themeColor } from "~/shared/util/mantine";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type {
@@ -82,8 +84,6 @@ import type {
 	DiagramStrategy,
 	TableInfo,
 } from "~/types";
-import { showInfo } from "~/shared/util/helpers";
-import { themeColor } from "~/shared/util/mantine";
 import { GraphWarningLine } from "./components";
 import {
 	applyDefault,

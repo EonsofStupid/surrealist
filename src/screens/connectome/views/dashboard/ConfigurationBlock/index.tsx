@@ -14,11 +14,11 @@ import {
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { PropertyValue } from "~/components/PropertyValue";
 import { useStable } from "~/hooks/stable";
-import { useCloudStore } from "~/stores/cloud";
-import { CloudInstance, CloudOrganization } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getTypeCategoryName } from "~/shared/util/cloud";
 import { formatMemory, plural } from "~/shared/util/helpers";
+import { useCloudStore } from "~/stores/cloud";
+import { CloudInstance, CloudOrganization } from "~/types";
 
 export interface ConfigurationBlockProps {
 	instance: CloudInstance | undefined;

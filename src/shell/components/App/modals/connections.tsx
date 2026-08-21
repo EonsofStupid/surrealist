@@ -18,10 +18,10 @@ import { useConnectionLabels, useConnectionList, useConnectionOverview } from "~
 import { useKeyNavigation } from "~/hooks/keys";
 import { useConnectionAndView, useConnectionNavigator, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import type { CloudInstance, Connection } from "~/types";
 import { resolveInstanceConnection } from "~/shared/util/connection";
 import { Y_SLIDE_TRANSITION } from "~/shared/util/helpers";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import type { CloudInstance, Connection } from "~/types";
 import classes from "../style.module.scss";
 
 export function ConnectionsModal() {

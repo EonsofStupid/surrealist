@@ -3,8 +3,6 @@ import { showNotification } from "@mantine/notifications";
 import { Icon, iconCheck } from "@rrflow/ui";
 import { sleep } from "radash";
 import { adapter } from "~/adapter";
-import { useCloudStore } from "~/stores/cloud";
-import type { CloudSignin } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { isDevelopment } from "~/shared/util/environment";
 import { CloudAuthEvent, CloudExpiredEvent } from "~/shared/util/global-events";
@@ -18,6 +16,8 @@ import {
 	TOKEN_REFRESH_KEY,
 	VERIFIER_KEY,
 } from "~/shared/util/storage";
+import { useCloudStore } from "~/stores/cloud";
+import type { CloudSignin } from "~/types";
 import { openTermsModal } from "../onboarding/terms-and-conditions";
 import { ApiError, fetchAPI, updateCloudInformation } from ".";
 import { getCloudEndpoints } from "./endpoints";

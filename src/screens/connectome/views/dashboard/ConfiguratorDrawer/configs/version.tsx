@@ -3,8 +3,8 @@ import { Icon, iconOpen } from "@rrflow/ui";
 import { useState } from "react";
 import { Tile } from "~/components/Tile";
 import { useStable } from "~/hooks/stable";
-import { CloudInstance } from "~/types";
 import { openRRFlowChangelog } from "~/shared/util/cloud";
+import { CloudInstance } from "~/types";
 import classes from "../style.module.scss";
 
 export interface ConfigurationVersionProps {

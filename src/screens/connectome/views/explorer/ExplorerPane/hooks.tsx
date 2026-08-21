@@ -1,8 +1,8 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { escapeIdent } from "~/vendor/rrflow-client";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { executeQueryFirst, executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { parseIdent } from "~/shared/util/language";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 export type SortMode = [string, "asc" | "desc"] | null;
 

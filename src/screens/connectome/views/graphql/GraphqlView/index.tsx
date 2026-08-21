@@ -15,9 +15,9 @@ import { useGraphqlIntrospection } from "~/hooks/graphql";
 import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { checkGraphqlSupport } from "~/screens/connectome/connection/connection";
+import { createBaseAuthentication } from "~/shared/util/defaults";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
-import { createBaseAuthentication } from "~/shared/util/defaults";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
 import { VariablesPane } from "../VariablesPane";
@@ -210,9 +210,7 @@ export function GraphqlView() {
 				color="obsidian"
 				variant="light"
 				rightSection={<Icon path={iconOpen} />}
-				onClick={() =>
-					adapter.openUrl("https://github.com/EonsofStupid/connectome")
-				}
+				onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
 			>
 				Learn more
 			</Button>

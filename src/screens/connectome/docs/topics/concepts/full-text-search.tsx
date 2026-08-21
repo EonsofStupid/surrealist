@@ -84,20 +84,10 @@ export function DocsConceptsFullTextSearch({ language }: TopicProps) {
 					Full Text Search enables search capabilities within your database connection.
 					This enables text matching, proximity matching, proximity search, and more. In
 					RRFlow Full-Text Search is ACID-compliant and can be accessed using{" "}
-					<Link href="https://github.com/EonsofStupid/connectome">
-						{" "}
-						Search functions
-					</Link>
-					,{" "}
-					<Link href="https://github.com/EonsofStupid/connectome">
-						{" "}
-						Indexes
-					</Link>
-					. To learn more, check out this{" "}
-					<Link href="https://github.com/EonsofStupid/connectome">
-						{" "}
-						Reference guide
-					</Link>
+					<Link href="https://github.com/EonsofStupid/connectome"> Search functions</Link>
+					, <Link href="https://github.com/EonsofStupid/connectome"> Indexes</Link>. To
+					learn more, check out this{" "}
+					<Link href="https://github.com/EonsofStupid/connectome"> Reference guide</Link>
 				</p>
 			</div>
 			<Box>

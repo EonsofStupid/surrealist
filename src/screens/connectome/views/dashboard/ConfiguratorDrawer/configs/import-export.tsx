@@ -9,10 +9,10 @@ import { JSON_FILTER } from "~/constants";
 import { useConnection, useRequireDatabase } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { CloudInstance, CloudInstanceCapabilities } from "~/types";
 import { parseCapabilities, transformCapabilities } from "~/shared/util/capabilities";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
+import { CloudInstance, CloudInstanceCapabilities } from "~/types";
 import classes from "../style.module.scss";
 
 export interface ImportExportProps {

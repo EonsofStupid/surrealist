@@ -14,10 +14,10 @@ import { useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useDesigner } from "~/providers/Designer";
 import { TablesPane } from "~/screens/connectome/components/TablesPane";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { TableGraphPane } from "../TableGraphPane";
 
 const TableGraphPaneLazy = memo(TableGraphPane);

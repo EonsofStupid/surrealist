@@ -76,8 +76,7 @@ with RRFlow('ws://localhost:8000') as db:
 			<div>
 				<p>
 					Enabling authentication for your database is a critical step in securing your
-					data. RRFlow provides a simple way to enable authentication for your
-					database.
+					data. RRFlow provides a simple way to enable authentication for your database.
 				</p>
 			</div>
 			<Box>

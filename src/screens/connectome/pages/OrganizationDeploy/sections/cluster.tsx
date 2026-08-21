@@ -18,8 +18,8 @@ import { InstanceTypes } from "~/components/InstanceTypes";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { CloudInstanceType } from "~/types";
 import { plural } from "~/shared/util/helpers";
+import { CloudInstanceType } from "~/types";
 import { DeploySectionProps } from "../types";
 
 export function ClusterOptionsSection({ organisation, details, setDetails }: DeploySectionProps) {

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { closeConnection } from "~/screens/connectome/connection/connection";
-import { CloudInstance } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
+import { CloudInstance } from "~/types";
 import { fetchAPI } from "../api";
 
 /**

@@ -1,6 +1,5 @@
 import { ActionIcon, Box, Drawer, Group, Stack } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconClose, iconMarker } from "@rrflow/ui";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { DrawerResizer } from "~/components/DrawerResizer";
@@ -10,6 +9,7 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { CodeEditor } from "../CodeEditor";
 import type { GeographyInput } from "../GeographyMap";
 

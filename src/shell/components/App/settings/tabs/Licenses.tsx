@@ -1,6 +1,6 @@
 import { Box, ScrollArea, Table } from "@mantine/core";
-import licenseReport from "~/shared/assets/data/license-report.json";
 import { Link } from "~/components/Link";
+import licenseReport from "~/shared/assets/data/license-report.json";
 
 export function LicensesTab() {
 	return (

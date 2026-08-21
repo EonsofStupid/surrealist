@@ -19,8 +19,8 @@ import { CONNECTION_PROTOCOLS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { createRRFlow } from "~/screens/connectome/connection/rrflow";
-import { Connection, Protocol } from "~/types";
 import { connectionUri, isHostLocal } from "~/shared/util/helpers";
+import { Connection, Protocol } from "~/types";
 
 const ENDPOINT_PATTERN = /^(.+?):\/\/(.+)$/;
 

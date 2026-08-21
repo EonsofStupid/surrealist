@@ -38,6 +38,17 @@ import { satisfies } from "compare-versions";
 import flagIE from "flag-icons/flags/4x3/ie.svg";
 import flagIN from "flag-icons/flags/4x3/in.svg";
 import flagUS from "flag-icons/flags/4x3/us.svg";
+import {
+	CIcon,
+	DotNetIcon,
+	GoLangIcon,
+	JavaIcon,
+	JavaScriptIcon,
+	PhpIcon,
+	PythonIcon,
+	RRFlowIcon,
+	RustIcon,
+} from "~/shared/util/drivers";
 import type {
 	AuthMode,
 	DiagramAlgorithm,
@@ -68,17 +79,6 @@ import type {
 	ViewPage,
 	ViewPageInfo,
 } from "./types";
-import {
-	CIcon,
-	DotNetIcon,
-	GoLangIcon,
-	JavaIcon,
-	JavaScriptIcon,
-	PhpIcon,
-	PythonIcon,
-	RustIcon,
-	RRFlowIcon,
-} from "~/shared/util/drivers";
 
 export type StructureTab = "graph" | "builder";
 export type ProtocolOption = Selectable<Protocol> & { remote: boolean };

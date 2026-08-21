@@ -1,9 +1,9 @@
-import { RecordId } from "~/vendor/rrflow-client";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { chatOf, messageOf } from "~/components/Sidekick/helpers";
 import { StreamEvent } from "~/components/Sidekick/types";
 import type { SidekickChat, SidekickChatMessage } from "~/types";
+import { RecordId } from "~/vendor/rrflow-client";
 
 export interface SidekickChatWithHistory extends SidekickChat {
 	history: SidekickChatMessage[];

@@ -2,8 +2,6 @@ import { Alert, Box, Button, Divider, Image, Paper, SimpleGrid, Stack, Text } fr
 import { Icon, iconArrowUpRight, iconDownload, pictoBrain } from "@rrflow/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
-import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
-import logoLightUrl from "~/shared/assets/images/light/logo.webp";
 import { Link } from "~/components/Link";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Scaffold } from "~/components/Scaffold";
@@ -11,6 +9,8 @@ import { TopGlow } from "~/components/TopGlow";
 import { JSON_FILTER } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight, useThemeImage } from "~/hooks/theme";
+import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
+import logoLightUrl from "~/shared/assets/images/light/logo.webp";
 import { backupConfig } from "~/shared/util/config";
 
 export function NewDomainScreen() {
@@ -88,8 +88,8 @@ export function NewDomainScreen() {
 								title="Export your web configuration"
 							>
 								You can export your current web app configuration and import it into
-								127.0.0.1:8000 to keep your existing connections, queries, and
-								other settings.
+								127.0.0.1:8000 to keep your existing connections, queries, and other
+								settings.
 							</Alert>
 							<SimpleGrid cols={2}>
 								<Button

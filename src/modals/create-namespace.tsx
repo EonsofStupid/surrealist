@@ -4,13 +4,13 @@ import { closeModal, openModal } from "@mantine/modals";
 import { Icon, iconPlus } from "@rrflow/ui";
 import { useMutation } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { escapeIdent } from "~/vendor/rrflow-client";
 import { Form } from "~/components/Form";
 import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useRootSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { activateDatabase, executeQuery } from "~/screens/connectome/connection/connection";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 export function openCreateNamespaceModal() {
 	openModal({

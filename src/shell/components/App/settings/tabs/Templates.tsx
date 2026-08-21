@@ -13,11 +13,11 @@ import { Spacer } from "~/components/Spacer";
 import { useSetting } from "~/hooks/config";
 import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
-import { useConfigStore } from "~/shell/stores/config";
-import type { Connection, Template } from "~/types";
 import { createBaseConnection } from "~/shared/util/defaults";
 import { newId, ON_STOP_PROPAGATION, uniqueName } from "~/shared/util/helpers";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useConfigStore } from "~/shell/stores/config";
+import type { Connection, Template } from "~/types";
 import { SettingsSection } from "../utilities";
 
 const CAT = "templates";

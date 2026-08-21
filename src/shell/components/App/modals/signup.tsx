@@ -20,8 +20,8 @@ import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { openConnection } from "~/screens/connectome/connection/connection";
-import { useInterfaceStore } from "~/shell/stores/interface";
 import { getConnection, getConnectionById } from "~/shared/util/connection";
+import { useInterfaceStore } from "~/shell/stores/interface";
 
 export function AccessSignupModal() {
 	const { closeAccessSignup } = useInterfaceStore.getState();

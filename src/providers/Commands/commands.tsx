@@ -12,6 +12,7 @@ import {
 	iconCog,
 	iconCommand,
 	iconConsole,
+	iconDatabase,
 	iconDownload,
 	iconFile,
 	iconFlag,
@@ -36,7 +37,6 @@ import {
 	iconStar,
 	iconStarPlus,
 	iconStop,
-	iconDatabase,
 	iconText,
 	iconTextBoxMinus,
 	iconTextBoxPlus,
@@ -60,8 +60,6 @@ import {
 	openConnection,
 	resetConnection,
 } from "~/screens/connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { useDatabaseStore } from "~/stores/database";
 import { featureFlags } from "~/shared/util/feature-flags";
 import { optional } from "~/shared/util/helpers";
 import type { IntentPayload, IntentType } from "~/shared/util/intents";
@@ -71,6 +69,8 @@ import {
 	useComputedPreferences,
 } from "~/shared/util/preferences";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useDatabaseStore } from "~/stores/database";
 import type { CommandCategory } from "./types";
 
 /** Create a launch command */

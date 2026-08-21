@@ -58,11 +58,8 @@ function ConnectCurlModal({ instance, namespace, database }: ConnectCurlModalPro
 		<Stack>
 			<Text size="lg">
 				You can connect to this instance using{" "}
-				<Link href="https://github.com/EonsofStupid/connectome">
-					HTTP requests
-				</Link>
-				. The following example demonstrates how to use cURL to communicate with this
-				instance.
+				<Link href="https://github.com/EonsofStupid/connectome">HTTP requests</Link>. The
+				following example demonstrates how to use cURL to communicate with this instance.
 			</Text>
 
 			<Text

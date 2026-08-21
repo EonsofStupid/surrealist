@@ -1,7 +1,7 @@
 import { Avatar, Badge, Group, Stack, Text, UnstyledButton } from "@mantine/core";
 import rrflowImg from "~/shared/assets/images/rrflow.png";
-import { CloudOrganization, IntercomUser } from "~/types";
 import { formatRelativeDate } from "~/shared/util/helpers";
+import { CloudOrganization, IntercomUser } from "~/types";
 
 export interface ConversationPartAuthorProps {
 	user?: IntercomUser;

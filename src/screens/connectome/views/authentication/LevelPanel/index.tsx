@@ -2,7 +2,6 @@ import { ActionIcon, Badge, Box, Group, Menu, ScrollArea, Stack, Text } from "@m
 import { Icon, iconAccount, iconDotsVertical, iconKey, iconPlus } from "@rrflow/ui";
 import { capitalize } from "radash";
 import { type ReactNode, useState } from "react";
-import { escapeIdent } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { Entry } from "~/components/Entry";
 import { ContentPane } from "~/components/Pane";
@@ -16,9 +15,10 @@ import {
 	type SelectDatabaseProps,
 } from "~/screens/connectome/components/SelectDatabase";
 import { executeQuery } from "~/screens/connectome/connection/connection";
-import type { Base, SchemaAccess, SchemaUser } from "~/types";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import type { Base, SchemaAccess, SchemaUser } from "~/types";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { AccessEditorModal } from "./models/access";
 import { UserEditorModal } from "./models/users";
 import classes from "./style.module.scss";

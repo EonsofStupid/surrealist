@@ -1,6 +1,5 @@
 import type { EditorView } from "@codemirror/view";
 import { Alert, Badge, Box, Group, Stack } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconDownload, iconJSON, iconText, iconWarning } from "@rrflow/ui";
 import { useMemo, useState } from "react";
 import type { Updater } from "use-immer";
@@ -19,9 +18,10 @@ import { useSetting } from "~/hooks/config";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
-import type { FunctionDetails, SchemaFunction } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildFunctionDefinition } from "~/shared/util/schema";
+import type { FunctionDetails, SchemaFunction } from "~/types";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export interface FunctionEditorPanelProps {
 	details: SchemaFunction;

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { useConfigStore } from "~/shell/stores/config";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { useConfigStore } from "~/shell/stores/config";
 import { useSetting } from "./config";
 
 export interface NewsPost {

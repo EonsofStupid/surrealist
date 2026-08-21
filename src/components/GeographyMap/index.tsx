@@ -7,6 +7,7 @@ import markerIcon2 from "leaflet/dist/images/marker-icon-2x.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { useEffect, useRef, useState } from "react";
 import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
+import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import type {
 	GeometryCollection,
 	GeometryLine,
@@ -16,7 +17,6 @@ import type {
 	GeometryPoint,
 	GeometryPolygon,
 } from "~/vendor/rrflow-client";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
 
 // leaflet is a tragedy
 delete (window.L.Icon.Default.prototype as any)._getIconUrl;

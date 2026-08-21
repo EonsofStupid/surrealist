@@ -16,10 +16,10 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { GraphWarning } from "~/screens/connectome/views/designer/TableGraphPane/helpers";
-import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { themeColor } from "~/shared/util/mantine";
 import { getTableVariant } from "~/shared/util/schema";
+import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
 import classes from "../style.module.scss";
 
 export type DiagramContextProps = {

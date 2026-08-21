@@ -1,6 +1,6 @@
 import {
-	type BoxProps,
 	Box,
+	type BoxProps,
 	Divider,
 	Flex,
 	Group,
@@ -22,11 +22,11 @@ import { useAvailablePages, useAvailableViews } from "~/hooks/connection";
 import { useAbsoluteLocation, useConnectionAndView, useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
+import { isMobile } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { GlobalPage, SidebarMode, ViewPage } from "~/types";
-import { isMobile } from "~/shared/util/helpers";
-import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 
 const GLOBAL_NAVIGATION: GlobalPage[][] = [

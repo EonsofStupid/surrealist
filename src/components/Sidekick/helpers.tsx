@@ -12,8 +12,8 @@ import {
 	iconTable,
 	iconTransfer,
 } from "@rrflow/ui";
-import { RecordId } from "~/vendor/rrflow-client";
 import { SidekickChat } from "~/types";
+import { RecordId } from "~/vendor/rrflow-client";
 import { GroupedChats } from "./types";
 
 export const SIDEKICK_QUESTIONS = [

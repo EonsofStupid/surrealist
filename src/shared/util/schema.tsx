@@ -1,6 +1,5 @@
 import equal from "fast-deep-equal";
 import { klona } from "klona";
-import { escapeIdent, Table } from "~/vendor/rrflow-client";
 import { adapter } from "~/adapter";
 import { executeQuery, executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { useDatabaseStore } from "~/stores/database";
@@ -16,6 +15,7 @@ import type {
 	TableInfo,
 	TableVariant,
 } from "~/types";
+import { escapeIdent, Table } from "~/vendor/rrflow-client";
 import { dedent } from "./dedent";
 import { createConnectionSchema } from "./defaults";
 import { showErrorNotification } from "./helpers";

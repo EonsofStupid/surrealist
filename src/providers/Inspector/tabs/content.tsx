@@ -1,5 +1,4 @@
 import { Alert, Paper } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconWarning } from "@rrflow/ui";
 import { useMemo } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
@@ -7,6 +6,7 @@ import { SaveBox } from "~/components/SaveBox";
 import { vyrmqlLinting, vyrmqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import type { SaveableHandle } from "~/hooks/save";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { useInspector } from "..";
 
 export interface ContentTabProps {

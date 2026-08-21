@@ -1,11 +1,11 @@
 import { Center, Stack, Text } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconQuery } from "@rrflow/ui";
 import { useMemo } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useDatabaseStore } from "~/stores/database";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export function ResultPane() {
 	const [connection] = useConnectionAndView();

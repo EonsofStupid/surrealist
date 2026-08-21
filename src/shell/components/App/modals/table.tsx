@@ -11,7 +11,6 @@ import {
 import { useInputState } from "@mantine/hooks";
 import { Icon, iconPlus, iconRelation, iconSearch, iconTable } from "@rrflow/ui";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { escapeIdent } from "~/vendor/rrflow-client";
 import { Form } from "~/components/Form";
 import { CodeInput } from "~/components/Inputs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -20,11 +19,12 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { executeQuery } from "~/screens/connectome/connection/connection";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { type SchemaMode, TableVariant } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useInterfaceStore } from "~/shell/stores/interface";
+import { type SchemaMode, TableVariant } from "~/types";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 export function TableCreatorModal() {
 	const { openTableCreator, closeTableCreator } = useInterfaceStore.getState();

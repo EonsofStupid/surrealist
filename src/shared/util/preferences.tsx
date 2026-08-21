@@ -17,7 +17,7 @@ import {
 	THEMES,
 	VIEW_PAGES,
 } from "~/constants";
-import { Flags, type Listable, Selectable, type ConnectomeConfig } from "~/types";
+import { type ConnectomeConfig, Flags, type Listable, Selectable } from "~/types";
 import { useFeatureFlags } from "./feature-flags";
 import { optional } from "./helpers";
 

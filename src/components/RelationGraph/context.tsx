@@ -12,10 +12,10 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { ContextMenuDivider, ContextMenuItem } from "mantine-contextmenu";
 import { unique } from "radash";
-import { RecordId } from "~/vendor/rrflow-client";
 import { useIsLight } from "~/hooks/theme";
 import { getRRFlow } from "~/screens/connectome/connection/connection";
 import { QueryResponse } from "~/types";
+import { RecordId } from "~/vendor/rrflow-client";
 import { NodeCircle } from "./node";
 import { GraphEdges, GraphExpansion, RelationGraphNode } from "./types";
 

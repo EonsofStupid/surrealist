@@ -27,7 +27,6 @@ import {
 import clsx from "clsx";
 import { useContextMenu } from "mantine-contextmenu";
 import { type MouseEvent, useEffect, useLayoutEffect, useState } from "react";
-import { escapeIdent, RecordId, StringRecordId } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { DataTable } from "~/components/DataTable";
 import { LoadingContainer } from "~/components/LoadingContainer";
@@ -46,10 +45,11 @@ import {
 	executeQueryFirst,
 	getVyrmQL,
 } from "~/screens/connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { showInfo } from "~/shared/util/helpers";
 import { getTableVariant } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { escapeIdent, RecordId, StringRecordId } from "~/vendor/rrflow-client";
 import { type SortMode, usePaginationQuery, useRecordQuery } from "./hooks";
 import classes from "./style.module.scss";
 

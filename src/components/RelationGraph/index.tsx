@@ -12,8 +12,6 @@ import {
 	Transition,
 	useMantineTheme,
 } from "@mantine/core";
-import { createEdgeCurveProgram } from "@sigma/edge-curve";
-import { createNodeBorderProgram } from "@sigma/node-border";
 import {
 	Icon,
 	iconAPI,
@@ -26,16 +24,18 @@ import {
 	iconRelation,
 	iconReset,
 } from "@rrflow/ui";
+import { createEdgeCurveProgram } from "@sigma/edge-curve";
+import { createNodeBorderProgram } from "@sigma/node-border";
 import { MultiDirectedGraph } from "graphology";
 import { useContextMenu } from "mantine-contextmenu";
 import { MouseEvent, useEffect, useRef } from "react";
 import Sigma from "sigma";
 import { createEdgeArrowProgram } from "sigma/rendering";
 import { EdgeDisplayData, NodeDisplayData } from "sigma/types";
-import { RecordId } from "~/vendor/rrflow-client";
 import { useStable } from "~/hooks/stable";
 import { getIsLight, useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
+import { RecordId } from "~/vendor/rrflow-client";
 import { ActionButton } from "../ActionButton";
 import { NodeContextMenu } from "./context";
 import { drawHover, drawLabel } from "./drawing";

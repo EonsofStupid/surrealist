@@ -1,7 +1,6 @@
 import { Prec } from "@codemirror/state";
 import { type EditorView, keymap } from "@codemirror/view";
 import { Badge, Group } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconClose, iconDollar, iconReset } from "@rrflow/ui";
 import { useEffect, useMemo, useState } from "react";
 import { type HtmlPortalNode, OutPortal } from "react-reverse-portal";
@@ -16,6 +15,7 @@ import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export interface VariablesPaneProps {
 	isValid: boolean;

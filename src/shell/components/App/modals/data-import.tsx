@@ -16,7 +16,6 @@ import { Icon, iconCheck, iconFile, iconUpload, iconWarning } from "@rrflow/ui";
 import papaparse from "papaparse";
 import { cluster, isArray, isObject, unique } from "radash";
 import { ChangeEvent, MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
-import { Duration, RecordId, StringRecordId, Table, Uuid } from "~/vendor/rrflow-client";
 import { adapter } from "~/adapter";
 import { FieldKindInputCore } from "~/components/Inputs";
 import { Label } from "~/components/Label";
@@ -31,6 +30,7 @@ import { executeQuery, getRRFlow, getVyrmQL } from "~/screens/connectome/connect
 import { tagEvent } from "~/shared/util/analytics";
 import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { Duration, RecordId, StringRecordId, Table, Uuid } from "~/vendor/rrflow-client";
 
 type DataFileFormat = "csv" | "json" | "ndjson";
 type ImportType = "sql" | DataFileFormat;

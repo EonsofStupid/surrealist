@@ -25,11 +25,11 @@ import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useDesigner } from "~/providers/Designer";
 import { TablesPane } from "~/screens/connectome/components/TablesPane";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
 import { ActivateDatabaseEvent, DisconnectedEvent } from "~/shared/util/global-events";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { CreatorDrawer } from "../CreatorDrawer";
 import { ExplorerPane } from "../ExplorerPane";
 

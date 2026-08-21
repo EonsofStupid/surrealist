@@ -4,11 +4,11 @@ import { adapter } from "~/adapter";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { openConnection } from "~/screens/connectome/connection/connection";
-import { useDatabaseStore } from "~/stores/database";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnection } from "~/shared/util/connection";
 import { isHostLocal } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
+import { useDatabaseStore } from "~/stores/database";
 import { ActionButton } from "../ActionButton";
 
 export function DatabaseServing() {

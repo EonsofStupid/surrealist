@@ -1,7 +1,7 @@
 import type { CompletionSource } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
-import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 import { useDatabaseStore } from "~/stores/database";
+import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 
 const TABLE_SOURCE: CompletionSource = (context) => {
 	const match = context.matchBefore(/(from|update|create|delete|into) \w*/i);

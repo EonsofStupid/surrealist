@@ -1,5 +1,4 @@
 import { Box, Button, Divider, Modal, Select, SimpleGrid, Stack } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -9,10 +8,11 @@ import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { renderHighlighting } from "~/shared/util/highlighting";
+import { useConfigStore } from "~/shell/stores/config";
+import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 function Render({
 	value,

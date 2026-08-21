@@ -84,8 +84,7 @@ export function SupportCapability({ name, description }: CapabilityBaseProps) {
 									Please update your instance version
 								</Text>
 								<Text>
-									This capability is only supported in a newer version of
-									RRFlow.
+									This capability is only supported in a newer version of RRFlow.
 								</Text>
 							</Box>
 						</Group>

@@ -1,15 +1,15 @@
 import { foldCode, unfoldCode } from "@codemirror/language";
 import type { EditorView } from "@codemirror/view";
 import { Box, Stack, Text } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Duration } from "~/vendor/rrflow-client";
 import { CodeEditor } from "~/components/CodeEditor";
 import { vyrmqlRecordLinks } from "~/editor";
 import { useStable } from "~/hooks/stable";
 import { type Formatter, useResultFormatter } from "~/hooks/vyrmql";
 import { useInspector } from "~/providers/Inspector";
 import { QueryResponse } from "~/types";
+import { Duration } from "~/vendor/rrflow-client";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import classes from "../style.module.scss";
 import { attemptFormat, type PreviewProps } from ".";
 

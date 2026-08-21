@@ -28,10 +28,10 @@ import {
 	iconSearch,
 	iconTune,
 	iconWarning,
+	pictoBrain,
 	pictoHandsOn,
 	pictoSDBCloud,
 	pictoSidekick,
-	pictoBrain,
 	pictoUniversity,
 } from "@rrflow/ui";
 import { MouseEvent, useState } from "react";
@@ -49,11 +49,11 @@ import { useLatestNewsQuery } from "~/hooks/newsfeed";
 import { OVERVIEW, useSavepoint } from "~/hooks/overview";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
+import { resolveInstanceConnection } from "~/shared/util/connection";
+import { dispatchIntent } from "~/shared/util/intents";
 import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudInstance, Connection } from "~/types";
-import { resolveInstanceConnection } from "~/shared/util/connection";
-import { dispatchIntent } from "~/shared/util/intents";
 import { CloudAlert } from "./banner";
 import { StartBlog } from "./content/blog";
 import { StartCloud } from "./content/cloud";
@@ -532,7 +532,9 @@ export function OverviewPage() {
 									subtitle="RRFlow transport and VyrmQL reference"
 									image={pictoBrain}
 									onClick={() =>
-										adapter.openUrl("https://github.com/EonsofStupid/connectome")
+										adapter.openUrl(
+											"https://github.com/EonsofStupid/connectome",
+										)
 									}
 								/>
 								<StartResource

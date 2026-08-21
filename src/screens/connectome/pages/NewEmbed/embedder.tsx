@@ -8,15 +8,15 @@ import {
 	Text,
 	Tooltip,
 } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconHelp } from "@rrflow/ui";
 import { type PropsWithChildren, type ReactNode, useEffect, useLayoutEffect, useMemo } from "react";
 import { useImmer } from "use-immer";
 import { CodeInput } from "~/components/Inputs";
 import { Spacer } from "~/components/Spacer";
 import { ORIENTATIONS, RESULT_MODES, THEMES } from "~/constants";
-import type { ColorScheme, Orientation, ResultMode } from "~/types";
 import { isDevelopment, isProduction } from "~/shared/util/environment";
+import type { ColorScheme, Orientation, ResultMode } from "~/types";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export const DEFAULT_STATE: EmbedState = {
 	dataset: "none",

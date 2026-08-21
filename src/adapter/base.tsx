@@ -1,4 +1,4 @@
-import type { Platform, ConnectomeConfig, UrlTarget } from "~/types";
+import type { ConnectomeConfig, Platform, UrlTarget } from "~/types";
 
 export interface FileFilter {
 	name: string;

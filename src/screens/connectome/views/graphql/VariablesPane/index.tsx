@@ -1,5 +1,4 @@
 import { Badge, Group } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconClose, iconDollar } from "@rrflow/ui";
 import { useMemo } from "react";
 import { ActionButton } from "~/components/ActionButton";
@@ -11,6 +10,7 @@ import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 export interface VariablesPaneProps {
 	isValid: boolean;

@@ -68,8 +68,8 @@ export function DocsSchemaUsers({ language }: TopicProps) {
 		<Article title="Users">
 			<div>
 				<p>
-					Managing permissions for system Users within RRFlow can be done using the
-					roles OWNER, EDITOR, and VIEWER.
+					Managing permissions for system Users within RRFlow can be done using the roles
+					OWNER, EDITOR, and VIEWER.
 				</p>
 			</div>
 			<Box>

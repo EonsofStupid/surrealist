@@ -1,10 +1,10 @@
 import { Button, Center, Group, Image, Stack, Text } from "@mantine/core";
 import { Icon, iconChevronRight, iconOpen, pictoSDBCloud } from "@rrflow/ui";
 import { adapter } from "~/adapter";
-import logoDarkImg from "~/shared/assets/images/dark/cloud-logo.svg";
-import logoLightImg from "~/shared/assets/images/light/cloud-logo.svg";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { useThemeImage } from "~/hooks/theme";
+import logoDarkImg from "~/shared/assets/images/dark/cloud-logo.svg";
+import logoLightImg from "~/shared/assets/images/light/cloud-logo.svg";
 import { useCloudStore } from "~/stores/cloud";
 
 export function CloudSplash() {
@@ -60,7 +60,9 @@ export function CloudSplash() {
 						color="obsidian"
 						variant="light"
 						rightSection={<Icon path={iconOpen} />}
-						onClick={() => adapter.openUrl("https://github.com/EonsofStupid/connectome")}
+						onClick={() =>
+							adapter.openUrl("https://github.com/EonsofStupid/connectome")
+						}
 					>
 						Learn more
 					</Button>

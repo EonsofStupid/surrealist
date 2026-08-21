@@ -1,12 +1,12 @@
 import { noop } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { createContext, type PropsWithChildren, useContext, useState } from "react";
-import { RecordId } from "~/vendor/rrflow-client";
 import { type HistoryHandle, useHistory } from "~/hooks/history";
 import { useStable } from "~/hooks/stable";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
+import { RecordId } from "~/vendor/rrflow-client";
 import { InspectorDrawer } from "./drawer";
 
 type InspectFunction = (record: RecordId | string) => Promise<void>;

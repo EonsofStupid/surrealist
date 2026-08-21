@@ -34,8 +34,8 @@ export function MajorUpdateSection({ instance, organisation }: MajorUpdateSectio
 						<Box>
 							<PrimaryTitle>Check compatibility</PrimaryTitle>
 							<Text>
-								Check if your database is compatible with RRFlow 3.0 and start
-								your migration.
+								Check if your database is compatible with RRFlow 3.0 and start your
+								migration.
 							</Text>
 							<Group mt="md">
 								<Link href="migrations">

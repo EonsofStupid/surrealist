@@ -7,10 +7,10 @@ import { JSON_FILTER } from "~/constants";
 import { useConnectionList } from "~/hooks/connection";
 import { useCheckbox } from "~/hooks/events";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
 import { backupConfig } from "~/shared/util/config";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { applyMigrations } from "~/shared/util/migrator";
+import { useConfigStore } from "~/shell/stores/config";
 
 export function ManageDataTab() {
 	const connections = useConnectionList();

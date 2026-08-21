@@ -32,11 +32,11 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { cancelLiveQueries } from "~/screens/connectome/connection/connection";
+import { uniqueName } from "~/shared/util/helpers";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab, QueryType } from "~/types";
-import { uniqueName } from "~/shared/util/helpers";
 import classes from "./style.module.scss";
 
 const TYPE_ICONS: Record<QueryType, string> = {

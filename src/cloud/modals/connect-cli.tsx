@@ -44,9 +44,9 @@ function ConnectCliModal({ instance }: ConnectCliModalProps) {
 		<>
 			<Text size="lg">
 				In order to connect to this instance, make sure you have the{" "}
-				<Link href="https://github.com/EonsofStupid/connectome">RRFlow CLI</Link>{" "}
-				installed. Once it is installed, simply open the terminal of your choice and run the
-				following command to connect to your RRFlow Cloud instance.
+				<Link href="https://github.com/EonsofStupid/connectome">RRFlow CLI</Link> installed.
+				Once it is installed, simply open the terminal of your choice and run the following
+				command to connect to your RRFlow Cloud instance.
 			</Text>
 
 			<Skeleton

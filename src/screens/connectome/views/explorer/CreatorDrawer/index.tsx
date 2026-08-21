@@ -13,11 +13,9 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import { Icon, iconClose, iconPlus, iconWarning } from "@rrflow/ui";
 import { omit } from "radash";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { RecordId, StringRecordId, Table } from "~/vendor/rrflow-client";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { DrawerResizer } from "~/components/DrawerResizer";
@@ -30,9 +28,11 @@ import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useValueValidator } from "~/hooks/vyrmql";
 import { executeQuery, getVyrmQL } from "~/screens/connectome/connection/connection";
-import type { QueryResponse } from "~/types";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
+import type { QueryResponse } from "~/types";
+import { RecordId, StringRecordId, Table } from "~/vendor/rrflow-client";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 
 type EdgeInfo = [string[], string[]];
 
@@ -115,11 +115,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		if (opened) {
 			const initializeBody = async () => {
 				const bodyText = content
-					? await getVyrmQL().formatValue(
-							omit(content, ["id", "in", "out"]),
-							true,
-							true,
-						)
+					? await getVyrmQL().formatValue(omit(content, ["id", "in", "out"]), true, true)
 					: "{\n    \n}";
 
 				setErrors([]);

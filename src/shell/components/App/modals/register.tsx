@@ -1,6 +1,6 @@
 import { Button, Group, Modal, PasswordInput, Table, Text, TextInput } from "@mantine/core";
-import { parser } from "@rrflow/vyrmql-parser";
 import { Icon, iconAccountPlus } from "@rrflow/ui";
+import { parser } from "@rrflow/vyrmql-parser";
 import { useState } from "react";
 import { useImmer } from "use-immer";
 import { adapter } from "~/adapter";
@@ -15,9 +15,9 @@ import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { authenticate, register } from "~/screens/connectome/connection/connection";
 import { composeAuthentication } from "~/screens/connectome/connection/helpers";
-import type { AccessField, SchemaAccess } from "~/types";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { parseVariables } from "~/shared/util/language";
+import type { AccessField, SchemaAccess } from "~/types";
 
 export function RegisterUserModal() {
 	const schema = useDatabaseSchema();

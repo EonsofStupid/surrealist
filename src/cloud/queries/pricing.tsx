@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useSetting } from "~/hooks/config";
-import { InstancePlan } from "~/types";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { InstancePlan } from "~/types";
 
 type PricingConfigCTA =
 	| {
@@ -77,7 +77,9 @@ export function useCloudPricingQuery() {
 		queryKey: ["cloud", "pricing"],
 		queryFn: async () => {
 			const isCustom = flags.website_base === "custom";
-			const websiteBase = isCustom ? websiteSetting : "https://github.com/EonsofStupid/connectome";
+			const websiteBase = isCustom
+				? websiteSetting
+				: "https://github.com/EonsofStupid/connectome";
 			const response = await fetch(`${websiteBase}/api/cloud/pricing.json`);
 			const plans: PricingResult = await response.json();
 

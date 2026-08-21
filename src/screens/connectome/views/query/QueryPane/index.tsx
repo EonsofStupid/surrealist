@@ -3,7 +3,6 @@ import { syntaxTree } from "@codemirror/language";
 import { EditorState, Prec, type SelectionRange } from "@codemirror/state";
 import { type EditorView, keymap, scrollPastEnd } from "@codemirror/view";
 import { Button, Group, HoverCard, Paper, rem, Text, ThemeIcon, Transition } from "@mantine/core";
-import { vyrmql } from "~/vendor/vyrmql-editor";
 import {
 	Icon,
 	iconAutoFix,
@@ -39,12 +38,13 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
 import { getVyrmQL } from "~/screens/connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { useQueryStore } from "~/stores/query";
-import type { QueryTab } from "~/types";
 import { showErrorNotification, tryParseParams } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
 import { parseVariables } from "~/shared/util/language";
+import { useConfigStore } from "~/shell/stores/config";
+import { useQueryStore } from "~/stores/query";
+import type { QueryTab } from "~/types";
+import { vyrmql } from "~/vendor/vyrmql-editor";
 import { readQuery, writeQuery } from "../QueryView/strategy";
 
 const SERIALIZE = {

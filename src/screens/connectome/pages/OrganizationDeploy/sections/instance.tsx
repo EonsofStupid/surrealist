@@ -5,8 +5,8 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { REGION_FLAGS } from "~/constants";
 import { useAvailableInstanceVersions } from "~/hooks/cloud";
 import { useStable } from "~/hooks/stable";
-import { useCloudStore } from "~/stores/cloud";
 import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
+import { useCloudStore } from "~/stores/cloud";
 import { DeploySectionProps } from "../types";
 
 export function DeploymentSection({ organisation, details, setDetails }: DeploySectionProps) {

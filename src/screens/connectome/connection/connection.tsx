@@ -1,32 +1,8 @@
 import { compareVersions } from "compare-versions";
-import {
-	type AccessRecordAuth,
-	Features,
-	ProvidedAuth,
-	SqlExportOptions,
-	RRFlow,
-	SystemAuth,
-	UnsupportedVersionError,
-	Uuid,
-} from "~/vendor/rrflow-client";
 import { adapter } from "~/adapter";
 import { fetchAPI } from "~/cloud/api";
 import { MAX_HISTORY_QUERY_LENGTH, SANDBOX } from "~/constants";
 import { hasCompletedOnboarding } from "~/hooks/onboarding";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { useCloudStore } from "~/stores/cloud";
-import { State, useDatabaseStore } from "~/stores/database";
-import { useQueryStore } from "~/stores/query";
-import type {
-	Authentication,
-	CloudInstance,
-	Connection,
-	Protocol,
-	QueryResponse,
-	SchemaInfoKV,
-	SchemaInfoNS,
-} from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getSetting } from "~/shared/util/config";
 import {
@@ -46,7 +22,11 @@ import {
 import { createBaseQuery } from "~/shared/util/defaults";
 import { vyrmqlDurationToSeconds } from "~/shared/util/duration";
 import { CloudError } from "~/shared/util/errors";
-import { ActivateDatabaseEvent, ConnectedEvent, DisconnectedEvent } from "~/shared/util/global-events";
+import {
+	ActivateDatabaseEvent,
+	ConnectedEvent,
+	DisconnectedEvent,
+} from "~/shared/util/global-events";
 import {
 	__throw,
 	connectionUri,
@@ -59,6 +39,30 @@ import { parseIdent } from "~/shared/util/language";
 import { syncConnectionSchema } from "~/shared/util/schema";
 import { createVyrmQL } from "~/shared/util/vyrmql";
 import { VyrmQL } from "~/shared/util/vyrmql/contract";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
+import { useCloudStore } from "~/stores/cloud";
+import { State, useDatabaseStore } from "~/stores/database";
+import { useQueryStore } from "~/stores/query";
+import type {
+	Authentication,
+	CloudInstance,
+	Connection,
+	Protocol,
+	QueryResponse,
+	SchemaInfoKV,
+	SchemaInfoNS,
+} from "~/types";
+import {
+	type AccessRecordAuth,
+	Features,
+	ProvidedAuth,
+	RRFlow,
+	SqlExportOptions,
+	SystemAuth,
+	UnsupportedVersionError,
+	Uuid,
+} from "~/vendor/rrflow-client";
 import { composeAuthentication, getVersionTimeout } from "./helpers";
 import { createRRFlow } from "./rrflow";
 

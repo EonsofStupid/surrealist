@@ -17,10 +17,10 @@ import { Icon, iconChevronRight, iconCursor, iconOpen, pictoSidekick } from "@rr
 import { shuffle } from "radash";
 import { useEffect, useMemo, useRef } from "react";
 import { adapter } from "~/adapter";
-import glowImg from "~/shared/assets/images/radial-glow.png";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
+import glowImg from "~/shared/assets/images/radial-glow.png";
 import { useSidekickStore } from "~/stores/sidekick";
 import { SIDEKICK_QUESTIONS } from "../helpers";
 import { SidekickStream } from "../stream";
@@ -202,7 +202,9 @@ export function SidekickChat({ isAuthed, padding, stream }: ChatConversationProp
 										variant="light"
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
-											adapter.openUrl("https://github.com/EonsofStupid/connectome")
+											adapter.openUrl(
+												"https://github.com/EonsofStupid/connectome",
+											)
 										}
 									>
 										Learn more

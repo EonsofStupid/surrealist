@@ -6,11 +6,11 @@ import { useSaveable } from "~/hooks/save";
 import { useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { executeQuery } from "~/screens/connectome/connection/connection";
-import type { TableInfo } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
 import { SDB_2_0_0 } from "~/shared/util/versions";
+import type { TableInfo } from "~/types";
 import { DesignDrawer } from "./drawer";
 import { buildDefinitionQueries, isSchemaValid } from "./helpers";
 

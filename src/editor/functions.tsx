@@ -1,7 +1,7 @@
 import { type CompletionSource, snippetCompletion } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
-import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 import { useDatabaseStore } from "~/stores/database";
+import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
 
 const CUSTOM_FUNCTION_SOURCE: CompletionSource = (context) => {
 	const match = context.matchBefore(/fn::\w*/i);

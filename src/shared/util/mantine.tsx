@@ -2,6 +2,7 @@ import {
 	Alert,
 	Autocomplete,
 	Checkbox,
+	DEFAULT_THEME,
 	Drawer,
 	Indicator,
 	InputBase,
@@ -32,7 +33,7 @@ export const Connectome_THEME: MantineThemeOverride = {
 	...MANTINE_THEME,
 	colors: {
 		...MANTINE_THEME.colors,
-		rrflow: MANTINE_THEME.colors?.violet!,
+		rrflow: MANTINE_THEME.colors?.violet ?? DEFAULT_THEME.colors.violet,
 	},
 	components: {
 		...MANTINE_THEME.components,

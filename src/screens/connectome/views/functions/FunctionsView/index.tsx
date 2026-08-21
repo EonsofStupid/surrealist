@@ -22,11 +22,15 @@ import {
 	executeQuery,
 	getVyrmQL,
 } from "~/screens/connectome/connection/connection";
-import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { createBaseAuthentication } from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
-import { buildFunctionDefinition, buildModelDefinition, syncConnectionSchema } from "~/shared/util/schema";
+import {
+	buildFunctionDefinition,
+	buildModelDefinition,
+	syncConnectionSchema,
+} from "~/shared/util/schema";
+import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
 import { FunctionEditorPanel } from "../FunctionEditorPanel";
 import { FunctionPropertiesPanel } from "../FunctionPropertiesPanel";
 import { FunctionsPanel } from "../FunctionsPanel";

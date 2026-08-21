@@ -12,10 +12,10 @@ import { Icon, iconChevronDown, iconChevronUp, iconIndex, iconWarning } from "@r
 import clsx from "clsx";
 import { alphabetical, isObject } from "radash";
 import { type MouseEvent, useMemo } from "react";
-import { RecordId } from "~/vendor/rrflow-client";
 import { useStable } from "~/hooks/stable";
 import { useInspector } from "~/providers/Inspector";
 import type { ColumnSort, TableInfo } from "~/types";
+import { RecordId } from "~/vendor/rrflow-client";
 import { DataCell } from "./datatypes";
 import classes from "./style.module.scss";
 

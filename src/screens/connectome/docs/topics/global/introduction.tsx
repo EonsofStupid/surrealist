@@ -14,12 +14,11 @@ export function DocsGlobalIntroduction() {
 		<Article>
 			<div>
 				<p>
-					RRFlow offers a rich set of client libraries and connection protocols to make
-					it easy to integrate RRFlow into your application. This page provides
-					documentation for using these libraries and protocols within the context of your
-					database and schema. You can change the language of the code examples by
-					selecting a different language from the dropdown in the top right corner of this
-					panel.
+					RRFlow offers a rich set of client libraries and connection protocols to make it
+					easy to integrate RRFlow into your application. This page provides documentation
+					for using these libraries and protocols within the context of your database and
+					schema. You can change the language of the code examples by selecting a
+					different language from the dropdown in the top right corner of this panel.
 				</p>
 				<Title
 					order={2}
@@ -28,9 +27,9 @@ export function DocsGlobalIntroduction() {
 					Client libraries
 				</Title>
 				<p>
-					Client libraries provide the most streamlined way to interact with RRFlow.
-					They handle the low-level details of the connection and provide a high-level API
-					for interacting with the database. We provide client libraries for a variety of
+					Client libraries provide the most streamlined way to interact with RRFlow. They
+					handle the low-level details of the connection and provide a high-level API for
+					interacting with the database. We provide client libraries for a variety of
 					languages, including Rust, JavaScript, Python, and many more.
 				</p>
 				<Title
@@ -40,8 +39,8 @@ export function DocsGlobalIntroduction() {
 					Using the CLI
 				</Title>
 				<p>
-					The RRFlow CLI provides a convenient way to interact with your database on
-					the command line. It provides a simple interface for executing queries, which is
+					The RRFlow CLI provides a convenient way to interact with your database on the
+					command line. It provides a simple interface for executing queries, which is
 					especially useful for limited environments.
 				</p>
 				{active && (

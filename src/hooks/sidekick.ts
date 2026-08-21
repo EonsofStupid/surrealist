@@ -1,8 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { RecordId, vyrmql } from "~/vendor/rrflow-client";
 import { useContextConnection } from "~/providers/Context";
-import { SidekickChat, SidekickChatMessage } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
+import { SidekickChat, SidekickChatMessage } from "~/types";
+import { RecordId, vyrmql } from "~/vendor/rrflow-client";
 
 export function useSidekickChatsQuery(search?: string) {
 	const [rrflow, isAvailable] = useContextConnection();
