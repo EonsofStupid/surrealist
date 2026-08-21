@@ -87,7 +87,12 @@ pub fn start_database(
 
         if elapsed <= 500 {
             if !has_started {
-                window.emit("database:output", "RRFlow did not start. Are you sure the RRFlow executable is available?").expect("console output should be delivered");
+                window
+                    .emit(
+                        "database:output",
+                        "RRFlow did not start. Are you sure the RRFlow executable is available?",
+                    )
+                    .expect("console output should be delivered");
             }
 
             window
