@@ -20,7 +20,7 @@ import { surqlRecordLinks } from "~/editor";
 import { type Formatter, useResultFormatter } from "~/hooks/surrealql";
 import { useRefreshTimer } from "~/hooks/timer";
 import { useInspector } from "~/providers/Inspector";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { LiveMessage } from "~/types";
 import { ON_FOCUS_SELECT } from "~/shared/util/helpers";

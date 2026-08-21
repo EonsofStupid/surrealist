@@ -18,7 +18,7 @@ import { Spacer } from "~/components/Spacer";
 import { StarSparkles } from "~/components/StarSparkles";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
-import { getSurreal } from "~/screens/Connectome/connection/connection";
+import { getSurreal } from "~/screens/connectome/connection/connection";
 import { MigrationDiagnosticResult, MigrationResourceType } from "~/types";
 import { dispatchIntent } from "~/shared/util/intents";
 import { ResourceDetailPanel } from "../ResourceDetailPanel";

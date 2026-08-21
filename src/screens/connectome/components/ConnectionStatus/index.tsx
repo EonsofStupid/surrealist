@@ -69,7 +69,7 @@ export function ConnectionStatus() {
 
 	const statusInfo = {
 		disconnected: ["Disconnected", "red"],
-		connected: [`SurrealDB ${remoteVersion}`, "green"],
+		connected: [`RRFlow · core ${remoteVersion}`, "green"],
 		retrying: ["Reconnecting...", ""],
 		connecting: ["Connecting...", ""],
 	} as const;

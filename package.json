@@ -1,11 +1,11 @@
 {
-	"name": "cortex",
+	"name": "connectome",
 	"private": true,
 	"version": "3.7.3",
 	"surreal": "2.0.0",
 	"type": "module",
 	"authors": [
-		"DevPulse / Jesse Hall"
+		"EonsofStupid"
 	],
 	"scripts": {
 		"build": "tsc && vite build",

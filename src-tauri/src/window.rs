@@ -23,11 +23,11 @@ pub async fn open_new_window(app: &AppHandle) {
         .unwrap()
         .as_secs();
 
-    let window_label = format!("surrealist-{}", current_time);
+    let window_label = format!("connectome-{}", current_time);
 
     #[allow(unused_mut)]
     let mut builder = tauri::WebviewWindowBuilder::new(app, &window_label, Default::default())
-        .title("Surrealist")
+        .title("Connectome · RRFlow")
         .inner_size(1435.0, 775.0)
         .center()
         .min_inner_size(825.0, 675.0);

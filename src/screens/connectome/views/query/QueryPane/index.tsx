@@ -38,7 +38,7 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getSurrealQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useQueryStore } from "~/stores/query";
 import type { QueryTab } from "~/types";

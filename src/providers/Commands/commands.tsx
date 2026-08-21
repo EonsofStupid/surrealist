@@ -36,7 +36,7 @@ import {
 	iconStar,
 	iconStarPlus,
 	iconStop,
-	iconConnectome,
+	iconDatabase,
 	iconText,
 	iconTextBoxMinus,
 	iconTextBoxPlus,
@@ -59,7 +59,7 @@ import {
 	closeConnection,
 	openConnection,
 	resetConnection,
-} from "~/screens/Connectome/connection/connection";
+} from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import { featureFlags } from "~/shared/util/feature-flags";
@@ -599,7 +599,7 @@ export function useInternalCommandBuilder(): CommandCategory[] {
 					{
 						id: "open-overview",
 						name: "Go to overview",
-						icon: iconConnectome,
+						icon: iconDatabase,
 						action: navigate("/overview"),
 					},
 					{

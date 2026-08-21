@@ -69,7 +69,7 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { DiagramContext } from "~/screens/Connectome/views/designer/TableGraphPane/nodes/BaseTableNode";
+import { DiagramContext } from "~/screens/connectome/views/designer/TableGraphPane/nodes/BaseTableNode";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type {

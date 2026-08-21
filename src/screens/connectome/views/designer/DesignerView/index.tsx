@@ -13,7 +13,7 @@ import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useDesigner } from "~/providers/Designer";
-import { TablesPane } from "~/screens/Connectome/components/TablesPane";
+import { TablesPane } from "~/screens/connectome/components/TablesPane";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { dispatchIntent } from "~/shared/util/intents";

@@ -24,7 +24,7 @@ import { executeEditorQuery } from "~/editor/query";
 import { useSetting } from "~/hooks/config";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { cancelLiveQueries } from "~/screens/Connectome/connection/connection";
+import { cancelLiveQueries } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useDatabaseStore } from "~/stores/database";

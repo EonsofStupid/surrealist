@@ -14,8 +14,8 @@ import { useConfirmation } from "~/providers/Confirmation";
 import {
 	SelectDatabase,
 	type SelectDatabaseProps,
-} from "~/screens/Connectome/components/SelectDatabase";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+} from "~/screens/connectome/components/SelectDatabase";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import type { Base, SchemaAccess, SchemaUser } from "~/types";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";

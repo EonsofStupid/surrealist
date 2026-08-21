@@ -276,14 +276,14 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	query: {
 		id: "query",
-		name: "Query",
+		name: "Query studio",
 		icon: iconQuery,
 		anim: import("~/shared/assets/animation/query.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.query_view,
 	},
 	explorer: {
 		id: "explorer",
-		name: "Explorer",
+		name: "Data explorer",
 		icon: iconExplorer,
 		anim: import("~/shared/assets/animation/explorer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.explorer_view,
@@ -296,7 +296,7 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	designer: {
 		id: "designer",
-		name: "Designer",
+		name: "Data model",
 		icon: iconDesigner,
 		anim: import("~/shared/assets/animation/designer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.designer_view,
@@ -322,7 +322,7 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	documentation: {
 		id: "documentation",
-		name: "API Docs",
+		name: "Runtime API",
 		icon: iconAPI,
 		disabled: ({ flags }) => !flags.apidocs_view,
 	},

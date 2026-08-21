@@ -50,12 +50,12 @@ import { useConnection, useIsConnected, useRequireDatabase } from "~/hooks/conne
 import { useDatasets } from "~/hooks/dataset";
 import { useStable } from "~/hooks/stable";
 import { openBillingRequiredModal } from "~/modals/billing-required";
-import { activateDatabase, executeQuery } from "~/screens/Connectome/connection/connection";
-import { ComputeUsageChart } from "~/screens/Connectome/metrics/ComputeUsageChart";
-import { MemoryUsageChart } from "~/screens/Connectome/metrics/MemoryUsageChart";
-import { NetworkEgressChart } from "~/screens/Connectome/metrics/NetworkEgressChart";
-import { NetworkIngressChart } from "~/screens/Connectome/metrics/NetworkIngressChart";
-import { StateBadge } from "~/screens/Connectome/pages/Overview/badge";
+import { activateDatabase, executeQuery } from "~/screens/connectome/connection/connection";
+import { ComputeUsageChart } from "~/screens/connectome/metrics/ComputeUsageChart";
+import { MemoryUsageChart } from "~/screens/connectome/metrics/MemoryUsageChart";
+import { NetworkEgressChart } from "~/screens/connectome/metrics/NetworkEgressChart";
+import { NetworkIngressChart } from "~/screens/connectome/metrics/NetworkIngressChart";
+import { StateBadge } from "~/screens/connectome/pages/Overview/badge";
 import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { useDatabaseStore } from "~/stores/database";
 import { useDeployStore } from "~/stores/deploy";

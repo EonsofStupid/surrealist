@@ -14,7 +14,7 @@ import { useConnection, useIsConnected } from "~/hooks/connection";
 import { useGraphqlIntrospection } from "~/hooks/graphql";
 import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { checkGraphqlSupport } from "~/screens/Connectome/connection/connection";
+import { checkGraphqlSupport } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useDatabaseStore } from "~/stores/database";
 import { createBaseAuthentication } from "~/shared/util/defaults";

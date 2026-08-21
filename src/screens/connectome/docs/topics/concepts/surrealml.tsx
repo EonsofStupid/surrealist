@@ -1,6 +1,6 @@
 import { Link } from "~/components/Link";
-import { Article } from "~/screens/Connectome/docs/components";
-import type { TopicProps } from "~/screens/Connectome/docs/types";
+import { Article } from "~/screens/connectome/docs/components";
+import type { TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsConceptsSurrealML(_: TopicProps) {
 	return (

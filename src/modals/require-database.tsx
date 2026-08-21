@@ -4,7 +4,7 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
-import { SelectDatabase } from "~/screens/Connectome/components/SelectDatabase";
+import { SelectDatabase } from "~/screens/connectome/components/SelectDatabase";
 
 export function openRequiredDatabaseModal(callback: () => void) {
 	openModal({

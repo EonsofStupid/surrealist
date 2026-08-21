@@ -31,7 +31,7 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useToggleList } from "~/hooks/toggle";
 import { openGraphLabelEditorModal } from "~/modals/graph-labels";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { plural } from "~/shared/util/helpers";
 import { themeColor } from "~/shared/util/mantine";

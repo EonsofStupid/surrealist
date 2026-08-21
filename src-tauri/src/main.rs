@@ -77,7 +77,7 @@ fn main() {
                     Target::new(TargetKind::Webview),
                     Target::new(TargetKind::Folder {
                         path: get_logs_directory(),
-                        file_name: Some("surrealist".into()),
+                        file_name: Some("connectome".into()),
                     }),
                 ])
                 .build(),

@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { escapeIdent } from "surrealdb";
 import { useDatabaseSchema } from "~/hooks/schema";
-import { executeQueryFirst, executeQuerySingle } from "~/screens/Connectome/connection/connection";
+import { executeQueryFirst, executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { parseIdent } from "~/shared/util/language";
 
 export type SortMode = [string, "asc" | "desc"] | null;

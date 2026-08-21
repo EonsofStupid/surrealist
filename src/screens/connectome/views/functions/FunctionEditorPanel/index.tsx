@@ -18,7 +18,7 @@ import {
 import { useSetting } from "~/hooks/config";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getSurrealQL } from "~/screens/connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildFunctionDefinition } from "~/shared/util/schema";

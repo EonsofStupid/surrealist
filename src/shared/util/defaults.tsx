@@ -37,7 +37,8 @@ export function createBaseConfig(): ConnectomeConfig {
 export function createBaseSettings(): ConnectomeSettings {
 	return {
 		behavior: {
-			updateChecker: true,
+			// Enabled after Connectome owns a signed RRFlow release feed.
+			updateChecker: false,
 			tableSuggest: true,
 			variableSuggest: true,
 			queryErrorChecker: true,

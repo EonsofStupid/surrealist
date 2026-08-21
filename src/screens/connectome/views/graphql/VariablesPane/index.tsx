@@ -9,7 +9,7 @@ import { surqlLinting } from "~/editor";
 import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getSurrealQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 
 export interface VariablesPaneProps {

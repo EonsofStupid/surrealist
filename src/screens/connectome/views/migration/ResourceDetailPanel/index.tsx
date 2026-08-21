@@ -28,7 +28,7 @@ import { RecordLink } from "~/components/RecordLink";
 import { Spacer } from "~/components/Spacer";
 import { SURQL_FILTER } from "~/constants";
 import { useIsLight } from "~/hooks/theme";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getSurrealQL } from "~/screens/connectome/connection/connection";
 import { MigrationKind, MigrationResourceType, MigrationSeverity } from "~/types";
 import { kindMeta } from "../MigrationView/kinds";
 import { DiagnosticEntry, DiagnosticResource } from "../MigrationView/organizer";

@@ -31,7 +31,7 @@ import { useConnection } from "~/hooks/connection";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { cancelLiveQueries } from "~/screens/Connectome/connection/connection";
+import { cancelLiveQueries } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useQueryStore } from "~/stores/query";

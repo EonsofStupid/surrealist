@@ -9,7 +9,7 @@ import {
 	Rect,
 } from "@xyflow/react";
 import { elementToSVG, inlineResources } from "dom-to-svg";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getSurrealQL } from "~/screens/connectome/connection/connection";
 import type {
 	DiagramAlgorithm,
 	DiagramDirection,

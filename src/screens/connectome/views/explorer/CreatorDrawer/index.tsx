@@ -29,7 +29,7 @@ import { surqlLinting } from "~/editor";
 import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useValueValidator } from "~/hooks/surrealql";
-import { executeQuery, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getSurrealQL } from "~/screens/connectome/connection/connection";
 import type { QueryResponse } from "~/types";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";

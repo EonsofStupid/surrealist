@@ -1,7 +1,6 @@
-import { Button, Divider, Image, Modal, Paper, Stack, Text } from "@mantine/core";
+import { Box, Button, Divider, Modal, Paper, Stack, Text } from "@mantine/core";
 import { Icon, iconChevronRight, iconClose } from "@surrealdb/ui";
 import { useEffect } from "react";
-import banner from "~/shared/assets/images/sandbox.webp";
 import { ActionButton } from "~/components/ActionButton";
 import { SANDBOX } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
@@ -38,7 +37,34 @@ export function SandboxModal() {
 				<Icon path={iconClose} />
 			</ActionButton>
 
-			<Image src={banner} />
+			<Box
+				px={28}
+				py={34}
+				style={{
+					background:
+						"radial-gradient(circle at 82% 18%, rgba(102, 217, 255, 0.34), transparent 34%), linear-gradient(135deg, rgba(116, 47, 232, 0.95), rgba(32, 15, 69, 0.95))",
+				}}
+			>
+				<Text
+					fz={30}
+					fw={750}
+					lh={1}
+					c="white"
+					style={{ letterSpacing: "0.08em" }}
+				>
+					CONNECTOME
+				</Text>
+				<Text
+					fz="xs"
+					fw={650}
+					c="white"
+					opacity={0.72}
+					mt={8}
+					style={{ letterSpacing: "0.15em" }}
+				>
+					OFFLINE RRFLOW SANDBOX
+				</Text>
+			</Box>
 
 			<Divider />
 
@@ -53,14 +79,14 @@ export function SandboxModal() {
 						fw={500}
 						fz="xl"
 					>
-						The Connectome Sandbox provides an easy to use playground to test,
-						experiment, and learn SurrealQL.
+						Test RRFlow queries, records, graph paths, and visual models without
+						configuring a remote runtime.
 					</Text>
 
 					<Text>
-						The sandbox lets you experiment without setting up a database. Your data
-						will be cleared when you close Connectome. You can also use the toolbar
-						buttons to manually reset the sandbox or load an official dataset.
+						The sandbox runs locally and clears its data when you close Connectome. Use
+						the toolbar to reset it or load sample data, then move to a persisted RRFlow
+						instance when you are ready.
 					</Text>
 
 					<Button

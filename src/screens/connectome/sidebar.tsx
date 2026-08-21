@@ -1,14 +1,16 @@
 import {
 	type BoxProps,
+	Box,
 	Divider,
 	Flex,
 	Group,
 	Image,
 	ScrollArea,
 	Stack,
+	Text,
 	UnstyledButton,
 } from "@mantine/core";
-import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoConnectome } from "@surrealdb/ui";
+import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoBrain } from "@surrealdb/ui";
 import clsx from "clsx";
 import { Fragment, useMemo } from "react";
 import { useCloudUnreadConversationsQuery } from "~/cloud/queries/context";
@@ -16,7 +18,6 @@ import { NavigationIcon } from "~/components/NavigationIcon";
 import { Shortcut } from "~/components/Shortcut";
 import { Spacer } from "~/components/Spacer";
 import { useBoolean } from "~/hooks/boolean";
-import { useLogoUrl } from "~/hooks/brand";
 import { useAvailablePages, useAvailableViews } from "~/hooks/connection";
 import { useAbsoluteLocation, useConnectionAndView, useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
@@ -53,7 +54,6 @@ export interface ConnectomeSidebarProps extends BoxProps {
 }
 
 export function ConnectomeSidebar({ sidebarMode, className, ...other }: ConnectomeSidebarProps) {
-	const logoUrl = useLogoUrl();
 	const isLight = useIsLight();
 	const [, navigate] = useAbsoluteLocation();
 	const [connection] = useConnectionAndView();
@@ -173,15 +173,27 @@ export function ConnectomeSidebar({ sidebarMode, className, ...other }: Connecto
 					>
 						<Image
 							my={-9}
-							src={pictoConnectome}
+							src={pictoBrain}
 							w={42}
 							className={classes.hat}
 						/>
-						<Image
-							src={logoUrl}
-							style={{ flexShrink: 0 }}
-							w={118}
-						/>
+						<Box className={classes.wordmark}>
+							<Text
+								className={classes.wordmarkTitle}
+								fw={750}
+								lh={1}
+							>
+								CONNECTOME
+							</Text>
+							<Text
+								className={classes.wordmarkSub}
+								fz={9}
+								fw={650}
+								lh={1.5}
+							>
+								RRFLOW CONTROL SURFACE
+							</Text>
+						</Box>
 					</Group>
 				</UnstyledButton>
 				<Stack

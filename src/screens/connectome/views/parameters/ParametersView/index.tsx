@@ -17,7 +17,7 @@ import { useSaveable } from "~/hooks/save";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import type { SchemaParameter } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildParameterDefinition, syncConnectionSchema } from "~/shared/util/schema";

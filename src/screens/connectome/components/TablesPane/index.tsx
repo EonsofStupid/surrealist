@@ -26,7 +26,7 @@ import { useHasSchemaAccess, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { showTableDefinitionModal } from "~/modals/table-definition";
 import { useConfirmation } from "~/providers/Confirmation";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { TableVariant } from "~/types";

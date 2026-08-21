@@ -1,0 +1,17 @@
+name: Legacy Publishers Disabled
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notice:
+    name: RRFlow-owned publishing required
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Explain disabled upstream publishers
+        run: |
+          echo "The inherited Surrealist Docker and S3 publishers are disabled."
+          echo "Configure RRFlow-owned registries and hosting before adding a replacement."

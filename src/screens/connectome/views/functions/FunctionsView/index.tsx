@@ -21,7 +21,7 @@ import {
 	composeHttpConnection,
 	executeQuery,
 	getSurrealQL,
-} from "~/screens/Connectome/connection/connection";
+} from "~/screens/connectome/connection/connection";
 import type { FunctionDetails, SchemaFunction, SchemaModel } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { createBaseAuthentication } from "~/shared/util/defaults";

@@ -22,7 +22,7 @@ import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import type { AccessType, Base, SchemaAccess } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { readBlock, syncConnectionSchema } from "~/shared/util/schema";

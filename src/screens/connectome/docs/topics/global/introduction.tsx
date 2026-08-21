@@ -4,7 +4,7 @@ import { adapter } from "~/adapter";
 import { DriverSelector } from "~/components/DriverSelector";
 import { DRIVERS } from "~/constants";
 import { useSetting } from "~/hooks/config";
-import { Article } from "~/screens/Connectome/docs/components";
+import { Article } from "~/screens/connectome/docs/components";
 
 export function DocsGlobalIntroduction() {
 	const [language, setLanguage] = useSetting("behavior", "docsLanguage");

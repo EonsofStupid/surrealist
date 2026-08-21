@@ -122,6 +122,7 @@
 			"!**/.vscode",
 			"!**/.github",
 			"!**/node_modules",
+			"!**/.pnpm-store",
 			"!**/src-tauri",
 			"!**/dist",
 			"!**/*.js",

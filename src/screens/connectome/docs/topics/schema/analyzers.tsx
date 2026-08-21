@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { Link } from "~/components/Link";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsSchemaAnalyzers({ language }: TopicProps) {
 	const snippets = useMemo<Snippets>(

@@ -1,27 +1,30 @@
 import {
+	Badge,
 	Box,
 	Button,
 	Group,
-	Image,
 	Menu,
 	Paper,
 	ScrollArea,
+	SimpleGrid,
 	Stack,
 	Text,
 	ThemeIcon,
 } from "@mantine/core";
 import {
 	Icon,
+	iconChart,
 	iconChevronDown,
 	iconChevronRight,
+	iconDatabase,
 	iconHomePlus,
-	pictoSDBCloud,
+	iconQuery,
+	iconRelation,
 } from "@surrealdb/ui";
 import { useMemo } from "react";
 import { useImmer } from "use-immer";
 import { Link } from "wouter";
 import { adapter } from "~/adapter";
-import glowUrl from "~/shared/assets/images/glow.png";
 import { ConnectionAddressDetails } from "~/components/ConnectionDetails/address";
 import { ConnectionAuthDetails } from "~/components/ConnectionDetails/authentication";
 import { ConnectionNameDetails } from "~/components/ConnectionDetails/connection";
@@ -43,7 +46,17 @@ import classes from "./style.module.scss";
 export function CreateConnectionPage() {
 	const { settings, addConnection } = useConfigStore.getState();
 
-	const [connection, setConnection] = useImmer(createBaseConnection(settings));
+	const [connection, setConnection] = useImmer(() => {
+		const draft = createBaseConnection(settings);
+
+		draft.name = "Local RRFlow";
+		draft.authentication.protocol = "ws";
+		draft.authentication.hostname = `localhost:${settings.serving.port}`;
+		draft.authentication.username = settings.serving.username;
+		draft.authentication.password = settings.serving.password;
+
+		return draft;
+	});
 	const navigateConnection = useConnectionNavigator();
 
 	const isValid = useMemo(() => {
@@ -156,7 +169,7 @@ export function CreateConnectionPage() {
 								fz={32}
 								flex={1}
 							>
-								Create connection
+								Connect to RRFlow
 							</PrimaryTitle>
 							<Menu position="bottom-end">
 								<Menu.Target>
@@ -240,54 +253,86 @@ export function CreateConnectionPage() {
 					</Box>
 					<Paper
 						p="xl"
-						pos="relative"
-						className={classes.cloudBox}
+						className={classes.instanceHero}
 					>
-						<Stack flex={1}>
-							<Text
-								maw={650}
-								fz="lg"
-							>
-								Looking for the most hassle-free SurrealDB experience?{" "}
-								<Text
-									span
-									inherit
-									c="bright"
-								>
-									SurrealDB Cloud
-								</Text>{" "}
-								is the easiest way to deploy and manage your database—no
-								infrastructure setup or maintenance required.
-							</Text>
-							<Group mt="md">
-								<Link href="/signin/deploy">
-									<Button
-										size="xs"
-										variant="gradient"
-										rightSection={<Icon path={iconChevronRight} />}
-									>
-										Deploy now
-									</Button>
-								</Link>
-								<a href="https://surrealdb.com/cloud">
-									<Button
-										size="xs"
-										color="obsidian"
+						<Group
+							align="flex-start"
+							wrap="nowrap"
+						>
+							<Box flex={1}>
+								<Group gap="xs">
+									<Badge
 										variant="light"
+										color="violet"
 									>
-										Learn more
-									</Button>
-								</a>
-							</Group>
-						</Stack>
-						<Image
-							src={pictoSDBCloud}
-							className={classes.cloudImage}
-						/>
-						<Image
-							src={glowUrl}
-							className={classes.cloudGlow}
-						/>
+										Native control surface
+									</Badge>
+									<Badge
+										variant="dot"
+										color="green"
+									>
+										Surreal-compatible transport
+									</Badge>
+								</Group>
+								<Text
+									fz="xl"
+									fw={650}
+									c="bright"
+									mt="md"
+								>
+									Attach Connectome to an RRFlow runtime
+								</Text>
+								<Text
+									maw={720}
+									mt={4}
+								>
+									The profile is stored locally. Once the runtime answers the
+									handshake, Connectome opens the same live instance through its
+									query, data, graph, schema, and diagnostic lenses.
+								</Text>
+							</Box>
+							<Box className={classes.runtimePulse}>
+								<span />
+								<span />
+								<span />
+							</Box>
+						</Group>
+
+						<SimpleGrid
+							cols={{ base: 2, sm: 4 }}
+							mt="xl"
+							spacing="sm"
+						>
+							{[
+								[iconDatabase, "Data", "Tables & records"],
+								[iconRelation, "Graph", "Relations & paths"],
+								[iconQuery, "Query", "SurrealQL studio"],
+								[iconChart, "Diagnose", "Connection & schema"],
+							].map(([icon, label, detail]) => (
+								<Group
+									key={label}
+									className={classes.capability}
+									wrap="nowrap"
+								>
+									<ThemeIcon
+										variant="light"
+										color="violet"
+									>
+										<Icon path={icon} />
+									</ThemeIcon>
+									<Box>
+										<Text
+											fz="sm"
+											fw={650}
+											c="bright"
+										>
+											{label}
+										</Text>
+										<Text fz="xs">{detail}</Text>
+									</Box>
+								</Group>
+							))}
+						</SimpleGrid>
 					</Paper>
 					<Box mt={24}>
 						<Text
@@ -295,9 +340,9 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Connection
+							Instance identity
 						</Text>
-						<Text>Specify an icon and name for this connection</Text>
+						<Text>Name this RRFlow runtime so it is easy to find later</Text>
 					</Box>
 					<ConnectionNameDetails
 						value={connection}
@@ -309,9 +354,11 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Remote address
+							Runtime endpoint
 						</Text>
-						<Text>Select a communication protocol and specify instance address</Text>
+						<Text>
+							Connect locally or over the network using RRFlow's compatible endpoint
+						</Text>
 					</Box>
 					<ConnectionAddressDetails
 						value={connection}
@@ -323,9 +370,9 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Authentication
+							Runtime access
 						</Text>
-						<Text>Specify how you want to access your instance</Text>
+						<Text>Provide the credentials and initial namespace/database scope</Text>
 					</Box>
 					<ConnectionAuthDetails
 						value={connection}
@@ -360,7 +407,7 @@ export function CreateConnectionPage() {
 							disabled={!isValid}
 							onClick={handleCreate}
 						>
-							Create connection
+							Save & connect
 						</Button>
 					</Group>
 				</Stack>

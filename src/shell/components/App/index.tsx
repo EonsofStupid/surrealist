@@ -2,7 +2,7 @@ import { isDesktop } from "~/adapter";
 import { Scaffold } from "~/components/Scaffold";
 import { DesignerProvider } from "~/providers/Designer";
 import { InspectorProvider } from "~/providers/Inspector";
-import { ConnectomeScreen } from "~/screens/Connectome";
+import { ConnectomeScreen } from "~/screens/connectome";
 import { Globals } from "./globals";
 import { ChangelogModal } from "./modals/changelog";
 import { CloudExpiredDialog } from "./modals/cloud-expired";

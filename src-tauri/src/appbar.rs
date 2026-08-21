@@ -22,7 +22,7 @@ pub mod macos {
                 NSString::alloc(nil).init_str(""),
             );
 
-            let class_name = "SurrealistDockMenuTarget";
+            let class_name = "ConnectomeDockMenuTarget";
             let mut decl = ClassDecl::new(class_name, Class::get("NSObject").unwrap()).unwrap();
 
             extern "C" fn open_new_window_action(_this: &Object, _cmd: Sel, _sender: *mut Object) {

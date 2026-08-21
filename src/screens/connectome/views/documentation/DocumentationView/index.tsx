@@ -2,7 +2,7 @@ import { Group } from "@mantine/core";
 import { memo, useMemo, useRef, useState } from "react";
 import { useSetting } from "~/hooks/config";
 import { useViewFocus } from "~/hooks/routing";
-import { buildDocumentation } from "~/screens/Connectome/docs";
+import { buildDocumentation } from "~/screens/connectome/docs";
 import { useDatabaseStore } from "~/stores/database";
 import { syncConnectionSchema } from "~/shared/util/schema";
 import { ArticlePane } from "../ArticlePane";

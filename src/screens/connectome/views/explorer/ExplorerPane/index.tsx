@@ -45,7 +45,7 @@ import {
 	executeQuery,
 	executeQueryFirst,
 	getSurrealQL,
-} from "~/screens/Connectome/connection/connection";
+} from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { showInfo } from "~/shared/util/helpers";

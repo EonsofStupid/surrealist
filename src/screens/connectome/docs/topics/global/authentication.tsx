@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useConnection } from "~/hooks/connection";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { createBaseAuthentication } from "~/shared/util/defaults";
 
 export function DocsGlobalAuthentication({ language, topic }: TopicProps) {

@@ -21,7 +21,7 @@ import { CodeInput } from "~/components/Inputs";
 import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import type { Base, SchemaUser } from "~/types";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";

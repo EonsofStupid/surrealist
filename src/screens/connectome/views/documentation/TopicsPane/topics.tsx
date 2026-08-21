@@ -15,7 +15,7 @@ import {
 	isGroup,
 	isLink,
 	isSection,
-} from "~/screens/Connectome/docs/types";
+} from "~/screens/connectome/docs/types";
 import type { CodeLang } from "~/types";
 import classes from "./style.module.scss";
 

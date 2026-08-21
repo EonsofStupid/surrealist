@@ -18,7 +18,7 @@ import { Updater } from "use-immer";
 import { CONNECTION_PROTOCOLS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { createSurreal } from "~/screens/Connectome/connection/surreal";
+import { createSurreal } from "~/screens/connectome/connection/surreal";
 import { Connection, Protocol } from "~/types";
 import { connectionUri, isHostLocal } from "~/shared/util/helpers";
 
@@ -162,8 +162,8 @@ export function ConnectionAddressDetails({
 									<Tooltip
 										label={
 											status
-												? "Connectome is able to connect"
-												: "Connectome is unable to connect"
+												? "RRFlow endpoint is reachable"
+												: "RRFlow endpoint is not reachable"
 										}
 									>
 										<Indicator

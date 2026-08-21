@@ -36,7 +36,7 @@ import { Spacer } from "~/components/Spacer";
 import { StarSparkles } from "~/components/StarSparkles";
 import { REGION_FLAGS, SANDBOX } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
-import { useAvailableInstanceVersions, useIsAuthenticated } from "~/hooks/cloud";
+import { useAvailableInstanceVersions, useIsAuthenticated, useIsCloudEnabled } from "~/hooks/cloud";
 import {
 	useConnection,
 	useIsConnected,
@@ -71,6 +71,7 @@ export function ConnectomeToolbar() {
 	const [flags] = useFeatureFlags();
 
 	const navigateConnection = useConnectionNavigator();
+	const showCloud = useIsCloudEnabled();
 	const isAuthenticated = useIsAuthenticated();
 	const showChangelog = useInterfaceStore((s) => s.showChangelogAlert);
 	const hasReadChangelog = useInterfaceStore((s) => s.hasReadChangelog);
@@ -331,7 +332,7 @@ export function ConnectomeToolbar() {
 
 			<ConnectionStatus />
 
-			{authState === "unauthenticated" && authMode === "cloud" && (
+			{showCloud && authState === "unauthenticated" && authMode === "cloud" && (
 				<Button
 					variant="gradient"
 					size="xs"
@@ -390,7 +391,7 @@ export function ConnectomeToolbar() {
 				</Button>
 			)}
 
-			{isConnected && isSandbox && flags.sandbox_deploy && (
+			{showCloud && isConnected && isSandbox && flags.sandbox_deploy && (
 				<StarSparkles>
 					{isAuthenticated && (
 						<Menu

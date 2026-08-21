@@ -6,7 +6,7 @@ import { isInstancePlan } from "~/cloud/helpers";
 import { PricingConfigCloud, useCloudPricingQuery } from "~/cloud/queries/pricing";
 import { useHasCloudFeature } from "~/hooks/cloud";
 import { useStable } from "~/hooks/stable";
-import { PricingCard } from "~/screens/Connectome/components/PricingCard";
+import { PricingCard } from "~/screens/connectome/components/PricingCard";
 import classes from "../style.module.scss";
 import { StepProps } from "../types";
 

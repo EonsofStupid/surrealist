@@ -80,7 +80,7 @@ pub fn get_opened_resources(state: State<OpenResourceState>) -> Vec<OpenedResour
                     path,
                 })
             }
-            "surrealist" => {
+			"connectome" | "surrealist" => {
                 let host = u.host_str().unwrap_or_default().to_owned();
                 let params = u.query().unwrap_or_default().to_owned();
 

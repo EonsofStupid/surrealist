@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useDatabaseSchema } from "~/hooks/schema";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsGlobalHandlingErrors({ language, topic }: TopicProps) {
 	const schema = useDatabaseSchema();

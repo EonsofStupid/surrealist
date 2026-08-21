@@ -146,14 +146,14 @@ export function StartConnection({
 											fz="xs"
 											variant="gradient"
 										>
-											BUILT-IN
+											LOCAL
 										</Text>
 									) : (
 										<Group gap="xs">{labels}</Group>
 									)}
 								</Group>
 								<Text truncate>
-									{isSandbox ? "Your personal offline playground" : target}
+									{isSandbox ? "Offline RRFlow-compatible playground" : target}
 								</Text>
 							</Stack>
 						</Group>

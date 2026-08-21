@@ -13,20 +13,6 @@ on:
         type: string
         description: "Optionally input a custom version. If not, the version string will automatically be generated based on the version in package.json"
 
-env:
-  UPDATE_URL_STABLE: "https://app.surrealdb.com/latest.json"
-  UPDATE_URL_BETA: "https://beta-app.surrealdb.com/latest.json"
-  CLOUD_CALLBACK_URL_STABLE: "https://app.surrealdb.com/cloud/callback"
-  CLOUD_CALLBACK_URL_BETA: "https://beta-app.surrealdb.com/cloud/callback"
-  CLOUD_CLIENT_ID: OuFa4OeeKveeRq1G6xIPgrl6EBUJtxLR
-  CLOUD_AUTH_BASE: https://auth.surrealdb.com
-  CLOUD_API_BASE: https://api.cloud.surrealdb.com/api/v1
-  CLOUD_API_TICKETS_BASE: https://nlsmye6spqokxdxevwqramvqri0dtbto.lambda-url.us-east-1.on.aws
-  SURREALIST_WEBSITE_BASE: https://surrealdb.com
-  SCOUT_COPILOT_ID: copilot_cm3gcpzxw00020cs66takkem5
-  SCOUT_WORKFLOW_ID: wf_cm3gbr8vk00010ds6b1g0vnvv
-  INTERCOM_APP_ID: xaac4vhr
-
 jobs:
   version:
     name: Extract version
@@ -50,7 +36,7 @@ jobs:
       - name: Validate unique version
         run: |
           v=$(jq -r '.version' package.json)
-          TAG="surrealist-v$v"
+          TAG="connectome-v$v"
           if git show-ref --tags --verify --quiet "refs/tags/${TAG}"; then
             echo "ERR: Tag ${TAG} already exists! Please bump the version."
             exit 1
@@ -89,7 +75,7 @@ jobs:
     runs-on: ${{ matrix.settings.platform }}
     steps:
       - name: Information
-        run: echo "Building Surrealist Desktop v${{ needs.version.outputs.version }} for ${{ matrix.settings.id }}"
+        run: echo "Building Connectome v${{ needs.version.outputs.version }} for ${{ matrix.settings.id }}"
 
       - name: Code checkout
         uses: actions/checkout@v4
@@ -103,10 +89,10 @@ jobs:
       - name: Setup jq
         uses: dcarbone/install-jq-action@v2
 
-      - name: Setup bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          bun-version: 1.2.8
+          version: 9.15.4
 
       - name: Setup Rust stable
         uses: dtolnay/rust-toolchain@stable
@@ -119,10 +105,10 @@ jobs:
           workspaces: "./src-tauri -> target"
 
       - name: Install frontend dependencies
-        run: bun install
+        run: pnpm install --frozen-lockfile
 
       - name: Generate license report
-        run: bun run license-report
+        run: pnpm license-report
 
       - name: Set version
         run: |
@@ -137,28 +123,6 @@ jobs:
         shell: bash
         run: echo "$APPLE_API_KEY_CONTENT" >> ${{ github.workspace }}/apple-api-key.p8
 
-      - name: Configure variables
-        shell: bash
-        run: |
-          if [ "${{ inputs.prerelease }}" == "true" ]; then
-            echo "UPDATE_URL=${{ env.UPDATE_URL_BETA }}" >> $GITHUB_ENV
-            echo "CLOUD_CALLBACK_URL=${{ env.CLOUD_CALLBACK_URL_BETA }}" >> $GITHUB_ENV
-          else
-            echo "UPDATE_URL=${{ env.UPDATE_URL_STABLE }}" >> $GITHUB_ENV
-            echo "CLOUD_CALLBACK_URL=${{ env.CLOUD_CALLBACK_URL_STABLE }}" >> $GITHUB_ENV
-          fi
-
-      - name: Debug environment
-        run: |
-          echo "Update URL: ${{ env.UPDATE_URL }}"
-          echo "Callback URL: ${{ env.CLOUD_CALLBACK_URL }}"
-
-      - name: Configure update endpoint
-        shell: bash
-        run: |
-          jq '.plugins.updater.endpoints[0] = "${{ env.UPDATE_URL }}"' ./src-tauri/tauri.conf.json > ./src-tauri/tauri.conf.temp
-          mv -f ./src-tauri/tauri.conf.temp ./src-tauri/tauri.conf.json
-
       - name: Build and draft release
         uses: tauri-apps/tauri-action@v0
         id: build
@@ -168,15 +132,6 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
           VITE_SURREALIST_PREVIEW: "${{ inputs.prerelease }}"
-          VITE_CLOUD_CLIENT_ID: ${{ env.CLOUD_CLIENT_ID }}
-          VITE_CLOUD_CALLBACK_URL: "${{ env.CLOUD_CALLBACK_URL }}"
-          VITE_CLOUD_AUTH_BASE: ${{ env.CLOUD_AUTH_BASE }}
-          VITE_CLOUD_API_BASE: ${{ env.CLOUD_API_BASE }}
-          VITE_CLOUD_API_TICKETS_BASE: ${{ env.CLOUD_API_TICKETS_BASE }}
-          VITE_SURREALIST_WEBSITE_BASE: ${{ env.SURREALIST_WEBSITE_BASE }}
-          VITE_SCOUT_COPILOT_ID: ${{ env.SCOUT_COPILOT_ID }}
-          VITE_SCOUT_WORKFLOW_ID: ${{ env.SCOUT_WORKFLOW_ID }}
-          VITE_INTERCOM_APP_ID: ${{ env.INTERCOM_APP_ID }}
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
@@ -185,11 +140,10 @@ jobs:
           APPLE_API_KEY_PATH: ${{ github.workspace }}/apple-api-key.p8
           CI: false
         with:
-          appVersion: surrealist-v${{ needs.version.outputs.version }}
-          releaseId: surrealist-v${{ needs.version.outputs.version }}
-          tagName: surrealist-v${{ needs.version.outputs.version }}
+          appVersion: ${{ needs.version.outputs.version }}
+          tagName: connectome-v${{ needs.version.outputs.version }}
           args: "${{ matrix.settings.args }}"
-          releaseName: "Surrealist v${{ needs.version.outputs.version }}"
-          releaseBody: Surrealist update v${{ needs.version.outputs.version }}
+          releaseName: "Connectome v${{ needs.version.outputs.version }}"
+          releaseBody: Connectome desktop update v${{ needs.version.outputs.version }}
           releaseDraft: true
           prerelease: ${{ inputs.prerelease }}
