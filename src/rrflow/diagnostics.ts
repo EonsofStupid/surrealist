@@ -1,175 +1,150 @@
 import { invoke, isTauri } from "@tauri-apps/api/core";
+import { type } from "arktype";
 
 export const VYRM_DIAGNOSTICS_PROTOCOL = "vyrm-diagnostics" as const;
 export const VYRM_DIAGNOSTICS_VERSION = 1 as const;
-const CAPABILITY_MATURITIES = new Set(["alpha", "partial", "experimental", "planned"]);
 
-export type CapabilityMaturity = "alpha" | "partial" | "experimental" | "planned";
+const CapabilityMaturitySchema = type("'alpha' | 'partial' | 'experimental' | 'planned'");
+const ContextModeSchema = type("'fresh' | 'pruned' | 'full'");
+const ReasoningProfileSchema = type("'default' | 'high' | 'extreme' | 'ultra'");
+const FlightStatusSchema = type("'preparing' | 'prepared' | 'running' | 'succeeded' | 'failed'");
+const ReplaySpeedSchema = type("number > 0");
 
-export interface VyrmEngineCapability {
-	id: string;
-	label: string;
-	category: string;
-	maturity: CapabilityMaturity;
-	summary: string;
-	evidence: string;
-	limitation: string;
-}
+export const VyrmEngineCapabilitySchema = type({
+	id: "string",
+	label: "string",
+	category: "string",
+	maturity: CapabilityMaturitySchema,
+	summary: "string",
+	evidence: "string",
+	limitation: "string",
+});
 
-export interface VyrmDiagnosticsHandshake {
-	protocol: typeof VYRM_DIAGNOSTICS_PROTOCOL;
-	version: typeof VYRM_DIAGNOSTICS_VERSION;
-	developer_diagnostics: boolean;
-	runners_enabled: boolean;
-	providers: string[];
+export const VyrmDiagnosticsHandshakeSchema = type({
+	protocol: "'vyrm-diagnostics'",
+	version: "1",
+	developer_diagnostics: "true",
+	runners_enabled: "boolean",
+	providers: "string[]",
 	replay: {
-		persisted: boolean;
-		restart_recoverable: boolean;
-		seekable: boolean;
-		reversible: boolean;
-		speeds: number[];
-		lenses: string[];
-	};
-	engine: VyrmEngineCapability[];
-}
+		persisted: "true",
+		restart_recoverable: "true",
+		seekable: "true",
+		reversible: "true",
+		speeds: ReplaySpeedSchema.array(),
+		lenses: "string[]",
+	},
+	engine: VyrmEngineCapabilitySchema.array(),
+});
 
-export interface VyrmFlightEvent {
-	ordinal: number;
-	at: number;
-	elapsed_ms: number;
-	stage: string;
-	kind: string;
-	label: string;
-	detail: string;
-	data?: unknown;
-}
+export const VyrmFlightEventSchema = type({
+	ordinal: "number",
+	at: "number",
+	elapsed_ms: "number",
+	stage: "string",
+	kind: "string",
+	label: "string",
+	detail: "string",
+	"data?": "unknown",
+});
 
-export interface VyrmFlight {
-	id: string;
-	cohort_id: string;
-	prompt: string;
-	provider: string;
-	context_mode: "fresh" | "pruned" | "full";
-	budget: number;
-	created_at: number;
-	status: "preparing" | "prepared" | "running" | "succeeded" | "failed";
-	reasoning_profile: "default" | "high" | "extreme" | "ultra";
+export const VyrmFlightSchema = type({
+	id: "string",
+	cohort_id: "string",
+	prompt: "string",
+	provider: "string",
+	context_mode: ContextModeSchema,
+	budget: "number",
+	created_at: "number",
+	status: FlightStatusSchema,
+	reasoning_profile: ReasoningProfileSchema,
 	metrics: {
-		context_tokens: number;
-		input_tokens?: number;
-		output_tokens?: number;
-		tool_calls: number;
-		latency_ms?: number;
-		acceptance_met?: boolean;
-		cached_input_tokens?: number;
-		reasoning_tokens?: number;
-		provider_events: number;
-	};
-	events: VyrmFlightEvent[];
-	demo_role?: string;
-}
+		context_tokens: "number",
+		input_tokens: "number | null",
+		output_tokens: "number | null",
+		tool_calls: "number",
+		latency_ms: "number | null",
+		acceptance_met: "boolean | null",
+		cached_input_tokens: "number | null",
+		reasoning_tokens: "number | null",
+		provider_events: "number",
+	},
+	events: VyrmFlightEventSchema.array(),
+	"demo_role?": "string",
+});
 
-export interface VyrmRuntimeSnapshot {
-	generated_at: number;
+const VyrmFlightsSchema = VyrmFlightSchema.array();
+
+export const VyrmRuntimeSnapshotSchema = type({
+	generated_at: "number",
 	instance: {
-		id: string;
-		mode: string;
-		root: string;
-	};
+		id: "string",
+		mode: "string",
+		root: "string",
+	},
 	health: {
-		state: string;
-		storage_backend: string;
-		runtime_cursor: number;
-		current_claims: number;
-		vector_artifacts: number;
-	};
-	flights: VyrmFlight[];
-	capabilities: VyrmDiagnosticsHandshake;
-}
+		state: "string",
+		storage_backend: "string",
+		runtime_cursor: "number",
+		current_claims: "number",
+		vector_artifacts: "number",
+	},
+	flights: VyrmFlightsSchema,
+	capabilities: VyrmDiagnosticsHandshakeSchema,
+});
 
-export interface LaunchVyrmFlight {
-	prompt: string;
-	provider: string;
-	context_mode: "fresh" | "pruned" | "full";
-	budget: number;
-	acceptance_marker: string;
-	reasoning_profile: "default" | "high" | "extreme" | "ultra";
-}
+export const LaunchVyrmFlightSchema = type({
+	prompt: "string >= 1",
+	provider: "string >= 1",
+	context_mode: ContextModeSchema,
+	budget: "128 <= number.integer <= 32000",
+	acceptance_marker: "string",
+	reasoning_profile: ReasoningProfileSchema,
+});
+
+export type CapabilityMaturity = typeof CapabilityMaturitySchema.infer;
+export type VyrmEngineCapability = typeof VyrmEngineCapabilitySchema.infer;
+export type VyrmDiagnosticsHandshake = typeof VyrmDiagnosticsHandshakeSchema.infer;
+export type VyrmFlightEvent = typeof VyrmFlightEventSchema.infer;
+export type VyrmFlight = typeof VyrmFlightSchema.infer;
+export type VyrmRuntimeSnapshot = typeof VyrmRuntimeSnapshotSchema.infer;
+export type LaunchVyrmFlight = typeof LaunchVyrmFlightSchema.infer;
 
 function runtimeURL(endpoint: string, path: string) {
 	const base = endpoint.endsWith("/") ? endpoint : `${endpoint}/`;
 	return new URL(path.replace(/^\//, ""), base);
 }
 
-function assertHandshake(value: unknown): asserts value is VyrmDiagnosticsHandshake {
-	if (!value || typeof value !== "object") {
-		throw new Error("Vyrm runtime returned an invalid diagnostics handshake");
+function parseHandshake(value: unknown): VyrmDiagnosticsHandshake {
+	const result = VyrmDiagnosticsHandshakeSchema(value);
+	if (result instanceof type.errors) {
+		throw new Error(`Endpoint does not implement vyrm-diagnostics v1: ${result.summary}`);
 	}
-	const handshake = value as Partial<VyrmDiagnosticsHandshake>;
-	if (
-		handshake.protocol !== VYRM_DIAGNOSTICS_PROTOCOL ||
-		handshake.version !== VYRM_DIAGNOSTICS_VERSION ||
-		handshake.developer_diagnostics !== true ||
-		!Array.isArray(handshake.providers) ||
-		!handshake.replay ||
-		handshake.replay.persisted !== true ||
-		handshake.replay.restart_recoverable !== true ||
-		handshake.replay.seekable !== true ||
-		handshake.replay.reversible !== true ||
-		!Array.isArray(handshake.replay.speeds) ||
-		!handshake.replay.speeds.every((speed) => typeof speed === "number" && speed > 0) ||
-		!Array.isArray(handshake.replay.lenses) ||
-		!Array.isArray(handshake.engine) ||
-		handshake.engine.some(
-			(capability) =>
-				!capability ||
-				typeof capability.id !== "string" ||
-				typeof capability.label !== "string" ||
-				!CAPABILITY_MATURITIES.has(capability.maturity),
-		)
-	) {
-		throw new Error("Endpoint does not implement vyrm-diagnostics v1");
-	}
+	return result;
 }
 
-function assertFlights(value: unknown): asserts value is VyrmFlight[] {
-	if (
-		!Array.isArray(value) ||
-		value.some(
-			(flight) =>
-				!flight ||
-				typeof flight !== "object" ||
-				typeof flight.id !== "string" ||
-				!Array.isArray(flight.events) ||
-				flight.events.some(
-					(event: Partial<VyrmFlightEvent> | null) =>
-						!event ||
-						typeof event.ordinal !== "number" ||
-						typeof event.stage !== "string" ||
-						typeof event.label !== "string",
-				),
-		)
-	) {
-		throw new Error("Vyrm runtime returned an invalid flight ledger");
+function parseFlights(value: unknown): VyrmFlight[] {
+	const result = VyrmFlightsSchema(value);
+	if (result instanceof type.errors) {
+		throw new Error(`Vyrm runtime returned an invalid flight ledger: ${result.summary}`);
 	}
+	return result;
 }
 
-function assertSnapshot(value: unknown): asserts value is VyrmRuntimeSnapshot {
-	if (!value || typeof value !== "object") {
-		throw new Error("Vyrm runtime returned an invalid snapshot");
+function parseFlight(value: unknown): VyrmFlight {
+	const result = VyrmFlightSchema(value);
+	if (result instanceof type.errors) {
+		throw new Error(`Vyrm runtime returned an invalid flight: ${result.summary}`);
 	}
-	const snapshot = value as Partial<VyrmRuntimeSnapshot>;
-	if (
-		!snapshot.instance ||
-		typeof snapshot.instance.id !== "string" ||
-		!snapshot.health ||
-		typeof snapshot.health.runtime_cursor !== "number" ||
-		!Array.isArray(snapshot.flights)
-	) {
-		throw new Error("Vyrm runtime returned an invalid snapshot");
+	return result;
+}
+
+function parseSnapshot(value: unknown): VyrmRuntimeSnapshot {
+	const result = VyrmRuntimeSnapshotSchema(value);
+	if (result instanceof type.errors) {
+		throw new Error(`Vyrm runtime returned an invalid snapshot: ${result.summary}`);
 	}
-	assertHandshake(snapshot.capabilities);
-	assertFlights(snapshot.flights);
+	return result;
 }
 
 export class VyrmDiagnosticsClient {
@@ -198,29 +173,30 @@ export class VyrmDiagnosticsClient {
 
 	async handshake() {
 		const value = await this.request<unknown>("/api/runtime/capabilities");
-		assertHandshake(value);
-		return value;
+		return parseHandshake(value);
 	}
 
 	async snapshot() {
 		const value = await this.request<unknown>("/api/snapshot");
-		assertSnapshot(value);
-		return value;
+		return parseSnapshot(value);
 	}
 
 	async flights() {
 		const value = await this.request<unknown>("/api/flights");
-		assertFlights(value);
-		return value;
+		return parseFlights(value);
 	}
 
 	async launch(request: LaunchVyrmFlight) {
-		return this.request<VyrmFlight>("/api/flights", "POST", request);
+		const outbound = LaunchVyrmFlightSchema(request);
+		if (outbound instanceof type.errors) {
+			throw new Error(`Invalid Vyrm flight request: ${outbound.summary}`);
+		}
+		const value = await this.request<unknown>("/api/flights", "POST", outbound);
+		return parseFlight(value);
 	}
 
 	async seedDemos() {
 		const value = await this.request<unknown>("/api/demos/prompt-strength", "POST", {});
-		assertFlights(value);
-		return value;
+		return parseFlights(value);
 	}
 }
