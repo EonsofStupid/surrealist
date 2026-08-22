@@ -148,7 +148,7 @@ export interface Authentication {
 export interface Connection {
 	id: string;
 	name: string;
-	target?: "runtime" | "control-plane";
+	target?: "runtime" | "diagnostics" | "control-plane";
 	icon: number;
 	labels?: string[];
 	instance?: boolean;

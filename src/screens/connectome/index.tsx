@@ -16,6 +16,7 @@ import { ControlPlanePage } from "./pages/ControlPlane";
 import { CreateConnectionPage } from "./pages/CreateConnection";
 import { NewEmbedPage } from "./pages/NewEmbed";
 import { OverviewPage } from "./pages/Overview";
+import { RuntimeDiagnosticsPage } from "./pages/RuntimeDiagnostics";
 import { ConnectomeSidebar } from "./sidebar";
 import classes from "./style.module.scss";
 import { ConnectomeToolbar } from "./toolbar";
@@ -163,11 +164,18 @@ export function ConnectomeScreen() {
 								{({ id }) => <ControlPlanePage id={id} />}
 							</Route>
 
+							<Route path="/diagnostics/:id">
+								{({ id }) => <RuntimeDiagnosticsPage id={id} />}
+							</Route>
+
 							<Route path="/c/:connection/:view">
 								{({ connection, view }) => {
 									const profile = getConnectionById(connection);
 									if (profile?.target === "control-plane") {
 										return <Redirect to={`/control/${profile.id}`} />;
+									}
+									if (profile?.target === "diagnostics") {
+										return <Redirect to={`/diagnostics/${profile.id}`} />;
 									}
 
 									const _view = view as ViewPage;

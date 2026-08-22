@@ -16,6 +16,9 @@ Connectome currently provides:
 - record and table exploration;
 - visual data-model and relationship design;
 - authentication, parameter, function, GraphQL, and runtime-diagnostics tools;
+- a strict `vyrm-diagnostics` v1 client with custom prompt flights, persisted
+  past-run replay, reverse/forward transport, scrubbing, 0.5×–8× playback,
+  observable event lanes, and a runtime-owned capability/evidence ledger;
 - separate project-runtime and optional enterprise-control-plane profiles;
 - multi-window native desktop operation.
 
@@ -24,6 +27,12 @@ connection opens one project instance for VyrmQL, data, graph, schema, trace,
 and lifecycle work. The optional enterprise control-plane connection manages
 fleets, deployments, upgrades, audit activity, and availability policy. There
 is no compatibility fallback.
+
+Native diagnostics requests cross the Tauri command boundary instead of relying
+on WebView CORS. The transport allowlists only capability, snapshot, flight,
+and demo endpoints; caps requests at 128 KiB and responses at 16 MiB; disables
+redirects; permits plaintext HTTP only for loopback; and requires HTTPS for a
+remote Vyrm instance.
 
 The enterprise contract is deliberately separate from the runtime query
 protocol:

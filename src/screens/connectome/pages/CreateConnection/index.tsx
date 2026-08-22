@@ -46,6 +46,16 @@ import { useConfigStore } from "~/shell/stores/config";
 import { Template } from "~/types";
 import classes from "./style.module.scss";
 
+function parseRuntimeEndpoint(value: string | null) {
+	if (!value) return null;
+	try {
+		const url = new URL(value);
+		return ["http:", "https:", "ws:", "wss:"].includes(url.protocol) ? url : null;
+	} catch {
+		return null;
+	}
+}
+
 export function CreateConnectionPage() {
 	const { settings, addConnection } = useConfigStore.getState();
 	const [, navigate] = useLocation();
@@ -54,13 +64,15 @@ export function CreateConnectionPage() {
 		const draft = createBaseConnection(settings);
 
 		const runtime = new URLSearchParams(window.location.search).get("runtime");
-		draft.name = runtime ? "Managed RRFlow" : "Local RRFlow";
-		draft.authentication.protocol = "ws";
-		draft.authentication.hostname = runtime
-			? runtime.replace(/^wss?:\/\//, "")
-			: `localhost:${settings.serving.port}`;
-		draft.authentication.username = settings.serving.username;
-		draft.authentication.password = settings.serving.password;
+		const runtimeURL = parseRuntimeEndpoint(runtime);
+		draft.name = runtimeURL ? "Managed RRFlow" : "Local RRFlow";
+		draft.target = "diagnostics";
+		draft.authentication.protocol =
+			runtimeURL?.protocol === "https:" || runtimeURL?.protocol === "wss:" ? "https" : "http";
+		draft.authentication.hostname = runtimeURL?.host ?? "localhost:4387";
+		draft.authentication.mode = "none";
+		draft.authentication.username = "";
+		draft.authentication.password = "";
 
 		return draft;
 	});
@@ -75,6 +87,14 @@ export function CreateConnectionPage() {
 			);
 		}
 
+		if (connection.target === "diagnostics") {
+			return Boolean(
+				connection.name &&
+					connection.authentication.hostname &&
+					["http", "https"].includes(connection.authentication.protocol),
+			);
+		}
+
 		return connection.name && isConnectionValid(connection.authentication);
 	}, [connection.authentication, connection.name, connection.target]);
 
@@ -83,6 +103,8 @@ export function CreateConnectionPage() {
 
 		if (connection.target === "control-plane") {
 			navigate(`/control/${connection.id}`);
+		} else if (connection.target === "diagnostics") {
+			navigate(`/diagnostics/${connection.id}`);
 		} else {
 			navigateConnection(connection.id);
 		}
@@ -96,7 +118,7 @@ export function CreateConnectionPage() {
 
 	const setTarget = (target: string) => {
 		setConnection((draft) => {
-			draft.target = target === "control-plane" ? "control-plane" : "runtime";
+			draft.target = target === "control-plane" ? "control-plane" : "diagnostics";
 			if (draft.target === "control-plane") {
 				draft.name = "RRFlow Enterprise";
 				draft.authentication.protocol = "https";
@@ -108,11 +130,11 @@ export function CreateConnectionPage() {
 				draft.authentication.database = "";
 			} else {
 				draft.name = "Local RRFlow";
-				draft.authentication.protocol = "ws";
-				draft.authentication.hostname = `localhost:${settings.serving.port}`;
-				draft.authentication.mode = "root";
-				draft.authentication.username = settings.serving.username;
-				draft.authentication.password = settings.serving.password;
+				draft.authentication.protocol = "http";
+				draft.authentication.hostname = "localhost:4387";
+				draft.authentication.mode = "none";
+				draft.authentication.username = "";
+				draft.authentication.password = "";
 				draft.authentication.token = "";
 			}
 		});
@@ -297,12 +319,12 @@ export function CreateConnectionPage() {
 					</Box>
 					<SegmentedControl
 						fullWidth
-						value={connection.target ?? "runtime"}
+						value={connection.target ?? "diagnostics"}
 						onChange={setTarget}
 						data={[
 							{
-								value: "runtime",
-								label: "Project runtime",
+								value: "diagnostics",
+								label: "Vyrm instance",
 							},
 							{
 								value: "control-plane",
@@ -326,7 +348,7 @@ export function CreateConnectionPage() {
 									>
 										{connection.target === "control-plane"
 											? "Optional enterprise plane"
-											: "Native control surface"}
+											: "Native developer diagnostics"}
 									</Badge>
 									<Badge
 										variant="dot"
@@ -343,7 +365,7 @@ export function CreateConnectionPage() {
 								>
 									{connection.target === "control-plane"
 										? "Attach Connectome to an RRFlow enterprise control plane"
-										: "Attach Connectome to an RRFlow runtime"}
+										: "Attach Connectome to a Vyrm instance"}
 								</Text>
 								<Text
 									maw={720}
@@ -351,7 +373,7 @@ export function CreateConnectionPage() {
 								>
 									{connection.target === "control-plane"
 										? "The profile is stored locally. Connectome performs a strict RRFlow control handshake, then loads managed instances, deployment state, versions, regions, and control capabilities."
-										: "The profile is stored locally. Once the runtime answers the RRFlow handshake, Connectome opens that project instance through its query, data, graph, schema, and diagnostic lenses."}
+										: "The profile is stored locally. Connectome negotiates vyrm-diagnostics v1, then loads persisted prompt flights, replay controls, runtime health, and evidence-backed capability maturity."}
 								</Text>
 							</Box>
 							<Box className={classes.runtimePulse}>
@@ -455,13 +477,49 @@ export function CreateConnectionPage() {
 								/>
 							</Stack>
 						</Paper>
+					) : connection.target === "diagnostics" ? (
+						<Paper
+							p="lg"
+							mt="md"
+						>
+							<Stack>
+								<SegmentedControl
+									value={connection.authentication.protocol}
+									onChange={(protocol) =>
+										setConnection((draft) => {
+											draft.authentication.protocol = protocol as
+												| "http"
+												| "https";
+										})
+									}
+									data={[
+										{ value: "http", label: "Local HTTP" },
+										{ value: "https", label: "Remote HTTPS" },
+									]}
+								/>
+								<TextInput
+									label="Vyrm diagnostics host"
+									placeholder="localhost:4387"
+									value={connection.authentication.hostname}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.hostname = event.target.value;
+										})
+									}
+								/>
+								<Text fz="sm">
+									Plain HTTP is accepted only for loopback. Remote instances
+									require HTTPS.
+								</Text>
+							</Stack>
+						</Paper>
 					) : (
 						<ConnectionAddressDetails
 							value={connection}
 							onChange={setConnection}
 						/>
 					)}
-					{connection.target !== "control-plane" && (
+					{connection.target === "runtime" && (
 						<Box mt={24}>
 							<Text
 								fz="xl"
@@ -475,7 +533,7 @@ export function CreateConnectionPage() {
 							</Text>
 						</Box>
 					)}
-					{connection.target !== "control-plane" && (
+					{connection.target === "runtime" && (
 						<ConnectionAuthDetails
 							value={connection}
 							onChange={setConnection}
@@ -512,7 +570,7 @@ export function CreateConnectionPage() {
 						>
 							{connection.target === "control-plane"
 								? "Save & open enterprise"
-								: "Save & connect"}
+								: "Save & open diagnostics"}
 						</Button>
 					</Group>
 				</Stack>

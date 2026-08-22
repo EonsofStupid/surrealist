@@ -17,6 +17,7 @@ mod analytics;
 mod appbar;
 mod config;
 mod database;
+mod diagnostics;
 mod open;
 mod paths;
 mod whitelist;
@@ -93,6 +94,7 @@ fn main() {
             config::restore_config_backup,
             database::start_database,
             database::stop_database,
+            diagnostics::runtime_diagnostics_request,
             window::toggle_devtools,
             window::new_window,
             open::get_opened_resources,
