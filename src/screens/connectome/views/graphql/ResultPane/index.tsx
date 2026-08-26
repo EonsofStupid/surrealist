@@ -5,13 +5,13 @@ import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useDatabaseStore } from "~/stores/database";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export function ResultPane() {
 	const [connection] = useConnectionAndView();
 	const response = useDatabaseStore((s) => s.graphqlResponse[connection ?? ""]);
 
-	const extensions = useMemo(() => [vyrmql()], []);
+	const extensions = useMemo(() => [rrflowql()], []);
 
 	return (
 		<ContentPane

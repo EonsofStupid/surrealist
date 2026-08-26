@@ -1,12 +1,12 @@
-import Wasm, { Value } from "@rrflow/vyrmql-wasm-v3";
+import Wasm, { Value } from "@surrealdb/ql-wasm-v3";
 import { adapter } from "~/adapter";
 import { QueryResponse } from "~/types";
 import { CborCodec } from "~/vendor/rrflow-client";
-import { VyrmQL } from "./contract";
+import { RRFlowQL } from "./contract";
 
-export class VyrmQLV3 implements VyrmQL {
+export class RRFlowQLV3 implements RRFlowQL {
 	constructor() {
-		adapter.log("VyrmQL", "Initializing VyrmQL V3");
+		adapter.log("RRFlowQL", "Initializing RRFlowQL V3");
 	}
 
 	validateQuery(sql: string): Promise<string | undefined> {

@@ -4,7 +4,7 @@ import type { MouseEvent } from "react";
 import { useEffect, useState } from "react";
 import { useStable } from "~/hooks/stable";
 import { useInspector } from "~/providers/Inspector";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import type { RecordId } from "~/vendor/rrflow-client";
 import { HighlightedText } from "../HighlightedText";
 
@@ -21,7 +21,7 @@ export function RecordLink({ value, withOpen, ...rest }: RecordLinkProps) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getVyrmQL().formatValue(value);
+			const result = await getRRFlowQL().formatValue(value);
 			if (!cancelled) {
 				setRecordText(result);
 			}
@@ -53,7 +53,7 @@ export function RecordLink({ value, withOpen, ...rest }: RecordLinkProps) {
 				cursor: withOpen !== false ? "pointer" : undefined,
 			}}
 		>
-			<HighlightedText language="vyrmql">{recordText}</HighlightedText>
+			<HighlightedText language="rrflowql">{recordText}</HighlightedText>
 			{withOpen !== false && <Icon path={iconArrowUpRight} />}
 		</Group>
 	);

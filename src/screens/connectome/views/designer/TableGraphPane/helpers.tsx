@@ -9,7 +9,7 @@ import {
 	Rect,
 } from "@xyflow/react";
 import { elementToSVG, inlineResources } from "dom-to-svg";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
 import type {
 	DiagramAlgorithm,
@@ -260,7 +260,7 @@ export async function buildFlowNodes(
 					continue;
 				}
 
-				const targets = await getVyrmQL().extractKindRecords(field.kind);
+				const targets = await getRRFlowQL().extractKindRecords(field.kind);
 
 				for (const target of targets) {
 					if (!nodeIndex.has(target)) {
@@ -322,7 +322,7 @@ export async function buildFlowNodes(
 
 		edges.push(
 			...Array.from(uniqueLinks.values()).map((edge) => {
-				if ((edge.data?.fields as string[]).length > 1) {
+				if (((edge.data?.fields as string[] | undefined)?.length ?? 0) > 1) {
 					edge.label = `${edge.data?.linkCount} links`;
 				}
 				return edge;
@@ -351,7 +351,9 @@ export async function applyNodeLayout(
 	const elk = new ELK.default();
 
 	const edgeIndex = new Map<string, Edge>();
-	edges.forEach((e) => edgeIndex.set(e.id, e));
+	edges.forEach((edge) => {
+		edgeIndex.set(edge.id, edge);
+	});
 
 	const linkedNodes = nodes.filter((node) => node.data.links > 0);
 	const orphanNodes = nodes.filter((node) => node.data.links === 0);
@@ -433,7 +435,7 @@ export async function applyNodeLayout(
 					id,
 					type: "position" as "position",
 					position: {
-						x: (x ?? 0) + (linkedLayout.width ?? 0) + parseInt(nodeEdgeGap),
+						x: (x ?? 0) + (linkedLayout.width ?? 0) + parseInt(nodeEdgeGap, 10),
 						y: y ?? 0,
 					},
 				};

@@ -115,6 +115,8 @@ export function AppTitleBar() {
 											</Menu.Item>
 										);
 									}
+
+									return null;
 								})}
 							</Menu.Dropdown>
 						</Menu>

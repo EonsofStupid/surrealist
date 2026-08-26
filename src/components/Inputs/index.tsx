@@ -33,7 +33,7 @@ import { useKindList } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight, useTheme } from "~/hooks/theme";
 import { useConfigStore } from "~/shell/stores/config";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { ActionButton } from "../ActionButton";
 
 export interface CodeInputProps
@@ -97,7 +97,7 @@ export function CodeInput({
 			extensions: [
 				inputBase(),
 				changeHandler,
-				extensions || vyrmql(),
+				extensions || rrflowql(),
 				themeComp.of(editorTheme(colorScheme, syntaxTheme)),
 				readOnlyComp.of(EditorState.readOnly.of(!!disabled || !!readOnly)),
 				fallbackComp.of(placeholder ? ph(placeholder) : []),
@@ -262,7 +262,7 @@ export function PermissionInput({
 			value={textValue}
 			onChange={handleChange}
 			rightSectionWidth={70}
-			extensions={[vyrmql("permission")]}
+			extensions={[rrflowql("permission")]}
 			rightSection={
 				<Group
 					gap="xs"
@@ -408,7 +408,7 @@ export function CounterInput({ value, onChange, min, max }: CounterInputProps) {
 		}
 
 		e.preventDefault();
-		updateUnits(Number.parseInt(valueText));
+		updateUnits(Number.parseInt(valueText, 10));
 	});
 
 	useEffect(() => {

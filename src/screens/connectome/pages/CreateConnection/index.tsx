@@ -391,7 +391,7 @@ export function CreateConnectionPage() {
 							{[
 								[iconDatabase, "Data", "Tables & records"],
 								[iconRelation, "Graph", "Relations & paths"],
-								[iconQuery, "Query", "VyrmQL studio"],
+								[iconQuery, "Query", "RRFlowQL studio"],
 								[iconChart, "Diagnose", "Connection & schema"],
 							].map(([icon, label, detail]) => (
 								<Group

@@ -34,9 +34,9 @@
 		],
 		"fileAssociations": [
 			{
-				"ext": ["vyrmql"],
-				"name": "VyrmQL",
-				"mimeType": "text/x-vyrmql"
+				"ext": ["rrflowql"],
+				"name": "RRFlowQL",
+				"mimeType": "text/x-rrflowql"
 			}
 		],
 		"linux": {

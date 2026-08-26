@@ -8,7 +8,7 @@ import { DocsAuthSignIn } from "./topics/authentication/sign-in";
 import { DocsAuthSignUp } from "./topics/authentication/sign-up";
 import { DocsAuthTokens } from "./topics/authentication/tokens";
 import { DocsConceptsFullTextSearch } from "./topics/concepts/full-text-search";
-import { DocsConceptsRRFlowML } from "./topics/concepts/vyrmml";
+import { DocsConceptsRRFlowML } from "./topics/concepts/rrflowml";
 import { DocsGlobalConnecting } from "./topics/global/connecting";
 import { DocsGlobalDatabases } from "./topics/global/databases";
 import { DocsGlobalInit } from "./topics/global/initialize";
@@ -268,7 +268,7 @@ export function buildDocumentation(_schema: ConnectionSchema): DocsTopic[] {
 				},
 				{
 					id: newId(),
-					title: "VyrmQL",
+					title: "RRFlowQL",
 					link: "https://github.com/EonsofStupid/connectome",
 				},
 				{

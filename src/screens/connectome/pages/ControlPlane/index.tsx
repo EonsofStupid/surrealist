@@ -52,7 +52,7 @@ export function ControlPlanePage({ id }: { id: string }) {
 		},
 	});
 
-	if (!connection || connection.target !== "control-plane") {
+	if (connection?.target !== "control-plane") {
 		return <Redirect to="/overview" />;
 	}
 

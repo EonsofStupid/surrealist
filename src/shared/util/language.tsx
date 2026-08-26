@@ -43,10 +43,10 @@ export function getDatasetURL(version: string) {
 	const isV3 = compareVersions(version, SDB_3_0_0) >= 0;
 
 	if (isV3) {
-		return `${base}/mini-v3.vyrmql`;
+		return `${base}/mini-v3.rrflowql`;
 	}
 
-	return `${base}/mini-v2.vyrmql`;
+	return `${base}/mini-v2.rrflowql`;
 }
 
 const RESERVED_VARIABLES = new Set([
@@ -64,7 +64,7 @@ const RESERVED_VARIABLES = new Set([
 ]);
 
 /**
- * Parse variables from the given VyrmQL tree
+ * Parse variables from the given RRFlowQL tree
  *
  * @param tree The parse tree
  * @param extract The function to extract the variable name

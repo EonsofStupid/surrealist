@@ -2,7 +2,7 @@ import { syntaxTree } from "@codemirror/language";
 import { linter } from "@codemirror/lint";
 import type { Extension } from "@codemirror/state";
 import type { EditorView } from "@codemirror/view";
-import { getVyrmQL, hasVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL, hasRRFlowQL } from "~/screens/connectome/connection/connection";
 import { getSetting } from "~/shared/util/config";
 
 const findStatement = (stack: any): [number, number] | null => {
@@ -47,27 +47,27 @@ export const getQueryRange = (view: EditorView, head?: number): [number, number]
 };
 
 /**
- * VyrmQL error linting
+ * RRFlowQL error linting
  *
  * @param onValidate Callback to run when the query is validated
  */
-export const vyrmqlLinting = (onValidate?: (status: string) => void): Extension =>
+export const rrflowqlLinting = (onValidate?: (status: string) => void): Extension =>
 	linter(
 		async (view) => {
 			const isEnabled = getSetting("behavior", "queryErrorChecker");
 			const content = view.state.doc.toString();
 
-			if (!isEnabled || !content || !hasVyrmQL()) {
+			if (!isEnabled || !content || !hasRRFlowQL()) {
 				return [];
 			}
 
-			const message = (await getVyrmQL().validateQuery(content)) || "";
+			const message = (await getRRFlowQL().validateQuery(content)) || "";
 			const match = message.match(/^Parse error: (.+)?\s+-->\s+\[(\d+):(\d+)\]/i);
 
 			if (match) {
 				const reason = match[1].trim();
-				const lineNumber = Number.parseInt(match[2]);
-				const column = Number.parseInt(match[3]);
+				const lineNumber = Number.parseInt(match[2], 10);
+				const column = Number.parseInt(match[3], 10);
 
 				const position = view.state.doc.line(lineNumber).from + column - 1;
 				const word = view.state.wordAt(position);
@@ -81,14 +81,14 @@ export const vyrmqlLinting = (onValidate?: (status: string) => void): Extension 
 								to: word.to,
 								message: reason,
 								severity: "error",
-								source: "VyrmQL",
+								source: "RRFlowQL",
 							}
 						: {
 								from: position,
 								to: position + 1,
 								message: reason,
 								severity: "error",
-								source: "VyrmQL",
+								source: "RRFlowQL",
 							},
 				];
 			}

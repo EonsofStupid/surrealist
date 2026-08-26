@@ -7,9 +7,9 @@ import { Label } from "~/components/Label";
 import { LoadingContainer } from "~/components/LoadingContainer";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { CodeEditor } from "../CodeEditor";
 import type { GeographyInput } from "../GeographyMap";
 
@@ -27,12 +27,12 @@ export function GeographyDrawer({ opened, data, onClose }: GeographyDrawerProps)
 
 	useEffect(() => {
 		const loadData = async () => {
-			setGeoJSON(await getVyrmQL().formatValue(data));
+			setGeoJSON(await getRRFlowQL().formatValue(data));
 		};
 		loadData();
 	}, [data]);
 
-	const extensions = useMemo(() => [vyrmql()], []);
+	const extensions = useMemo(() => [rrflowql()], []);
 
 	// parses geoJSON and splits langitude and latitude and creates a fitting string with bail out if it doesn't fit
 	const [coordLabel, setCoordLabel] = useState<string | null>(null);
@@ -42,7 +42,7 @@ export function GeographyDrawer({ opened, data, onClose }: GeographyDrawerProps)
 
 		const parseCoords = async () => {
 			try {
-				const parsed = await getVyrmQL().parseValue<any>(geoJSON);
+				const parsed = await getRRFlowQL().parseValue<any>(geoJSON);
 
 				if (cancelled) return;
 

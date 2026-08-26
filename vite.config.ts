@@ -54,9 +54,10 @@ export default defineConfig(({ mode }) => {
 		console.log("Compressing assets...");
 		plugins.push(
 			compression({
-				deleteOriginalAssets: true,
+				// Vite's preview server and Tauri load the original artifacts. Compressed
+				// files are optional deployment siblings; they must never replace WASM.
+				deleteOriginalAssets: false,
 				threshold: isDocker ? 100 : undefined,
-				filename: isDocker ? undefined : (id) => id,
 				include: isDocker
 					? /assets\/.+\.(html|xml|css|json|js|mjs|svg|wasm)$/
 					: /\.(wasm)$/,
@@ -86,16 +87,16 @@ export default defineConfig(({ mode }) => {
 						react: ["react", "react-dom"],
 						codemirror: [
 							"codemirror",
-							"@rrflow/vyrmql-editor",
-							"@rrflow/vyrmql-parser",
+							"@surrealdb/codemirror",
+							"@surrealdb/lezer",
 							"@replit/codemirror-indentation-markers",
 						],
 						mantime: ["@mantine/core", "@mantine/hooks", "@mantine/notifications"],
 						rrflow: [
 							"@rrflow/client",
 							"@rrflow/wasm",
-							"@rrflow/vyrmql-wasm-v2",
-							"@rrflow/vyrmql-wasm-v3",
+							"@surrealdb/ql-wasm-v2",
+							"@surrealdb/ql-wasm-v3",
 						],
 					},
 				},
@@ -130,15 +131,15 @@ export default defineConfig(({ mode }) => {
 			"import.meta.env.GTM_ID": JSON.stringify(""),
 		},
 		optimizeDeps: {
-			exclude: ["@rrflow/wasm", "@rrflow/vyrmql-wasm-v2", "@rrflow/vyrmql-wasm-v3"],
+			exclude: ["@rrflow/wasm", "@surrealdb/ql-wasm-v2", "@surrealdb/ql-wasm-v3"],
 			esbuildOptions: {
 				target: "esnext",
 			},
 		},
 		assetsInclude: [
 			"**/@rrflow/wasm/dist/*.wasm",
-			"**/@rrflow/vyrmql-wasm-v2/dist/*.wasm",
-			"**/@rrflow/vyrmql-wasm-v3/dist/*.wasm",
+			"**/@surrealdb/ql-wasm-v2/dist/*.wasm",
+			"**/@surrealdb/ql-wasm-v3/dist/*.wasm",
 		],
 	};
 });

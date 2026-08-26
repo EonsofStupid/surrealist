@@ -26,9 +26,9 @@ import { adapter } from "~/adapter";
 import { ActionButton } from "~/components/ActionButton";
 import { RecordLink } from "~/components/RecordLink";
 import { Spacer } from "~/components/Spacer";
-import { VYRMQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import { useIsLight } from "~/hooks/theme";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { MigrationKind, MigrationResourceType, MigrationSeverity } from "~/types";
 import { kindMeta } from "../MigrationView/kinds";
 import { DiagnosticEntry, DiagnosticResource } from "../MigrationView/organizer";
@@ -346,7 +346,7 @@ function EntryCard({ index, entry, isResolved, onToggleResolved }: EntryCardProp
 					{source.location && (
 						<CodeBlock
 							value={source.location.source}
-							lang="vyrmql"
+							lang="rrflowql"
 							bg="obsidian.8"
 							p="sm"
 						/>
@@ -378,14 +378,14 @@ function GroupedKindCard({ index, group, resolvedIds, onToggleAll }: GroupedKind
 
 	const handleDownloadRecords = async () => {
 		const recordIds = group.entries.map((entry) => entry.record).filter(Boolean);
-		const vyrmql = await getVyrmQL().formatValue(recordIds, false, true);
+		const rrflowql = await getRRFlowQL().formatValue(recordIds, false, true);
 		const kindSlug = group.kind.replace(/\s+/g, "-").toLowerCase();
 
 		adapter.saveFile(
 			"Save affected records",
-			`${kindSlug}-affected-records.vyrmql`,
-			[VYRMQL_FILTER],
-			() => vyrmql,
+			`${kindSlug}-affected-records.rrflowql`,
+			[RRFLOWQL_FILTER],
+			() => rrflowql,
 		);
 	};
 

@@ -7,21 +7,21 @@ import { adapter } from "~/adapter";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { VYRMQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import {
-	vyrmqlCustomFunctionCompletion,
-	vyrmqlLinting,
-	vyrmqlTableCompletion,
-	vyrmqlVariableCompletion,
+	rrflowqlCustomFunctionCompletion,
+	rrflowqlLinting,
+	rrflowqlTableCompletion,
+	rrflowqlVariableCompletion,
 } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildFunctionDefinition } from "~/shared/util/schema";
 import type { FunctionDetails, SchemaFunction } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export interface FunctionEditorPanelProps {
 	details: SchemaFunction;
@@ -39,16 +39,16 @@ export function FunctionEditorPanel({
 	const [hasLineNumbers] = useSetting("appearance", "functionLineNumbers");
 
 	const [editor, setEditor] = useState<EditorView | null>(null);
-	const vyrmqlVersion = useDatabaseVersionLinter(editor);
+	const rrflowqlVersion = useDatabaseVersionLinter(editor);
 
 	const downloadBody = useStable(() => {
-		adapter.saveFile(`Save function`, `${details.name}.vyrmql`, [VYRMQL_FILTER], () =>
+		adapter.saveFile(`Save function`, `${details.name}.rrflowql`, [RRFLOWQL_FILTER], () =>
 			buildFunctionDefinition(details),
 		);
 	});
 
 	const formatFunction = useStable(async () => {
-		const isFunctionBlockInvalid = await getVyrmQL().validateQuery(details.block);
+		const isFunctionBlockInvalid = await getRRFlowQL().validateQuery(details.block);
 		if (isFunctionBlockInvalid) {
 			showErrorNotification({
 				title: "Failed to format",
@@ -56,7 +56,7 @@ export function FunctionEditorPanel({
 			});
 			return;
 		}
-		const formattedFunctionBlock = await getVyrmQL().formatQuery(details.block);
+		const formattedFunctionBlock = await getRRFlowQL().formatQuery(details.block);
 		onChange((draft) => {
 			(draft.details as SchemaFunction).block = formattedFunctionBlock;
 		});
@@ -74,14 +74,14 @@ export function FunctionEditorPanel({
 
 	const extensions = useMemo(
 		() => [
-			vyrmql(),
-			vyrmqlVersion,
-			vyrmqlLinting(),
-			vyrmqlVariableCompletion(resolveVariables),
-			vyrmqlCustomFunctionCompletion(),
-			vyrmqlTableCompletion(),
+			rrflowql(),
+			rrflowqlVersion,
+			rrflowqlLinting(),
+			rrflowqlVariableCompletion(resolveVariables),
+			rrflowqlCustomFunctionCompletion(),
+			rrflowqlTableCompletion(),
 		],
-		[vyrmqlVersion],
+		[rrflowqlVersion],
 	);
 
 	return (

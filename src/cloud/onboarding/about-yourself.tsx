@@ -121,6 +121,8 @@ function AboutModal({ questions }: AboutModalProps) {
 								/>
 							);
 						}
+
+						return null;
 					})}
 				</Stack>
 			</ErrorBoundary>

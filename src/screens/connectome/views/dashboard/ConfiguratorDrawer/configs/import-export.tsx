@@ -180,21 +180,21 @@ export function ImportExport({ instance, onClose }: ImportExportProps) {
 										mt="sm"
 										fz="lg"
 									>
-										Save or restore your instance's database from a vyrmql file.
-										This only exports or imports data from or to the selected
-										namespace and database.
+										Save or restore your instance's database from a rrflowql
+										file. This only exports or imports data from or to the
+										selected namespace and database.
 									</Text>
 								</Box>
 								<Stack>
 									<ImportExportCard
 										title="Import"
-										description="Import data into the selected database from a vyrmql file"
+										description="Import data into the selected database from a rrflowql file"
 										icon={iconUpload}
 										onClick={handleSchemaImport}
 									/>
 									<ImportExportCard
 										title="Export"
-										description="Export the selected database to a vyrmql file"
+										description="Export the selected database to a rrflowql file"
 										icon={iconDownload}
 										onClick={handleSchemaExport}
 									/>

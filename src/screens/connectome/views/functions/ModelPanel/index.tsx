@@ -14,7 +14,7 @@ export function ModelPanel({ details, onDownload }: ModelPanelProps) {
 	const snippet = useMemo(
 		() => ({
 			title: `Using the model`,
-			language: "vyrmql",
+			language: "rrflowql",
 			code: `
 			# Use the RRFlowML model in your queries
 			ml::${details.name}<${details.version}>({

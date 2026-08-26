@@ -18,7 +18,7 @@ export const STARTING_DATA: Record<StartingData, StartingDataInfo> = {
 	upload: {
 		id: "upload",
 		title: "Upload from file",
-		description: "Get started by uploading a vyrmql file from your local device.",
+		description: "Get started by uploading a rrflowql file from your local device.",
 		icon: iconUpload,
 	},
 	restore: {

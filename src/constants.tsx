@@ -193,10 +193,10 @@ export const NONE_RESULT_MODES: Listable<NoneResultMode>[] = [
 
 export const RESULT_FORMATS: Listable<ResultFormat>[] = [
 	{
-		label: "VyrmQL",
+		label: "RRFlowQL",
 		value: "sql",
 		icon: iconDatabase,
-		description: "Format results in full VyrmQL",
+		description: "Format results in full RRFlowQL",
 	},
 	{
 		label: "JSON",
@@ -388,9 +388,9 @@ export const DESIGNER_LINKS: Selectable<DiagramLinks>[] = [
 	{ label: "Show record links", value: "visible" },
 ];
 
-export const VYRMQL_FILTER = {
+export const RRFLOWQL_FILTER = {
 	name: "RRFlow Schema",
-	extensions: ["vyrmql", "sql", "vyrmql"],
+	extensions: ["rrflowql", "sql"],
 };
 
 export const JSON_FILTER = {

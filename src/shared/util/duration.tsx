@@ -1,4 +1,4 @@
-export function vyrmqlDurationToSeconds(duration: string): number {
+export function rrflowqlDurationToSeconds(duration: string): number {
 	if (duration === "") {
 		return 0;
 	}

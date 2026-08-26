@@ -15,15 +15,15 @@ import { useContextMenu } from "mantine-contextmenu";
 import { useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { RelativeTime } from "~/components/RelativeTime";
-import { vyrmqlRecordLinks } from "~/editor";
+import { rrflowqlRecordLinks } from "~/editor";
+import { type Formatter, useResultFormatter } from "~/hooks/rrflowql";
 import { useRefreshTimer } from "~/hooks/timer";
-import { type Formatter, useResultFormatter } from "~/hooks/vyrmql";
 import { useInspector } from "~/providers/Inspector";
 import { executeQuery } from "~/screens/connectome/connection/connection";
 import { ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { LiveMessage } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { attemptFormat, type PreviewProps } from ".";
 
 const LIVE_ACTION_COLORS: Record<string, [string, string]> = {
@@ -89,7 +89,7 @@ export function LivePreview({ query, isLive }: PreviewProps) {
 
 	const { showContextMenu } = useContextMenu();
 	const [format] = useResultFormatter();
-	const extensions = useMemo(() => [vyrmql(), vyrmqlRecordLinks(inspect)], [inspect]);
+	const extensions = useMemo(() => [rrflowql(), rrflowqlRecordLinks(inspect)], [inspect]);
 
 	useRefreshTimer(30_000);
 

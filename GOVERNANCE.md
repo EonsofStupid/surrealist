@@ -64,7 +64,7 @@ The following Biome rules are intentionally disabled in `biome.json`. Each has b
 | `a11y/useSemanticElements` | `off` | Desktop app — not a public web page. Devtool UI uses custom components extensively. |
 | `suspicious/noExplicitAny` | `off` | Inherited from Connectome. Parking lot item — should be progressively tightened as we refactor. |
 | `suspicious/noThenProperty` | `off` | RRFlow SDK uses `.then` patterns on result objects. Cannot remove without breaking SDK usage. |
-| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in VyrmQL regex patterns. |
+| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in RRFlowQL regex patterns. |
 | `suspicious/noArrayIndexKey` | `off` | Inherited. Used in list rendering where items lack stable IDs. Should be revisited per-component. |
 | `style/noUnusedTemplateLiteral` | `off` | The `urql` schema parser triggers this. |
 | `style/useImportType` | `off` | Inherited. TypeScript `import type` enforcement conflicts with some patterns. |

@@ -43,7 +43,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import {
 	executeQuery,
 	executeQueryFirst,
-	getVyrmQL,
+	getRRFlowQL,
 } from "~/screens/connectome/connection/connection";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { showInfo } from "~/shared/util/helpers";
@@ -82,7 +82,7 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 		let cancelled = false;
 
 		const validate = async () => {
-			const result = !showFilter || !filter || !(await getVyrmQL().validateWhere(filter));
+			const result = !showFilter || !filter || !(await getRRFlowQL().validateWhere(filter));
 			if (!cancelled) {
 				setIsFilterValid(result);
 			}
@@ -173,7 +173,7 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 		const records = Array.from(selected).map((id) => new StringRecordId(id));
 		const result = await executeQueryFirst("SELECT * FROM $records", { records });
 
-		navigator.clipboard.writeText(await getVyrmQL().formatValue(result, true, true));
+		navigator.clipboard.writeText(await getRRFlowQL().formatValue(result, true, true));
 	});
 
 	const removeRecord = useConfirmation<RecordId>({
@@ -190,7 +190,7 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 			</Box>
 		),
 		onConfirm: async (id) => {
-			await executeQuery(`DELETE ${await getVyrmQL().formatValue(id)}`);
+			await executeQuery(`DELETE ${await getRRFlowQL().formatValue(id)}`);
 			refetch();
 		},
 	});
@@ -216,7 +216,7 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 			navigateConnection(connection, "query");
 			addQueryTab(connection, {
 				type: "config",
-				query: `${prefix} ${getVyrmQL().formatValue(id)}`,
+				query: `${prefix} ${getRRFlowQL().formatValue(id)}`,
 			});
 		};
 
@@ -237,11 +237,11 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 				key: "copy-id",
 				title: "Copy Record ID",
 				onClick: async () => {
-					navigator.clipboard.writeText(await getVyrmQL().formatValue(record.id));
+					navigator.clipboard.writeText(await getRRFlowQL().formatValue(record.id));
 
 					showInfo({
 						title: "Record ID copied",
-						subtitle: `Copied ${getVyrmQL().formatValue(record.id)}`,
+						subtitle: `Copied ${getRRFlowQL().formatValue(record.id)}`,
 					});
 				},
 			},
@@ -250,12 +250,12 @@ export function ExplorerPane({ activeTable, onCreateRecord }: ExplorerPaneProps)
 				title: "Copy as JSON",
 				onClick: async () => {
 					navigator.clipboard.writeText(
-						await getVyrmQL().formatValue(record, true, true),
+						await getRRFlowQL().formatValue(record, true, true),
 					);
 
 					showInfo({
 						title: "Record contents copied",
-						subtitle: `Copied ${getVyrmQL().formatValue(record.id)}`,
+						subtitle: `Copied ${getRRFlowQL().formatValue(record.id)}`,
 					});
 				},
 			},

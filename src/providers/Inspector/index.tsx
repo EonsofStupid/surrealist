@@ -3,7 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { createContext, type PropsWithChildren, useContext, useState } from "react";
 import { type HistoryHandle, useHistory } from "~/hooks/history";
 import { useStable } from "~/hooks/stable";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { RecordId } from "~/vendor/rrflow-client";
@@ -45,7 +45,7 @@ export function InspectorProvider({ children }: PropsWithChildren) {
 	const inspect = useStable(async (record: RecordId | string) => {
 		const recordId =
 			typeof record === "string"
-				? await getVyrmQL().parseValue(record)
+				? await getRRFlowQL().parseValue(record)
 				: new RecordId(record.table, record.id);
 
 		if (!(recordId instanceof RecordId)) {

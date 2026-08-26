@@ -241,7 +241,7 @@ export function SupportPage() {
 							/>
 							<ResourceTile
 								name="University: Book"
-								description="Become a VyrmQL expert through Aeon's RRFlow Renaissance"
+								description="Become a RRFlowQL expert through Aeon's RRFlow Renaissance"
 								image={pictoDocument}
 								onClick={() =>
 									adapter.openUrl("https://github.com/EonsofStupid/connectome")

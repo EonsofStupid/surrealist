@@ -181,5 +181,7 @@ export function renderTopics(
 					/>
 				);
 			}
+
+			return null;
 		});
 }

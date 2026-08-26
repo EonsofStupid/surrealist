@@ -16,7 +16,7 @@ import { Spacer } from "~/components/Spacer";
 import { ORIENTATIONS, RESULT_MODES, THEMES } from "~/constants";
 import { isDevelopment, isProduction } from "~/shared/util/environment";
 import type { ColorScheme, Orientation, ResultMode } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export const DEFAULT_STATE: EmbedState = {
 	dataset: "none",
@@ -187,7 +187,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.query = e;
 						});
 					}}
-					extensions={[vyrmql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>
@@ -202,7 +202,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.variables = e;
 						});
 					}}
-					extensions={[vyrmql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>
@@ -218,7 +218,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.setup = e;
 						});
 					}}
-					extensions={[vyrmql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>

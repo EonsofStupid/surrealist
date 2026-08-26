@@ -23,16 +23,16 @@ import { CodeInput } from "~/components/Inputs";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { vyrmqlLinting } from "~/editor";
+import { rrflowqlLinting } from "~/editor";
+import { useValueValidator } from "~/hooks/rrflowql";
 import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { useValueValidator } from "~/hooks/vyrmql";
-import { executeQuery, getVyrmQL } from "~/screens/connectome/connection/connection";
+import { executeQuery, getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
 import type { QueryResponse } from "~/types";
 import { RecordId, StringRecordId, Table } from "~/vendor/rrflow-client";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 type EdgeInfo = [string[], string[]];
 
@@ -77,14 +77,17 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 				out: to,
 			};
 
-			response = await executeQuery(/* vyrmql */ `RELATE $from->$id->$to CONTENT $content`, {
-				from,
-				id,
-				to,
-				content,
-			});
+			response = await executeQuery(
+				/* rrflowql */ `RELATE $from->$id->$to CONTENT $content`,
+				{
+					from,
+					id,
+					to,
+					content,
+				},
+			);
 		} else {
-			response = await executeQuery(/* vyrmql */ `CREATE $id CONTENT $body`, { id, body });
+			response = await executeQuery(/* rrflowql */ `CREATE $id CONTENT $body`, { id, body });
 		}
 
 		const errors = response.flatMap((r) => {
@@ -115,7 +118,11 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		if (opened) {
 			const initializeBody = async () => {
 				const bodyText = content
-					? await getVyrmQL().formatValue(omit(content, ["id", "in", "out"]), true, true)
+					? await getRRFlowQL().formatValue(
+							omit(content, ["id", "in", "out"]),
+							true,
+							true,
+						)
 					: "{\n    \n}";
 
 				setErrors([]);
@@ -130,7 +137,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		}
 	}, [opened, table, content]);
 
-	const extensions = useMemo(() => [vyrmql(), vyrmqlLinting()], []);
+	const extensions = useMemo(() => [rrflowql(), rrflowqlLinting()], []);
 	const isFullyValid = isValid && (!isRelation || (recordFrom && recordTo));
 	const [width, setWidth] = useState(650);
 

@@ -7,12 +7,12 @@ import { DRIVERS } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { renderHighlighting } from "~/shared/util/highlighting";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang, type ColorScheme, type SyntaxTheme } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 function Render({
 	value,
@@ -118,10 +118,10 @@ function HighlightTool({ value, onChange, lang }: HighlightToolProps) {
 	const syntaxTheme = useConfigStore((state) => state.settings.appearance.syntaxTheme);
 
 	const format = useCallback(async () => {
-		onChange(await getVyrmQL().formatQuery(value));
+		onChange(await getRRFlowQL().formatQuery(value));
 	}, [value, onChange]);
 
-	const extensions = useMemo(() => (lang === "cli" ? [vyrmql()] : []), [lang]);
+	const extensions = useMemo(() => (lang === "cli" ? [rrflowql()] : []), [lang]);
 
 	// const editorController = useEditor({
 	// 	extensions,

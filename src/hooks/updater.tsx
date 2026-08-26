@@ -12,7 +12,7 @@ import { useStable } from "./stable";
 type Phase = "idle" | "downloading" | "error";
 
 function extractMajor(version: string) {
-	return Number.parseInt(version.split(".")[0] ?? 0);
+	return Number.parseInt(version.split(".")[0] ?? 0, 10);
 }
 
 /**

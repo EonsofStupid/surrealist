@@ -11,7 +11,7 @@ import {
 import { showErrorNotification } from "~/shared/util/helpers";
 import { getDatasetURL } from "~/shared/util/language";
 import { broadcastMessage } from "~/shared/util/messaging";
-import { createVyrmQL } from "~/shared/util/vyrmql";
+import { createRRFlowQL } from "~/shared/util/rrflowql";
 import type { ConnectomeConfig, MiniAppearance, Orientation, ResultMode } from "~/types";
 import { RRFlow } from "~/vendor/rrflow-client";
 import { BrowserAdapter } from "./browser";
@@ -37,7 +37,7 @@ export class MiniAdapter extends BrowserAdapter {
 		const mainTab = createBaseQuery(settings, "config");
 		const params = new URL(document.location.toString()).searchParams;
 		const version = await this.#getEmbeddedVersion();
-		const vyrmql = createVyrmQL(version);
+		const rrflowql = createRRFlowQL(version);
 
 		const {
 			ref,
@@ -100,8 +100,8 @@ export class MiniAdapter extends BrowserAdapter {
 		// Initial variables
 		if (variables) {
 			try {
-				const parsed = await vyrmql.parseValue(variables);
-				mainTab.variables = await vyrmql.formatValue(parsed, false, true);
+				const parsed = await rrflowql.parseValue(variables);
+				mainTab.variables = await rrflowql.formatValue(parsed, false, true);
 			} catch {
 				showErrorNotification({
 					title: "Startup error",

@@ -44,7 +44,7 @@ export async function showTableDefinitionModal(table: string) {
 					</Text>
 					<CodeBlock
 						mt="xl"
-						lang="vyrmql"
+						lang="rrflowql"
 						value={fullDefinition}
 					/>
 				</Stack>

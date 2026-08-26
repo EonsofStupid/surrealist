@@ -116,7 +116,7 @@ export function RuntimeDiagnosticsPage({ id }: { id: string }) {
 	});
 	const mutationError = launch.error ?? seedDemos.error;
 
-	if (!connection || connection.target !== "diagnostics") {
+	if (connection?.target !== "diagnostics") {
 		return <Redirect to="/overview" />;
 	}
 

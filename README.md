@@ -12,7 +12,7 @@ Connectome currently provides:
 - local or remote endpoint probing over HTTP(S) and WebSocket transports;
 - root, namespace, database, record-access, token, and anonymous authentication;
 - namespace and database selection;
-- a VyrmQL query studio with table, graph, JSON, and live-result lenses;
+- a RRFlowQL query studio with table, graph, JSON, and live-result lenses;
 - record and table exploration;
 - visual data-model and relationship design;
 - authentication, parameter, function, GraphQL, and runtime-diagnostics tools;
@@ -23,7 +23,7 @@ Connectome currently provides:
 - multi-window native desktop operation.
 
 Connectome uses RRFlow-native runtime and control-plane contracts. A runtime
-connection opens one project instance for VyrmQL, data, graph, schema, trace,
+connection opens one project instance for RRFlowQL, data, graph, schema, trace,
 and lifecycle work. The optional enterprise control-plane connection manages
 fleets, deployments, upgrades, audit activity, and availability policy. There
 is no compatibility fallback.

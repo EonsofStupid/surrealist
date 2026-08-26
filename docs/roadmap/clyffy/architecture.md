@@ -116,7 +116,7 @@ src/
 
 | Command | Spoke | Purpose |
 |---------|-------|---------|
-| `rrflow_query` | RRFlow | Execute VyrmQL query against connected instance |
+| `rrflow_query` | RRFlow | Execute RRFlowQL query against connected instance |
 | `qdrant_search` | Qdrant | Run vector search against Qdrant collection |
 | `rro_inspect` | RRO | Inspect RRO structure and complexity scores |
 | `pipeline_config` | Pipeline | Read/write pipeline node configuration |

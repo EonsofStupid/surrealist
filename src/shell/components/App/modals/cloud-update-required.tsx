@@ -15,7 +15,7 @@ export function CloudUpdateRequiredDialog() {
 	const update = useInterfaceStore((s) => s.availableUpdate);
 
 	const noUpdate = useMemo(() => {
-		return !isDesktop || !update || !update.available;
+		return !isDesktop || !update?.available;
 	}, [update]);
 
 	const { phase, progress, version, startUpdate } = useDesktopUpdater();

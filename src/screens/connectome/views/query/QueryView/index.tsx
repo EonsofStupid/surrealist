@@ -24,7 +24,7 @@ import { SetQueryEvent } from "~/shared/util/global-events";
 import { newId, ON_FOCUS_SELECT } from "~/shared/util/helpers";
 import { useConfigStore } from "~/shell/stores/config";
 import type { SavedQuery } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { HistoryDrawer } from "../HistoryDrawer";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
@@ -297,7 +297,7 @@ export function QueryView() {
 								onChange={setSaveContent}
 								multiline
 								placeholder="SELECT * FROM something..."
-								extensions={[vyrmql()]}
+								extensions={[rrflowql()]}
 							/>
 						)}
 

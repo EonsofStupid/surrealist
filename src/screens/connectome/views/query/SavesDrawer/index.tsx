@@ -262,7 +262,7 @@ export function SavesDrawer({
 						>
 							<CodeBlock
 								value={entry.query}
-								lang="vyrmql"
+								lang="rrflowql"
 							/>
 							{entry.tags.length > 0 && (
 								<Group

@@ -1,5 +1,5 @@
 import { tryit } from "radash";
-import type { Formatter } from "~/hooks/vyrmql";
+import type { Formatter } from "~/hooks/rrflowql";
 import type { QueryResponse, QueryTab } from "~/types";
 
 export interface PreviewProps {

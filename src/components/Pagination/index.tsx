@@ -26,7 +26,7 @@ export function Pagination({ store, loading }: PaginationProps) {
 			return;
 		}
 
-		const entered = Number.parseInt(customPage);
+		const entered = Number.parseInt(customPage, 10);
 
 		store.setCurrentPage(entered);
 		setCustomPage(store.clampPage(entered).toString());
@@ -89,7 +89,7 @@ export function Pagination({ store, loading }: PaginationProps) {
 
 			<Select
 				value={store.pageSize.toString()}
-				onChange={(v) => store.setPageSize(Number.parseInt(v ?? "0"))}
+				onChange={(v) => store.setPageSize(Number.parseInt(v ?? "0", 10))}
 				data={PAGE_SIZES}
 				size="xs"
 			/>

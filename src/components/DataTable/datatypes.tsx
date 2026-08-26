@@ -3,7 +3,7 @@ import { Icon, iconCheck, iconClock, iconClose, iconExplorer, iconFile, iconXml 
 import dayjs from "dayjs";
 import { convert } from "geo-coordinates-parser";
 import { useEffect, useState } from "react";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import {
 	DateTime,
@@ -212,7 +212,7 @@ function ObjectCell(props: { value: any }) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getVyrmQL().formatValue(props.value, false, true);
+			const result = await getRRFlowQL().formatValue(props.value, false, true);
 			if (!cancelled) {
 				setFormatted(result);
 			}

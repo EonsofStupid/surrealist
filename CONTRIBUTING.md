@@ -3,7 +3,7 @@
 Connectome is the native desktop control surface for RRFlow. Contributions should preserve three canonical boundaries:
 
 - RRFlow owns runtime, storage, query execution, tracing, and lifecycle semantics.
-- VyrmQL is the query language exposed by Connectome.
+- RRFlowQL is the query language exposed by Connectome.
 - Connectome is a local-first Tauri application for Windows, macOS, and Linux.
 
 Before opening a pull request, run:

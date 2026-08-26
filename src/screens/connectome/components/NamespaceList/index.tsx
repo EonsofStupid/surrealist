@@ -68,7 +68,7 @@ function Namespace({ value, activeNamespace, onOpen, onRemove }: NamespaceProps)
 		verification: value,
 		verifyText: "Please type the name of the namespace to confirm",
 		onConfirm: async () => {
-			await executeQuery(/* vyrmql */ `REMOVE NAMESPACE ${escapeIdent(value)}`);
+			await executeQuery(/* rrflowql */ `REMOVE NAMESPACE ${escapeIdent(value)}`);
 
 			if (activeNamespace === value) {
 				activateDatabase("", "");

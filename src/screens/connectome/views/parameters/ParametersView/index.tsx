@@ -197,8 +197,8 @@ export function ParametersView() {
 								title="Parameters"
 								icon={iconVariable}
 								snippet={{
-									language: "vyrmql",
-									title: "VyrmQL",
+									language: "rrflowql",
+									title: "RRFlowQL",
 									code: `
 										-- Define your parameters with ease
 										DEFINE PARAM $hello VALUE "world";

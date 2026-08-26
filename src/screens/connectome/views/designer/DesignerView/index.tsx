@@ -124,8 +124,8 @@ export function DesignerView() {
 							title="Designer"
 							icon={iconDesigner}
 							snippet={{
-								language: "vyrmql",
-								title: "VyrmQL",
+								language: "rrflowql",
+								title: "RRFlowQL",
 								code: `
 									-- Declare a new table
 									DEFINE TABLE person;

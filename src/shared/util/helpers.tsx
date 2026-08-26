@@ -13,7 +13,7 @@ import { shake, uid } from "radash";
 import type { CSSProperties, FocusEvent, ReactNode, SyntheticEvent } from "react";
 import { adapter } from "~/adapter";
 import { Spacer } from "~/components/Spacer";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import type { Authentication, Protocol, Selectable } from "~/types";
 import { openErrorModal } from "./errors";
 
@@ -344,7 +344,7 @@ export async function tryParseParams(paramString: string) {
 	let params: any = {};
 
 	try {
-		const parsed = await getVyrmQL().parseValue(paramString);
+		const parsed = await getRRFlowQL().parseValue(paramString);
 
 		if (typeof parsed !== "object" || Array.isArray(parsed)) {
 			throw new TypeError("Must be object");

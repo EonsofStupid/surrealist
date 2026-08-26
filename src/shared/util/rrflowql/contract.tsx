@@ -1,9 +1,9 @@
 import { QueryResponse } from "~/types";
 
 /**
- * An interface providing VyrmQL functionality
+ * An interface providing RRFlowQL functionality
  */
-export interface VyrmQL {
+export interface RRFlowQL {
 	/**
 	 * Validate a query and return an error message if invalid
 	 */

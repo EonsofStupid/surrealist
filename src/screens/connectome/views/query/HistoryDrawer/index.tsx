@@ -145,7 +145,7 @@ function HistoryRow({ entry, editor, history, onClose }: HistoryRowProps) {
 			<CodeBlock
 				mt="xs"
 				value={shortQuery}
-				lang="vyrmql"
+				lang="rrflowql"
 			/>
 
 			<Divider mt="md" />

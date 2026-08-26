@@ -5,6 +5,7 @@ import { createLock } from "~/shared/util/lock";
 import { useConfigStore } from "~/shell/stores/config";
 
 const { lock: featureFlagsLock, Resolve } = createLock();
+
 export { featureFlagsLock };
 
 export function FeatureFlagsProvider({ children }: PropsWithChildren) {

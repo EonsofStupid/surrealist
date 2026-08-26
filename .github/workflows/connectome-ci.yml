@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   frontend:
-    name: Frontend build
+    name: Frontend build and render smoke
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
@@ -21,7 +21,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.15.4
+          version: 11.24.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -32,28 +32,64 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check frontend source
+        run: pnpm check
+
       - name: Build frontend
         run: pnpm build
 
+      - name: Install browser runtime
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Smoke test production build
+        run: pnpm test:smoke
+
+      - name: Upload smoke-test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: connectome-render-smoke
+          path: test-results
+          if-no-files-found: error
+
   native:
-    name: Native crate check
-    runs-on: ubuntu-22.04
+    name: Native ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - macos-15
+          - windows-2025
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install Tauri system dependencies
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 
       - name: Setup Rust stable
         uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
 
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
           workspaces: "./src-tauri -> target"
 
+      - name: Check native formatting
+        run: cargo fmt --manifest-path src-tauri/Cargo.toml --all -- --check
+
       - name: Check native crate
-        run: cargo check --manifest-path src-tauri/Cargo.toml
+        run: cargo check --manifest-path src-tauri/Cargo.toml --all-targets --locked
+
+      - name: Test native crate
+        run: cargo test --manifest-path src-tauri/Cargo.toml --all-targets --locked
+
+      - name: Lint native crate
+        run: cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --locked -- -D warnings

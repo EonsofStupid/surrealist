@@ -39,7 +39,7 @@ import { adapter, isBrowser } from "~/adapter";
 import { Option } from "~/components/Option";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { VYRMQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useConnection, useMinimumVersion } from "~/hooks/connection";
 import { useIntent } from "~/hooks/routing";
@@ -115,7 +115,7 @@ export function DataExportModal() {
 	const exportFlags = useSet<ExportFlag>();
 	const exportTables = useSet<string>();
 
-	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.vyrmql`;
+	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.rrflowql`;
 
 	const handleExport = useStable(async () => {
 		openedHandle.close();
@@ -137,7 +137,7 @@ export function DataExportModal() {
 			const success = await adapter.saveFile(
 				"Save database export",
 				fileName,
-				[VYRMQL_FILTER],
+				[RRFLOWQL_FILTER],
 				async () => {
 					return requestDatabaseExport({
 						users: exportFlags.has("users"),
@@ -170,7 +170,7 @@ export function DataExportModal() {
 				if (exportV3) {
 					tagEvent("migration_export");
 				} else {
-					tagEvent("export", { extension: "vyrmql" });
+					tagEvent("export", { extension: "rrflowql" });
 				}
 			} else {
 				updateNotification({
@@ -198,7 +198,9 @@ export function DataExportModal() {
 		if (exportFlags.size === RESOURCES.length) {
 			exportFlags.clear();
 		} else {
-			RESOURCES.forEach((resource) => exportFlags.add(resource));
+			RESOURCES.forEach((resource) => {
+				exportFlags.add(resource);
+			});
 		}
 	});
 
@@ -206,7 +208,9 @@ export function DataExportModal() {
 		if (exportTables.size === tables.length) {
 			exportTables.clear();
 		} else {
-			tables.forEach((table) => exportTables.add(table));
+			tables.forEach((table) => {
+				exportTables.add(table);
+			});
 		}
 	});
 
@@ -226,12 +230,16 @@ export function DataExportModal() {
 
 		if (tables === "*") {
 			exportTables.clear();
-			schema?.database.tables.forEach((t) => exportTables.add(t.schema.name));
+			schema?.database.tables.forEach((table) => {
+				exportTables.add(table.schema.name);
+			});
 		}
 
 		if (resources === "*") {
 			exportFlags.clear();
-			RESOURCES.forEach((resource) => exportFlags.add(resource));
+			RESOURCES.forEach((resource) => {
+				exportFlags.add(resource);
+			});
 		}
 
 		openedHandle.open();

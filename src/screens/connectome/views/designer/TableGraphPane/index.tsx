@@ -190,7 +190,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 			.finally(() => {
 				setRendering(false);
 			});
-	}, [nodesInitialized, algorithm, direction, strategy]);
+	}, [nodesInitialized, algorithm, direction, strategy, fitView, getEdges, getNodes]);
 
 	const renderGraph = useStable(async () => {
 		const [nodes, edges, warnings] = await buildFlowNodes(
@@ -544,7 +544,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 				};
 			}),
 		);
-	}, [hoveredNode, hoverFocus, isDragging]);
+	}, [hoveredNode, hoverFocus, isDragging, getEdges]);
 
 	useIntent("focus-table", ({ table }) => {
 		const node = getNodes().find((node) => node.id === table);

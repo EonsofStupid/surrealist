@@ -1,7 +1,7 @@
 import { type CompletionSource, snippetCompletion } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
 import { useDatabaseStore } from "~/stores/database";
-import { vyrmqlLanguage } from "~/vendor/vyrmql-editor";
+import { rrflowqlLanguage } from "~/vendor/rrflowql-editor";
 
 const CUSTOM_FUNCTION_SOURCE: CompletionSource = (context) => {
 	const match = context.matchBefore(/fn::\w*/i);
@@ -27,8 +27,8 @@ const CUSTOM_FUNCTION_SOURCE: CompletionSource = (context) => {
 /**
  * An extension used to autocomplete table names
  */
-export const vyrmqlCustomFunctionCompletion = (): Extension => {
-	return vyrmqlLanguage.data.of({
+export const rrflowqlCustomFunctionCompletion = (): Extension => {
+	return rrflowqlLanguage.data.of({
 		autocomplete: CUSTOM_FUNCTION_SOURCE,
 	});
 };

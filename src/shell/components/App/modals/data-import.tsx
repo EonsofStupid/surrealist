@@ -20,13 +20,13 @@ import { adapter } from "~/adapter";
 import { FieldKindInputCore } from "~/components/Inputs";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { VYRMQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getRRFlow, getVyrmQL } from "~/screens/connectome/connection/connection";
+import { executeQuery, getRRFlow, getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
@@ -225,7 +225,7 @@ const convertValueToType = async (value: any, type: RRFlowKind): Promise<any> =>
 	switch (type) {
 		case "any":
 			try {
-				return await getVyrmQL().parseValue(value);
+				return await getRRFlowQL().parseValue(value);
 			} catch {
 				return value;
 			}
@@ -296,7 +296,7 @@ const applySingleBatchImport = async (items: any[], table: string, insertRelatio
 	let errorImportCount = 0;
 	let errorMessage = "";
 
-	const [response] = await executeQuery(/* vyrmql */ `${queryAction} INTO $table $content`, {
+	const [response] = await executeQuery(/* rrflowql */ `${queryAction} INTO $table $content`, {
 		table: new Table(table),
 		content: items,
 	});
@@ -1023,7 +1023,7 @@ export function DataImportModal() {
 		const [file] = await adapter.openFile(
 			"Import query file",
 			[
-				VYRMQL_FILTER,
+				RRFLOWQL_FILTER,
 				{
 					name: "Table data (csv)",
 					extensions: ["csv"],

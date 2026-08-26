@@ -24,7 +24,7 @@ export function useCloudEstimationQuery(
 		enabled: organisation && config && authState === "authenticated",
 		placeholderData: keepPreviousData,
 		queryFn: async () => {
-			if (!organisation || !config || !config.computeType) {
+			if (!organisation || !config?.computeType) {
 				return null;
 			}
 

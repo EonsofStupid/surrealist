@@ -27,7 +27,7 @@ import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { showErrorNotification, showInfo, tryParseParams } from "~/shared/util/helpers";
 import { useConfigStore } from "~/shell/stores/config";
 import classes from "./style.module.scss";
@@ -137,7 +137,7 @@ export function QueryPane({
 			setShowVariables(true);
 			updateConnection({
 				id: connection,
-				graphqlVariables: await getVyrmQL().formatValue(mergedVars, false, true),
+				graphqlVariables: await getRRFlowQL().formatValue(mergedVars, false, true),
 			});
 		} catch {
 			showErrorNotification({

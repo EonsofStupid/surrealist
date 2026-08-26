@@ -4,6 +4,9 @@
 	"version": "3.7.3",
 	"engineProtocol": "2.0.0",
 	"type": "module",
+	"engines": {
+		"node": ">=22.13"
+	},
 	"authors": [
 		"EonsofStupid"
 	],
@@ -11,6 +14,9 @@
 		"build": "tsc && vite build",
 		"dev": "vite",
 		"preview": "vite preview",
+		"test:smoke": "playwright test",
+		"check": "biome check . && node scripts/check-retired-identities.mjs && tsc --noEmit",
+		"check:identity": "node scripts/check-retired-identities.mjs",
 		"qc": "biome check .",
 		"qa": "biome check . --write --formatter-enabled=true",
 		"qau": "biome check . --write --unsafe --formatter-enabled=true",
@@ -57,10 +63,10 @@
 		"@rrflow/cbor": "npm:@surrealdb/cbor@^2.0.0-alpha.1",
 		"@rrflow/client": "npm:surrealdb@^2.0.2",
 		"@rrflow/ui": "npm:@surrealdb/ui@^1.0.87",
-		"@rrflow/vyrmql-editor": "npm:@surrealdb/codemirror@1.0.3",
-		"@rrflow/vyrmql-parser": "npm:@surrealdb/lezer@1.0.3",
-		"@rrflow/vyrmql-wasm-v2": "npm:@surrealdb/ql-wasm@0.2.0-beta.11",
-		"@rrflow/vyrmql-wasm-v3": "npm:@surrealdb/ql-wasm@0.3.1",
+		"@surrealdb/codemirror": "1.0.3",
+		"@surrealdb/lezer": "1.0.3",
+		"@surrealdb/ql-wasm-v2": "npm:@surrealdb/ql-wasm@0.2.0-beta.11",
+		"@surrealdb/ql-wasm-v3": "npm:@surrealdb/ql-wasm@0.3.1",
 		"@rrflow/wasm": "npm:@surrealdb/wasm@^3.0.3",
 		"@sigma/edge-curve": "^3.1.0",
 		"@sigma/node-border": "^3.0.0",
@@ -124,10 +130,11 @@
 		"zustand": "^4.5.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.1.2",
+		"@biomejs/biome": "2.5.10",
+		"@playwright/test": "1.62.1",
 		"@tauri-apps/cli": "2.4.0",
 		"@types/leaflet": "^1.9.12",
-		"@types/node": "^20.4.9",
+		"@types/node": "22.20.1",
 		"@types/papaparse": "^5.3.14",
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
@@ -138,13 +145,13 @@
 		"sass": "^1.80.3",
 		"sharp": "^0.33.4",
 		"svgo": "^3.3.2",
-		"typescript": "^5.1.6",
+		"typescript": "5.9.3",
 		"vite": "^5.4.15",
 		"vite-plugin-compression2": "^1.1.2",
 		"vite-plugin-image-optimizer": "^1.1.8",
 		"vite-plugin-markdown": "^2.2.0"
 	},
-	"packageManager": "pnpm@9.15.4",
+	"packageManager": "pnpm@11.24.0",
 	"patchedDependencies": {
 		"graphql@16.10.0": "patches/graphql@16.10.0.patch"
 	}

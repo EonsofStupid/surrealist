@@ -10,7 +10,7 @@
 **Inheritance**: ~80% from Connectome
 
 ### What We Inherit
-- Query editor (CodeMirror with VyrmQL syntax)
+- Query editor (CodeMirror with RRFlowQL syntax)
 - Table explorer
 - Schema designer
 - Graph visualization (Sigma.js)

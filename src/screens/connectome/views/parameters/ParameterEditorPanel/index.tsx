@@ -5,12 +5,12 @@ import { useMemo, useState } from "react";
 import type { Updater } from "use-immer";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { vyrmqlTableCompletion } from "~/editor/tables";
-import { vyrmqlLinting } from "~/editor/vyrmql";
+import { rrflowqlLinting } from "~/editor/rrflowql";
+import { rrflowqlTableCompletion } from "~/editor/tables";
 import { useDatabaseVersionLinter } from "~/hooks/editor";
 import { useStable } from "~/hooks/stable";
 import type { SchemaParameter } from "~/types";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export interface ParameterEditorPanelProps {
 	details: SchemaParameter;
@@ -26,11 +26,11 @@ export function ParameterEditorPanel({
 	onChange,
 }: ParameterEditorPanelProps) {
 	const [editor, setEditor] = useState<EditorView | null>(null);
-	const vyrmqlVersion = useDatabaseVersionLinter(editor);
+	const rrflowqlVersion = useDatabaseVersionLinter(editor);
 
 	const extensions = useMemo(
-		() => [vyrmql(), vyrmqlVersion, vyrmqlLinting(), vyrmqlTableCompletion()],
-		[vyrmqlVersion],
+		() => [rrflowql(), rrflowqlVersion, rrflowqlLinting(), rrflowqlTableCompletion()],
+		[rrflowqlVersion],
 	);
 
 	const handleChange = useStable((value: string) => {

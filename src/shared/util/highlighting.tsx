@@ -10,7 +10,7 @@ import { parser as phpParser } from "@lezer/php";
 import { parser as pyParser } from "@lezer/python";
 import { parser as rustParser } from "@lezer/rust";
 import { parser as yamlParser } from "@lezer/yaml";
-import { parser as vyrmqlParser } from "@rrflow/vyrmql-parser";
+import { parser as rrflowqlParser } from "@surrealdb/lezer";
 import { adapter } from "~/adapter";
 import { createStyleHighlighter } from "~/editor";
 import type { ColorScheme, SyntaxTheme } from "~/types";
@@ -33,9 +33,8 @@ const PARSER_MAP = new Map<string, Parser>([
 	["tsx", jsParser],
 	["javascript", jsParser],
 	["typescript", jsParser],
-	["sql", vyrmqlParser],
-	["vyrmql", vyrmqlParser],
-	["vyrmql", vyrmqlParser],
+	["sql", rrflowqlParser],
+	["rrflowql", rrflowqlParser],
 	["json", jsonParser],
 	["yaml", yamlParser],
 	["java", javaParser],
@@ -43,9 +42,9 @@ const PARSER_MAP = new Map<string, Parser>([
 	["py", pyParser],
 	["python", pyParser],
 	["html", htmlParser],
-	["cli", vyrmqlParser],
+	["cli", rrflowqlParser],
 	["php", phpParser.configure({ top: "Program" })],
-	["syntax", vyrmqlParser.configure({ top: "Syntax" })],
+	["syntax", rrflowqlParser.configure({ top: "Syntax" })],
 ]);
 
 /**

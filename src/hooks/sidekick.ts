@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useContextConnection } from "~/providers/Context";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { SidekickChat, SidekickChatMessage } from "~/types";
-import { RecordId, vyrmql } from "~/vendor/rrflow-client";
+import { RecordId, rrflowql } from "~/vendor/rrflow-client";
 
 export function useSidekickChatsQuery(search?: string) {
 	const [rrflow, isAvailable] = useContextConnection();
@@ -14,7 +14,7 @@ export function useSidekickChatsQuery(search?: string) {
 		queryFn: async () => {
 			try {
 				const [conversations] = await rrflow
-					.query(vyrmql`
+					.query(rrflowql`
 					SELECT *
 					FROM sidekick_chat
 					WHERE !${search} || title = <regex>${search} || <-sent_in<-sidekick_message.content ?= <regex>${search}
@@ -43,7 +43,7 @@ export function useSidekickMessagesMutation() {
 		mutationFn: async (chatId: RecordId) => {
 			try {
 				const [messages] = await rrflow
-					.query(vyrmql`
+					.query(rrflowql`
 					SELECT * FROM ${chatId}<-sent_in<-sidekick_message ORDER BY id ASC;
 				`)
 					.collect<[SidekickChatMessage[]]>();
@@ -68,7 +68,7 @@ export function useSidekickRenameMutation() {
 
 	return useMutation({
 		mutationFn: async ({ chatId, newName }: { chatId: RecordId; newName: string }) => {
-			await rrflow.query(vyrmql`UPDATE ${chatId} SET title = ${newName}`);
+			await rrflow.query(rrflowql`UPDATE ${chatId} SET title = ${newName}`);
 		},
 		onMutate: async ({ chatId, newName }) => {
 			await queryClient.cancelQueries({ queryKey: ["sidekick", "chats"] });
@@ -95,7 +95,7 @@ export function useSidekickDeleteMutation() {
 	return useMutation({
 		mutationFn: async (chatId: RecordId) => {
 			try {
-				await rrflow.query(vyrmql`
+				await rrflow.query(rrflowql`
 					DELETE ${chatId}<-sent_in<-sidekick_message, ${chatId}
 				`);
 			} catch (error) {

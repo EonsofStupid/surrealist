@@ -20,7 +20,7 @@ import {
 	RRFLOW_START_VECTOR_V3,
 } from "~/shared/util/dataset";
 import { createBaseQuery } from "~/shared/util/defaults";
-import { vyrmqlDurationToSeconds } from "~/shared/util/duration";
+import { rrflowqlDurationToSeconds } from "~/shared/util/duration";
 import { CloudError } from "~/shared/util/errors";
 import {
 	ActivateDatabaseEvent,
@@ -36,9 +36,9 @@ import {
 	showWarning,
 } from "~/shared/util/helpers";
 import { parseIdent } from "~/shared/util/language";
+import { createRRFlowQL } from "~/shared/util/rrflowql";
+import { RRFlowQL } from "~/shared/util/rrflowql/contract";
 import { syncConnectionSchema } from "~/shared/util/schema";
-import { createVyrmQL } from "~/shared/util/vyrmql";
-import { VyrmQL } from "~/shared/util/vyrmql/contract";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useCloudStore } from "~/stores/cloud";
@@ -84,7 +84,7 @@ export interface GraphqlResponse {
 let retryTask: any;
 let openedConnection: Connection;
 let instance = new RRFlow();
-let vyrmql: VyrmQL | null = null;
+let rrflowql: RRFlowQL | null = null;
 
 const LQ_SUPPORTED = new Set<Protocol>(["ws", "wss", "mem", "indxdb"]);
 const LIVE_QUERIES = new Map<string, Set<Uuid>>();
@@ -115,7 +115,7 @@ export async function openConnection(options?: ConnectOptions) {
 	instance = rrflow;
 	openedConnection = connection;
 
-	exposeDebug({ rrflow, vyrmql });
+	exposeDebug({ rrflow, rrflowql });
 
 	const { setCurrentState, setVersion, setLatestError, clearSchema } =
 		useDatabaseStore.getState();
@@ -153,7 +153,7 @@ export async function openConnection(options?: ConnectOptions) {
 				`/instances/${connection.authentication.cloudInstance}`,
 			);
 
-			if (!instance || instance.state !== "ready") {
+			if (instance?.state !== "ready") {
 				scheduleReconnect(1000);
 				return;
 			}
@@ -222,7 +222,7 @@ export async function openConnection(options?: ConnectOptions) {
 
 		adapter.log("DB", `Database version ${version ?? "unknown"}`);
 
-		vyrmql = createVyrmQL(version);
+		rrflowql = createRRFlowQL(version);
 
 		setVersion(version);
 		setCurrentState("connected");
@@ -509,11 +509,11 @@ export async function executeUserQuery(options?: UserQueryOptions) {
 
 		let liveIndexes: number[];
 
-		const variablesObject = await getVyrmQL().parseValue<Record<string, unknown>>(variables);
+		const variablesObject = await getRRFlowQL().parseValue<Record<string, unknown>>(variables);
 		const response = await executeQuery(query, variablesObject);
 
 		try {
-			liveIndexes = await getVyrmQL().getLiveQueries(query, response);
+			liveIndexes = await getRRFlowQL().getLiveQueries(query, response);
 		} catch (err: any) {
 			adapter.warn("DB", `Failed to parse live queries: ${err.message}`);
 			liveIndexes = [];
@@ -565,7 +565,7 @@ export async function executeUserQuery(options?: UserQueryOptions) {
 
 		tagEvent("query_execute", {
 			protocol: connection.authentication.protocol.toString(),
-			type: "vyrmql",
+			type: "rrflowql",
 			compute_time: compute_time,
 		});
 
@@ -695,7 +695,7 @@ export async function executeGraphql(
 		tagEvent("query_execute", {
 			protocol: connection.authentication.protocol.toString(),
 			type: "graphql",
-			compute_time: vyrmqlDurationToSeconds(response.execution_time),
+			compute_time: rrflowqlDurationToSeconds(response.execution_time),
 		});
 	} catch (err: any) {
 		console.warn("executeGraphql fail", err);
@@ -970,10 +970,10 @@ async function isDatabaseValid(database: string) {
 	}
 }
 
-export function hasVyrmQL() {
-	return vyrmql !== null;
+export function hasRRFlowQL() {
+	return rrflowql !== null;
 }
 
-export function getVyrmQL() {
-	return vyrmql ?? __throw("No VyrmQL instance available");
+export function getRRFlowQL() {
+	return rrflowql ?? __throw("No RRFlowQL instance available");
 }

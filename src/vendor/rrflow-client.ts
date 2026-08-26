@@ -6,4 +6,4 @@
  * touching feature code.
  */
 export * from "@rrflow/client";
-export { Surreal as RRFlow, surql as vyrmql } from "@rrflow/client";
+export { Surreal as RRFlow, surql as rrflowql } from "@rrflow/client";

@@ -7,11 +7,11 @@ import { DrawerResizer } from "~/components/DrawerResizer";
 import { CodeInput } from "~/components/Inputs";
 import { Spacer } from "~/components/Spacer";
 import type { HistoryHandle } from "~/hooks/history";
+import { useValueValidator } from "~/hooks/rrflowql";
 import { useSaveable } from "~/hooks/save";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { useValueValidator } from "~/hooks/vyrmql";
-import { executeQuery, getVyrmQL } from "~/screens/connectome/connection/connection";
+import { executeQuery, getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { RecordId } from "~/vendor/rrflow-client";
 import { useConfirmation } from "../Confirmation";
 import classes from "./style.module.scss";
@@ -65,7 +65,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 			const id = history.current;
 
 			const [{ success, result }] = await executeQuery(
-				/* vyrmql */ `UPDATE $id CONTENT $body`,
+				/* rrflowql */ `UPDATE $id CONTENT $body`,
 				{
 					id,
 					body,
@@ -86,19 +86,19 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const fetchRecord = useStable(async (id: RecordId) => {
-		const contentQuery = /* vyrmql */ `SELECT * FROM ONLY $id`;
-		const inputQuery = /* vyrmql */ `SELECT VALUE <-? FROM ONLY $id`;
-		const outputsQuery = /* vyrmql */ `SELECT VALUE ->? FROM ONLY $id`;
+		const contentQuery = /* rrflowql */ `SELECT * FROM ONLY $id`;
+		const inputQuery = /* rrflowql */ `SELECT VALUE <-? FROM ONLY $id`;
+		const outputsQuery = /* rrflowql */ `SELECT VALUE ->? FROM ONLY $id`;
 
 		const [{ result: content }, { result: inputs }, { result: outputs }] = await executeQuery(
 			`${contentQuery};${inputQuery};${outputsQuery}`,
 			{ id },
 		);
 
-		const formatted = await getVyrmQL().formatValue(content, false, true);
+		const formatted = await getRRFlowQL().formatValue(content, false, true);
 
 		setError("");
-		setRecordId(await getVyrmQL().formatValue(id));
+		setRecordId(await getRRFlowQL().formatValue(id));
 		setCurrentRecord({
 			isEdge: !!content?.in && !!content?.out,
 			exists: !!content,
@@ -121,7 +121,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const gotoRecord = useStable(async () => {
-		const id = await getVyrmQL().parseValue(recordId);
+		const id = await getRRFlowQL().parseValue(recordId);
 
 		if (id instanceof RecordId) {
 			history.push(id);
@@ -134,7 +134,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 		skippable: true,
 		onConfirm: async () => {
 			await executeQuery(
-				/* vyrmql */ `DELETE ${await getVyrmQL().formatValue(history.current)}`,
+				/* rrflowql */ `DELETE ${await getRRFlowQL().formatValue(history.current)}`,
 			);
 
 			history.clear();

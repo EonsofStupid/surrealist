@@ -3,7 +3,7 @@ import type { Command, EditorView } from "@codemirror/view";
 import { executeGraphql, executeUserQuery } from "~/screens/connectome/connection/connection";
 import { getConnection } from "~/shared/util/connection";
 import { tryParseParams } from "~/shared/util/helpers";
-import { getQueryRange } from "./vyrmql";
+import { getQueryRange } from "./rrflowql";
 
 const queryEditorEffect = StateEffect.define<EditorView>();
 

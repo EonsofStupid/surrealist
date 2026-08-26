@@ -98,7 +98,7 @@ export const SAMPLE_QUERIES: DatasetQuery[] = [
 ];
 
 export const RRFLOW_START_BASICS = {
-	name: "VyrmQL Basics",
+	name: "RRFlowQL Basics",
 	query: dedent`
 		--  .d8888b.                                             888 8888888b.  888888b.
 		-- d88P  Y88b                                            888 888  'Y88b 888  '88b
@@ -111,7 +111,7 @@ export const RRFLOW_START_BASICS = {
 		--
 		-- Welcome to RRFlow, a multi-model database combining document, graph,
 		-- relational, time-series and vector capabilities in one system, all powered
-		-- by VyrmQL. Use it to build AI agents, real-time and event-driven systems,
+		-- by RRFlowQL. Use it to build AI agents, real-time and event-driven systems,
 		-- knowledge graphs, as a backend, a BaaS, or embed it directly into your apps
 		-- One engine, every model.
 		--

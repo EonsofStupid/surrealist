@@ -3,10 +3,10 @@ import { Icon, iconWarning } from "@rrflow/ui";
 import { useMemo } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
 import { SaveBox } from "~/components/SaveBox";
-import { vyrmqlLinting, vyrmqlRecordLinks } from "~/editor";
+import { rrflowqlLinting, rrflowqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
 import type { SaveableHandle } from "~/hooks/save";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { useInspector } from "..";
 
 export interface ContentTabProps {
@@ -21,7 +21,7 @@ export function ContentTab({ value, error, onChange, saveHandle }: ContentTabPro
 	const [hasLineNumbers] = useSetting("appearance", "inspectorLineNumbers");
 
 	const extensions = useMemo(
-		() => [vyrmql(), vyrmqlLinting(), vyrmqlRecordLinks(inspect)],
+		() => [rrflowql(), rrflowqlLinting(), rrflowqlRecordLinks(inspect)],
 		[inspect],
 	);
 

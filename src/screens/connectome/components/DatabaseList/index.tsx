@@ -69,7 +69,7 @@ function Database({ value, activeNamespace, activeDatabase, onOpen, onRemove }: 
 		verification: value,
 		verifyText: "Please type the name of the database to confirm",
 		onConfirm: async () => {
-			await executeQuery(/* vyrmql */ `REMOVE DATABASE ${escapeIdent(value)}`);
+			await executeQuery(/* rrflowql */ `REMOVE DATABASE ${escapeIdent(value)}`);
 
 			if (activeDatabase === value) {
 				activateDatabase(activeNamespace, "");

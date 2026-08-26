@@ -42,7 +42,7 @@ export function PreferenceInput({ controller, compact, ...other }: PreferenceInp
 				onChange={(input) => {
 					applyPreference(
 						controller.options.writer,
-						isNumber(input) ? input : Number.parseInt(input),
+						isNumber(input) ? input : Number.parseInt(input, 10),
 					);
 				}}
 			/>

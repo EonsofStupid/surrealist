@@ -14,7 +14,7 @@ import { Spacer } from "~/components/Spacer";
 import { TABLE_VARIANT_ICONS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { getVyrmQL } from "~/screens/connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { GraphWarning } from "~/screens/connectome/views/designer/TableGraphPane/helpers";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { themeColor } from "~/shared/util/mantine";
@@ -362,13 +362,13 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 
 		const loadRecords = async () => {
 			if (inField) {
-				const records = await getVyrmQL().extractKindRecords(inField.kind ?? "");
+				const records = await getRRFlowQL().extractKindRecords(inField.kind ?? "");
 				if (!cancelled) {
 					setInRecords(records.join(", "));
 				}
 			}
 			if (outField) {
-				const records = await getVyrmQL().extractKindRecords(outField.kind ?? "");
+				const records = await getRRFlowQL().extractKindRecords(outField.kind ?? "");
 				if (!cancelled) {
 					setOutRecords(records.join(", "));
 				}

@@ -327,7 +327,7 @@ export function ConversationPage({ id }: ConversationPageProps) {
 		const fileInput = document.createElement("input");
 		fileInput.type = "file";
 		fileInput.accept =
-			"image/*,application/pdf,text/csv,text/plain,application/json,.yaml,.toml,.sh,.sql,.vyrmql,.vyrmql,.vyrmql,.tar,.zip";
+			"image/*,application/pdf,text/csv,text/plain,application/json,.yaml,.toml,.sh,.sql,.rrflowql,.rrflowql,.rrflowql,.tar,.zip";
 		fileInput.multiple = true;
 		fileInput.onchange = (e) => {
 			const target = e.target as HTMLInputElement;

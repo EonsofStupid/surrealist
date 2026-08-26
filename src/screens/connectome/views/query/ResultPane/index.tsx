@@ -269,7 +269,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							<ListMenu
 								data={queryList}
 								value={resultTab.toString()}
-								onChange={(e) => setResultTab(Number.parseInt(e ?? "1"))}
+								onChange={(e) => setResultTab(Number.parseInt(e ?? "1", 10))}
 							>
 								<Tooltip
 									label="Change result"
@@ -412,7 +412,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							mx="auto"
 							size="lg"
 						/>
-						Execute a VyrmQL query to view the results here
+						Execute a RRFlowQL query to view the results here
 					</Stack>
 				</Center>
 			) : (

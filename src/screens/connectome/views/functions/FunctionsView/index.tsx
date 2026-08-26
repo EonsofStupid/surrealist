@@ -20,7 +20,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import {
 	composeHttpConnection,
 	executeQuery,
-	getVyrmQL,
+	getRRFlowQL,
 } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { createBaseAuthentication } from "~/shared/util/defaults";
@@ -39,7 +39,7 @@ import { ModelPanel } from "../ModelPanel";
 const SURML_FILTERS = [
 	{
 		name: "RRFlowML Model",
-		extensions: ["surml", "vyrmml"],
+		extensions: ["surml", "rrflowml"],
 	},
 ];
 
@@ -148,8 +148,8 @@ export function FunctionsView() {
 			});
 		} else {
 			const f = func.details as SchemaFunction;
-			const isInvalid = await getVyrmQL().validateQuery(f.block);
-			const block = isInvalid ? f.block : await getVyrmQL().formatQuery(f.block);
+			const isInvalid = await getRRFlowQL().validateQuery(f.block);
+			const block = isInvalid ? f.block : await getRRFlowQL().formatQuery(f.block);
 
 			setActive({
 				type: "function",
@@ -301,8 +301,8 @@ export function FunctionsView() {
 								title="Functions"
 								icon={iconFunction}
 								snippet={{
-									language: "vyrmql",
-									title: "VyrmQL",
+									language: "rrflowql",
+									title: "RRFlowQL",
 									code: `
 										-- Define your functions with ease
 										DEFINE FUNCTION fn::greet($name: string) {

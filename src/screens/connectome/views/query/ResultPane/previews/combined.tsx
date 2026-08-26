@@ -3,13 +3,13 @@ import type { EditorView } from "@codemirror/view";
 import { Box, Stack, Text } from "@mantine/core";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
-import { vyrmqlRecordLinks } from "~/editor";
+import { rrflowqlRecordLinks } from "~/editor";
+import { type Formatter, useResultFormatter } from "~/hooks/rrflowql";
 import { useStable } from "~/hooks/stable";
-import { type Formatter, useResultFormatter } from "~/hooks/vyrmql";
 import { useInspector } from "~/providers/Inspector";
 import { QueryResponse } from "~/types";
 import { Duration } from "~/vendor/rrflow-client";
-import { vyrmql } from "~/vendor/vyrmql-editor";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import classes from "../style.module.scss";
 import { attemptFormat, type PreviewProps } from ".";
 
@@ -128,7 +128,7 @@ const combinedPreview = memo(function CombinedPreview({ responses, query }: Prev
 	}, [responses, format, noneResultMode]);
 
 	const extensions = useMemo(() => {
-		return [vyrmql("combined-results"), vyrmqlRecordLinks(inspect)];
+		return [rrflowql("combined-results"), rrflowqlRecordLinks(inspect)];
 	}, [inspect]);
 
 	const applyFolding = useCallback(

@@ -529,7 +529,7 @@ export function OverviewPage() {
 							>
 								<StartResource
 									title="Runtime protocol"
-									subtitle="RRFlow transport and VyrmQL reference"
+									subtitle="RRFlow transport and RRFlowQL reference"
 									image={pictoBrain}
 									onClick={() =>
 										adapter.openUrl(
