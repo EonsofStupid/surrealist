@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
-import { Article, DocsPreview, TableTitle } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview, TableTitle } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { useDocsTable } from "../../hooks/table";
 
 export function DocsTablesUpdatingRecords({ language }: TopicProps) {
@@ -49,7 +49,7 @@ export function DocsTablesUpdatingRecords({ language }: TopicProps) {
 		`,
 			go: `
 // Update a single record in the "persons" table
-updatedPerson, err := surrealdb.Update[${table.schema.name}](db, models.RecordID("persons", "person123"), Person{
+updatedPerson, err := rrflow.Update[${table.schema.name}](db, models.RecordID("persons", "person123"), Person{
 	Name:     "John",
 	Surname:  "Smith", // Updated surname
 	Location: models.NewGeometryPoint(-0.12, 23.00), // Updated location
@@ -60,7 +60,7 @@ updatedPerson, err := surrealdb.Update[${table.schema.name}](db, models.RecordID
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		$db->update("${table.schema.name}", [

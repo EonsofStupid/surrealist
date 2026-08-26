@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconWarning } from "@surrealdb/ui";
+import { Icon, iconWarning } from "@rrflow/ui";
 import { useLayoutEffect, useState } from "react";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
@@ -19,9 +19,9 @@ import { SENSITIVE_ACCESS_FIELDS } from "~/constants";
 import { useConnection } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
-import { openConnection } from "~/screens/Connectome/connection/connection";
-import { useInterfaceStore } from "~/shell/stores/interface";
+import { openConnection } from "~/screens/connectome/connection/connection";
 import { getConnection, getConnectionById } from "~/shared/util/connection";
+import { useInterfaceStore } from "~/shell/stores/interface";
 
 export function AccessSignupModal() {
 	const { closeAccessSignup } = useInterfaceStore.getState();

@@ -1,5 +1,5 @@
 import { Anchor, Group, Paper, SimpleGrid, Stack, Text } from "@mantine/core";
-import { Icon } from "@surrealdb/ui";
+import { Icon } from "@rrflow/ui";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { useSearchParams } from "~/hooks/routing";
@@ -76,7 +76,7 @@ function StartingDataCard({ data, selected, disabled, onSelect }: StartingDataCa
 				onClick={disabled ? undefined : handleSelect}
 				style={{
 					cursor: disabled ? "not-allowed" : "pointer",
-					borderColor: selected ? "var(--surreal-focus-outline)" : undefined,
+					borderColor: selected ? "var(--rrflow-focus-outline)" : undefined,
 				}}
 				opacity={disabled ? 0.6 : 1}
 				withBorder

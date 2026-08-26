@@ -1,5 +1,5 @@
 import { ActionIcon, Box, Dialog, Group, Image, Text } from "@mantine/core";
-import { Icon, iconClose, pictoSDBCloud } from "@surrealdb/ui";
+import { Icon, iconClose, pictoSDBCloud } from "@rrflow/ui";
 import { type MouseEvent, useMemo } from "react";
 import { isDesktop } from "~/adapter";
 import { useStable } from "~/hooks/stable";
@@ -15,7 +15,7 @@ export function CloudUpdateRequiredDialog() {
 	const update = useInterfaceStore((s) => s.availableUpdate);
 
 	const noUpdate = useMemo(() => {
-		return !isDesktop || !update || !update.available;
+		return !isDesktop || !update?.available;
 	}, [update]);
 
 	const { phase, progress, version, startUpdate } = useDesktopUpdater();
@@ -53,7 +53,7 @@ export function CloudUpdateRequiredDialog() {
 			<Group>
 				<Image
 					src={pictoSDBCloud}
-					alt="SurrealDB Cloud"
+					alt="RRFlow Cloud"
 					w={48}
 				/>
 				<Box flex="1">
@@ -61,13 +61,13 @@ export function CloudUpdateRequiredDialog() {
 						fw={600}
 						c="bright"
 					>
-						Connectome update required for SurrealDB Cloud
+						Connectome update required for RRFlow Cloud
 					</Text>
 					<Text mt={4}>
 						{noUpdate ? (
 							<Text c="red">
 								No update available. Please contact{" "}
-								<a href="mailto:support@surrealdb.com">support@surrealdb.com</a> for
+								<a href="mailto:developer@example.com">developer@example.com</a> for
 								assistance
 							</Text>
 						) : phase === "downloading" ? (

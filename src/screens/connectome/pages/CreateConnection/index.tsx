@@ -1,27 +1,33 @@
 import {
+	Badge,
 	Box,
 	Button,
 	Group,
-	Image,
 	Menu,
 	Paper,
+	PasswordInput,
 	ScrollArea,
+	SegmentedControl,
+	SimpleGrid,
 	Stack,
 	Text,
+	TextInput,
 	ThemeIcon,
 } from "@mantine/core";
 import {
 	Icon,
+	iconChart,
 	iconChevronDown,
 	iconChevronRight,
+	iconDatabase,
 	iconHomePlus,
-	pictoSDBCloud,
-} from "@surrealdb/ui";
+	iconQuery,
+	iconRelation,
+} from "@rrflow/ui";
 import { useMemo } from "react";
 import { useImmer } from "use-immer";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { adapter } from "~/adapter";
-import glowUrl from "~/shared/assets/images/glow.png";
 import { ConnectionAddressDetails } from "~/components/ConnectionDetails/address";
 import { ConnectionAuthDetails } from "~/components/ConnectionDetails/authentication";
 import { ConnectionNameDetails } from "~/components/ConnectionDetails/connection";
@@ -31,28 +37,77 @@ import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useLastSavepoint } from "~/hooks/overview";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
-import { Template } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnectionVariant, isConnectionValid } from "~/shared/util/connection";
 import { createBaseConnection } from "~/shared/util/defaults";
 import { dispatchIntent } from "~/shared/util/intents";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useConfigStore } from "~/shell/stores/config";
+import { Template } from "~/types";
 import classes from "./style.module.scss";
+
+function parseRuntimeEndpoint(value: string | null) {
+	if (!value) return null;
+	try {
+		const url = new URL(value);
+		return ["http:", "https:", "ws:", "wss:"].includes(url.protocol) ? url : null;
+	} catch {
+		return null;
+	}
+}
 
 export function CreateConnectionPage() {
 	const { settings, addConnection } = useConfigStore.getState();
+	const [, navigate] = useLocation();
 
-	const [connection, setConnection] = useImmer(createBaseConnection(settings));
+	const [connection, setConnection] = useImmer(() => {
+		const draft = createBaseConnection(settings);
+
+		const runtime = new URLSearchParams(window.location.search).get("runtime");
+		const runtimeURL = parseRuntimeEndpoint(runtime);
+		draft.name = runtimeURL ? "Managed RRFlow" : "Local RRFlow";
+		draft.target = "diagnostics";
+		draft.authentication.protocol =
+			runtimeURL?.protocol === "https:" || runtimeURL?.protocol === "wss:" ? "https" : "http";
+		draft.authentication.hostname = runtimeURL?.host ?? "localhost:4387";
+		draft.authentication.mode = "none";
+		draft.authentication.username = "";
+		draft.authentication.password = "";
+
+		return draft;
+	});
 	const navigateConnection = useConnectionNavigator();
 
 	const isValid = useMemo(() => {
+		if (connection.target === "control-plane") {
+			return Boolean(
+				connection.name &&
+					connection.authentication.hostname &&
+					connection.authentication.token,
+			);
+		}
+
+		if (connection.target === "diagnostics") {
+			return Boolean(
+				connection.name &&
+					connection.authentication.hostname &&
+					["http", "https"].includes(connection.authentication.protocol),
+			);
+		}
+
 		return connection.name && isConnectionValid(connection.authentication);
-	}, [connection.authentication, connection.name]);
+	}, [connection.authentication, connection.name, connection.target]);
 
 	const handleCreate = useStable(() => {
 		addConnection(connection);
-		navigateConnection(connection.id);
+
+		if (connection.target === "control-plane") {
+			navigate(`/control/${connection.id}`);
+		} else if (connection.target === "diagnostics") {
+			navigate(`/diagnostics/${connection.id}`);
+		} else {
+			navigateConnection(connection.id);
+		}
 
 		tagEvent("connection_created", {
 			protocol: connection.authentication.protocol.toString(),
@@ -60,6 +115,30 @@ export function CreateConnectionPage() {
 			is_local: connection.authentication.hostname.includes("localhost"),
 		});
 	});
+
+	const setTarget = (target: string) => {
+		setConnection((draft) => {
+			draft.target = target === "control-plane" ? "control-plane" : "diagnostics";
+			if (draft.target === "control-plane") {
+				draft.name = "RRFlow Enterprise";
+				draft.authentication.protocol = "https";
+				draft.authentication.hostname = "";
+				draft.authentication.mode = "token";
+				draft.authentication.username = "";
+				draft.authentication.password = "";
+				draft.authentication.namespace = "";
+				draft.authentication.database = "";
+			} else {
+				draft.name = "Local RRFlow";
+				draft.authentication.protocol = "http";
+				draft.authentication.hostname = "localhost:4387";
+				draft.authentication.mode = "none";
+				draft.authentication.username = "";
+				draft.authentication.password = "";
+				draft.authentication.token = "";
+			}
+		});
+	};
 
 	const applyTemplate = (template: Template) => {
 		setConnection((draft) => {
@@ -156,7 +235,7 @@ export function CreateConnectionPage() {
 								fz={32}
 								flex={1}
 							>
-								Create connection
+								Connect to RRFlow
 							</PrimaryTitle>
 							<Menu position="bottom-end">
 								<Menu.Target>
@@ -238,56 +317,107 @@ export function CreateConnectionPage() {
 							</Menu>
 						</Group>
 					</Box>
+					<SegmentedControl
+						fullWidth
+						value={connection.target ?? "diagnostics"}
+						onChange={setTarget}
+						data={[
+							{
+								value: "diagnostics",
+								label: "Vyrm instance",
+							},
+							{
+								value: "control-plane",
+								label: "Enterprise control plane",
+							},
+						]}
+					/>
 					<Paper
 						p="xl"
-						pos="relative"
-						className={classes.cloudBox}
+						className={classes.instanceHero}
 					>
-						<Stack flex={1}>
-							<Text
-								maw={650}
-								fz="lg"
-							>
-								Looking for the most hassle-free SurrealDB experience?{" "}
-								<Text
-									span
-									inherit
-									c="bright"
-								>
-									SurrealDB Cloud
-								</Text>{" "}
-								is the easiest way to deploy and manage your database—no
-								infrastructure setup or maintenance required.
-							</Text>
-							<Group mt="md">
-								<Link href="/signin/deploy">
-									<Button
-										size="xs"
-										variant="gradient"
-										rightSection={<Icon path={iconChevronRight} />}
-									>
-										Deploy now
-									</Button>
-								</Link>
-								<a href="https://surrealdb.com/cloud">
-									<Button
-										size="xs"
-										color="obsidian"
+						<Group
+							align="flex-start"
+							wrap="nowrap"
+						>
+							<Box flex={1}>
+								<Group gap="xs">
+									<Badge
 										variant="light"
+										color="violet"
 									>
-										Learn more
-									</Button>
-								</a>
-							</Group>
-						</Stack>
-						<Image
-							src={pictoSDBCloud}
-							className={classes.cloudImage}
-						/>
-						<Image
-							src={glowUrl}
-							className={classes.cloudGlow}
-						/>
+										{connection.target === "control-plane"
+											? "Optional enterprise plane"
+											: "Native developer diagnostics"}
+									</Badge>
+									<Badge
+										variant="dot"
+										color="green"
+									>
+										RRFlow native protocol
+									</Badge>
+								</Group>
+								<Text
+									fz="xl"
+									fw={650}
+									c="bright"
+									mt="md"
+								>
+									{connection.target === "control-plane"
+										? "Attach Connectome to an RRFlow enterprise control plane"
+										: "Attach Connectome to a Vyrm instance"}
+								</Text>
+								<Text
+									maw={720}
+									mt={4}
+								>
+									{connection.target === "control-plane"
+										? "The profile is stored locally. Connectome performs a strict RRFlow control handshake, then loads managed instances, deployment state, versions, regions, and control capabilities."
+										: "The profile is stored locally. Connectome negotiates vyrm-diagnostics v1, then loads persisted prompt flights, replay controls, runtime health, and evidence-backed capability maturity."}
+								</Text>
+							</Box>
+							<Box className={classes.runtimePulse}>
+								<span />
+								<span />
+								<span />
+							</Box>
+						</Group>
+
+						<SimpleGrid
+							cols={{ base: 2, sm: 4 }}
+							mt="xl"
+							spacing="sm"
+						>
+							{[
+								[iconDatabase, "Data", "Tables & records"],
+								[iconRelation, "Graph", "Relations & paths"],
+								[iconQuery, "Query", "RRFlowQL studio"],
+								[iconChart, "Diagnose", "Connection & schema"],
+							].map(([icon, label, detail]) => (
+								<Group
+									key={label}
+									className={classes.capability}
+									wrap="nowrap"
+								>
+									<ThemeIcon
+										variant="light"
+										color="violet"
+									>
+										<Icon path={icon} />
+									</ThemeIcon>
+									<Box>
+										<Text
+											fz="sm"
+											fw={650}
+											c="bright"
+										>
+											{label}
+										</Text>
+										<Text fz="xs">{detail}</Text>
+									</Box>
+								</Group>
+							))}
+						</SimpleGrid>
 					</Paper>
 					<Box mt={24}>
 						<Text
@@ -295,9 +425,9 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Connection
+							Instance identity
 						</Text>
-						<Text>Specify an icon and name for this connection</Text>
+						<Text>Name this RRFlow runtime so it is easy to find later</Text>
 					</Box>
 					<ConnectionNameDetails
 						value={connection}
@@ -309,28 +439,106 @@ export function CreateConnectionPage() {
 							fw={600}
 							c="bright"
 						>
-							Remote address
+							{connection.target === "control-plane"
+								? "Enterprise endpoint"
+								: "Runtime endpoint"}
 						</Text>
-						<Text>Select a communication protocol and specify instance address</Text>
+						<Text>
+							{connection.target === "control-plane"
+								? "Connect to the optional RRFlow enterprise management plane"
+								: "Connect locally or over the network using the RRFlow endpoint"}
+						</Text>
 					</Box>
-					<ConnectionAddressDetails
-						value={connection}
-						onChange={setConnection}
-					/>
-					<Box mt={24}>
-						<Text
-							fz="xl"
-							fw={600}
-							c="bright"
+					{connection.target === "control-plane" ? (
+						<Paper
+							p="lg"
+							mt="md"
 						>
-							Authentication
-						</Text>
-						<Text>Specify how you want to access your instance</Text>
-					</Box>
-					<ConnectionAuthDetails
-						value={connection}
-						onChange={setConnection}
-					/>
+							<Stack>
+								<TextInput
+									label="Control-plane host"
+									placeholder="control.example.com"
+									value={connection.authentication.hostname}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.hostname = event.target.value;
+										})
+									}
+								/>
+								<PasswordInput
+									label="Enterprise access token"
+									placeholder="rrf_ent_…"
+									value={connection.authentication.token}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.token = event.target.value;
+										})
+									}
+								/>
+							</Stack>
+						</Paper>
+					) : connection.target === "diagnostics" ? (
+						<Paper
+							p="lg"
+							mt="md"
+						>
+							<Stack>
+								<SegmentedControl
+									value={connection.authentication.protocol}
+									onChange={(protocol) =>
+										setConnection((draft) => {
+											draft.authentication.protocol = protocol as
+												| "http"
+												| "https";
+										})
+									}
+									data={[
+										{ value: "http", label: "Local HTTP" },
+										{ value: "https", label: "Remote HTTPS" },
+									]}
+								/>
+								<TextInput
+									label="Vyrm diagnostics host"
+									placeholder="localhost:4387"
+									value={connection.authentication.hostname}
+									onChange={(event) =>
+										setConnection((draft) => {
+											draft.authentication.hostname = event.target.value;
+										})
+									}
+								/>
+								<Text fz="sm">
+									Plain HTTP is accepted only for loopback. Remote instances
+									require HTTPS.
+								</Text>
+							</Stack>
+						</Paper>
+					) : (
+						<ConnectionAddressDetails
+							value={connection}
+							onChange={setConnection}
+						/>
+					)}
+					{connection.target === "runtime" && (
+						<Box mt={24}>
+							<Text
+								fz="xl"
+								fw={600}
+								c="bright"
+							>
+								Runtime access
+							</Text>
+							<Text>
+								Provide the credentials and initial namespace/database scope
+							</Text>
+						</Box>
+					)}
+					{connection.target === "runtime" && (
+						<ConnectionAuthDetails
+							value={connection}
+							onChange={setConnection}
+						/>
+					)}
 					<Box mt={24}>
 						<Text
 							fz="xl"
@@ -360,7 +568,9 @@ export function CreateConnectionPage() {
 							disabled={!isValid}
 							onClick={handleCreate}
 						>
-							Create connection
+							{connection.target === "control-plane"
+								? "Save & open enterprise"
+								: "Save & open diagnostics"}
 						</Button>
 					</Group>
 				</Stack>

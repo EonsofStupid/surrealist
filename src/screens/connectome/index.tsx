@@ -4,29 +4,19 @@ import { createHtmlPortalNode, HtmlPortalNode, InPortal, OutPortal } from "react
 import { Redirect, Route, Switch } from "wouter";
 import { adapter, isDesktop } from "~/adapter";
 import { TopGlow } from "~/components/TopGlow";
-import { useIsCloudEnabled } from "~/hooks/cloud";
 import { useSetting } from "~/hooks/config";
 import { useAvailableViews } from "~/hooks/connection";
 import { useGlowOffset } from "~/hooks/glow";
 import { useStable } from "~/hooks/stable";
+import { getConnectionById } from "~/shared/util/connection";
 import { AppTitleBar } from "~/shell/components/AppTitleBar";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { ViewPage } from "~/types";
+import { ControlPlanePage } from "./pages/ControlPlane";
 import { CreateConnectionPage } from "./pages/CreateConnection";
-import { CreateOrganizationPage } from "./pages/CreateOrganization";
 import { NewEmbedPage } from "./pages/NewEmbed";
-import { OrganizationDeployPage } from "./pages/OrganizationDeploy";
-import { OrganizationManagePage } from "./pages/OrganizationManage";
-import { OrganizationsPage } from "./pages/Organizations";
 import { OverviewPage } from "./pages/Overview";
-import { ReferralPage } from "./pages/Referral";
-import { SigninPage } from "./pages/Signin";
-import { SupportPage } from "./pages/Support";
-import { ArticlePage } from "./pages/Support/ArticlePage";
-import { CollectionPage } from "./pages/Support/CollectionPage";
-import { ConversationPage } from "./pages/Support/ConversationPage";
-import { RequestsPage } from "./pages/Support/RequestsPage";
-import { SupportPlansPage } from "./pages/SupportPlans";
+import { RuntimeDiagnosticsPage } from "./pages/RuntimeDiagnostics";
 import { ConnectomeSidebar } from "./sidebar";
 import classes from "./style.module.scss";
 import { ConnectomeToolbar } from "./toolbar";
@@ -45,16 +35,7 @@ import QueryView from "./views/query/QueryView";
 const DatabaseSidebarLazy = memo(ConnectomeSidebar);
 const OverviewPageLazy = memo(OverviewPage);
 const NewEmbedPageLazy = memo(NewEmbedPage);
-const OrganizationsPageLazy = memo(OrganizationsPage);
-const OrganizationManagePageLazy = memo(OrganizationManagePage);
-const OrganizationDeployPageLazy = memo(OrganizationDeployPage);
-const SupportPlansPageLazy = memo(SupportPlansPage);
-const ReferralPageLazy = memo(ReferralPage);
-const SupportPageLazy = memo(SupportPage);
-const RequestsPageLazy = memo(RequestsPage);
 const CreateConnectionPageLazy = memo(CreateConnectionPage);
-const CreateOrganizationsPageLazy = memo(CreateOrganizationPage);
-const SigninPageLazy = memo(SigninPage);
 
 const PORTAL_OPTIONS = {
 	attributes: {
@@ -93,7 +74,6 @@ const VIEW_COMPONENTS: Record<ViewPage, FC> = {
 export function ConnectomeScreen() {
 	const { setOverlaySidebar } = useInterfaceStore.getState();
 
-	const showCloud = useIsCloudEnabled();
 	const overlaySidebar = useInterfaceStore((s) => s.overlaySidebar);
 	const title = useInterfaceStore((s) => s.title);
 	const views = useAvailableViews();
@@ -180,83 +160,24 @@ export function ConnectomeScreen() {
 								<CreateConnectionPageLazy />
 							</Route>
 
-							<Route path="/support">
-								<SupportPageLazy />
+							<Route path="/control/:id">
+								{({ id }) => <ControlPlanePage id={id} />}
 							</Route>
 
-							<Route path="/support/collections/:collection">
-								{({ collection }) => <CollectionPage id={collection} />}
+							<Route path="/diagnostics/:id">
+								{({ id }) => <RuntimeDiagnosticsPage id={id} />}
 							</Route>
-
-							<Route path="/support/articles/:article">
-								{({ article }) => <ArticlePage id={article} />}
-							</Route>
-
-							<Route path="/support/requests">
-								<RequestsPageLazy />
-							</Route>
-
-							<Route path="/support/conversations/:conversation">
-								{({ conversation }) => <ConversationPage id={conversation} />}
-							</Route>
-
-							{showCloud && (
-								<>
-									<Route path="/organisations/create">
-										<CreateOrganizationsPageLazy />
-									</Route>
-
-									<Route path="/organisations">
-										<OrganizationsPageLazy />
-									</Route>
-
-									<Route path="/o/:organization/deploy">
-										{({ organization }) => (
-											<OrganizationDeployPageLazy id={organization} />
-										)}
-									</Route>
-
-									<Route path="/o/:organization/support-plans">
-										{({ organization }) => (
-											<SupportPlansPageLazy id={organization} />
-										)}
-									</Route>
-
-									<Route path="/o/:organization/:tab">
-										{({ organization, tab }) => (
-											<OrganizationManagePageLazy
-												id={organization}
-												tab={tab}
-											/>
-										)}
-									</Route>
-
-									<Route path="/o/:organization">
-										{({ organization }) => (
-											<Redirect to={`/o/${organization}/instances`} />
-										)}
-									</Route>
-
-									<Route path="/referrals">
-										<ReferralPageLazy />
-									</Route>
-
-									<Route path="/signin/:plan?">
-										{({ plan }) => <SigninPageLazy plan={plan} />}
-									</Route>
-
-									<Route path="/cloud">
-										<Redirect to="/signin" />
-									</Route>
-
-									<Route path="/billing">
-										<Redirect to="/organisations" />
-									</Route>
-								</>
-							)}
 
 							<Route path="/c/:connection/:view">
-								{({ view }) => {
+								{({ connection, view }) => {
+									const profile = getConnectionById(connection);
+									if (profile?.target === "control-plane") {
+										return <Redirect to={`/control/${profile.id}`} />;
+									}
+									if (profile?.target === "diagnostics") {
+										return <Redirect to={`/diagnostics/${profile.id}`} />;
+									}
+
 									const _view = view as ViewPage;
 									const portal = views[_view] ? VIEW_PORTALS[_view] : undefined;
 

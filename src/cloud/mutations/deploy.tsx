@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useCloudStore } from "~/stores/cloud";
-import { CloudDeployConfig, CloudInstance, CloudOrganization } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { resolveInstanceConnection } from "~/shared/util/connection";
+import { useCloudStore } from "~/stores/cloud";
+import { CloudDeployConfig, CloudInstance, CloudOrganization } from "~/types";
 import { fetchAPI } from "../api";
 import { compileDeployConfig } from "../helpers";
 
@@ -42,7 +42,7 @@ export function useInstanceDeployMutation(organisation?: CloudOrganization) {
 				public_traffic: config.public_traffic,
 				private_traffic: config.private_traffic,
 				dataset:
-					config.startingData.type === "dataset" ? "surreal-deal-store-mini" : undefined,
+					config.startingData.type === "dataset" ? "rrflow-deal-store-mini" : undefined,
 				email: useCloudStore.getState().profile.username,
 				v3_migration: config.migration ?? false,
 			});

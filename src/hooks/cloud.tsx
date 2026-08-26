@@ -2,12 +2,12 @@ import { Alert, Stack, Text } from "@mantine/core";
 import { useQueryClient } from "@tanstack/react-query";
 import { fetchAPI } from "~/cloud/api";
 import { useConfirmation } from "~/providers/Confirmation";
-import { useConfigStore } from "~/shell/stores/config";
-import { useCloudStore } from "~/stores/cloud";
-import { CloudInstance, Connection } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
+import { useConfigStore } from "~/shell/stores/config";
+import { useCloudStore } from "~/stores/cloud";
+import { CloudInstance, Connection } from "~/types";
 
 /**
  * Returns whether cloud functionality is enabled
@@ -17,7 +17,7 @@ export function useIsCloudEnabled() {
 }
 
 /**
- * Returns whether the user is authenticated to SurrealDB Cloud
+ * Returns whether the user is authenticated to RRFlow Cloud
  */
 export function useIsAuthenticated() {
 	return useCloudStore((s) => s.authState === "authenticated");

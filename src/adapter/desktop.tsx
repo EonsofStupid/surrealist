@@ -11,11 +11,6 @@ import { open as openURL } from "@tauri-apps/plugin-shell";
 import { check } from "@tauri-apps/plugin-updater";
 import { compareVersions } from "compare-versions";
 import { VIEW_PAGES } from "~/constants";
-import { ConfigStore, useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { CloudStore } from "~/stores/cloud";
-import { useDatabaseStore } from "~/stores/database";
-import type { Platform, QueryTab, ConnectomeConfig, ViewPage } from "~/types";
 import { startCloudSync, syncCloudStore } from "~/shared/util/cloud";
 import { getSetting, overwriteConfig, watchStore } from "~/shared/util/config";
 import { getConnection } from "~/shared/util/connection";
@@ -24,8 +19,13 @@ import { openAndReadFiles, openAndWriteFile } from "~/shared/util/file-system";
 import { NavigateViewEvent } from "~/shared/util/global-events";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { dispatchIntent, handleIntentRequest } from "~/shared/util/intents";
+import { ConfigStore, useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
+import { CloudStore } from "~/stores/cloud";
+import { useDatabaseStore } from "~/stores/database";
+import type { ConnectomeConfig, Platform, QueryTab, ViewPage } from "~/types";
 import { adapter } from ".";
-import type { FileFilter, ConnectomeAdapter } from "./base";
+import type { ConnectomeAdapter, FileFilter } from "./base";
 
 const WAIT_DURATION = 1000;
 interface Resource {
@@ -174,8 +174,6 @@ export class DesktopAdapter implements ConnectomeAdapter {
 		const { username, password, port, driver, storage, executable, logLevel } =
 			useConfigStore.getState().settings.serving;
 
-		const legacyCompat = featureFlags.get("legacy_serve");
-
 		return invoke<void>("start_database", {
 			username,
 			password,
@@ -184,7 +182,6 @@ export class DesktopAdapter implements ConnectomeAdapter {
 			storage,
 			executable,
 			logLevel,
-			legacyCompat,
 		});
 	}
 

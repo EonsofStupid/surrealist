@@ -1,9 +1,9 @@
 import * as v from "valibot";
 import { INSTANCE_CONFIG } from "~/constants";
 import { type InstanceConfig, InstanceConfigSchema } from "~/schemas";
-import type { ConnectomeConfig } from "~/types";
 import { createBaseAuthentication, createBaseConnection } from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
+import type { ConnectomeConfig } from "~/types";
 import { BrowserAdapter } from "./browser";
 
 /**

@@ -10,7 +10,7 @@ import {
 	iconLive,
 	iconQuery,
 	iconUpload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { unparse } from "papaparse";
 import { isArray, isObject } from "radash";
@@ -24,7 +24,9 @@ import { executeEditorQuery } from "~/editor/query";
 import { useSetting } from "~/hooks/config";
 import { useConnectionAndView } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { cancelLiveQueries } from "~/screens/Connectome/connection/connection";
+import { cancelLiveQueries } from "~/screens/connectome/connection/connection";
+import { tagEvent } from "~/shared/util/analytics";
+import { showInfo, slugify } from "~/shared/util/helpers";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useDatabaseStore } from "~/stores/database";
@@ -37,8 +39,6 @@ import type {
 	ResultFormat,
 	ResultMode,
 } from "~/types";
-import { tagEvent } from "~/shared/util/analytics";
-import { showInfo, slugify } from "~/shared/util/helpers";
 import type { PreviewProps } from "./previews";
 import { CombinedPreview } from "./previews/combined";
 import { GraphPreview } from "./previews/graph";
@@ -269,7 +269,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							<ListMenu
 								data={queryList}
 								value={resultTab.toString()}
-								onChange={(e) => setResultTab(Number.parseInt(e ?? "1"))}
+								onChange={(e) => setResultTab(Number.parseInt(e ?? "1", 10))}
 							>
 								<Tooltip
 									label="Change result"
@@ -412,7 +412,7 @@ export function ResultPane({ activeTab, selection, editor, corners }: ResultPane
 							mx="auto"
 							size="lg"
 						/>
-						Execute a SurrealQL query to view the results here
+						Execute a RRFlowQL query to view the results here
 					</Stack>
 				</Center>
 			) : (

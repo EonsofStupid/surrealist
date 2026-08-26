@@ -1,5 +1,5 @@
 import { Button, Group, type GroupProps, Notification, Portal } from "@mantine/core";
-import { Icon, iconCheck, iconHelp } from "@surrealdb/ui";
+import { Icon, iconCheck, iconHelp } from "@rrflow/ui";
 import { clsx } from "clsx";
 import { capitalize } from "radash";
 import type { ReactNode } from "react";
@@ -111,7 +111,7 @@ export function SaveBox({
 				styles={{
 					icon: {
 						backgroundColor: "transparent !important",
-						color: "var(--mantine-color-surreal-5) !important",
+						color: "var(--mantine-color-rrflow-5) !important",
 					},
 					body: {
 						margin: 0,

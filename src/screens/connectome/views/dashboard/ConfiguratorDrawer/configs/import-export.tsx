@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Group, Paper, ScrollArea, Stack, Text } from "@mantine/core";
-import { Icon, iconDownload, iconUpload } from "@surrealdb/ui";
+import { Icon, iconDownload, iconUpload } from "@rrflow/ui";
 import { useState } from "react";
 import { adapter } from "~/adapter";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
@@ -9,10 +9,10 @@ import { JSON_FILTER } from "~/constants";
 import { useConnection, useRequireDatabase } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { CloudInstance, CloudInstanceCapabilities } from "~/types";
 import { parseCapabilities, transformCapabilities } from "~/shared/util/capabilities";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
+import { CloudInstance, CloudInstanceCapabilities } from "~/types";
 import classes from "../style.module.scss";
 
 export interface ImportExportProps {
@@ -180,21 +180,21 @@ export function ImportExport({ instance, onClose }: ImportExportProps) {
 										mt="sm"
 										fz="lg"
 									>
-										Save or restore your instance's database from a surql file.
-										This only exports or imports data from or to the selected
-										namespace and database.
+										Save or restore your instance's database from a rrflowql
+										file. This only exports or imports data from or to the
+										selected namespace and database.
 									</Text>
 								</Box>
 								<Stack>
 									<ImportExportCard
 										title="Import"
-										description="Import data into the selected database from a surql file"
+										description="Import data into the selected database from a rrflowql file"
 										icon={iconUpload}
 										onClick={handleSchemaImport}
 									/>
 									<ImportExportCard
 										title="Export"
-										description="Export the selected database to a surql file"
+										description="Export the selected database to a rrflowql file"
 										icon={iconDownload}
 										onClick={handleSchemaExport}
 									/>

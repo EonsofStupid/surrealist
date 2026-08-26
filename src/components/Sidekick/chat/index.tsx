@@ -13,14 +13,14 @@ import {
 	ThemeIcon,
 	Title,
 } from "@mantine/core";
-import { Icon, iconChevronRight, iconCursor, iconOpen, pictoSidekick } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconCursor, iconOpen, pictoSidekick } from "@rrflow/ui";
 import { shuffle } from "radash";
 import { useEffect, useMemo, useRef } from "react";
 import { adapter } from "~/adapter";
-import glowImg from "~/shared/assets/images/radial-glow.png";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
+import glowImg from "~/shared/assets/images/radial-glow.png";
 import { useSidekickStore } from "~/stores/sidekick";
 import { SIDEKICK_QUESTIONS } from "../helpers";
 import { SidekickStream } from "../stream";
@@ -137,7 +137,7 @@ export function SidekickChat({ isAuthed, padding, stream }: ChatConversationProp
 						>
 							Welcome to Sidekick
 						</Title>
-						<Text>Your personal Surreal assistant designed for you.</Text>
+						<Text>Your personal RRFlow assistant designed for you.</Text>
 						<Stack
 							mt={36}
 							w={375}
@@ -202,7 +202,9 @@ export function SidekickChat({ isAuthed, padding, stream }: ChatConversationProp
 										variant="light"
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
-											adapter.openUrl("https://surrealdb.com/sidekick")
+											adapter.openUrl(
+												"https://github.com/EonsofStupid/connectome",
+											)
 										}
 									>
 										Learn more

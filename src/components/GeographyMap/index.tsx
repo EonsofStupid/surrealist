@@ -7,6 +7,7 @@ import markerIcon2 from "leaflet/dist/images/marker-icon-2x.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { useEffect, useRef, useState } from "react";
 import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import type {
 	GeometryCollection,
 	GeometryLine,
@@ -15,8 +16,7 @@ import type {
 	GeometryMultiPolygon,
 	GeometryPoint,
 	GeometryPolygon,
-} from "surrealdb";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+} from "~/vendor/rrflow-client";
 
 // leaflet is a tragedy
 delete (window.L.Icon.Default.prototype as any)._getIconUrl;
@@ -64,7 +64,7 @@ export const GeographyMap = ({ value }: GeographyMapProps) => {
 
 		const loadData = async () => {
 			try {
-				const data = (await getSurrealQL().parseValue<any>(value)).toJSON();
+				const data = (await getRRFlowQL().parseValue<any>(value)).toJSON();
 
 				if (cancelled) return;
 

@@ -3,13 +3,11 @@ import { unique } from "radash";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { MAX_HISTORY_SIZE, SANDBOX } from "~/constants";
+import { createBaseConfig, createBaseQuery } from "~/shared/util/defaults";
+import type { schema } from "~/shared/util/feature-flags";
+import { newId, uniqueName } from "~/shared/util/helpers";
 import type {
 	Connection,
-	HistoryQuery,
-	PartialId,
-	QueryTab,
-	QueryType,
-	SavedQuery,
 	ConnectomeAppearanceSettings,
 	ConnectomeBehaviorSettings,
 	ConnectomeCloudSettings,
@@ -17,10 +15,12 @@ import type {
 	ConnectomeGtmSettings,
 	ConnectomeServingSettings,
 	ConnectomeTemplateSettings,
+	HistoryQuery,
+	PartialId,
+	QueryTab,
+	QueryType,
+	SavedQuery,
 } from "~/types";
-import { createBaseConfig, createBaseQuery } from "~/shared/util/defaults";
-import type { schema } from "~/shared/util/feature-flags";
-import { newId, uniqueName } from "~/shared/util/helpers";
 
 type ConnectionUpdater = (value: Connection) => Partial<Connection>;
 

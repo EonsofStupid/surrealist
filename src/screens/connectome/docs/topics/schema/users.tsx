@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsSchemaUsers({ language }: TopicProps) {
 	const snippets = useMemo<Snippets>(
@@ -12,12 +12,12 @@ export function DocsSchemaUsers({ language }: TopicProps) {
 		DEFINE USER username ON ROOT PASSWORD '123456' ROLES OWNER;
 		`,
 			js: `
-		import { Surreal } from 'surrealdb';
+		import { RRFlow } from '~/vendor/rrflow-client';
 
-		const db = new Surreal();
+		const db = new RRFlow();
 
-		import { Surreal } from 'surrealdb';
-		const db = new Surreal();
+		import { RRFlow } from '~/vendor/rrflow-client';
+		const db = new RRFlow();
 		await db.connect('<the actual address of the connection>/rpc', {
 			namespace: '<the actual ns of the connection>',
 			database: '<the action db of the connection>'
@@ -28,21 +28,21 @@ export function DocsSchemaUsers({ language }: TopicProps) {
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
 		# Connect to a local endpoint
-		db = Surreal()
+		db = RRFlow()
 		await db.connect('http://127.0.0.1:8000/rpc')
 		# Connect to a remote endpoint
-		db = Surreal()
-		await db.connect('https://cloud.surrealdb.com/rpc')
+		db = RRFlow()
+		await db.connect('http://127.0.0.1:8000/rpc')
 		`,
 			go: `
 		// Connect to a local endpoint
-		surrealdb.New("ws://localhost:8000/rpc");
+		rrflow.New("ws://localhost:8000/rpc");
 		// Connect to a remote endpoint
-		surrealdb.New("ws://cloud.surrealdb.com/rpc");
+		rrflow.New("ws://127.0.0.1:8000/rpc");
 		`,
 			csharp: `
 		await db.RawQuery(
@@ -54,11 +54,11 @@ export function DocsSchemaUsers({ language }: TopicProps) {
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[],
@@ -68,8 +68,8 @@ export function DocsSchemaUsers({ language }: TopicProps) {
 		<Article title="Users">
 			<div>
 				<p>
-					Managing permissions for system Users within SurrealDB can be done using the
-					roles OWNER, EDITOR, and VIEWER.
+					Managing permissions for system Users within RRFlow can be done using the roles
+					OWNER, EDITOR, and VIEWER.
 				</p>
 			</div>
 			<Box>

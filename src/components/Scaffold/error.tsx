@@ -7,7 +7,7 @@ import {
 	iconCopy,
 	iconRefresh,
 	iconWarning,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import type { FallbackProps } from "react-error-boundary";
 import { adapter } from "~/adapter";
 import { useVersionCopy } from "~/hooks/debug";
@@ -60,7 +60,7 @@ export function ScaffoldErrorHandler({ error, resetErrorBoundary }: FallbackProp
 						<Button
 							leftSection={<Icon path={iconBug} />}
 							onClick={() =>
-								adapter.openUrl("https://github.com/surrealdb/Connectome/issues")
+								adapter.openUrl("https://github.com/EonsofStupid/connectome")
 							}
 							variant="light"
 							color="obsidian"

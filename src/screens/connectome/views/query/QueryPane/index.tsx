@@ -3,7 +3,6 @@ import { syntaxTree } from "@codemirror/language";
 import { EditorState, Prec, type SelectionRange } from "@codemirror/state";
 import { type EditorView, keymap, scrollPastEnd } from "@codemirror/view";
 import { Button, Group, HoverCard, Paper, rem, Text, ThemeIcon, Transition } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
 import {
 	Icon,
 	iconAutoFix,
@@ -13,7 +12,7 @@ import {
 	iconStar,
 	iconText,
 	iconWarning,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { objectify, trim } from "radash";
 import { useMemo, useRef, useState } from "react";
 import { type HtmlPortalNode, OutPortal } from "react-reverse-portal";
@@ -23,12 +22,12 @@ import { ContentPane } from "~/components/Pane";
 import { Spacer } from "~/components/Spacer";
 import { MAX_HISTORY_QUERY_LENGTH } from "~/constants";
 import {
+	rrflowqlCustomFunctionCompletion,
+	rrflowqlLinting,
+	rrflowqlRecordLinks,
+	rrflowqlTableCompletion,
+	rrflowqlVariableCompletion,
 	runQueryKeymap,
-	surqlCustomFunctionCompletion,
-	surqlLinting,
-	surqlRecordLinks,
-	surqlTableCompletion,
-	surqlVariableCompletion,
 } from "~/editor";
 import { setEditorText } from "~/editor/helpers";
 import { useSetting } from "~/hooks/config";
@@ -38,13 +37,14 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useInspector } from "~/providers/Inspector";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { useQueryStore } from "~/stores/query";
-import type { QueryTab } from "~/types";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { showErrorNotification, tryParseParams } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
 import { parseVariables } from "~/shared/util/language";
+import { useConfigStore } from "~/shell/stores/config";
+import { useQueryStore } from "~/stores/query";
+import type { QueryTab } from "~/types";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { readQuery, writeQuery } from "../QueryView/strategy";
 
 const SERIALIZE = {
@@ -84,7 +84,7 @@ export function QueryPane({
 	const { inspect } = useInspector();
 	const [connection] = useConnectionAndView();
 	const queryTabList = useConnection((c) => c?.queryTabList);
-	const surqlVersion = useDatabaseVersionLinter(editor);
+	const rrflowqlVersion = useDatabaseVersionLinter(editor);
 	const queryStateMap = useQueryStore((s) => s.queryState);
 	const saveTasks = useRef<Map<string, any>>(new Map());
 	const [executionHidden, setExecutionHidden] = useState(false);
@@ -146,11 +146,11 @@ export function QueryPane({
 			const document = editor.state.doc;
 			const formatted = hasSelection
 				? document.sliceString(0, selection.from) +
-					(await getSurrealQL().formatQuery(
+					(await getRRFlowQL().formatQuery(
 						document.sliceString(selection.from, selection.to),
 					)) +
 					document.sliceString(selection.to)
-				: await getSurrealQL().formatQuery(document.toString());
+				: await getRRFlowQL().formatQuery(document.toString());
 
 			setEditorText(editor, formatted);
 		} catch {
@@ -185,7 +185,7 @@ export function QueryPane({
 		-setShowVariables(true);
 		updateQueryTab(connection, {
 			id: activeTab.id,
-			variables: await getSurrealQL().formatValue(mergedVars, false, true),
+			variables: await getRRFlowQL().formatValue(mergedVars, false, true),
 		});
 	});
 
@@ -201,17 +201,17 @@ export function QueryPane({
 
 	const extensions = useMemo(
 		() => [
-			surrealql(),
-			surqlVersion,
-			surqlLinting(updateValid),
-			surqlRecordLinks(inspect),
-			surqlTableCompletion(),
-			surqlVariableCompletion(resolveVariables),
-			surqlCustomFunctionCompletion(),
+			rrflowql(),
+			rrflowqlVersion,
+			rrflowqlLinting(updateValid),
+			rrflowqlRecordLinks(inspect),
+			rrflowqlTableCompletion(),
+			rrflowqlVariableCompletion(resolveVariables),
+			rrflowqlCustomFunctionCompletion(),
 			Prec.high(keymap.of(runQueryKeymap)),
 			scrollPastEnd(),
 		],
-		[inspect, surqlVersion],
+		[inspect, rrflowqlVersion],
 	);
 
 	useIntent("format-query", handleFormat);

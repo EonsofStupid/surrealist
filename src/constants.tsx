@@ -33,11 +33,22 @@ import {
 	iconVariable,
 	iconWarning,
 	iconXml,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { satisfies } from "compare-versions";
 import flagIE from "flag-icons/flags/4x3/ie.svg";
 import flagIN from "flag-icons/flags/4x3/in.svg";
 import flagUS from "flag-icons/flags/4x3/us.svg";
+import {
+	CIcon,
+	DotNetIcon,
+	GoLangIcon,
+	JavaIcon,
+	JavaScriptIcon,
+	PhpIcon,
+	PythonIcon,
+	RRFlowIcon,
+	RustIcon,
+} from "~/shared/util/drivers";
 import type {
 	AuthMode,
 	DiagramAlgorithm,
@@ -68,17 +79,6 @@ import type {
 	ViewPage,
 	ViewPageInfo,
 } from "./types";
-import {
-	CIcon,
-	DotNetIcon,
-	GoLangIcon,
-	JavaIcon,
-	JavaScriptIcon,
-	PhpIcon,
-	PythonIcon,
-	RustIcon,
-	SurrealIcon,
-} from "~/shared/util/drivers";
 
 export type StructureTab = "graph" | "builder";
 export type ProtocolOption = Selectable<Protocol> & { remote: boolean };
@@ -193,10 +193,10 @@ export const NONE_RESULT_MODES: Listable<NoneResultMode>[] = [
 
 export const RESULT_FORMATS: Listable<ResultFormat>[] = [
 	{
-		label: "SurrealQL",
+		label: "RRFlowQL",
 		value: "sql",
 		icon: iconDatabase,
-		description: "Format results in full SurrealQL",
+		description: "Format results in full RRFlowQL",
 	},
 	{
 		label: "JSON",
@@ -276,14 +276,14 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	query: {
 		id: "query",
-		name: "Query",
+		name: "Query studio",
 		icon: iconQuery,
 		anim: import("~/shared/assets/animation/query.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.query_view,
 	},
 	explorer: {
 		id: "explorer",
-		name: "Explorer",
+		name: "Data explorer",
 		icon: iconExplorer,
 		anim: import("~/shared/assets/animation/explorer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.explorer_view,
@@ -296,7 +296,7 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	designer: {
 		id: "designer",
-		name: "Designer",
+		name: "Data model",
 		icon: iconDesigner,
 		anim: import("~/shared/assets/animation/designer.json").then((x) => x.default),
 		disabled: ({ flags }) => !flags.designer_view,
@@ -322,7 +322,7 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 	documentation: {
 		id: "documentation",
-		name: "API Docs",
+		name: "Runtime API",
 		icon: iconAPI,
 		disabled: ({ flags }) => !flags.apidocs_view,
 	},
@@ -335,7 +335,7 @@ export const VIEW_PAGES: Record<ViewPage, ViewPageInfo> = {
 	},
 };
 
-export const SURREAL_KINDS = [
+export const RRFLOW_KINDS = [
 	{ label: "No kind specified", value: "" },
 	{ label: "Any", value: "any" },
 	{ label: "Array", value: "array" },
@@ -388,9 +388,9 @@ export const DESIGNER_LINKS: Selectable<DiagramLinks>[] = [
 	{ label: "Show record links", value: "visible" },
 ];
 
-export const SURQL_FILTER = {
-	name: "SurrealDB Schema",
-	extensions: ["surql", "sql", "surrealql"],
+export const RRFLOWQL_FILTER = {
+	name: "RRFlow Schema",
+	extensions: ["rrflowql", "sql"],
 };
 
 export const JSON_FILTER = {
@@ -452,57 +452,57 @@ export const DRIVERS: Driver[] = [
 	{
 		id: "cli",
 		name: "CLI",
-		icon: SurrealIcon,
-		link: "https://surrealdb.com/docs/surrealdb/cli",
+		icon: RRFlowIcon,
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "rust",
 		name: "Rust",
 		icon: RustIcon,
-		link: "https://surrealdb.com/docs/sdk/rust",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "js",
 		name: "JavaScript",
 		icon: JavaScriptIcon,
-		link: "https://surrealdb.com/docs/sdk/javascript",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 
 	{
 		id: "py",
 		name: "Python",
 		icon: PythonIcon,
-		link: "https://surrealdb.com/docs/sdk/python",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "csharp",
 		name: ".NET",
 		icon: DotNetIcon,
-		link: "https://surrealdb.com/docs/sdk/dotnet",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "php",
 		name: "PHP",
 		icon: PhpIcon,
-		link: "https://surrealdb.com/docs/sdk/php",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "go",
 		name: "GoLang",
 		icon: GoLangIcon,
-		link: "https://surrealdb.com/docs/sdk/golang",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "java",
 		name: "Java",
 		icon: JavaIcon,
-		link: "https://surrealdb.com/docs/sdk/java",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 	{
 		id: "c",
 		name: "C",
 		icon: CIcon,
-		link: "https://github.com/surrealdb/surrealdb.c",
+		link: "https://github.com/EonsofStupid/connectome",
 	},
 ];
 
@@ -522,10 +522,10 @@ export const MONITORS: Record<string, Monitor> = {
 		type: "metrics",
 		name: "Network traffic",
 	},
-	surrealdb: {
-		id: "surrealdb",
+	rrflow: {
+		id: "rrflow",
 		type: "logs",
-		name: "SurrealDB",
+		name: "RRFlow",
 	},
 };
 

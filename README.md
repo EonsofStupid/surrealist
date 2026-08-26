@@ -1,122 +1,95 @@
-<br>
+# Connectome
 
-<div align="center">
-	<img src=".github/images/thumbnail.jpg" alt="Surrealist">
-</div>
+Connectome is the native desktop control surface for RRFlow. It runs as a Tauri application on Windows, macOS, and Linux and connects to a separately deployed RRFlow runtime.
 
-<br> 
-<p align="center">
-    <a href="https://surrealdb.com/discord"><img src="https://img.shields.io/discord/902568124350599239?label=discord&style=flat-square&color=5a66f6" alt="Discord"></a>
-    &nbsp;
-    <a href="https://x.com/surrealdb"><img src="https://img.shields.io/badge/x-follow_us-222222.svg?style=flat-square" alt="X"></a>
-    &nbsp;
-    <a href="https://dev.to/surrealdb"><img src="https://img.shields.io/badge/dev-join_us-86f7b7.svg?style=flat-square" alt="Dev"></a>
-    &nbsp;
-    <a href="https://www.linkedin.com/company/surrealdb/"><img src="https://img.shields.io/badge/linkedin-connect_with_us-0a66c2.svg?style=flat-square" alt="LinkedIn"></a>
-    &nbsp;
-    <a href="https://www.youtube.com/channel/UCjf2teVEuYVvvVC-gFZNq6w"><img src="https://img.shields.io/badge/youtube-subscribe-ff0000.svg?style=flat-square" alt="YouTube"></a>
-</p>
+This repository is consumed as `apps/connectome` by the engine repository that is becoming RRFlow. It is not the database engine and it is not an embedded browser panel.
 
-<p align="center">
-    <a href="https://surrealdb.com/blog"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/blog.svg?raw=true" alt="Blog"></a>
-    &nbsp;
-    <a href="https://github.com/surrealdb/surrealdb"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/github.svg?raw=true" alt="Github"></a>
-    &nbsp;
-    <a href="https://www.linkedin.com/company/surrealdb/"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/linkedin.svg?raw=true" alt="LinkedIn"></a>
-    &nbsp;
-    <a href="https://x.com/surrealdb"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/x.svg?raw=true" alt="X"></a>
-    &nbsp;
-    <a href="https://www.youtube.com/channel/UCjf2teVEuYVvvVC-gFZNq6w"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/youtube.svg?raw=true" alt="YouTube"></a>
-    &nbsp;
-    <a href="https://dev.to/surrealdb"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/dev.svg?raw=true" alt="Dev"></a>
-    &nbsp;
-    <a href="https://surrealdb.com/discord"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/discord.svg?raw=true" alt="Discord"></a>
-    &nbsp;
-    <a href="https://stackoverflow.com/questions/tagged/surrealdb"><img height="25" src="https://github.com/surrealdb/.github/blob/main/img/social/stack-overflow.svg?raw=true" alt="Stack Overflow"></a>
-</p>
+## Current alpha
 
-<h2><img height="20" src=".github/images/icon.webp">&nbsp;&nbsp;What is Surrealist?</h2>
+Connectome currently provides:
 
-Surrealist is a user interface for interacting with your [SurrealDB](https://surrealdb.com/) database visually. It enables you to seamlessly connect to any SurrealDB instance, allowing you to execute queries, explore your tables, design your schemas, and much more. Surrealist is designed to suit a broad range of workflows, so whether you are just getting started, or pushing SurrealDB to its limits, Surrealist is the perfect tool to use.
+- locally persisted RRFlow connection profiles;
+- local or remote endpoint probing over HTTP(S) and WebSocket transports;
+- root, namespace, database, record-access, token, and anonymous authentication;
+- namespace and database selection;
+- a RRFlowQL query studio with table, graph, JSON, and live-result lenses;
+- record and table exploration;
+- visual data-model and relationship design;
+- authentication, parameter, function, GraphQL, and runtime-diagnostics tools;
+- a strict `vyrm-diagnostics` v1 client with custom prompt flights, persisted
+  past-run replay, reverse/forward transport, scrubbing, 0.5×–8× playback,
+  observable event lanes, and a runtime-owned capability/evidence ledger;
+- separate project-runtime and optional enterprise-control-plane profiles;
+- multi-window native desktop operation.
 
-**Key features of Surrealist include:**
+Connectome uses RRFlow-native runtime and control-plane contracts. A runtime
+connection opens one project instance for RRFlowQL, data, graph, schema, trace,
+and lifecycle work. The optional enterprise control-plane connection manages
+fleets, deployments, upgrades, audit activity, and availability policy. There
+is no compatibility fallback.
 
-- **Visual querying** using the Query View, with support for query syntax highlighting, saved queries, and graph visualization.
-- **Data exploration** using the Explorer View, where you can browse your tables, inspect records, and follow relationships.
-- **Schema designing** using the Designer View, which generates a visual diagram of your database schema.
-- **SurrealDB Cloud** management panel, allowing you to effortlessly provision and connect to your Cloud instances
-- **Ask Sidekick** - a powerful AI assistant that helps you write queries, explore your data, and design your schema.
+Native diagnostics requests cross the Tauri command boundary instead of relying
+on WebView CORS. The transport allowlists only capability, snapshot, flight,
+and demo endpoints; caps requests at 128 KiB and responses at 16 MiB; disables
+redirects; permits plaintext HTTP only for loopback; and requires HTTPS for a
+remote Vyrm instance.
 
-Learn more about Surrealist by visiting [the website](https://surrealdb.com/surrealist) or reading the [documentation](https://surrealdb.com/docs/surrealist).
+The enterprise contract is deliberately separate from the runtime query
+protocol:
 
-<h2><img height="20" src=".github/images/icons/contents.svg">&nbsp;&nbsp;Contents</h2>
+- `GET /rrflow/v1/control/handshake` must identify `rrflow-control` protocol
+  version `1`;
+- `GET /rrflow/v1/control/instances` returns the project runtimes managed by
+  that control plane;
+- requests use bearer authentication and the `RRFlow-Control-Protocol: 1`
+  header;
+- an invalid or mismatched handshake is rejected and is never routed into the
+  runtime query client.
 
-- [Features](#features)
-- [Learn SurrealDB](#Learn-SurrealDB)
-- [Getting started](#Getting-started)
-	- [Using the Web App](#Using-the-Web-App)
-	- [Using the Desktop App](#Using-the-Desktop-App)
-- [SurrealDB Cloud](#surrealdb-cloud)
-- [Contributing](#contributing)
-- [Disclaimer](#disclaimer)
-- [License](#license)
+## Repository boundary
 
-<h2><img height="20" src=".github/images/icons/features.svg">&nbsp;&nbsp;Features</h2>
+```text
+RRFlow engine repository
+├── runtime / storage / query execution
+├── QORTEX vector internals
+└── apps/connectome  ← this repository (git submodule)
+```
 
-- [x] Query syntax highlighting
-- [x] Data exploration with filtering support
-- [x] GraphQL querying support with syntax highlighting
-- [x] Visual schema creation and visualization
-- [x] Write and manage your stored procedures and functions
-- [x] Manage database access rules, user accounts, and resource permissions
-- [x] Upload SurrealML models directly to your database
-- [x] Auto-generated API documentation for your database
-- [x] One-click local database serving
-- [x] Sandbox environment for testing and learning
-- [x] Command palette for quick navigation
-- [x] Integrated AI assistant for asking questions and writing queries
-- [x] SurrealDB Cloud management panel for provisioning instances
+Connectome visualizes and controls project RRFlow instances. The optional
+enterprise profile connects to a distinct control plane for fleet and
+deployment management; it does not change or proxy the project-runtime
+contract.
 
-<h2><img height="20" src=".github/images/icons/documentation.svg">&nbsp;&nbsp;Learn SurrealDB</h2>
+## Development
 
-- SurrealDB University: https://surrealdb.com/learn/fundamentals
-- Aeon's Surreal Renaissance (Interative book): https://surrealdb.com/learn/book
-- Documentation: https://surrealdb.com/docs/surrealdb
+Requirements: Node.js, pnpm 9, and the Tauri 2 platform prerequisites.
 
-<h2><img height="20" src=".github/images/icons/gettingstarted.svg">&nbsp;&nbsp;Getting Started</h2>
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-Surrealist is easy to get started with, as we provide both a web app and a desktop app for you to use. While the web app is the quickest way to get started, the desktop app provides additional features such as local database serving and opening queries from disk.
+Run the actual desktop shell:
 
-### Using the Web App
-Visit https://app.surrealdb.com/ to start using Surrealist in your browser.
+```bash
+pnpm tauri:dev
+```
 
-### Using the Desktop App
-You can download the latest version of Surrealist Desktop [here](https://surrealdb.com/surrealist?download) or find a list of releases on the [GitHub](https://github.com/surrealdb/surrealist/releases) page. This version is the recommended way to interact with SurrealDB, as it supports additional features over the web app.
+Verification:
 
-<h2><img height="20" src=".github/images/icons/cloud.svg">&nbsp;&nbsp;SurrealDB Cloud</h2>
+```bash
+pnpm build
+cargo check --manifest-path src-tauri/Cargo.toml
+```
 
-<a href="https://surrealdb.com/cloud#gh-dark-mode-only" target="_blank">
-    <img width="100%" src=".github/images/cloud-light.png" alt="SurrealDB Cloud">
-</a>
-<a href="https://surrealdb.com/cloud#gh-light-mode-only" target="_blank">
-    <img width="100%" src=".github/images/cloud-dark.png" alt="SurrealDB Cloud">
-</a>
+The production TypeScript/Vite build is green. The inherited whole-repository
+Biome assist baseline still reports import-order debt, so CI intentionally uses
+the build as its frontend gate until that mechanical cleanup is isolated.
 
-SurrealDB is available as a [hosted platform](https://app.surrealdb.app/signin). Forget about infrastructure operations, monitoring, backups or capacity planning. [SurrealDB Cloud](https://app.surrealdb.app/signin) allows you to focus on building great products using the power and flexibility of SurrealDB in just a few clicks. Grow from prototype to enterprise-scale. The SurrealDB Cloud scalable architecture allows your database to evolve as your application grows, ensuring you are always ahead of demand.
+## Packaging
 
-Surrealist features an integrated SurrealDB Cloud management panel, allowing you to effortlessly provision and connect to your Cloud instances, manage your billing, and monitor your usage. The SurrealDB Cloud panel is available in both the web and desktop apps.
+The Tauri bundle configuration emits NSIS installers for Windows, app/DMG bundles for macOS, and AppImage/DEB/RPM packages for Linux. The inherited release workflow already covers macOS x86-64 and ARM64 plus Windows and Linux x86-64; Linux ARM packaging still needs a dedicated runner or cross-compilation pipeline.
 
-<h2><img height="20" src=".github/images/icons/contributing.svg">&nbsp;&nbsp;Contributing</h2>
+## Origin and license
 
-We welcome any issues and PRs submitted to Surrealist. Before you open an issue or PR please read our [Contributor Guide](CONTRIBUTING.md).
-
-<h2><img height="20" src=".github/images/icons/tick.svg">&nbsp;&nbsp;Disclaimer</h2>
-
-- Surrealist aims to stay up-to-date with the latest stable release of SurrealDB. We cannot guarantee support for latest nightly builds.
-- Connections to remote servers may require a HTTPS connection. You can easily configure SSL for your server using tools like Letsencrypt and nginx.
-
-<h2><img height="20" src=".github/images/icons/license.svg">&nbsp;&nbsp;License</h2>
-
-Source code for Surrealist is licensed under the [MIT license](LICENSE).
-
-Copyright © 2025 SurrealDB Ltd
+Connectome preserves a mature desktop query, schema, graph, and connection shell while the product evolves around RRFlow. See [LICENSE](LICENSE), third-party notices, and the repository history for attribution.

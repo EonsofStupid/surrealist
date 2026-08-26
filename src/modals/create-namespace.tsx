@@ -1,16 +1,16 @@
 import { Button, Group, Stack, Text, TextInput } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { closeModal, openModal } from "@mantine/modals";
-import { Icon, iconPlus } from "@surrealdb/ui";
+import { Icon, iconPlus } from "@rrflow/ui";
 import { useMutation } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { escapeIdent } from "surrealdb";
 import { Form } from "~/components/Form";
 import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useRootSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { activateDatabase, executeQuery } from "~/screens/Connectome/connection/connection";
+import { activateDatabase, executeQuery } from "~/screens/connectome/connection/connection";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 export function openCreateNamespaceModal() {
 	openModal({
@@ -56,7 +56,7 @@ function CreateNamespace() {
 					autoFocus
 				/>
 				<LearnMore
-					href="https://surrealdb.com/docs/surrealdb/introduction/concepts/namespace"
+					href="https://github.com/EonsofStupid/connectome"
 					mb="xl"
 				>
 					Learn more about namespaces

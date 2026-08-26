@@ -28,4 +28,4 @@ npx tsc --noEmit 2>&1
 
 4. Document all warnings and errors in the root `GOVERNANCE.md` under a "Baseline Audit" section with the date.
 
-5. Any pre-existing warnings from the Surrealist codebase that are acknowledged (not ours to fix yet) should be added to the relevant boundary's False Positive Registry OR noted as "inherited — to be addressed in Phase {N}".
+5. Any pre-existing warnings from the Connectome codebase that are acknowledged (not ours to fix yet) should be added to the relevant boundary's False Positive Registry OR noted as "inherited — to be addressed in Phase {N}".

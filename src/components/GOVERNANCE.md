@@ -32,13 +32,13 @@ ComponentName/
 
 ## Current Component Inventory (63)
 
-Inherited from Surrealist. Full list in `src/components/` directory. Key components for retention:
+Inherited from Connectome. Full list in `src/components/` directory. Key components for retention:
 
 | Component | Spoke Destination | Notes |
 |-----------|------------------|-------|
-| CodeEditor | Shared | Used by SurrealDB + Pipeline spokes |
+| CodeEditor | Shared | Used by RRFlow + Pipeline spokes |
 | DataTable | Shared | Used across multiple spokes |
-| RelationGraph | Shared | Used by SurrealDB + RRO spokes |
+| RelationGraph | Shared | Used by RRFlow + RRO spokes |
 | Sidekick | Shell | AI assistant panel (→ Clyffy integration) |
 | App | Shell | Root application component |
 | AppTitleBar | Shell | Tauri window titlebar |

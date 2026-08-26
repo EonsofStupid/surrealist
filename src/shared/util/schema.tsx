@@ -1,8 +1,7 @@
 import equal from "fast-deep-equal";
 import { klona } from "klona";
-import { escapeIdent, Table } from "surrealdb";
 import { adapter } from "~/adapter";
-import { executeQuery, executeQuerySingle } from "~/screens/Connectome/connection/connection";
+import { executeQuery, executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { useDatabaseStore } from "~/stores/database";
 import type {
 	ConnectionSchema,
@@ -16,6 +15,7 @@ import type {
 	TableInfo,
 	TableVariant,
 } from "~/types";
+import { escapeIdent, Table } from "~/vendor/rrflow-client";
 import { dedent } from "./dedent";
 import { createConnectionSchema } from "./defaults";
 import { showErrorNotification } from "./helpers";
@@ -302,7 +302,7 @@ export function extractEdgeRecords(table: TableInfo): [string[], string[]] {
  * Display a single schema permission
  *
  * @param permission Either a string which will be transformed into `WHERE ${permission}`, or a boolean representing FULL/NONE
- * @returns A string which is the permission in SurrealQL format
+ * @returns A string which is the permission in RRFlowQL format
  */
 export function displaySchemaPermission(permission: string | boolean) {
 	return typeof permission === "string" ? `WHERE ${permission}` : permission ? "FULL" : "NONE";

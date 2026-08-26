@@ -1,5 +1,5 @@
 import { Box, Button, Group, Text } from "@mantine/core";
-import { Icon, iconDesigner, iconEye, iconOpen, iconPlus } from "@surrealdb/ui";
+import { Icon, iconDesigner, iconEye, iconOpen, iconPlus } from "@rrflow/ui";
 import { ReactFlowProvider } from "@xyflow/react";
 import { memo, useEffect } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
@@ -13,11 +13,11 @@ import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useDesigner } from "~/providers/Designer";
-import { TablesPane } from "~/screens/Connectome/components/TablesPane";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
+import { TablesPane } from "~/screens/connectome/components/TablesPane";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { TableGraphPane } from "../TableGraphPane";
 
 const TableGraphPaneLazy = memo(TableGraphPane);
@@ -124,8 +124,8 @@ export function DesignerView() {
 							title="Designer"
 							icon={iconDesigner}
 							snippet={{
-								language: "surrealql",
-								title: "SurrealQL",
+								language: "rrflowql",
+								title: "RRFlowQL",
 								code: `
 									-- Declare a new table
 									DEFINE TABLE person;
@@ -160,7 +160,7 @@ export function DesignerView() {
 									rightSection={<Icon path={iconOpen} />}
 									onClick={() =>
 										adapter.openUrl(
-											"https://surrealdb.com/docs/surrealql/statements/define/table",
+											"https://github.com/EonsofStupid/connectome",
 										)
 									}
 								>

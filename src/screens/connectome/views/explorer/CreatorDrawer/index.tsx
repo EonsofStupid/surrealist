@@ -13,11 +13,9 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconClose, iconPlus, iconWarning } from "@surrealdb/ui";
+import { Icon, iconClose, iconPlus, iconWarning } from "@rrflow/ui";
 import { omit } from "radash";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { RecordId, StringRecordId, Table } from "surrealdb";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { DrawerResizer } from "~/components/DrawerResizer";
@@ -25,14 +23,16 @@ import { CodeInput } from "~/components/Inputs";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { surqlLinting } from "~/editor";
+import { rrflowqlLinting } from "~/editor";
+import { useValueValidator } from "~/hooks/rrflowql";
 import { useTableNames, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { useValueValidator } from "~/hooks/surrealql";
-import { executeQuery, getSurrealQL } from "~/screens/Connectome/connection/connection";
-import type { QueryResponse } from "~/types";
+import { executeQuery, getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { extractEdgeRecords, getTableVariant } from "~/shared/util/schema";
+import type { QueryResponse } from "~/types";
+import { RecordId, StringRecordId, Table } from "~/vendor/rrflow-client";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 type EdgeInfo = [string[], string[]];
 
@@ -77,14 +77,17 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 				out: to,
 			};
 
-			response = await executeQuery(/* surql */ `RELATE $from->$id->$to CONTENT $content`, {
-				from,
-				id,
-				to,
-				content,
-			});
+			response = await executeQuery(
+				/* rrflowql */ `RELATE $from->$id->$to CONTENT $content`,
+				{
+					from,
+					id,
+					to,
+					content,
+				},
+			);
 		} else {
-			response = await executeQuery(/* surql */ `CREATE $id CONTENT $body`, { id, body });
+			response = await executeQuery(/* rrflowql */ `CREATE $id CONTENT $body`, { id, body });
 		}
 
 		const errors = response.flatMap((r) => {
@@ -115,7 +118,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		if (opened) {
 			const initializeBody = async () => {
 				const bodyText = content
-					? await getSurrealQL().formatValue(
+					? await getRRFlowQL().formatValue(
 							omit(content, ["id", "in", "out"]),
 							true,
 							true,
@@ -134,7 +137,7 @@ export function CreatorDrawer({ opened, table, content, onClose }: CreatorDrawer
 		}
 	}, [opened, table, content]);
 
-	const extensions = useMemo(() => [surrealql(), surqlLinting()], []);
+	const extensions = useMemo(() => [rrflowql(), rrflowqlLinting()], []);
 	const isFullyValid = isValid && (!isRelation || (recordFrom && recordTo));
 	const [width, setWidth] = useState(650);
 

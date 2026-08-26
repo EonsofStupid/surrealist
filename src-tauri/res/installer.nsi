@@ -1,8 +1,8 @@
-; Surrealist modified NSIS script
+; Connectome modified NSIS script
 ;
 ; Modifications:
 ; - defined MUI_HEADERIMAGE_RIGHT
-; - remove $APPDATA\SurrealDB\Surrealist as application data
+; - remove $APPDATA\RRFlow\Connectome as application data
 
 Unicode true
 ManifestDPIAware true
@@ -712,7 +712,7 @@ Section Uninstall
     SetShellVarContext current
     RmDir /r "$APPDATA\${BUNDLEID}"
     RmDir /r "$LOCALAPPDATA\${BUNDLEID}"
-    RmDir /r "$APPDATA\SurrealDB\Surrealist"
+    RmDir /r "$APPDATA\RRFlow\Connectome"
   ${EndIf}
 
   !ifdef NSIS_HOOK_POSTUNINSTALL

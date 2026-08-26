@@ -24,7 +24,6 @@ pub fn start_database(
     storage: &str,
     executable: &str,
     log_level: &str,
-    legacy_compat: bool,
 ) -> Result<(), String> {
     let mut process = state.0.lock().unwrap();
     let start_at = Instant::now();
@@ -39,7 +38,7 @@ pub fn start_database(
 
     info!("Serving database");
 
-    let child_result = start_surreal_process(ServeOptions {
+    let child_result = start_rrflow_process(ServeOptions {
         username,
         password,
         port,
@@ -47,7 +46,6 @@ pub fn start_database(
         storage,
         executable,
         log_level,
-        legacy_compat,
     });
 
     let mut child_proc = match child_result {
@@ -76,7 +74,7 @@ pub fn start_database(
         for line in reader.lines() {
             let message = line.unwrap();
 
-            println!("Surreal: {}", message);
+            println!("RRFlow: {}", message);
 
             window
                 .emit("database:output", message)
@@ -89,13 +87,18 @@ pub fn start_database(
 
         if elapsed <= 500 {
             if !has_started {
-                window.emit("database:output", "SurrealDB did not start. Are you sure the Surreal executable is available?").expect("console output should be delivered");
+                window
+                    .emit(
+                        "database:output",
+                        "RRFlow did not start. Are you sure the RRFlow executable is available?",
+                    )
+                    .expect("console output should be delivered");
             }
 
             window
                 .emit(
                     "database:error",
-                    "SurrealDB did not start correctly, check the console for more information",
+                    "RRFlow did not start correctly, check the console for more information",
                 )
                 .expect("error result should be delivered");
         } else {
@@ -121,7 +124,7 @@ pub fn stop_database(state: tauri::State<DatabaseState>) -> Result<bool, String>
     match process {
         None => Ok(false),
         Some(child) => {
-            kill_surreal_process(child.id());
+            kill_rrflow_process(child.id());
 
             Ok(true)
         }
@@ -131,7 +134,7 @@ pub fn stop_database(state: tauri::State<DatabaseState>) -> Result<bool, String>
 ///
 /// Kill the process with the given id
 ///
-pub fn kill_surreal_process(id: u32) {
+pub fn kill_rrflow_process(id: u32) {
     let shell_cmd = shell::build_kill_command(&id);
     let mut cmd_chain = Command::new(&shell_cmd[0]);
 
@@ -140,7 +143,7 @@ pub fn kill_surreal_process(id: u32) {
     cmd_chain
         .args(&shell_cmd[1..])
         .output()
-        .expect("surreal process should be killed");
+        .expect("rrflow process should be killed");
 }
 
 pub struct ServeOptions<'s> {
@@ -151,16 +154,15 @@ pub struct ServeOptions<'s> {
     storage: &'s str,
     executable: &'s str,
     log_level: &'s str,
-    legacy_compat: bool,
 }
 
 ///
-/// Start a new SurrealDB process and return the child process
+/// Start a new RRFlow process and return the child process
 ///
-pub fn start_surreal_process(options: ServeOptions) -> Result<Child, String> {
+pub fn start_rrflow_process(options: ServeOptions) -> Result<Child, String> {
     let bind_addr = format!("0.0.0.0:{}", options.port);
     let path = if options.executable.is_empty() {
-        "surreal"
+        "rrflow"
     } else {
         options.executable
     };
@@ -178,18 +180,14 @@ pub fn start_surreal_process(options: ServeOptions) -> Result<Child, String> {
         options.log_level,
     ];
 
-    if options.legacy_compat {
-        args.push("--auth")
-    }
-
     let file_uri = format!("rocksdb://{}", options.storage);
-    let surrealkv_uri = format!("surrealkv://{}", options.storage);
+    let rrflowkv_uri = format!("rrflowkv://{}", options.storage);
     let tikv_uri = format!("tikv://{}", options.storage);
 
     match options.driver {
         "memory" => args.push("memory"),
         "file" => args.push(&file_uri),
-        "surrealkv" => args.push(&surrealkv_uri),
+        "rrflowkv" => args.push(&rrflowkv_uri),
         "tikv" => args.push(&tikv_uri),
         _ => Err("Invalid database driver")?,
     }
@@ -207,9 +205,9 @@ pub fn start_surreal_process(options: ServeOptions) -> Result<Child, String> {
         .args(&shell_cmd[1..])
         .stdout(Stdio::null())
         .stderr(Stdio::piped())
-        .env("SURREAL_EXPERIMENTAL_GRAPHQL", "true")
+        .env("RRFLOW_EXPERIMENTAL_GRAPHQL", "true")
         .spawn()
-        .expect("surreal process should be spawned");
+        .expect("rrflow process should be spawned");
 
     Ok(child_proc)
 }

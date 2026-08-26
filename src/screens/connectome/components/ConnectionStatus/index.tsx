@@ -10,7 +10,7 @@ import {
 	iconSandbox,
 	iconUpload,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useState } from "react";
 import { SANDBOX } from "~/constants";
 import { useConnection, useRequireDatabase } from "~/hooks/connection";
@@ -19,11 +19,11 @@ import { useStable } from "~/hooks/stable";
 import { openConnectionDiagnosticsModal } from "~/modals/connection-diagnostics";
 import { openConnectionEditModal } from "~/modals/edit-connection";
 import { showNodeStatus } from "~/modals/node-status";
-import { useDatabaseStore } from "~/stores/database";
 import { getConnectionById } from "~/shared/util/connection";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { useDatabaseStore } from "~/stores/database";
 import { closeConnection, openConnection } from "../../connection/connection";
 
 export function ConnectionStatus() {
@@ -69,7 +69,7 @@ export function ConnectionStatus() {
 
 	const statusInfo = {
 		disconnected: ["Disconnected", "red"],
-		connected: [`SurrealDB ${remoteVersion}`, "green"],
+		connected: [`RRFlow · core ${remoteVersion}`, "green"],
 		retrying: ["Reconnecting...", ""],
 		connecting: ["Connecting...", ""],
 	} as const;

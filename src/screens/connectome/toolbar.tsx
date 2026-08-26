@@ -19,7 +19,7 @@ import {
 	iconReset,
 	iconStar,
 	iconTable,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect, useState } from "react";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { INSTANCE_PLAN_SUGGESTIONS, isOrganisationBillable } from "~/cloud/helpers";
@@ -36,7 +36,7 @@ import { Spacer } from "~/components/Spacer";
 import { StarSparkles } from "~/components/StarSparkles";
 import { REGION_FLAGS, SANDBOX } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
-import { useAvailableInstanceVersions, useIsAuthenticated } from "~/hooks/cloud";
+import { useAvailableInstanceVersions, useIsAuthenticated, useIsCloudEnabled } from "~/hooks/cloud";
 import {
 	useConnection,
 	useIsConnected,
@@ -49,17 +49,17 @@ import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { openBillingRequiredModal } from "~/modals/billing-required";
 import { useConfirmation } from "~/providers/Confirmation";
+import { getConnectionById } from "~/shared/util/connection";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
+import { showErrorNotification } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
+import { generateRandomName } from "~/shared/util/random";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useCloudStore } from "~/stores/cloud";
 import { useDatabaseStore } from "~/stores/database";
 import { useDeployStore } from "~/stores/deploy";
 import { CloudDeployConfig } from "~/types";
-import { getConnectionById } from "~/shared/util/connection";
-import { useFeatureFlags } from "~/shared/util/feature-flags";
-import { showErrorNotification } from "~/shared/util/helpers";
-import { dispatchIntent } from "~/shared/util/intents";
-import { generateRandomName } from "~/shared/util/random";
 import { ConnectionStatus } from "./components/ConnectionStatus";
 import { DatabaseList } from "./components/DatabaseList";
 import { NamespaceList } from "./components/NamespaceList";
@@ -71,6 +71,7 @@ export function ConnectomeToolbar() {
 	const [flags] = useFeatureFlags();
 
 	const navigateConnection = useConnectionNavigator();
+	const showCloud = useIsCloudEnabled();
 	const isAuthenticated = useIsAuthenticated();
 	const showChangelog = useInterfaceStore((s) => s.showChangelogAlert);
 	const hasReadChangelog = useInterfaceStore((s) => s.hasReadChangelog);
@@ -318,7 +319,7 @@ export function ConnectomeToolbar() {
 		readChangelog();
 	});
 
-	const [isSupported, version] = useMinimumVersion(import.meta.env.SDB_VERSION);
+	const [isSupported, version] = useMinimumVersion(import.meta.env.RRFLOW_VERSION);
 	const isSandbox = id === "sandbox";
 	const showNS = !isSandbox && id && isConnected;
 	const showDB = showNS && namespace;
@@ -331,13 +332,13 @@ export function ConnectomeToolbar() {
 
 			<ConnectionStatus />
 
-			{authState === "unauthenticated" && authMode === "cloud" && (
+			{showCloud && authState === "unauthenticated" && authMode === "cloud" && (
 				<Button
 					variant="gradient"
 					size="xs"
 					onClick={openCloudAuthentication}
 				>
-					Sign in to SurrealDB Cloud
+					Sign in to RRFlow Cloud
 				</Button>
 			)}
 
@@ -390,7 +391,7 @@ export function ConnectomeToolbar() {
 				</Button>
 			)}
 
-			{isConnected && isSandbox && flags.sandbox_deploy && (
+			{showCloud && isConnected && isSandbox && flags.sandbox_deploy && (
 				<StarSparkles>
 					{isAuthenticated && (
 						<Menu
@@ -536,7 +537,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {import.meta.env.SDB_VERSION}
+								RRFlow {import.meta.env.RRFLOW_VERSION}
 							</Text>
 						</Text>
 						<Text>
@@ -545,7 +546,7 @@ export function ConnectomeToolbar() {
 								span
 								c="bright"
 							>
-								SurrealDB {version}
+								RRFlow {version}
 							</Text>
 						</Text>
 					</HoverCard.Dropdown>
@@ -619,11 +620,11 @@ export function ConnectomeToolbar() {
 
 					<Select
 						placeholder="Select a dataset"
-						value="surreal-deal-store-mini"
+						value="rrflow-deal-store-mini"
 						data={[
 							{
-								label: "Surreal Deal Store (Mini)",
-								value: "surreal-deal-store-mini",
+								label: "RRFlow Deal Store (Mini)",
+								value: "rrflow-deal-store-mini",
 							},
 						]}
 					/>

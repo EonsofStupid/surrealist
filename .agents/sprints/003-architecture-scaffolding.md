@@ -39,11 +39,11 @@ As a senior developer establishing a foundation, you **never** move code before 
 
 #### `src/spokes/`
 - **Action**: Create the `src/spokes/` directory.
-- **Action**: Create the `src/spokes/surrealdb/` directory.
-- **Action**: Create `src/spokes/surrealdb/GOVERNANCE.md`
+- **Action**: Create the `src/spokes/rrflow/` directory.
+- **Action**: Create `src/spokes/rrflow/GOVERNANCE.md`
 - **Content required in Governance**:
-  - Scope: All legacy Surrealist query playground logic.
-  - Rules: SurrealDB spoke can import from `src/shared/`. It CANNOT import from `src/shell/` or any other spoke.
+  - Scope: All legacy Connectome query playground logic.
+  - Rules: RRFlow spoke can import from `src/shared/`. It CANNOT import from `src/shell/` or any other spoke.
 
 ---
 
@@ -60,10 +60,10 @@ As a senior developer establishing a foundation, you **never** move code before 
 - [ ] Directory `src/shell/` exists.
 - [ ] Directory `src/shared/` exists.
 - [ ] Directory `src/spokes/` exists.
-- [ ] Directory `src/spokes/surrealdb/` exists.
+- [ ] Directory `src/spokes/rrflow/` exists.
 - [ ] `src/shell/GOVERNANCE.md` is populated with strict import rules.
 - [ ] `src/shared/GOVERNANCE.md` is populated with strict import rules.
-- [ ] `src/spokes/surrealdb/GOVERNANCE.md` is populated with strict import rules.
+- [ ] `src/spokes/rrflow/GOVERNANCE.md` is populated with strict import rules.
 - [ ] `pnpm run build` completely passes (0 regressions introduced by empty folders).
 - [ ] `npx tsc --noEmit` completely passes.
 - [ ] `npx @biomejs/biome check .` completely passes.

@@ -10,11 +10,10 @@ import {
 	iconPlus,
 	iconReset,
 	iconSearch,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { type ContextMenuItemOptions, useContextMenu } from "mantine-contextmenu";
 import { sort } from "radash";
 import { useMemo } from "react";
-import { escapeIdent } from "surrealdb";
 import { ActionButton } from "~/components/ActionButton";
 import { Entry } from "~/components/Entry";
 import { ContentPane } from "~/components/Pane";
@@ -26,13 +25,14 @@ import { useHasSchemaAccess, useTables } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { showTableDefinitionModal } from "~/modals/table-definition";
 import { useConfirmation } from "~/providers/Confirmation";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { TableVariant } from "~/types";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { RecordsChangedEvent } from "~/shared/util/global-events";
 import { fuzzyMultiMatch } from "~/shared/util/helpers";
 import { getTableVariant, syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
+import { TableVariant } from "~/types";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import classes from "./style.module.scss";
 
 const VARIANT_ORDER: TableVariant[] = ["normal", "view", "relation"];

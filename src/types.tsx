@@ -1,7 +1,7 @@
 import type { ElementProps, MantineColorScheme } from "@mantine/core";
 import { AboutMetadata } from "@tauri-apps/api/menu";
-import type { Duration, RecordId } from "surrealdb";
 import type { FeatureFlagMap } from "~/shared/util/feature-flags";
+import type { Duration, RecordId } from "~/vendor/rrflow-client";
 
 export type AccessType = "JWT" | "RECORD";
 export type BannerType = "info" | "warning" | "important";
@@ -17,7 +17,7 @@ export type DiagramLineStyle = "default" | "metro" | "straight" | "smooth";
 export type DiagramLinks = "default" | "hidden" | "visible";
 export type DiagramMode = "default" | "fields" | "summary" | "simple";
 export type DiagramHoverFocus = "default" | "none" | "neighbours" | "chain" | "recursive";
-export type DriverType = "file" | "surrealkv" | "memory" | "tikv";
+export type DriverType = "file" | "rrflowkv" | "memory" | "tikv";
 export type InvoiceStatus = "succeeded" | "pending" | "failed";
 export type LogLevel = "error" | "warn" | "info" | "debug" | "trace";
 export type MetricsDuration = "hour" | "half" | "day" | "week" | "month";
@@ -148,6 +148,7 @@ export interface Authentication {
 export interface Connection {
 	id: string;
 	name: string;
+	target?: "runtime" | "diagnostics" | "control-plane";
 	icon: number;
 	labels?: string[];
 	instance?: boolean;
@@ -253,7 +254,7 @@ export interface ConnectomeCloudSettings {
 
 export interface ConnectomeGtmSettings {
 	preview_header: string;
-	origin: "app.surrealdb.com";
+	origin: "127.0.0.1:8000";
 	debug_mode: boolean;
 }
 
@@ -524,7 +525,7 @@ export interface SchemaInfoTB {
 	tables: any[]; // unused
 }
 
-export interface SurrealOptions {
+export interface RRFlowOptions {
 	connection: Authentication;
 	onConnect?: (version: string) => void;
 	onDisconnect?: (code: number, reason: string) => void;

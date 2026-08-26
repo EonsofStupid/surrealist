@@ -1,5 +1,6 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useSupportTicketsEnvironment } from "~/hooks/context";
+import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { useCloudStore } from "~/stores/cloud";
 import {
 	IntercomConversation,
@@ -9,7 +10,6 @@ import {
 	IntercomTicket,
 	IntercomTicketTypeAttribute,
 } from "~/types";
-import { useFeatureFlags } from "~/shared/util/feature-flags";
 import { fetchContextAPI } from "../api/context";
 
 /**

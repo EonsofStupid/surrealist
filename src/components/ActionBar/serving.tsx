@@ -1,14 +1,14 @@
-import { Icon, iconConsole, iconPlay, iconStop } from "@surrealdb/ui";
+import { Icon, iconConsole, iconPlay, iconStop } from "@rrflow/ui";
 import { useEffect, useState } from "react";
 import { adapter } from "~/adapter";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { openConnection } from "~/screens/Connectome/connection/connection";
-import { useDatabaseStore } from "~/stores/database";
+import { openConnection } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { getConnection } from "~/shared/util/connection";
 import { isHostLocal } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
+import { useDatabaseStore } from "~/stores/database";
 import { ActionButton } from "../ActionButton";
 
 export function DatabaseServing() {

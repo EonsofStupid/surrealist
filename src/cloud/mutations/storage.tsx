@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { CloudInstance } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
+import { CloudInstance } from "~/types";
 import { fetchAPI } from "../api";
 
 /**

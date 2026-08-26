@@ -1,6 +1,6 @@
 import { Group, Skeleton, Text } from "@mantine/core";
 import { openModal } from "@mantine/modals";
-import { CodeBlock, Icon, iconConsole } from "@surrealdb/ui";
+import { CodeBlock, Icon, iconConsole } from "@rrflow/ui";
 import { useEffect } from "react";
 import { LearnMore } from "~/components/LearnMore";
 import { Link } from "~/components/Link";
@@ -33,7 +33,7 @@ function ConnectCliModal({ instance }: ConnectCliModalProps) {
 	const { data, mutateAsync, isPending } = useCloudAuthTokenMutation(instance.id);
 
 	const endpoint = `wss://${instance.host}`;
-	const command = `surreal sql --endpoint ${endpoint} --token ${data}`;
+	const command = `rrflow sql --endpoint ${endpoint} --token ${data}`;
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: only trigger on mount
 	useEffect(() => {
@@ -44,9 +44,9 @@ function ConnectCliModal({ instance }: ConnectCliModalProps) {
 		<>
 			<Text size="lg">
 				In order to connect to this instance, make sure you have the{" "}
-				<Link href="https://surrealdb.com/docs/surrealdb/cli">SurrealDB CLI</Link>{" "}
-				installed. Once it is installed, simply open the terminal of your choice and run the
-				following command to connect to your SurrealDB Cloud instance.
+				<Link href="https://github.com/EonsofStupid/connectome">RRFlow CLI</Link> installed.
+				Once it is installed, simply open the terminal of your choice and run the following
+				command to connect to your RRFlow Cloud instance.
 			</Text>
 
 			<Skeleton
@@ -61,10 +61,10 @@ function ConnectCliModal({ instance }: ConnectCliModalProps) {
 
 			<LearnMore
 				mt="xl"
-				href="https://surrealdb.com/docs/surrealdb/cli"
+				href="https://github.com/EonsofStupid/connectome"
 				display="block"
 			>
-				Learn more about the SurrealDB CLI
+				Learn more about the RRFlow CLI
 			</LearnMore>
 		</>
 	);

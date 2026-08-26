@@ -12,25 +12,25 @@ import {
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { showNotification, updateNotification } from "@mantine/notifications";
-import { Icon, iconCheck, iconFile, iconUpload, iconWarning } from "@surrealdb/ui";
+import { Icon, iconCheck, iconFile, iconUpload, iconWarning } from "@rrflow/ui";
 import papaparse from "papaparse";
 import { cluster, isArray, isObject, unique } from "radash";
 import { ChangeEvent, MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
-import { Duration, RecordId, StringRecordId, Table, Uuid } from "surrealdb";
 import { adapter } from "~/adapter";
 import { FieldKindInputCore } from "~/components/Inputs";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { SURQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurreal, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getRRFlow, getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { formatFileSize, showErrorNotification, showWarning } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { Duration, RecordId, StringRecordId, Table, Uuid } from "~/vendor/rrflow-client";
 
 type DataFileFormat = "csv" | "json" | "ndjson";
 type ImportType = "sql" | DataFileFormat;
@@ -59,7 +59,7 @@ const SqlImportForm = ({
 		const execute = async () => {
 			try {
 				const file = importFile.current;
-				const surreal = getSurreal();
+				const rrflow = getRRFlow();
 
 				if (!file) return;
 
@@ -67,11 +67,11 @@ const SqlImportForm = ({
 				// if the engine does not support streaming or a network error occurs
 				try {
 					adapter.log("import", "Attempting to import file using stream");
-					await surreal.import(file.stream());
+					await rrflow.import(file.stream());
 				} catch {
 					try {
 						adapter.log("import", "Falling back to blob based import");
-						await surreal.import(file);
+						await rrflow.import(file);
 					} catch (err: any) {
 						throw typeof err === "string" ? new Error(err) : err;
 					}
@@ -135,7 +135,7 @@ const SqlImportForm = ({
 	);
 };
 
-const SURREAL_KINDS = [
+const RRFLOW_KINDS = [
 	"any",
 	"null",
 	"bool",
@@ -154,9 +154,9 @@ const SURREAL_KINDS = [
 	"record",
 ] as const;
 
-type SurrealKind = (typeof SURREAL_KINDS)[number];
+type RRFlowKind = (typeof RRFLOW_KINDS)[number];
 
-const extractSurrealType = (value: any): SurrealKind => {
+const extractRRFlowType = (value: any): RRFlowKind => {
 	if (value === undefined || value === null) {
 		return "null";
 	}
@@ -194,7 +194,7 @@ const extractColumnType = (importedRows: any[], index: number, withHeader: boole
 			})
 		: (importedRows as unknown[][]).map((row) => row[index]);
 
-	const uniqueTypes = unique(values.map(extractSurrealType)).filter((t) => t !== "null");
+	const uniqueTypes = unique(values.map(extractRRFlowType)).filter((t) => t !== "null");
 
 	if (uniqueTypes.length === 1) {
 		return uniqueTypes[0];
@@ -214,10 +214,10 @@ const extractColumnTypes = (importedRows: any[], withHeader: boolean) => {
 };
 
 const isValidColumnType = (type: string) => {
-	return (SURREAL_KINDS as readonly string[]).includes(type);
+	return (RRFLOW_KINDS as readonly string[]).includes(type);
 };
 
-const convertValueToType = async (value: any, type: SurrealKind): Promise<any> => {
+const convertValueToType = async (value: any, type: RRFlowKind): Promise<any> => {
 	if (value === undefined || value === null) {
 		return null;
 	}
@@ -225,7 +225,7 @@ const convertValueToType = async (value: any, type: SurrealKind): Promise<any> =
 	switch (type) {
 		case "any":
 			try {
-				return await getSurrealQL().parseValue(value);
+				return await getRRFlowQL().parseValue(value);
 			} catch {
 				return value;
 			}
@@ -259,7 +259,7 @@ const convertValueToType = async (value: any, type: SurrealKind): Promise<any> =
 	}
 };
 
-const createEntityId = async (value: any, type: SurrealKind, table: string) => {
+const createEntityId = async (value: any, type: RRFlowKind, table: string) => {
 	if (type === "record") {
 		return await convertValueToType(value, type);
 	}
@@ -277,7 +277,7 @@ const createEntity = async (
 
 	for (const key of Object.keys(data)) {
 		const value = data[key];
-		const type = columnTypes[columnNames.indexOf(key)] as SurrealKind;
+		const type = columnTypes[columnNames.indexOf(key)] as RRFlowKind;
 
 		if (key === "id") {
 			o[key] = await createEntityId(value, type, table);
@@ -296,7 +296,7 @@ const applySingleBatchImport = async (items: any[], table: string, insertRelatio
 	let errorImportCount = 0;
 	let errorMessage = "";
 
-	const [response] = await executeQuery(/* surql */ `${queryAction} INTO $table $content`, {
+	const [response] = await executeQuery(/* rrflowql */ `${queryAction} INTO $table $content`, {
 		table: new Table(table),
 		content: items,
 	});
@@ -429,7 +429,7 @@ const EditColumnsForm = (props: EditColumnsFormProps) => {
 							<FieldKindInputCore
 								value={type}
 								onChange={(t) => onColumnTypeChange(t, index)}
-								data={SURREAL_KINDS}
+								data={RRFLOW_KINDS}
 								placeholder="type"
 							/>
 						</Group>
@@ -641,7 +641,7 @@ const CsvImportForm = ({
 			for (let i = 0; i < data.length; i++) {
 				const key = columnNames[i];
 				const value = data[i];
-				const type = columnTypes[i] as SurrealKind;
+				const type = columnTypes[i] as RRFlowKind;
 
 				if (key === "id") {
 					o[key] = await createEntityId(value, type, table);
@@ -1023,7 +1023,7 @@ export function DataImportModal() {
 		const [file] = await adapter.openFile(
 			"Import query file",
 			[
-				SURQL_FILTER,
+				RRFLOWQL_FILTER,
 				{
 					name: "Table data (csv)",
 					extensions: ["csv"],

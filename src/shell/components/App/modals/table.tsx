@@ -9,9 +9,8 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconPlus, iconRelation, iconSearch, iconTable } from "@surrealdb/ui";
+import { Icon, iconPlus, iconRelation, iconSearch, iconTable } from "@rrflow/ui";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { escapeIdent } from "surrealdb";
 import { Form } from "~/components/Form";
 import { CodeInput } from "~/components/Inputs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
@@ -19,12 +18,13 @@ import { SCHEMA_MODES } from "~/constants";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useTableNames } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
-import { useInterfaceStore } from "~/shell/stores/interface";
-import { type SchemaMode, TableVariant } from "~/types";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useInterfaceStore } from "~/shell/stores/interface";
+import { type SchemaMode, TableVariant } from "~/types";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 export function TableCreatorModal() {
 	const { openTableCreator, closeTableCreator } = useInterfaceStore.getState();
@@ -112,7 +112,6 @@ export function TableCreatorModal() {
 		>
 			<SegmentedControl
 				fullWidth
-				variant="surreal"
 				data={[
 					{
 						value: "normal",

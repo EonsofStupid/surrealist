@@ -1,7 +1,7 @@
 # Cortex DevTools — Terminology Engine
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
@@ -44,7 +44,7 @@ From the source specification:
 > [!NOTE]
 > The source specification defines three thresholds (1, 5, 20). The "Mastered" state is a proposed extension — not yet committed. This will go through the parking lot before implementation.
 
-Familiarity is tracked **per term, per user**. Stored in local IndexedDB (already used by Surrealist via `idb` package).
+Familiarity is tracked **per term, per user**. Stored in local IndexedDB (already used by Connectome via `idb` package).
 
 The system learns what YOU know and stops repeating itself.
 

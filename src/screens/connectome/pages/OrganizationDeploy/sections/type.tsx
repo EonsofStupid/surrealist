@@ -13,7 +13,7 @@ import {
 } from "@mantine/core";
 
 import { closeModal, openModal } from "@mantine/modals";
-import { Icon, iconArrowLeft, iconArrowUpRight } from "@surrealdb/ui";
+import { Icon, iconArrowLeft, iconArrowUpRight } from "@rrflow/ui";
 import { Fragment, ReactNode, useEffect, useLayoutEffect, useMemo } from "react";
 import { INSTANCE_PLAN_ARCHITECTURES, INSTANCE_PLAN_SUGGESTIONS } from "~/cloud/helpers";
 import { useInstanceTypeRegistry } from "~/cloud/hooks/types";
@@ -21,9 +21,9 @@ import { useCloudOrganizationInstancesQuery } from "~/cloud/queries/instances";
 import { InstanceTypes } from "~/components/InstanceTypes";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { CloudDeployConfig, CloudInstanceType } from "~/types";
 import { getTypeCategoryName } from "~/shared/util/cloud";
 import { CURRENCY_FORMAT, formatMemory, optional } from "~/shared/util/helpers";
+import { CloudDeployConfig, CloudInstanceType } from "~/types";
 import classes from "../style.module.scss";
 import { DeploySectionProps } from "../types";
 
@@ -171,7 +171,7 @@ export function InstanceTypeSection({ organisation, details, setDetails }: Deplo
 					</Button>
 				)}
 				<a
-					href="https://surrealdb.com/pricing"
+					href="https://github.com/EonsofStupid/connectome"
 					target="_blank"
 					rel="noreferrer"
 				>
@@ -255,7 +255,7 @@ function InstanceTypeCard({ type, details, onChange }: IntanceTypeCardProps) {
 				role="radio"
 				withBorder
 				style={{
-					borderColor: isActive ? "var(--surreal-focus-outline)" : undefined,
+					borderColor: isActive ? "var(--rrflow-focus-outline)" : undefined,
 					cursor: isActive ? "default" : "pointer",
 				}}
 			>

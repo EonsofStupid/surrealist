@@ -39,14 +39,14 @@ export function compareIdents(a: string, b: string) {
  * but will be replaced in Connectome 4.0 with a fully dynamic system
  */
 export function getDatasetURL(version: string) {
-	const base = `https://datasets.surrealdb.com/datasets/surreal-deal-store`;
+	const base = `https://github.com/EonsofStupid/connectome`;
 	const isV3 = compareVersions(version, SDB_3_0_0) >= 0;
 
 	if (isV3) {
-		return `${base}/mini-v3.surql`;
+		return `${base}/mini-v3.rrflowql`;
 	}
 
-	return `${base}/mini-v2.surql`;
+	return `${base}/mini-v2.rrflowql`;
 }
 
 const RESERVED_VARIABLES = new Set([
@@ -64,7 +64,7 @@ const RESERVED_VARIABLES = new Set([
 ]);
 
 /**
- * Parse variables from the given SurrealQL tree
+ * Parse variables from the given RRFlowQL tree
  *
  * @param tree The parse tree
  * @param extract The function to extract the variable name

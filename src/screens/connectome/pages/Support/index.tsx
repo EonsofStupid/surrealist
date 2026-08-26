@@ -16,15 +16,15 @@ import {
 	Icon,
 	iconPlus,
 	iconSearch,
+	pictoBrain,
 	pictoDiscord,
 	pictoDocument,
 	pictoGitHub,
 	pictoHealthChat,
 	pictoPlay,
 	pictoSidekick,
-	pictoSurrealDB,
 	pictoUniversity,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect } from "react";
 import { navigate } from "wouter/use-browser-location";
 import { adapter } from "~/adapter";
@@ -80,7 +80,7 @@ export function SupportPage() {
 						ta="center"
 						fz={32}
 					>
-						SurrealDB Help Centre
+						RRFlow Help Centre
 					</PrimaryTitle>
 
 					<TextInput
@@ -164,7 +164,7 @@ export function SupportPage() {
 											<PrimaryTitle>Need expert answers fast?</PrimaryTitle>
 											<Text>
 												Upgrade your organisation's Support Plan to get
-												expedited support from the SurrealDB team, so you're
+												expedited support from the RRFlow team, so you're
 												never left stramded when it matters the most.
 											</Text>
 										</Group>
@@ -218,32 +218,34 @@ export function SupportPage() {
 							mx="auto"
 						>
 							<ResourceTile
-								name="SurrealDB Documentation"
-								description="Learn everything there is to know about all SurrealDB products"
-								image={pictoSurrealDB}
-								onClick={() => adapter.openUrl("https://surrealdb.com/docs")}
-							/>
-							<ResourceTile
-								name="SurrealDB YouTube"
-								description="Learn about SurrealDB through live streams and video tutorials"
-								image={pictoPlay}
+								name="RRFlow Documentation"
+								description="Learn everything there is to know about all RRFlow products"
+								image={pictoBrain}
 								onClick={() =>
-									adapter.openUrl("https://www.youtube.com/@SurrealDB")
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
 								}
 							/>
 							<ResourceTile
+								name="RRFlow YouTube"
+								description="Learn about RRFlow through live streams and video tutorials"
+								image={pictoPlay}
+								onClick={() => adapter.openUrl("https://www.youtube.com/@RRFlow")}
+							/>
+							<ResourceTile
 								name="University: Fundamentals"
-								description="Learn the fundamentals of SurrealDB in as little as 3 hours"
+								description="Learn the fundamentals of RRFlow in as little as 3 hours"
 								image={pictoUniversity}
 								onClick={() =>
-									adapter.openUrl("https://surrealdb.com/learn/fundamentals")
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
 								}
 							/>
 							<ResourceTile
 								name="University: Book"
-								description="Become a SurrealQL expert through Aeon's Surreal Renaissance"
+								description="Become a RRFlowQL expert through Aeon's RRFlow Renaissance"
 								image={pictoDocument}
-								onClick={() => adapter.openUrl("https://surrealdb.com/learn/book")}
+								onClick={() =>
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
+								}
 							/>
 						</SimpleGrid>
 					</Box>
@@ -279,7 +281,9 @@ export function SupportPage() {
 								name="GitHub"
 								description="Report issues or submit feature requests"
 								image={pictoGitHub}
-								onClick={() => adapter.openUrl("https://github.com/surrealdb")}
+								onClick={() =>
+									adapter.openUrl("https://github.com/EonsofStupid/connectome")
+								}
 							/>
 							{flags.support_tickets && (
 								<ResourceTile
@@ -300,7 +304,7 @@ export function SupportPage() {
 									name="Contact Support"
 									description="For account and billing issues, email support"
 									image={pictoHealthChat}
-									onClick={() => adapter.openUrl("mailto:support@surrealdb.com")}
+									onClick={() => adapter.openUrl("mailto:developer@example.com")}
 								/>
 							)}
 						</SimpleGrid>

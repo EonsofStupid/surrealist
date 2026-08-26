@@ -32,15 +32,14 @@ import {
 	iconSearch,
 	iconWarning,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { useMemo, useState } from "react";
-import { SqlExportOptions } from "surrealdb";
 import { adapter, isBrowser } from "~/adapter";
 import { Option } from "~/components/Option";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
-import { SURQL_FILTER } from "~/constants";
+import { RRFLOWQL_FILTER } from "~/constants";
 import { useBoolean } from "~/hooks/boolean";
 import { useConnection, useMinimumVersion } from "~/hooks/connection";
 import { useIntent } from "~/hooks/routing";
@@ -49,10 +48,11 @@ import { useStable } from "~/hooks/stable";
 import {
 	isStreamingSupported,
 	requestDatabaseExport,
-} from "~/screens/Connectome/connection/connection";
+} from "~/screens/connectome/connection/connection";
 import { tagEvent } from "~/shared/util/analytics";
 import { fuzzyMatch, slugify } from "~/shared/util/helpers";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { SqlExportOptions } from "~/vendor/rrflow-client";
 
 function toggleSet<T>(set: Set<T>, item: T) {
 	if (set.has(item)) {
@@ -115,7 +115,7 @@ export function DataExportModal() {
 	const exportFlags = useSet<ExportFlag>();
 	const exportTables = useSet<string>();
 
-	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.surql`;
+	const fileName = `${slugify(name)}-${dayjs().format("YYYY-MM-DD")}.rrflowql`;
 
 	const handleExport = useStable(async () => {
 		openedHandle.close();
@@ -137,7 +137,7 @@ export function DataExportModal() {
 			const success = await adapter.saveFile(
 				"Save database export",
 				fileName,
-				[SURQL_FILTER],
+				[RRFLOWQL_FILTER],
 				async () => {
 					return requestDatabaseExport({
 						users: exportFlags.has("users"),
@@ -170,7 +170,7 @@ export function DataExportModal() {
 				if (exportV3) {
 					tagEvent("migration_export");
 				} else {
-					tagEvent("export", { extension: "surql" });
+					tagEvent("export", { extension: "rrflowql" });
 				}
 			} else {
 				updateNotification({
@@ -198,7 +198,9 @@ export function DataExportModal() {
 		if (exportFlags.size === RESOURCES.length) {
 			exportFlags.clear();
 		} else {
-			RESOURCES.forEach((resource) => exportFlags.add(resource));
+			RESOURCES.forEach((resource) => {
+				exportFlags.add(resource);
+			});
 		}
 	});
 
@@ -206,7 +208,9 @@ export function DataExportModal() {
 		if (exportTables.size === tables.length) {
 			exportTables.clear();
 		} else {
-			tables.forEach((table) => exportTables.add(table));
+			tables.forEach((table) => {
+				exportTables.add(table);
+			});
 		}
 	});
 
@@ -226,12 +230,16 @@ export function DataExportModal() {
 
 		if (tables === "*") {
 			exportTables.clear();
-			schema?.database.tables.forEach((t) => exportTables.add(t.schema.name));
+			schema?.database.tables.forEach((table) => {
+				exportTables.add(table.schema.name);
+			});
 		}
 
 		if (resources === "*") {
 			exportFlags.clear();
-			RESOURCES.forEach((resource) => exportFlags.add(resource));
+			RESOURCES.forEach((resource) => {
+				exportFlags.add(resource);
+			});
 		}
 
 		openedHandle.open();
@@ -251,7 +259,7 @@ export function DataExportModal() {
 						icon={<Icon path={iconHelp} />}
 						color="blue"
 					>
-						You are exporting your database for use with SurrealDB 3.0.
+						You are exporting your database for use with RRFlow 3.0.
 					</Alert>
 				)}
 
@@ -265,7 +273,7 @@ export function DataExportModal() {
 						color="orange"
 					>
 						Your {isBrowser ? "browser" : "environment"} does not support streaming
-						exports. For larger exports, please use the SurrealDB CLI.
+						exports. For larger exports, please use the RRFlow CLI.
 					</Alert>
 				) : streamSupport === "unsupported-engine" ? (
 					<Alert

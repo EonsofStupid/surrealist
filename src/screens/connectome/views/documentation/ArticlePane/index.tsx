@@ -1,5 +1,5 @@
 import { Box, Group, ScrollArea, Select, Title } from "@mantine/core";
-import { Icon, iconCheck, iconList } from "@surrealdb/ui";
+import { Icon, iconCheck, iconList } from "@rrflow/ui";
 import { type RefObject, useMemo } from "react";
 import { ContentPane } from "~/components/Pane";
 import { ScrollFader } from "~/components/ScrollFader";
@@ -15,7 +15,7 @@ import {
 	isGroup,
 	isLink,
 	isSection,
-} from "~/screens/Connectome/docs/types";
+} from "~/screens/connectome/docs/types";
 import type { CodeLang } from "~/types";
 
 type ReadableArticle = DocsArticleTopic | DocsSectionTopic;

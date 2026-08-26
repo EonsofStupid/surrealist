@@ -39,7 +39,7 @@ import {
 	iconVariable,
 	iconWarning,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 
 /**
  * List of icons which may be used by users for

@@ -641,6 +641,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "connectome"
+version = "0.0.0"
+dependencies = [
+ "cocoa",
+ "dirs 5.0.1",
+ "log",
+ "objc",
+ "openssl",
+ "portpicker",
+ "reqwest 0.12.28",
+ "serde",
+ "serde_json",
+ "showfile",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-deep-link",
+ "tauri-plugin-dialog",
+ "tauri-plugin-fs",
+ "tauri-plugin-localhost",
+ "tauri-plugin-log",
+ "tauri-plugin-os",
+ "tauri-plugin-process",
+ "tauri-plugin-shell",
+ "tauri-plugin-single-instance",
+ "tauri-plugin-updater",
+ "time",
+ "url",
+]
+
+[[package]]
 name = "const-random"
 version = "0.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -737,36 +767,6 @@ dependencies = [
  "bitflags 2.11.0",
  "core-foundation 0.10.1",
  "libc",
-]
-
-[[package]]
-name = "cortex"
-version = "0.0.0"
-dependencies = [
- "cocoa",
- "dirs 5.0.1",
- "log",
- "objc",
- "openssl",
- "portpicker",
- "reqwest 0.12.28",
- "serde",
- "serde_json",
- "showfile",
- "tauri",
- "tauri-build",
- "tauri-plugin-deep-link",
- "tauri-plugin-dialog",
- "tauri-plugin-fs",
- "tauri-plugin-localhost",
- "tauri-plugin-log",
- "tauri-plugin-os",
- "tauri-plugin-process",
- "tauri-plugin-shell",
- "tauri-plugin-single-instance",
- "tauri-plugin-updater",
- "time",
- "url",
 ]
 
 [[package]]

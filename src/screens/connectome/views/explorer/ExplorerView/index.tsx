@@ -10,7 +10,7 @@ import {
 	iconPlus,
 	iconTable,
 	iconUpload,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { adapter } from "~/adapter";
@@ -24,12 +24,12 @@ import { usePanelMinSize } from "~/hooks/panels";
 import { useConnectionAndView, useIntent, useViewFocus } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useDesigner } from "~/providers/Designer";
-import { TablesPane } from "~/screens/Connectome/components/TablesPane";
-import { useConfigStore } from "~/shell/stores/config";
-import { useInterfaceStore } from "~/shell/stores/interface";
+import { TablesPane } from "~/screens/connectome/components/TablesPane";
 import { ActivateDatabaseEvent, DisconnectedEvent } from "~/shared/util/global-events";
 import { dispatchIntent } from "~/shared/util/intents";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useInterfaceStore } from "~/shell/stores/interface";
 import { CreatorDrawer } from "../CreatorDrawer";
 import { ExplorerPane } from "../ExplorerPane";
 
@@ -178,8 +178,8 @@ export function ExplorerView() {
 								title="Explorer"
 								icon={iconExplorer}
 								snippet={{
-									language: "surrealql",
-									title: "SurrealQL",
+									language: "rrflowql",
+									title: "RRFlowQL",
 									code: `
 										-- Declare a new table
 										DEFINE TABLE person;
@@ -210,7 +210,7 @@ export function ExplorerView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/table",
+												"https://github.com/EonsofStupid/connectome",
 											)
 										}
 									>

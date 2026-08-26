@@ -18,7 +18,7 @@ import {
 	iconChevronUp,
 	iconHelp,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect, useMemo, useState } from "react";
 import { Label } from "~/components/Label";
 import { Spacer } from "~/components/Spacer";

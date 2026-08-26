@@ -1,12 +1,5 @@
 import { Box, Group, Image, Menu, Text } from "@mantine/core";
-import {
-	Icon,
-	iconClose,
-	iconMaximize,
-	iconMinimize,
-	iconRestore,
-	pictoConnectome,
-} from "@surrealdb/ui";
+import { Icon, iconClose, iconMaximize, iconMinimize, iconRestore, pictoBrain } from "@rrflow/ui";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useState } from "react";
 import { ActionButton } from "~/components/ActionButton";
@@ -47,7 +40,7 @@ export function AppTitleBar() {
 		<Box className={classes.titleBar}>
 			<Group gap={0}>
 				<Image
-					src={pictoConnectome}
+					src={pictoBrain}
 					w={23}
 					m="md"
 					data-tauri-drag-region
@@ -122,6 +115,8 @@ export function AppTitleBar() {
 											</Menu.Item>
 										);
 									}
+
+									return null;
 								})}
 							</Menu.Dropdown>
 						</Menu>

@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useConnection } from "~/hooks/connection";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { createBaseAuthentication } from "~/shared/util/defaults";
 
 export function DocsGlobalAuthentication({ language, topic }: TopicProps) {
@@ -13,15 +13,15 @@ export function DocsGlobalAuthentication({ language, topic }: TopicProps) {
 	const snippets = useMemo<Snippets>(
 		() => ({
 			cli: `
-			surreal sql --endpoint ${topic.extra?.connectionUri} --namespace ${topic.extra?.namespace} --database ${topic.extra?.database}
+			rrflow sql --endpoint ${topic.extra?.connectionUri} --namespace ${topic.extra?.namespace} --database ${topic.extra?.database}
 		`,
 			js: `
-		import { Surreal } from 'surrealdb';
+		import { RRFlow } from '~/vendor/rrflow-client';
 
-		const db = new Surreal();
+		const db = new RRFlow();
 
-		import { Surreal } from 'surrealdb';
-		const db = new Surreal();
+		import { RRFlow } from '~/vendor/rrflow-client';
+		const db = new RRFlow();
 		await db.connect('<the actual address of the connection>/rpc', {
 			namespace: '<the actual ns of the connection>',
 			database: '<the action db of the connection>'
@@ -32,40 +32,40 @@ export function DocsGlobalAuthentication({ language, topic }: TopicProps) {
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
-			# update Surreal to AsyncSurreal if using async code
-		from surrealdb import Surreal
+			# update RRFlow to AsyncRRFlow if using async code
+		from rrflow import RRFlow
 # Without using a context manager
-		db = Surreal('ws://localhost:8000')
+		db = RRFlow('ws://localhost:8000')
         db.use('${esc_namespace}', '${esc_database}')
 # Sign in and your code...
         db.close()	
 
 # Using a context manager
-with Surreal('ws://localhost:8000') as db:
+with RRFlow('ws://localhost:8000') as db:
     db.use('namespace', 'database')
 	# Sign in and your code...
-		db = Surreal()
-		await db.connect('https://cloud.surrealdb.com/rpc')
+		db = RRFlow()
+		await db.connect('http://127.0.0.1:8000/rpc')
 		`,
 			go: `
 		// Connect to a local endpoint
-		surrealdb.New("ws://localhost:8000/rpc");
+		rrflow.New("ws://localhost:8000/rpc");
 		// Connect to a remote endpoint
-		surrealdb.New("ws://cloud.surrealdb.com/rpc");
+		rrflow.New("ws://127.0.0.1:8000/rpc");
 		`,
 			csharp: `
 		await db.Connect();
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[topic.extra, esc_namespace, esc_database],
@@ -76,8 +76,7 @@ with Surreal('ws://localhost:8000') as db:
 			<div>
 				<p>
 					Enabling authentication for your database is a critical step in securing your
-					data. SurrealDB provides a simple way to enable authentication for your
-					database.
+					data. RRFlow provides a simple way to enable authentication for your database.
 				</p>
 			</div>
 			<Box>

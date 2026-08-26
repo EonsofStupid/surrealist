@@ -1,11 +1,11 @@
 import { Text } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
 import { useEffect, useMemo, useState } from "react";
 import { CodeEditor } from "~/components/CodeEditor";
-import { surqlRecordLinks } from "~/editor";
+import { rrflowqlRecordLinks } from "~/editor";
 import { useSetting } from "~/hooks/config";
-import { useResultFormatter } from "~/hooks/surrealql";
+import { useResultFormatter } from "~/hooks/rrflowql";
 import { useInspector } from "~/providers/Inspector";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { attemptFormat, type PreviewProps } from ".";
 
 export function IndividualPreview({ responses, selected }: PreviewProps) {
@@ -34,7 +34,7 @@ export function IndividualPreview({ responses, selected }: PreviewProps) {
 		};
 	}, [result, format]);
 
-	const extensions = useMemo(() => [surrealql(), surqlRecordLinks(inspect)], [inspect]);
+	const extensions = useMemo(() => [rrflowql(), rrflowqlRecordLinks(inspect)], [inspect]);
 
 	return success ? (
 		<CodeEditor

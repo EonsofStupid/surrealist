@@ -11,14 +11,13 @@ import {
 	Stack,
 	Text,
 } from "@mantine/core";
+import { Icon, iconBraces, iconFilter, iconRelation, iconTag } from "@rrflow/ui";
 import { indexParallelEdgesIndex } from "@sigma/edge-curve";
-import { Icon, iconBraces, iconFilter, iconRelation, iconTag } from "@surrealdb/ui";
 import { inferSettings } from "graphology-layout-forceatlas2";
 import FA2LayoutSupervisor from "graphology-layout-forceatlas2/worker";
 import iwanthue, { ColorSpaceArray } from "iwanthue";
 import { isArray, isNumber, isObject } from "radash";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { equals, escapeIdent, RecordId } from "surrealdb";
 import { Label } from "~/components/Label";
 import { newRelationalGraph, RelationGraph } from "~/components/RelationGraph";
 import { NodeCircle } from "~/components/RelationGraph/node";
@@ -31,16 +30,17 @@ import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
 import { useToggleList } from "~/hooks/toggle";
 import { openGraphLabelEditorModal } from "~/modals/graph-labels";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { plural } from "~/shared/util/helpers";
 import { themeColor } from "~/shared/util/mantine";
+import { useConfigStore } from "~/shell/stores/config";
+import { equals, escapeIdent, RecordId } from "~/vendor/rrflow-client";
 import classes from "../style.module.scss";
 import { type PreviewProps } from ".";
 
 const CURVE_AMP = 3.5;
 const CURVE_SCALE = 0.15;
-const SURREAL_SPACE: ColorSpaceArray = [180, 10, 50, 100, 40, 100];
+const RRFLOW_SPACE: ColorSpaceArray = [180, 10, 50, 100, 40, 100];
 
 function jitter(value?: number) {
 	return value !== undefined ? value + (Math.random() - 0.5) * 0.001 : value;
@@ -164,7 +164,7 @@ export function GraphPreview({ responses, selected }: PreviewProps) {
 		const colorMap = new Map<string, string>();
 		const palette = iwanthue(9, {
 			seed: "Connectome",
-			colorSpace: SURREAL_SPACE,
+			colorSpace: RRFLOW_SPACE,
 		});
 
 		// Assign previously used colors

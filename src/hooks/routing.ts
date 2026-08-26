@@ -3,10 +3,10 @@ import { matchRoute, PathPattern, useRouter, useSearch } from "wouter";
 import { adapter } from "~/adapter";
 import { MiniAdapter } from "~/adapter/mini";
 import { SANDBOX } from "~/constants";
-import type { ViewPage } from "~/types";
 import { getConnectionById } from "~/shared/util/connection";
 import { IntentEvent } from "~/shared/util/global-events";
 import { consumeIntent, type IntentPayload, type IntentType } from "~/shared/util/intents";
+import type { ViewPage } from "~/types";
 import { useEventSubscription } from "./event";
 import { useStable } from "./stable";
 
@@ -52,6 +52,11 @@ export function useConnectionAndView() {
 		return [null, null] as const;
 	}
 
+	const connection = getConnectionById(params.connection);
+	if (connection?.target === "control-plane" || connection?.target === "diagnostics") {
+		return [null, null] as const;
+	}
+
 	return [params.connection, params.view as ViewPage] as const;
 }
 
@@ -65,6 +70,15 @@ export function useConnectionNavigator() {
 		const info = getConnectionById(connection);
 
 		if (info) {
+			if (info.target === "control-plane") {
+				navigate(`/control/${info.id}`);
+				return;
+			}
+			if (info.target === "diagnostics") {
+				navigate(`/diagnostics/${info.id}`);
+				return;
+			}
+
 			const fallback = info.authentication.mode === "cloud" ? "dashboard" : "query";
 
 			navigate(`/c/${info.id}/${view ?? fallback}`);

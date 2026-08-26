@@ -9,10 +9,10 @@ import { ConnectionLabelsDetails } from "~/components/ConnectionDetails/labels";
 import { Form } from "~/components/Form";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { openConnection } from "~/screens/Connectome/connection/connection";
+import { openConnection } from "~/screens/connectome/connection/connection";
+import { getActiveConnection, isConnectionValid } from "~/shared/util/connection";
 import { useConfigStore } from "~/shell/stores/config";
 import { Connection } from "~/types";
-import { getActiveConnection, isConnectionValid } from "~/shared/util/connection";
 
 export function openConnectionEditModal(connection: Connection) {
 	openModal({

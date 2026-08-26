@@ -3,7 +3,7 @@ import { useCloudOrganizationQuery } from "~/cloud/queries/organizations";
 import { useCloudPricingQuery } from "~/cloud/queries/pricing";
 import { PageBreadcrumbs } from "~/components/PageBreadcrumbs";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { PricingCard } from "~/screens/Connectome/components/PricingCard";
+import { PricingCard } from "~/screens/connectome/components/PricingCard";
 import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 

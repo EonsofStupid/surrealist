@@ -2,10 +2,10 @@ import type {
 	Authentication,
 	Connection,
 	ConnectionSchema,
-	QueryTab,
-	QueryType,
 	ConnectomeConfig,
 	ConnectomeSettings,
+	QueryTab,
+	QueryType,
 } from "~/types";
 
 import { HOSTNAME } from "./analytics";
@@ -37,7 +37,8 @@ export function createBaseConfig(): ConnectomeConfig {
 export function createBaseSettings(): ConnectomeSettings {
 	return {
 		behavior: {
-			updateChecker: true,
+			// Enabled after Connectome owns a signed RRFlow release feed.
+			updateChecker: false,
 			tableSuggest: true,
 			variableSuggest: true,
 			queryErrorChecker: true,
@@ -95,7 +96,7 @@ export function createBaseSettings(): ConnectomeSettings {
 			databaseListMode: "grid",
 			urlAuthBase: "",
 			urlApiBase: "",
-			urlWebsiteBase: "https://surrealdb.com",
+			urlWebsiteBase: "https://github.com/EonsofStupid/connectome",
 			urlApiTicketsBase: "",
 		},
 		gtm: {
@@ -127,6 +128,7 @@ export function createBaseConnection(settings: ConnectomeSettings): Connection {
 	return {
 		id: newId(),
 		name: "",
+		target: "runtime",
 		icon: 0,
 		queries: [
 			{

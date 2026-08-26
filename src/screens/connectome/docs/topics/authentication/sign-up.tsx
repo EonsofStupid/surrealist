@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useConnection } from "~/hooks/connection";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsAuthSignUp({ language }: TopicProps) {
 	const [namespace, database] = useConnection((c) => [
@@ -22,27 +22,27 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 				database: ${esc_database},
 				scope: "user",
 				variables: {
-					email: 'info@surrealdb.com',
+					email: 'developer@example.com',
 					pass: '123456',
 				},
 			});
 
 			// With Record Access
 			 await db.signup({
-				namespace: 'surrealdb',
+				namespace: 'rrflow',
 				database: 'docs',
 				access: 'user',
 
 				// Also pass any properties required by the scope definition
 				variables: {
-					email: 'info@surrealdb.com',
+					email: 'developer@example.com',
 					pass: '123456',
 				},
 			});
 					`,
 			rust: `
 			use serde::Serialize;
-			use surrealdb::opt::auth::Record;
+			use rrflow::opt::auth::Record;
 
 			#[derive(Serialize)]
 			struct Credentials<'a> {
@@ -55,7 +55,7 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 				database: ${esc_database},
 				access: "user",
 				params: Credentials {
-					email: "info@surrealdb.com",
+					email: "developer@example.com",
 					pass: "123456",
 				},
 			}).await?;
@@ -71,19 +71,19 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 
 			# Also pass any properties required by the access definition
 			"variables": {
-				"email": 'info@surrealdb.com',
+				"email": 'developer@example.com',
 				"password": '123456'
 			}
 		})
 		`,
 			go: `
-		authData := &surrealdb.Auth{
+		authData := &rrflow.Auth{
 			Username: "root",
 			Password: "root", 
 			Namespace = "test", 
 			Database = "test", 
 			Access = "user",
-			Email = "info@surrealdb.com",
+			Email = "developer@example.com",
 			Password = "123456"
 		}
 		token, err := db.SignUp(authData)
@@ -98,7 +98,7 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 				Namespace = "test",
 				Database = "test",
 				Access = "user",
-				Email = "info@surrealdb.com",
+				Email = "developer@example.com",
 				Password = "123456"
 			};
 
@@ -117,7 +117,7 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 			Namespace = "test",
 			Database = "test",
 			Scope = "user",
-			Email = "info@surrealdb.com",
+			Email = "developer@example.com",
 			Password = "123456"
 		};
 
@@ -150,8 +150,8 @@ export function DocsAuthSignUp({ language }: TopicProps) {
 		<Article title="Sign Up">
 			<div>
 				<p>
-					When working with SurrealDB Scopes, you can let anonymous users signup and
-					create an account in your database. In a scope's SIGNUP-clause, you can specify
+					When working with RRFlow Scopes, you can let anonymous users signup and create
+					an account in your database. In a scope's SIGNUP-clause, you can specify
 					variables which later need to be passed in an SDK or Web Request, email and pass
 					in this case. The scope is called user for this example.
 				</p>

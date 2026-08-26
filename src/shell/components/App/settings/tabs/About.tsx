@@ -1,5 +1,5 @@
 import { Box, Button, Stack, Text } from "@mantine/core";
-import { Icon, iconCheck, iconReset, iconWrench } from "@surrealdb/ui";
+import { Icon, iconCheck, iconReset, iconWrench } from "@rrflow/ui";
 import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { adapter, isDesktop } from "~/adapter";
@@ -33,7 +33,7 @@ export function AboutTab() {
 			["Build date", format(import.meta.env.DATE, "MMMM do, yyyy")],
 			["Build time", format(import.meta.env.DATE, "HH:mm:ss OOO")],
 			["Build mode", import.meta.env.MODE],
-			["Compatibility", `SurrealDB ${import.meta.env.SDB_VERSION}+`],
+			["RRFlow protocol", `v${import.meta.env.RRFLOW_VERSION}`],
 		],
 		[versionText],
 	);
@@ -48,7 +48,7 @@ export function AboutTab() {
 
 	return (
 		<Box m="xs">
-			<Text c="obsidian">Connectome &copy; {format(currDate, "yyyy")} SurrealDB Ltd</Text>
+			<Text c="obsidian">Connectome &copy; {format(currDate, "yyyy")} EonsofStupid</Text>
 			<Stack
 				gap="xs"
 				mt="xl"
@@ -67,11 +67,11 @@ export function AboutTab() {
 				))}
 			</Stack>
 			<Stack mt="xl">
-				<LearnMore href="https://github.com/surrealdb/Connectome/">
+				<LearnMore href="https://github.com/EonsofStupid/connectome">
 					GitHub Repository
 				</LearnMore>
-				<LearnMore href="https://surrealdb.com/docs/Connectome">
-					Connectome Documentation
+				<LearnMore href="https://github.com/EonsofStupid/connectome">
+					RRFlow engine repository
 				</LearnMore>
 			</Stack>
 			<Stack
@@ -81,7 +81,7 @@ export function AboutTab() {
 				<Button
 					onClick={copyDebug}
 					rightSection={<Icon path={clipboard.copied ? iconCheck : iconWrench} />}
-					color={clipboard.copied ? "surreal" : "obsidian"}
+					color={clipboard.copied ? "rrflow" : "obsidian"}
 					variant="light"
 					size="xs"
 				>

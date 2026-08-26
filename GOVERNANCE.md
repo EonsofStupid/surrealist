@@ -1,6 +1,6 @@
-# GOVERNANCE REGISTRY — Cortex DevTools (Root)
+# GOVERNANCE REGISTRY — Connectome (Root)
 
-> **Status**: ACTIVE | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS
+> **Status**: ACTIVE | **Date**: 2026-08-21 | **Classification**: PUBLIC ALPHA
 
 ---
 
@@ -8,49 +8,39 @@
 
 | Property | Value |
 |----------|-------|
-| **Project** | Cortex DevTools |
+| **Project** | Connectome |
 | **Owner** | Jesse Hall (Hades) |
-| **Platform** | DevPulse.App |
-| **AI Product** | Clyffy.ai — The AI managed by this devtool |
-| **Data Architecture** | RROFlow.ai — Reasoning Ready Object pipeline |
-| **Fork Source** | surrealdb/surrealist |
-| **Classification** | INTERNAL DEVTOOLS — Never public first release |
-| **Purpose** | Visual IDE, live observatory, step debugger, and classroom for Clyffy's MAESTRO pipeline |
+| **Parent** | RRFlow engine repository (`apps/connectome` submodule) |
+| **AI Product** | Clyffy — local and frontier AI harness managed through this control surface |
+| **Data Architecture** | RRFlow — persistent reasoning runtime, storage, query, and lifecycle kernel |
+| **Fork Source** | rrflow/connectome |
+| **Classification** | PUBLIC ALPHA |
+| **Purpose** | Native instance connector, data/model explorer, live observatory, and visual debugger for RRFlow |
 
-### Brand Network
+### Product Architecture
 
-| Brand | Role |
+| Layer | Role |
 |-------|------|
-| **DevPulse.App** | Platform — the parent app ecosystem |
-| **Clyffy.ai** | The AI — this devtool exists to manage, observe, debug, and teach Clyffy's internals |
-| **RROFlow.ai** | Data architecture — Reasoning Ready Objects, the knowledge pipeline |
-| **Effing.ai Network** | Developer network |
-| **AngryVibes Network** | Community network |
+| **RRFlow** | Engine umbrella — runtime, storage, query execution, lifecycle, and observability |
+| **Vyrm** | Persistent LSM/columnar engine evolved inside RRFlow |
+| **Connectome** | Separate Tauri desktop client, mounted as `apps/connectome` in RRFlow |
+| **Clyffy** | AI harness/operator that consumes RRFlow through Automaton and LFG workflows |
 
 ### What This Tool IS
 
-Cortex DevTools is the control plane for the **Cortex engine**. It is simultaneously:
+Connectome is the native control plane for **RRFlow instances**. It is simultaneously:
 
-1. **Visual IDE** — Configure pipelines, design schemas, manage collections
-2. **Live Observatory** — Watch data flow through every node in real time
-3. **Step Debugger** — Set breakpoints, inspect I/O, find problems
-4. **Classroom** — Learn what each subsystem does in industry-standard terminology
+1. **Instance client** — Store profiles and connect to local or remote RRFlow runtimes
+2. **Visual IDE** — Query data, inspect records, and design schemas and relationships
+3. **Live observatory** — Grow into trace, reasoning-run, storage, and lifecycle visualization
+4. **Step debugger** — Freeze, inspect, rewind, and compare runtime events as those APIs land
 
 **User #1**: Jesse (you) — building MAESTRO, needs to see everything working
 **User #2**: Future junior developers — need to inherit this codebase and understand it
 
-### White-Label Architecture
+### Boundary Rule
 
-> **Cortex is NOT just a product name.** It is the white-label AI infrastructure layer — the nucleus/brain that powers everything.
-
-| Layer | What It Is | Example |
-|-------|-----------|---------|
-| **Cortex** | The infrastructure — RRO pipeline, CAG, RAG, model orchestration, Tauri IPC bridge | The engine under the hood |
-| **Clyffy** | The branded AI product that Cortex powers — personality, conversations, learning | Jesse's AI, built on Cortex |
-| **MAESTRO** | The pipeline architecture that Cortex implements | The blueprint Cortex follows |
-| **DevPulse** | The developer platform that hosts all of this | The parent ecosystem |
-
-Cortex DevTools is "the devtool for the Cortex engine." If someone else builds a different AI brand on Cortex, this same devtool manages their pipeline too. The `cortex://` deep link scheme reflects this — it belongs to the infrastructure layer, not any specific brand.
+Connectome must remain a separately buildable Windows/macOS/Linux application. The RRFlow repository owns it through a git submodule; Connectome communicates with deployed RRFlow instances through versioned protocols and capability negotiation. An embedded diagnostic page may exist in the engine, but it is not a replacement for Connectome.
 
 ---
 
@@ -72,9 +62,9 @@ The following Biome rules are intentionally disabled in `biome.json`. Each has b
 | Rule | Status | Rationale |
 |------|--------|-----------|
 | `a11y/useSemanticElements` | `off` | Desktop app — not a public web page. Devtool UI uses custom components extensively. |
-| `suspicious/noExplicitAny` | `off` | Inherited from Surrealist. Parking lot item — should be progressively tightened as we refactor. |
-| `suspicious/noThenProperty` | `off` | SurrealDB SDK uses `.then` patterns on result objects. Cannot remove without breaking SDK usage. |
-| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in SurrealQL regex patterns. |
+| `suspicious/noExplicitAny` | `off` | Inherited from Connectome. Parking lot item — should be progressively tightened as we refactor. |
+| `suspicious/noThenProperty` | `off` | RRFlow SDK uses `.then` patterns on result objects. Cannot remove without breaking SDK usage. |
+| `suspicious/noMisleadingCharacterClass` | `off` | Inherited. Used in RRFlowQL regex patterns. |
 | `suspicious/noArrayIndexKey` | `off` | Inherited. Used in list rendering where items lack stable IDs. Should be revisited per-component. |
 | `style/noUnusedTemplateLiteral` | `off` | The `urql` schema parser triggers this. |
 | `style/useImportType` | `off` | Inherited. TypeScript `import type` enforcement conflicts with some patterns. |

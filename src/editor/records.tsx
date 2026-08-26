@@ -30,7 +30,7 @@ const RECORD_LINK_DECORATOR = (view: EditorView) => {
 /**
  * An extension used to highlight record links
  */
-export const surqlRecordLinks = (onClick: RecordLinkCallback): Extension => [
+export const rrflowqlRecordLinks = (onClick: RecordLinkCallback): Extension => [
 	EditorView.decorations.of(RECORD_LINK_DECORATOR),
 	Prec.highest(
 		EditorView.domEventHandlers({

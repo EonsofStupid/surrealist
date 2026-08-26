@@ -1,18 +1,44 @@
 import { compareVersions } from "compare-versions";
-import {
-	type AccessRecordAuth,
-	Features,
-	ProvidedAuth,
-	SqlExportOptions,
-	Surreal,
-	SystemAuth,
-	UnsupportedVersionError,
-	Uuid,
-} from "surrealdb";
 import { adapter } from "~/adapter";
 import { fetchAPI } from "~/cloud/api";
 import { MAX_HISTORY_QUERY_LENGTH, SANDBOX } from "~/constants";
 import { hasCompletedOnboarding } from "~/hooks/onboarding";
+import { tagEvent } from "~/shared/util/analytics";
+import { getSetting } from "~/shared/util/config";
+import {
+	getActiveConnection,
+	getAuthDB,
+	getAuthNS,
+	getConnection,
+	getConnectionVariant,
+} from "~/shared/util/connection";
+import {
+	RRFLOW_START_BASICS,
+	RRFLOW_START_GRAPH_V2,
+	RRFLOW_START_GRAPH_V3,
+	RRFLOW_START_VECTOR_V2,
+	RRFLOW_START_VECTOR_V3,
+} from "~/shared/util/dataset";
+import { createBaseQuery } from "~/shared/util/defaults";
+import { rrflowqlDurationToSeconds } from "~/shared/util/duration";
+import { CloudError } from "~/shared/util/errors";
+import {
+	ActivateDatabaseEvent,
+	ConnectedEvent,
+	DisconnectedEvent,
+} from "~/shared/util/global-events";
+import {
+	__throw,
+	connectionUri,
+	exposeDebug,
+	newId,
+	showErrorNotification,
+	showWarning,
+} from "~/shared/util/helpers";
+import { parseIdent } from "~/shared/util/language";
+import { createRRFlowQL } from "~/shared/util/rrflowql";
+import { RRFlowQL } from "~/shared/util/rrflowql/contract";
+import { syncConnectionSchema } from "~/shared/util/schema";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { useCloudStore } from "~/stores/cloud";
@@ -27,40 +53,18 @@ import type {
 	SchemaInfoKV,
 	SchemaInfoNS,
 } from "~/types";
-import { tagEvent } from "~/shared/util/analytics";
-import { getSetting } from "~/shared/util/config";
 import {
-	getActiveConnection,
-	getAuthDB,
-	getAuthNS,
-	getConnection,
-	getConnectionVariant,
-} from "~/shared/util/connection";
-import {
-	SURREAL_START_BASICS,
-	SURREAL_START_GRAPH_V2,
-	SURREAL_START_GRAPH_V3,
-	SURREAL_START_VECTOR_V2,
-	SURREAL_START_VECTOR_V3,
-} from "~/shared/util/dataset";
-import { createBaseQuery } from "~/shared/util/defaults";
-import { surqlDurationToSeconds } from "~/shared/util/duration";
-import { CloudError } from "~/shared/util/errors";
-import { ActivateDatabaseEvent, ConnectedEvent, DisconnectedEvent } from "~/shared/util/global-events";
-import {
-	__throw,
-	connectionUri,
-	exposeDebug,
-	newId,
-	showErrorNotification,
-	showWarning,
-} from "~/shared/util/helpers";
-import { parseIdent } from "~/shared/util/language";
-import { syncConnectionSchema } from "~/shared/util/schema";
-import { createSurrealQL } from "~/shared/util/surql";
-import { SurrealQL } from "~/shared/util/surql/surrealql";
+	type AccessRecordAuth,
+	Features,
+	ProvidedAuth,
+	RRFlow,
+	SqlExportOptions,
+	SystemAuth,
+	UnsupportedVersionError,
+	Uuid,
+} from "~/vendor/rrflow-client";
 import { composeAuthentication, getVersionTimeout } from "./helpers";
-import { createSurreal } from "./surreal";
+import { createRRFlow } from "./rrflow";
 
 export interface ConnectOptions {
 	connection?: Connection;
@@ -79,8 +83,8 @@ export interface GraphqlResponse {
 
 let retryTask: any;
 let openedConnection: Connection;
-let instance = new Surreal();
-let surrealql: SurrealQL | null = null;
+let instance = new RRFlow();
+let rrflowql: RRFlowQL | null = null;
 
 const LQ_SUPPORTED = new Set<Protocol>(["ws", "wss", "mem", "indxdb"]);
 const LIVE_QUERIES = new Map<string, Set<Uuid>>();
@@ -104,14 +108,14 @@ export async function openConnection(options?: ConnectOptions) {
 
 	const strictSandbox = getSetting("behavior", "strictSandbox");
 	const newState = options?.isRetry ? "retrying" : "connecting";
-	const surreal = await createSurreal();
+	const rrflow = await createRRFlow();
 
 	await _closeConnection(newState, false);
 
-	instance = surreal;
+	instance = rrflow;
 	openedConnection = connection;
 
-	exposeDebug({ surreal, surrealql });
+	exposeDebug({ rrflow, rrflowql });
 
 	const { setCurrentState, setVersion, setLatestError, clearSchema } =
 		useDatabaseStore.getState();
@@ -142,14 +146,14 @@ export async function openConnection(options?: ConnectOptions) {
 			}
 
 			if (authState === "unauthenticated") {
-				throw new CloudError("Not authenticated with SurrealDB Cloud");
+				throw new CloudError("Not authenticated with RRFlow Cloud");
 			}
 
 			const instance = await fetchAPI<CloudInstance>(
 				`/instances/${connection.authentication.cloudInstance}`,
 			);
 
-			if (!instance || instance.state !== "ready") {
+			if (instance?.state !== "ready") {
 				scheduleReconnect(1000);
 				return;
 			}
@@ -204,7 +208,7 @@ export async function openConnection(options?: ConnectOptions) {
 		adapter.log("DB", "Connection established");
 
 		const v = await instance.version();
-		const version = v.version.replace(/^surrealdb-/, "");
+		const version = v.version.replace(/^rrflow-/, "");
 		const isPreview = version.includes("-alpha") || version.includes("-beta");
 
 		if (isPreview) {
@@ -212,13 +216,13 @@ export async function openConnection(options?: ConnectOptions) {
 				autoClose: 10_000,
 				title: "Preview version detected",
 				subtitle:
-					"You are connected to a preview version of SurrealDB. Some features may not work as intended.",
+					"You are connected to a preview version of RRFlow. Some features may not work as intended.",
 			});
 		}
 
 		adapter.log("DB", `Database version ${version ?? "unknown"}`);
 
-		surrealql = createSurrealQL(version);
+		rrflowql = createRRFlowQL(version);
 
 		setVersion(version);
 		setCurrentState("connected");
@@ -236,16 +240,16 @@ export async function openConnection(options?: ConnectOptions) {
 			`);
 
 			if (!hasCompletedSandboxOnboarding && adapter.isSampleSandboxEnabled) {
-				const queries = [SURREAL_START_BASICS];
+				const queries = [RRFLOW_START_BASICS];
 
 				const canUse30Queries = compareVersions(version, "3.0.0") >= 0;
 
 				if (canUse30Queries) {
-					queries.push(SURREAL_START_GRAPH_V3);
-					queries.push(SURREAL_START_VECTOR_V3);
+					queries.push(RRFLOW_START_GRAPH_V3);
+					queries.push(RRFLOW_START_VECTOR_V3);
 				} else {
-					queries.push(SURREAL_START_GRAPH_V2);
-					queries.push(SURREAL_START_VECTOR_V2);
+					queries.push(RRFLOW_START_GRAPH_V2);
+					queries.push(RRFLOW_START_VECTOR_V2);
 				}
 
 				const configs = queries.map((query) => ({
@@ -259,11 +263,11 @@ export async function openConnection(options?: ConnectOptions) {
 					(it) =>
 						it.query.length > 0 &&
 						![
-							SURREAL_START_BASICS.name,
-							SURREAL_START_GRAPH_V2.name,
-							SURREAL_START_GRAPH_V3.name,
-							SURREAL_START_VECTOR_V2.name,
-							SURREAL_START_VECTOR_V3.name,
+							RRFLOW_START_BASICS.name,
+							RRFLOW_START_GRAPH_V2.name,
+							RRFLOW_START_GRAPH_V3.name,
+							RRFLOW_START_VECTOR_V2.name,
+							RRFLOW_START_VECTOR_V3.name,
 						].includes(it.name ?? ""),
 				);
 
@@ -320,7 +324,7 @@ async function _closeConnection(state: State, reconnect: boolean) {
 }
 
 /**
- * Close the active surreal connection
+ * Close the active rrflow connection
  */
 export async function closeConnection(reconnect: boolean = false) {
 	await _closeConnection(reconnect ? "retrying" : "disconnected", reconnect);
@@ -337,10 +341,10 @@ export function isConnected() {
  * Register a new record access user
  *
  * @param auth The authentication details
- * @param surreal The optional surreal instance
+ * @param rrflow The optional rrflow instance
  */
-export async function register(auth: AccessRecordAuth, surreal?: Surreal) {
-	const db = surreal ?? instance;
+export async function register(auth: AccessRecordAuth, rrflow?: RRFlow) {
+	const db = rrflow ?? instance;
 
 	await db.signup(auth).catch(() => {
 		throw new Error("Could not sign up");
@@ -351,10 +355,10 @@ export async function register(auth: AccessRecordAuth, surreal?: Surreal) {
  * Authenticate the connection
  *
  * @param auth The authentication details
- * @param surreal The optional surreal instance
+ * @param rrflow The optional rrflow instance
  */
-export async function authenticate(auth: ProvidedAuth, surreal?: Surreal) {
-	const db = surreal ?? instance;
+export async function authenticate(auth: ProvidedAuth, rrflow?: RRFlow) {
+	const db = rrflow ?? instance;
 
 	if (auth === undefined) {
 		await db.invalidate();
@@ -505,11 +509,11 @@ export async function executeUserQuery(options?: UserQueryOptions) {
 
 		let liveIndexes: number[];
 
-		const variablesObject = await getSurrealQL().parseValue<Record<string, unknown>>(variables);
+		const variablesObject = await getRRFlowQL().parseValue<Record<string, unknown>>(variables);
 		const response = await executeQuery(query, variablesObject);
 
 		try {
-			liveIndexes = await getSurrealQL().getLiveQueries(query, response);
+			liveIndexes = await getRRFlowQL().getLiveQueries(query, response);
 		} catch (err: any) {
 			adapter.warn("DB", `Failed to parse live queries: ${err.message}`);
 			liveIndexes = [];
@@ -561,7 +565,7 @@ export async function executeUserQuery(options?: UserQueryOptions) {
 
 		tagEvent("query_execute", {
 			protocol: connection.authentication.protocol.toString(),
-			type: "surql",
+			type: "rrflowql",
 			compute_time: compute_time,
 		});
 
@@ -691,7 +695,7 @@ export async function executeGraphql(
 		tagEvent("query_execute", {
 			protocol: connection.authentication.protocol.toString(),
 			type: "graphql",
-			compute_time: surqlDurationToSeconds(response.execution_time),
+			compute_time: rrflowqlDurationToSeconds(response.execution_time),
 		});
 	} catch (err: any) {
 		console.warn("executeGraphql fail", err);
@@ -852,13 +856,13 @@ export type StreamingSupport = "unsupported-browser" | "unsupported-engine" | "s
  * Returns whether streaming imports or exports are supported
  */
 export function isStreamingSupported() {
-	const surreal = getSurreal();
+	const rrflow = getRRFlow();
 
 	if (!("showSaveFilePicker" in window) || !("showOpenFilePicker" in window)) {
 		return "unsupported-browser";
 	}
 
-	if (!surreal.isConnected || !surreal.isFeatureSupported(Features.ExportImportRaw)) {
+	if (!rrflow.isConnected || !rrflow.isFeatureSupported(Features.ExportImportRaw)) {
 		return "unsupported-engine";
 	}
 
@@ -903,11 +907,11 @@ export function composeHttpConnection(
 	};
 
 	if (authentication.namespace) {
-		headers["Surreal-NS"] = authentication.namespace;
+		headers["RRFlow-NS"] = authentication.namespace;
 	}
 
 	if (authentication.database) {
-		headers["Surreal-DB"] = authentication.database;
+		headers["RRFlow-DB"] = authentication.database;
 	}
 
 	return { endpoint, headers };
@@ -921,9 +925,9 @@ export function getOpenConnection() {
 }
 
 /**
- * Get the surreal instance
+ * Get the rrflow instance
  */
-export function getSurreal() {
+export function getRRFlow() {
 	return instance;
 }
 
@@ -966,10 +970,10 @@ async function isDatabaseValid(database: string) {
 	}
 }
 
-export function hasSurrealQL() {
-	return surrealql !== null;
+export function hasRRFlowQL() {
+	return rrflowql !== null;
 }
 
-export function getSurrealQL() {
-	return surrealql ?? __throw("No SurrealQL instance available");
+export function getRRFlowQL() {
+	return rrflowql ?? __throw("No RRFlowQL instance available");
 }

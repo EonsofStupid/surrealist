@@ -1,6 +1,6 @@
 import { ActionIcon, Box, Button, CopyButton, Stack, TextInput } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconCheck, iconCopy } from "@surrealdb/ui";
+import { Icon, iconCheck, iconCopy } from "@rrflow/ui";
 import { useUpdateOrganizationMutation } from "~/cloud/mutations/update";
 import { Section } from "~/components/Section";
 import { useStable } from "~/hooks/stable";
@@ -58,7 +58,7 @@ export function OrganizationSettingsTab({ organization }: OrganizationTabProps) 
 				<TextInput
 					maw={400}
 					label="Organisation ID"
-					description="This ID may be requested by the SurrealDB support team"
+					description="This ID may be requested by the RRFlow support team"
 					value={organization.id}
 					rightSection={
 						<CopyButton value={organization.id}>

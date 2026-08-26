@@ -1,6 +1,6 @@
 import { Button, Group, Modal, PasswordInput, Table, Text, TextInput } from "@mantine/core";
+import { Icon, iconAccountPlus } from "@rrflow/ui";
 import { parser } from "@surrealdb/lezer";
-import { Icon, iconAccountPlus } from "@surrealdb/ui";
 import { useState } from "react";
 import { useImmer } from "use-immer";
 import { adapter } from "~/adapter";
@@ -13,11 +13,11 @@ import { useConnection } from "~/hooks/connection";
 import { useIntent } from "~/hooks/routing";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
-import { authenticate, register } from "~/screens/Connectome/connection/connection";
-import { composeAuthentication } from "~/screens/Connectome/connection/helpers";
-import type { AccessField, SchemaAccess } from "~/types";
+import { authenticate, register } from "~/screens/connectome/connection/connection";
+import { composeAuthentication } from "~/screens/connectome/connection/helpers";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { parseVariables } from "~/shared/util/language";
+import type { AccessField, SchemaAccess } from "~/types";
 
 export function RegisterUserModal() {
 	const schema = useDatabaseSchema();

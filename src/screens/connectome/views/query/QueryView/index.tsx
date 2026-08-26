@@ -2,8 +2,7 @@ import type { SelectionRange } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { Box, Button, Group, Modal, Stack, TagsInput, Text, TextInput } from "@mantine/core";
 import { useDisclosure, useInputState } from "@mantine/hooks";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconCheck } from "@surrealdb/ui";
+import { Icon, iconCheck } from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { Form } from "~/components/Form";
@@ -20,11 +19,12 @@ import { useEventSubscription } from "~/hooks/event";
 import { usePanelMinSize } from "~/hooks/panels";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
-import type { SavedQuery } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { SetQueryEvent } from "~/shared/util/global-events";
 import { newId, ON_FOCUS_SELECT } from "~/shared/util/helpers";
+import { useConfigStore } from "~/shell/stores/config";
+import type { SavedQuery } from "~/types";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 import { HistoryDrawer } from "../HistoryDrawer";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
@@ -297,7 +297,7 @@ export function QueryView() {
 								onChange={setSaveContent}
 								multiline
 								placeholder="SELECT * FROM something..."
-								extensions={[surrealql()]}
+								extensions={[rrflowql()]}
 							/>
 						)}
 

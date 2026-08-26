@@ -1,6 +1,6 @@
-import { escapeIdent } from "surrealdb";
-import { executeQuery, executeQuerySingle } from "~/screens/Connectome/connection/connection";
+import { executeQuery, executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { useDatabaseStore } from "~/stores/database";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { getAuthDB, getAuthNS, getConnection } from "./connection";
 import { parseIdent } from "./language";
 

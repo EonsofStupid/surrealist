@@ -25,7 +25,7 @@ import {
 	iconClock,
 	iconFile,
 	iconPlus,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useEffect } from "react";
 import { navigate } from "wouter/use-browser-location";
 import { adapter } from "~/adapter";
@@ -327,7 +327,7 @@ export function ConversationPage({ id }: ConversationPageProps) {
 		const fileInput = document.createElement("input");
 		fileInput.type = "file";
 		fileInput.accept =
-			"image/*,application/pdf,text/csv,text/plain,application/json,.yaml,.toml,.sh,.sql,.surql,.surrealql,.surql,.tar,.zip";
+			"image/*,application/pdf,text/csv,text/plain,application/json,.yaml,.toml,.sh,.sql,.rrflowql,.rrflowql,.rrflowql,.tar,.zip";
 		fileInput.multiple = true;
 		fileInput.onchange = (e) => {
 			const target = e.target as HTMLInputElement;

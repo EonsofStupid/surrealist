@@ -10,15 +10,15 @@ import {
 	iconQuery,
 	iconRelation,
 	iconTag,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { PropertyValue } from "~/components/PropertyValue";
 import { useStable } from "~/hooks/stable";
-import { useCloudStore } from "~/stores/cloud";
-import { CloudInstance, CloudOrganization } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { getTypeCategoryName } from "~/shared/util/cloud";
 import { formatMemory, plural } from "~/shared/util/helpers";
+import { useCloudStore } from "~/stores/cloud";
+import { CloudInstance, CloudOrganization } from "~/types";
 
 export interface ConfigurationBlockProps {
 	instance: CloudInstance | undefined;
@@ -100,7 +100,7 @@ export function ConfigurationBlock({
 						<PropertyValue
 							title="Version"
 							icon={iconTag}
-							value={`SurrealDB ${instance?.version}`}
+							value={`RRFlow ${instance?.version}`}
 						/>
 						<PropertyValue
 							title="Backups"

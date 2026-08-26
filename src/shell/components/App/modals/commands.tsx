@@ -1,6 +1,6 @@
 import { Box, Divider, Group, Modal, ScrollArea, Stack, Text, TextInput } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconSearch } from "@surrealdb/ui";
+import { Icon, iconSearch } from "@rrflow/ui";
 import clsx from "clsx";
 import { type KeyboardEvent, useMemo, useRef } from "react";
 import { Entry } from "~/components/Entry";
@@ -17,8 +17,8 @@ import {
 	useCommandDispatcher,
 	useCommandKeybinds,
 } from "~/providers/Commands";
-import { useConfigStore } from "~/shell/stores/config";
 import { fuzzyMatch, ON_STOP_PROPAGATION, Y_SLIDE_TRANSITION } from "~/shared/util/helpers";
+import { useConfigStore } from "~/shell/stores/config";
 import classes from "../style.module.scss";
 
 export function CommandPaletteModal() {

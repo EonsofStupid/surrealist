@@ -1,7 +1,6 @@
 import { type BoxProps, Checkbox, NumberInput, Select, SimpleGrid, TextInput } from "@mantine/core";
-import { Icon } from "@surrealdb/ui";
+import { Icon } from "@rrflow/ui";
 import { isNumber } from "radash";
-import { useConfigStore } from "~/shell/stores/config";
 import {
 	CheckboxController,
 	FlagSetController,
@@ -10,6 +9,7 @@ import {
 	SelectionController,
 	TextController,
 } from "~/shared/util/preferences";
+import { useConfigStore } from "~/shell/stores/config";
 import { Option } from "../Option";
 
 export interface PreferenceInputProps extends BoxProps {
@@ -42,7 +42,7 @@ export function PreferenceInput({ controller, compact, ...other }: PreferenceInp
 				onChange={(input) => {
 					applyPreference(
 						controller.options.writer,
-						isNumber(input) ? input : Number.parseInt(input),
+						isNumber(input) ? input : Number.parseInt(input, 10),
 					);
 				}}
 			/>

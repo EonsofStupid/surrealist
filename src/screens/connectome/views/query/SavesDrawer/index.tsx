@@ -20,7 +20,7 @@ import {
 	iconQuery,
 	iconSearch,
 	iconText,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import clsx from "clsx";
 import { useContextMenu } from "mantine-contextmenu";
 import { useLayoutEffect, useMemo, useState } from "react";
@@ -262,7 +262,7 @@ export function SavesDrawer({
 						>
 							<CodeBlock
 								value={entry.query}
-								lang="surrealql"
+								lang="rrflowql"
 							/>
 							{entry.tags.length > 0 && (
 								<Group

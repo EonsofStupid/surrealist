@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useConnection } from "~/hooks/connection";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsGlobalNamespaces({ language }: TopicProps) {
 	const [namespace] = useConnection((c) => [c?.authentication.namespace ?? ""]);
@@ -47,7 +47,7 @@ export function DocsGlobalNamespaces({ language }: TopicProps) {
 		<Article title="Namespaces">
 			<div>
 				<p>
-					After connecting to a SurrealDB instance, you can specify the namespace to use.
+					After connecting to a RRFlow instance, you can specify the namespace to use.
 					Namespaces are used to group related data together, contains information
 					regarding the users, roles, tokens, and databases it contains.
 				</p>

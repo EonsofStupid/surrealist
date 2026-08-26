@@ -1,7 +1,12 @@
 :root {
-	--surreal-focus-outline: color-mix(in srgb, var(--mantine-color-violet-3) 75%, var(--surreal-glass-subtle));
-	--surreal-focus-background: color-mix(in srgb, var(--mantine-color-violet-3) 7%, var(--surreal-glass-subtle));
-	--surreal-gradient: linear-gradient(135deg, var(--surreal-energy), var(--surreal-passion));
+	--rrflow-energy: #7c3aed;
+	--rrflow-passion: #d946ef;
+	--rrflow-glass-subtle: rgb(255 255 255 / 0.05);
+	--rrflow-paper-background-filled: rgb(21 17 31 / 0.94);
+	--mantine-color-rrflow-text: var(--mantine-color-violet-4);
+	--rrflow-focus-outline: color-mix(in srgb, var(--mantine-color-violet-3) 75%, var(--rrflow-glass-subtle));
+	--rrflow-focus-background: color-mix(in srgb, var(--mantine-color-violet-3) 7%, var(--rrflow-glass-subtle));
+	--rrflow-gradient: linear-gradient(135deg, var(--rrflow-energy), var(--rrflow-passion));
 	--Connectome-divider-size: 0.75rem;
 }
 
@@ -20,7 +25,7 @@
 }
 
 .mantine-Menu-item[data-variant="gradient"] {
-	background: var(--surreal-gradient);
+	background: var(--rrflow-gradient);
 }
 
 .mantine-Drawer-inner {

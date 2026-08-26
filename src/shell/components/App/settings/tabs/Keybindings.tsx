@@ -11,7 +11,7 @@ import {
 	TextInput,
 } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconEdit, iconPlus, iconSearch } from "@surrealdb/ui";
+import { Icon, iconEdit, iconPlus, iconSearch } from "@rrflow/ui";
 import equal from "fast-deep-equal";
 import { Fragment, useMemo, useState } from "react";
 import { ActionButton } from "~/components/ActionButton";
@@ -27,8 +27,8 @@ import {
 	useCommandKeybinds,
 	useCommandRegistry,
 } from "~/providers/Commands";
-import { useConfigStore } from "~/shell/stores/config";
 import { fuzzyMatch } from "~/shared/util/helpers";
+import { useConfigStore } from "~/shell/stores/config";
 
 export function KeybindingsTab() {
 	const [search, setSearch] = useInputState("");

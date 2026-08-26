@@ -1,6 +1,6 @@
 import { Box, Button, Group, Modal, Stack, Text, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconChevronRight, iconOpen, iconPlus, iconVariable } from "@surrealdb/ui";
+import { Icon, iconChevronRight, iconOpen, iconPlus, iconVariable } from "@rrflow/ui";
 import { type ChangeEvent, memo, useRef, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { useImmer } from "use-immer";
@@ -17,10 +17,10 @@ import { useSaveable } from "~/hooks/save";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useConfirmation } from "~/providers/Confirmation";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
-import type { SchemaParameter } from "~/types";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { buildParameterDefinition, syncConnectionSchema } from "~/shared/util/schema";
+import type { SchemaParameter } from "~/types";
 import { ParameterEditorPanel } from "../ParameterEditorPanel";
 import { ParameterPropertiesPanel } from "../ParameterPropertiesPanel";
 import { ParametersPanel } from "../ParametersPanel";
@@ -197,8 +197,8 @@ export function ParametersView() {
 								title="Parameters"
 								icon={iconVariable}
 								snippet={{
-									language: "surrealql",
-									title: "SurrealQL",
+									language: "rrflowql",
+									title: "RRFlowQL",
 									code: `
 										-- Define your parameters with ease
 										DEFINE PARAM $hello VALUE "world";
@@ -231,7 +231,7 @@ export function ParametersView() {
 										rightSection={<Icon path={iconOpen} />}
 										onClick={() =>
 											adapter.openUrl(
-												"https://surrealdb.com/docs/surrealql/statements/define/param",
+												"https://github.com/EonsofStupid/connectome",
 											)
 										}
 									>

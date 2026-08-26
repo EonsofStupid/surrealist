@@ -1,4 +1,5 @@
 import {
+	Box,
 	type BoxProps,
 	Divider,
 	Flex,
@@ -6,9 +7,10 @@ import {
 	Image,
 	ScrollArea,
 	Stack,
+	Text,
 	UnstyledButton,
 } from "@mantine/core";
-import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoConnectome } from "@surrealdb/ui";
+import { iconArrowLeft, iconCog, iconHelp, iconSearch, pictoBrain } from "@rrflow/ui";
 import clsx from "clsx";
 import { Fragment, useMemo } from "react";
 import { useCloudUnreadConversationsQuery } from "~/cloud/queries/context";
@@ -16,16 +18,15 @@ import { NavigationIcon } from "~/components/NavigationIcon";
 import { Shortcut } from "~/components/Shortcut";
 import { Spacer } from "~/components/Spacer";
 import { useBoolean } from "~/hooks/boolean";
-import { useLogoUrl } from "~/hooks/brand";
 import { useAvailablePages, useAvailableViews } from "~/hooks/connection";
 import { useAbsoluteLocation, useConnectionAndView, useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
+import { isMobile } from "~/shared/util/helpers";
+import { dispatchIntent } from "~/shared/util/intents";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type { GlobalPage, SidebarMode, ViewPage } from "~/types";
-import { isMobile } from "~/shared/util/helpers";
-import { dispatchIntent } from "~/shared/util/intents";
 import classes from "./style.module.scss";
 
 const GLOBAL_NAVIGATION: GlobalPage[][] = [
@@ -53,7 +54,6 @@ export interface ConnectomeSidebarProps extends BoxProps {
 }
 
 export function ConnectomeSidebar({ sidebarMode, className, ...other }: ConnectomeSidebarProps) {
-	const logoUrl = useLogoUrl();
 	const isLight = useIsLight();
 	const [, navigate] = useAbsoluteLocation();
 	const [connection] = useConnectionAndView();
@@ -173,15 +173,27 @@ export function ConnectomeSidebar({ sidebarMode, className, ...other }: Connecto
 					>
 						<Image
 							my={-9}
-							src={pictoConnectome}
+							src={pictoBrain}
 							w={42}
 							className={classes.hat}
 						/>
-						<Image
-							src={logoUrl}
-							style={{ flexShrink: 0 }}
-							w={118}
-						/>
+						<Box className={classes.wordmark}>
+							<Text
+								className={classes.wordmarkTitle}
+								fw={750}
+								lh={1}
+							>
+								CONNECTOME
+							</Text>
+							<Text
+								className={classes.wordmarkSub}
+								fz={9}
+								fw={650}
+								lh={1.5}
+							>
+								RRFLOW CONTROL SURFACE
+							</Text>
+						</Box>
 					</Group>
 				</UnstyledButton>
 				<Stack

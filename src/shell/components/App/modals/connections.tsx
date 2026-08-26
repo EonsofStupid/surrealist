@@ -9,7 +9,7 @@ import {
 	Text,
 	TextInput,
 } from "@mantine/core";
-import { Icon, iconCircle, iconCloud, iconServer } from "@surrealdb/ui";
+import { Icon, iconCircle, iconCloud, iconServer } from "@rrflow/ui";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
 import { Entry, type EntryProps } from "~/components/Entry";
@@ -18,10 +18,10 @@ import { useConnectionLabels, useConnectionList, useConnectionOverview } from "~
 import { useKeyNavigation } from "~/hooks/keys";
 import { useConnectionAndView, useConnectionNavigator, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import type { CloudInstance, Connection } from "~/types";
 import { resolveInstanceConnection } from "~/shared/util/connection";
 import { Y_SLIDE_TRANSITION } from "~/shared/util/helpers";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import type { CloudInstance, Connection } from "~/types";
 import classes from "../style.module.scss";
 
 export function ConnectionsModal() {
@@ -221,7 +221,7 @@ export function ConnectionsModal() {
 									path={iconCircle}
 									c="obsidian"
 								/>
-								<Text>SurrealDB Cloud</Text>
+								<Text>RRFlow Cloud</Text>
 							</Group>
 							{org.instances.map((instance) => (
 								<InstanceEntry

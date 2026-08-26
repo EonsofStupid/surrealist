@@ -9,15 +9,19 @@ import {
 	ThemeIcon,
 	Tooltip,
 } from "@mantine/core";
-import { Icon, iconWarning } from "@surrealdb/ui";
+import { Icon, iconWarning } from "@rrflow/ui";
 import { compareVersions, satisfies } from "compare-versions";
 import equal from "fast-deep-equal";
 import { useMemo, useState } from "react";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
 import { useUpdateInstanceCapabilitiesMutation } from "~/cloud/mutations/capabilities";
 import { useStable } from "~/hooks/stable";
+import {
+	filterOptions,
+	parseCapabilities,
+	transformCapabilities,
+} from "~/shared/util/capabilities";
 import { CloudInstance, CloudInstanceCapabilities } from "~/types";
-import { filterOptions, parseCapabilities, transformCapabilities } from "~/shared/util/capabilities";
 import { BooleanCapability } from "../capabilities/boolean";
 import { FixedRuleSetCapability } from "../capabilities/fixed-rule-set";
 import { FreeRuleSetCapability } from "../capabilities/free-rule-set";
@@ -226,7 +230,7 @@ export function ConfigurationCapabilities({ instance, onClose }: ConfigurationCa
 								<FixedRuleSetCapability
 									data={ARBITRARY_QUERY_TARGETS}
 									name="Arbitrary queries"
-									description="Enable experimental SurrealDB functionality"
+									description="Enable experimental RRFlow functionality"
 									value={value}
 									onChange={setValue}
 									allowedField="allowed_arbitrary_query"
@@ -241,7 +245,7 @@ export function ConfigurationCapabilities({ instance, onClose }: ConfigurationCa
 						<FixedRuleSetCapability
 							data={experimentTargets}
 							name="Preview features"
-							description="Enable experimental SurrealDB functionality"
+							description="Enable experimental RRFlow functionality"
 							value={value}
 							onChange={setValue}
 							allowedField="allowed_experimental"

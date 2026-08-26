@@ -9,87 +9,70 @@ export const kindMeta: Record<
 > = {
 	"incompatible future": {
 		label: "Incompatible future",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#1-futures-replaced-with-computed-fields",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"stored closure": {
 		label: "Stored closure",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#10-stored-closures",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"all idiom": {
 		label: "All idiom",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#13-all-idiom--behavior",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"field idiom followed": {
 		label: "Field idiom followed",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#14-field-idiom-followed-by-another-idiom-part",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"function logical_and": {
 		label: "Function array::logical_and",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#23-arraylogical_and-behavior",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"function logical_or": {
 		label: "Function array::logical_or",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#24-arraylogical_or-behavior",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"function math::sqrt": {
 		label: "Function math::sqrt()",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#20-mathsqrt-returns-nan",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"function math::min": {
 		label: "Function math::min()",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#21-mathmin-returns-infinity",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"function math::max": {
 		label: "Function math::max()",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#22-mathmax-returns--infinity",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"mock value": {
 		label: "Mock value",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#25-mock-value-type-changes",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"number key ordering": {
 		label: "Number key ordering",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#20-numeric-record-id-ordering",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"id field": {
 		label: "ID field",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#26-id-field-special-behavior",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"search index": {
 		label: "Search index",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#7-search-analyzer--fulltext-analyzer",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"analyze statement": {
 		label: "Analyze statement",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#12-usage-of-analyze-statement",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"record references": {
 		label: "Record references",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#11-usage-of-record-references",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"like operator": {
 		label: "Like operator removal",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#6-like-operators-removed",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 	"mtree index": {
 		label: "Mtree index removal",
-		documentationUrl:
-			"https://surrealdb.com/docs/surrealdb/installation/upgrading/migrating-data-to-3x/#9-mtree-removal",
+		documentationUrl: "https://github.com/EonsofStupid/connectome",
 	},
 };

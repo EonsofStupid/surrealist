@@ -1,16 +1,10 @@
 import { Group, HoverCard, Stack, Text } from "@mantine/core";
-import {
-	Icon,
-	iconCheck,
-	iconClock,
-	iconClose,
-	iconExplorer,
-	iconFile,
-	iconXml,
-} from "@surrealdb/ui";
+import { Icon, iconCheck, iconClock, iconClose, iconExplorer, iconFile, iconXml } from "@rrflow/ui";
 import dayjs from "dayjs";
 import { convert } from "geo-coordinates-parser";
 import { useEffect, useState } from "react";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
+import { TRUNCATE_STYLE } from "~/shared/util/helpers";
 import {
 	DateTime,
 	Decimal,
@@ -25,9 +19,7 @@ import {
 	GeometryPolygon,
 	RecordId,
 	Uuid,
-} from "surrealdb";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
-import { TRUNCATE_STYLE } from "~/shared/util/helpers";
+} from "~/vendor/rrflow-client";
 import { GeographyLink } from "../GeographyLink";
 import { RecordLink } from "../RecordLink";
 import classes from "./style.module.scss";
@@ -220,7 +212,7 @@ function ObjectCell(props: { value: any }) {
 		let cancelled = false;
 
 		const format = async () => {
-			const result = await getSurrealQL().formatValue(props.value, false, true);
+			const result = await getRRFlowQL().formatValue(props.value, false, true);
 			if (!cancelled) {
 				setFormatted(result);
 			}

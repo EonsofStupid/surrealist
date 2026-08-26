@@ -12,14 +12,14 @@ import {
 	Text,
 } from "@mantine/core";
 import { closeModal, openModal } from "@mantine/modals";
-import { Icon, iconChevronY, iconDatabase, iconMemory, iconPlus } from "@surrealdb/ui";
+import { Icon, iconChevronY, iconDatabase, iconMemory, iconPlus } from "@rrflow/ui";
 import { useInstanceTypeRegistry } from "~/cloud/hooks/types";
 import { InstanceTypes } from "~/components/InstanceTypes";
 import { Label } from "~/components/Label";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { useStable } from "~/hooks/stable";
-import { CloudInstanceType } from "~/types";
 import { plural } from "~/shared/util/helpers";
+import { CloudInstanceType } from "~/types";
 import { DeploySectionProps } from "../types";
 
 export function ClusterOptionsSection({ organisation, details, setDetails }: DeploySectionProps) {

@@ -8,14 +8,14 @@ import {
 	iconRelationIn,
 	iconRelationOut,
 	iconSearch,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { useQuery } from "@tanstack/react-query";
 import { ContextMenuDivider, ContextMenuItem } from "mantine-contextmenu";
 import { unique } from "radash";
-import { RecordId } from "surrealdb";
 import { useIsLight } from "~/hooks/theme";
-import { getSurreal } from "~/screens/Connectome/connection/connection";
+import { getRRFlow } from "~/screens/connectome/connection/connection";
 import { QueryResponse } from "~/types";
+import { RecordId } from "~/vendor/rrflow-client";
 import { NodeCircle } from "./node";
 import { GraphEdges, GraphExpansion, RelationGraphNode } from "./types";
 
@@ -48,7 +48,7 @@ export function NodeContextMenu({
 		queryFn: async () => {
 			const { from: incoming, to: outgoing } = queryEdges(node.record);
 
-			const [result] = await getSurreal()
+			const [result] = await getRRFlow()
 				.query(
 					"SELECT (<-?).map(|$id| $id.tb()).distinct() AS from, (->?).map(|$id| $id.tb()).distinct() AS to FROM ONLY $record",
 					{ record: node.record },

@@ -1,9 +1,13 @@
 import { isFunction, shake } from "radash";
-import type { Platform, ConnectomeConfig, UrlTarget } from "~/types";
-import { createFileDefinition, openAndReadFiles, openAndWriteFile } from "~/shared/util/file-system";
+import {
+	createFileDefinition,
+	openAndReadFiles,
+	openAndWriteFile,
+} from "~/shared/util/file-system";
 import * as idxdb from "~/shared/util/idxdb";
 import { CONFIG_KEY } from "~/shared/util/storage";
-import type { FileFilter, ConnectomeAdapter } from "./base";
+import type { ConnectomeConfig, Platform, UrlTarget } from "~/types";
+import type { ConnectomeAdapter, FileFilter } from "./base";
 
 /**
  * Base adapter for running as web app

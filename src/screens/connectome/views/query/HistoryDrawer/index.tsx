@@ -20,7 +20,7 @@ import {
 	iconQuery,
 	iconSearch,
 	iconText,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import dayjs from "dayjs";
 import { capitalize } from "radash";
 import { memo, useMemo } from "react";
@@ -145,7 +145,7 @@ function HistoryRow({ entry, editor, history, onClose }: HistoryRowProps) {
 			<CodeBlock
 				mt="xs"
 				value={shortQuery}
-				lang="surrealql"
+				lang="rrflowql"
 			/>
 
 			<Divider mt="md" />

@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
-import { Article, DocsPreview, TableTitle } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview, TableTitle } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { useDocsTable } from "../../hooks/table";
 
 export function DocsTablesInsertingRecords({ language }: TopicProps) {
@@ -58,7 +58,7 @@ db.insert('${table.schema.name}', [
 		`,
 			go: `
 		// Insert an entry
-		person2, err := surrealdb.Insert[${fieldName}](db, models.Table("${table.schema.name}"), map[interface{}]interface{}{
+		person2, err := rrflow.Insert[${fieldName}](db, models.Table("${table.schema.name}"), map[interface{}]interface{}{
 			"Name":     "Jane",
 			"Surname":  "Smith",
 			"Location": models.NewGeometryPoint(-0.12, 22.01),

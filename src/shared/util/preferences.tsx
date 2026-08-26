@@ -17,7 +17,7 @@ import {
 	THEMES,
 	VIEW_PAGES,
 } from "~/constants";
-import { Flags, type Listable, Selectable, type ConnectomeConfig } from "~/types";
+import { type ConnectomeConfig, Flags, type Listable, Selectable } from "~/types";
 import { useFeatureFlags } from "./feature-flags";
 import { optional } from "./helpers";
 
@@ -613,7 +613,7 @@ export function useComputedPreferences(): PreferenceSection[] {
 						name: "Website base",
 						description: "The base URL for the website",
 						controller: new TextController({
-							placeholder: "https://surrealdb.com",
+							placeholder: "https://github.com/EonsofStupid/connectome",
 							reader: (config) => config.settings.cloud.urlWebsiteBase,
 							writer: (config, value) => {
 								config.settings.cloud.urlWebsiteBase = value;

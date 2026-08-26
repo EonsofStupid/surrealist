@@ -1,11 +1,11 @@
 import { Box, Group, Paper, Stack, Text } from "@mantine/core";
 import { openModal } from "@mantine/modals";
-import { Icon, iconCircleFilled } from "@surrealdb/ui";
+import { Icon, iconCircleFilled } from "@rrflow/ui";
 import dayjs from "dayjs";
-import type { Uuid } from "surrealdb";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { executeQuerySingle } from "~/screens/Connectome/connection/connection";
+import { executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { showErrorNotification } from "~/shared/util/helpers";
+import type { Uuid } from "~/vendor/rrflow-client";
 
 interface Node {
 	seen: number;

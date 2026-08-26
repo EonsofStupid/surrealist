@@ -1,7 +1,7 @@
 # Cortex DevTools — Architecture
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
@@ -13,7 +13,7 @@
 │  Tauri 2 desktop shell, tab/panel mgmt, CodeMirror,    │
 │  @xyflow/react, Sigma.js, TanStack Query, feature flags│
 ├─────────┬──────────┬──────────┬──────────┬──────────────┤
-│ SurrealDB│  Qdrant  │   RRO    │ Pipeline │   Minions   │
+│ RRFlow│  Qdrant  │   RRO    │ Pipeline │   Minions   │
 │  Spoke   │  Spoke   │  Spoke   │  Spoke   │   Spoke     │
 └─────────┴──────────┴──────────┴──────────┴──────────────┘
         ▲                  ▲                  ▲
@@ -41,7 +41,7 @@ src/
 │   ├── terminology/                # Terminology engine (cross-spoke)
 │   └── GOVERNANCE.md
 ├── spokes/
-│   ├── surrealdb/                  # ~80% inherited from Surrealist
+│   ├── rrflow/                  # ~80% inherited from Connectome
 │   │   ├── components/
 │   │   ├── hooks/
 │   │   ├── stores/
@@ -89,7 +89,7 @@ src/
 │       ├── index.ts
 │       ├── Root.tsx
 │       └── GOVERNANCE.md
-└── shell/                          # Forked Surrealist shell (Hub)
+└── shell/                          # Forked Connectome shell (Hub)
     ├── components/                 # Shell-level chrome (titlebar, tabs, sidebar)
     ├── router/                     # Spoke router
     ├── stores/                     # Shell-level stores
@@ -116,7 +116,7 @@ src/
 
 | Command | Spoke | Purpose |
 |---------|-------|---------|
-| `surreal_query` | SurrealDB | Execute SurrealQL query against connected instance |
+| `rrflow_query` | RRFlow | Execute RRFlowQL query against connected instance |
 | `qdrant_search` | Qdrant | Run vector search against Qdrant collection |
 | `rro_inspect` | RRO | Inspect RRO structure and complexity scores |
 | `pipeline_config` | Pipeline | Read/write pipeline node configuration |
@@ -131,7 +131,7 @@ src/
 | `pipeline:node_active` | Pipeline | A specific node is currently processing |
 | `pipeline:error` | Pipeline | Error occurred at a specific node |
 | `minion:note` | Minions | A minion agent emitted a note/observation |
-| `rro:escalated` | RRO | A query escalated from Qdrant to SurrealDB graph |
+| `rro:escalated` | RRO | A query escalated from Qdrant to RRFlow graph |
 
 ---
 

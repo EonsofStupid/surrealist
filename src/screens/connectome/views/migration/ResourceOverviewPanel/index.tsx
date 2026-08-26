@@ -11,7 +11,7 @@ import {
 	ThemeIcon,
 	UnstyledButton,
 } from "@mantine/core";
-import { Icon, iconRefresh, iconReset, iconTransfer } from "@surrealdb/ui";
+import { Icon, iconRefresh, iconReset, iconTransfer } from "@rrflow/ui";
 import { useMemo } from "react";
 import { Spacer } from "~/components/Spacer";
 import { useIsLight } from "~/hooks/theme";
@@ -140,7 +140,7 @@ export function ResourceOverviewPanel({
 						) : (
 							<Accordion
 								multiple
-								variant="surreal"
+								variant="rrflow"
 								value={openedTypes}
 								onChange={onChangeOpenedTypes}
 								styles={{

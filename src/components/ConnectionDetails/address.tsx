@@ -18,9 +18,9 @@ import { Updater } from "use-immer";
 import { CONNECTION_PROTOCOLS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { createSurreal } from "~/screens/Connectome/connection/surreal";
-import { Connection, Protocol } from "~/types";
+import { createRRFlow } from "~/screens/connectome/connection/rrflow";
 import { connectionUri, isHostLocal } from "~/shared/util/helpers";
+import { Connection, Protocol } from "~/types";
 
 const ENDPOINT_PATTERN = /^(.+?):\/\/(.+)$/;
 
@@ -103,7 +103,7 @@ export function ConnectionAddressDetails({
 		queryKey: ["connect-status", { protocol, hostname }],
 		enabled: !!protocol && !!hostname,
 		queryFn: async ({ signal }) => {
-			const test = await createSurreal();
+			const test = await createRRFlow();
 
 			await sleep(500);
 			if (signal.aborted) return;
@@ -162,8 +162,8 @@ export function ConnectionAddressDetails({
 									<Tooltip
 										label={
 											status
-												? "Connectome is able to connect"
-												: "Connectome is unable to connect"
+												? "RRFlow endpoint is reachable"
+												: "RRFlow endpoint is not reachable"
 										}
 									>
 										<Indicator

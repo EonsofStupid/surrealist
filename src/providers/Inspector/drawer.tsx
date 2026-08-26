@@ -1,25 +1,18 @@
 import { Center, Drawer, Group, Paper, SegmentedControl, Tabs, Text } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import {
-	Icon,
-	iconArrowLeftFat,
-	iconClose,
-	iconDelete,
-	iconRefresh,
-	iconSearch,
-} from "@surrealdb/ui";
+import { Icon, iconArrowLeftFat, iconClose, iconDelete, iconRefresh, iconSearch } from "@rrflow/ui";
 import { useEffect, useState } from "react";
-import { RecordId } from "surrealdb";
 import { ActionButton } from "~/components/ActionButton";
 import { DrawerResizer } from "~/components/DrawerResizer";
 import { CodeInput } from "~/components/Inputs";
 import { Spacer } from "~/components/Spacer";
 import type { HistoryHandle } from "~/hooks/history";
+import { useValueValidator } from "~/hooks/rrflowql";
 import { useSaveable } from "~/hooks/save";
 import { useStable } from "~/hooks/stable";
-import { useValueValidator } from "~/hooks/surrealql";
 import { useIsLight } from "~/hooks/theme";
-import { executeQuery, getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { executeQuery, getRRFlowQL } from "~/screens/connectome/connection/connection";
+import { RecordId } from "~/vendor/rrflow-client";
 import { useConfirmation } from "../Confirmation";
 import classes from "./style.module.scss";
 import { ContentTab } from "./tabs/content";
@@ -72,7 +65,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 			const id = history.current;
 
 			const [{ success, result }] = await executeQuery(
-				/* surql */ `UPDATE $id CONTENT $body`,
+				/* rrflowql */ `UPDATE $id CONTENT $body`,
 				{
 					id,
 					body,
@@ -93,19 +86,19 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const fetchRecord = useStable(async (id: RecordId) => {
-		const contentQuery = /* surql */ `SELECT * FROM ONLY $id`;
-		const inputQuery = /* surql */ `SELECT VALUE <-? FROM ONLY $id`;
-		const outputsQuery = /* surql */ `SELECT VALUE ->? FROM ONLY $id`;
+		const contentQuery = /* rrflowql */ `SELECT * FROM ONLY $id`;
+		const inputQuery = /* rrflowql */ `SELECT VALUE <-? FROM ONLY $id`;
+		const outputsQuery = /* rrflowql */ `SELECT VALUE ->? FROM ONLY $id`;
 
 		const [{ result: content }, { result: inputs }, { result: outputs }] = await executeQuery(
 			`${contentQuery};${inputQuery};${outputsQuery}`,
 			{ id },
 		);
 
-		const formatted = await getSurrealQL().formatValue(content, false, true);
+		const formatted = await getRRFlowQL().formatValue(content, false, true);
 
 		setError("");
-		setRecordId(await getSurrealQL().formatValue(id));
+		setRecordId(await getRRFlowQL().formatValue(id));
 		setCurrentRecord({
 			isEdge: !!content?.in && !!content?.out,
 			exists: !!content,
@@ -128,7 +121,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 	});
 
 	const gotoRecord = useStable(async () => {
-		const id = await getSurrealQL().parseValue(recordId);
+		const id = await getRRFlowQL().parseValue(recordId);
 
 		if (id instanceof RecordId) {
 			history.push(id);
@@ -141,7 +134,7 @@ export function InspectorDrawer({ opened, history, onClose, onRefresh }: Inspect
 		skippable: true,
 		onConfirm: async () => {
 			await executeQuery(
-				/* surql */ `DELETE ${await getSurrealQL().formatValue(history.current)}`,
+				/* rrflowql */ `DELETE ${await getRRFlowQL().formatValue(history.current)}`,
 			);
 
 			history.clear();

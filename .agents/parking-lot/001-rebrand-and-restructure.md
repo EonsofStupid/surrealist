@@ -1,4 +1,4 @@
-# Parking Lot Item #001 — Rebrand & Restructure Surrealist → Cortex DevTools
+# Parking Lot Item #001 — Rebrand & Restructure Connectome → Cortex DevTools
 
 > **Status**: COMMITTED | **Date**: 2026-03-27 | **Committed**: 2026-03-27
 > **Source**: Roadmap Phase 1 — `docs/roadmap/clyffy/phases.md`
@@ -7,7 +7,7 @@
 
 ## What
 
-Fork the Surrealist identity to Cortex DevTools and restructure the codebase from its current flat layout into the hub+spokes architecture defined in `docs/roadmap/clyffy/architecture.md`.
+Fork the Connectome identity to Cortex DevTools and restructure the codebase from its current flat layout into the hub+spokes architecture defined in `docs/roadmap/clyffy/architecture.md`.
 
 ## Where
 
@@ -15,7 +15,7 @@ Every file listed in the branding touchpoints table below, plus the entire `src/
 
 ## Why
 
-This is the foundational change that transforms this from "Surrealist with some edits" into "Cortex DevTools — a purpose-built devtool for managing Clyffy." Without this, every future sprint will be fighting the wrong identity and wrong directory structure.
+This is the foundational change that transforms this from "Connectome with some edits" into "Cortex DevTools — a purpose-built devtool for managing Clyffy." Without this, every future sprint will be fighting the wrong identity and wrong directory structure.
 
 ## Context
 
@@ -30,17 +30,17 @@ This is the foundational change that transforms this from "Surrealist with some 
 
 | File | Field | Current Value | Target Value |
 |------|-------|--------------|--------------|
-| `package.json` | `name` | `surrealist` | `cortex-devtools` |
-| `package.json` | `authors` | `["SurrealDB"]` | `["DevPulse / Jesse Hall"]` |
-| `tauri.conf.json` | `productName` | `Surrealist` | `Cortex DevTools` |
-| `tauri.conf.json` | `identifier` | `com.surrealdb.surrealist` | `app.devpulse.cortex` |
-| `tauri.conf.json` | `deep-link.schemes` | `["surrealist"]` | `["cortex"]` |
-| `tauri.conf.json` | `updater.endpoints` | `["https://app.surrealdb.com/latest.json"]` | `["https://updates.devpulse.app/cortex/latest.json"]` |
-| `Cargo.toml` | `name` | `surrealist` | `cortex-devtools` |
-| `Cargo.toml` | `description` | `Powerful graphical SurrealDB...` | `Cortex DevTools — Visual IDE for the MAESTRO pipeline` |
-| `Cargo.toml` | `authors` | `["SurrealDB"]` | `["DevPulse / Jesse Hall"]` |
-| `Cargo.toml` | `repository` | `surrealdb/surrealist` | `EonsofStupid/surrealist` |
-| `index.html` | `<title>` | `Surrealist` | `Cortex DevTools` |
+| `package.json` | `name` | `connectome` | `cortex-devtools` |
+| `package.json` | `authors` | `["RRFlow"]` | `["DevPulse / Jesse Hall"]` |
+| `tauri.conf.json` | `productName` | `Connectome` | `Cortex DevTools` |
+| `tauri.conf.json` | `identifier` | `com.rrflow.connectome` | `app.devpulse.cortex` |
+| `tauri.conf.json` | `deep-link.schemes` | `["connectome"]` | `["cortex"]` |
+| `tauri.conf.json` | `updater.endpoints` | `["https://127.0.0.1:8000/latest.json"]` | `["https://updates.devpulse.app/cortex/latest.json"]` |
+| `Cargo.toml` | `name` | `connectome` | `cortex-devtools` |
+| `Cargo.toml` | `description` | `Powerful graphical RRFlow...` | `Cortex DevTools — Visual IDE for the MAESTRO pipeline` |
+| `Cargo.toml` | `authors` | `["RRFlow"]` | `["DevPulse / Jesse Hall"]` |
+| `Cargo.toml` | `repository` | `rrflow/connectome` | `EonsofStupid/connectome` |
+| `index.html` | `<title>` | `Connectome` | `Cortex DevTools` |
 | `vite.config.ts` | `GTM_ID` | `G-PVD8NEJ3Z2` | Remove (internal tool, no analytics) |
 
 ---

@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { Link } from "~/components/Link";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsConceptsFullTextSearch({ language }: TopicProps) {
 	const snippets = useMemo<Snippets>(
@@ -63,7 +63,7 @@ export function DocsConceptsFullTextSearch({ language }: TopicProps) {
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		$db->query('
@@ -83,21 +83,11 @@ export function DocsConceptsFullTextSearch({ language }: TopicProps) {
 				<p>
 					Full Text Search enables search capabilities within your database connection.
 					This enables text matching, proximity matching, proximity search, and more. In
-					SurrealDB Full-Text Search is ACID-compliant and can be accessed using{" "}
-					<Link href="https://surrealdb.com/docs/surrealql/functions/database/search">
-						{" "}
-						Search functions
-					</Link>
-					,{" "}
-					<Link href="https://surrealdb.com/docs/surrealql/statements/define/indexes/">
-						{" "}
-						Indexes
-					</Link>
-					. To learn more, check out this{" "}
-					<Link href="https://surrealdb.com/docs/surrealdb/reference-guide/full-text-search">
-						{" "}
-						Reference guide
-					</Link>
+					RRFlow Full-Text Search is ACID-compliant and can be accessed using{" "}
+					<Link href="https://github.com/EonsofStupid/connectome"> Search functions</Link>
+					, <Link href="https://github.com/EonsofStupid/connectome"> Indexes</Link>. To
+					learn more, check out this{" "}
+					<Link href="https://github.com/EonsofStupid/connectome"> Reference guide</Link>
 				</p>
 			</div>
 			<Box>

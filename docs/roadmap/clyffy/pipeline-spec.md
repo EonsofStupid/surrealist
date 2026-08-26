@@ -1,7 +1,7 @@
 # Cortex DevTools — Pipeline Editor Specification
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
@@ -40,7 +40,7 @@ The Pipeline Editor is the core spoke. It uses a single @xyflow/react canvas wit
 ### Graph Escalation Nodes
 | Node | ID | Purpose |
 |------|----|---------|
-| SurrealDB Traversal | `surreal_traversal` | Multi-hop graph traversal for complex queries |
+| RRFlow Traversal | `rrflow_traversal` | Multi-hop graph traversal for complex queries |
 | RRO Assembly | `rro_assembly` | Assembles RRO from entity→sentence→passage |
 
 ### Context Assembly Nodes

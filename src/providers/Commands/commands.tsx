@@ -12,6 +12,7 @@ import {
 	iconCog,
 	iconCommand,
 	iconConsole,
+	iconDatabase,
 	iconDownload,
 	iconFile,
 	iconFlag,
@@ -36,7 +37,6 @@ import {
 	iconStar,
 	iconStarPlus,
 	iconStop,
-	iconConnectome,
 	iconText,
 	iconTextBoxMinus,
 	iconTextBoxPlus,
@@ -44,7 +44,7 @@ import {
 	iconTune,
 	iconUpload,
 	iconWrench,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { dash } from "radash";
 import { useMemo } from "react";
@@ -59,9 +59,7 @@ import {
 	closeConnection,
 	openConnection,
 	resetConnection,
-} from "~/screens/Connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
-import { useDatabaseStore } from "~/stores/database";
+} from "~/screens/connectome/connection/connection";
 import { featureFlags } from "~/shared/util/feature-flags";
 import { optional } from "~/shared/util/helpers";
 import type { IntentPayload, IntentType } from "~/shared/util/intents";
@@ -71,6 +69,8 @@ import {
 	useComputedPreferences,
 } from "~/shared/util/preferences";
 import { syncConnectionSchema } from "~/shared/util/schema";
+import { useConfigStore } from "~/shell/stores/config";
+import { useDatabaseStore } from "~/stores/database";
 import type { CommandCategory } from "./types";
 
 /** Create a launch command */
@@ -599,7 +599,7 @@ export function useInternalCommandBuilder(): CommandCategory[] {
 					{
 						id: "open-overview",
 						name: "Go to overview",
-						icon: iconConnectome,
+						icon: iconDatabase,
 						action: navigate("/overview"),
 					},
 					{

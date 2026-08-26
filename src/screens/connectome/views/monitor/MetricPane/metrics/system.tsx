@@ -1,6 +1,6 @@
 import { Stack } from "@mantine/core";
-import { ComputeUsageChart } from "~/screens/Connectome/metrics/ComputeUsageChart";
-import { MemoryUsageChart } from "~/screens/Connectome/metrics/MemoryUsageChart";
+import { ComputeUsageChart } from "~/screens/connectome/metrics/ComputeUsageChart";
+import { MemoryUsageChart } from "~/screens/connectome/metrics/MemoryUsageChart";
 import { SharedMetricsPanelProps } from "..";
 
 export function SystemPanel({

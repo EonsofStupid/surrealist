@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { pascal } from "radash";
 import { useMemo } from "react";
-import { Article, DocsPreview, TableTitle } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview, TableTitle } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { useDocsTable } from "../../hooks/table";
 
 export function DocsTablesLiveSelecting({ language }: TopicProps) {
@@ -46,7 +46,7 @@ table_name
 		//Connect to a local endpoint
 		DB.connect::<Ws>("127.0.0.1:8000").await?;
 		//Connect to a remote endpoint
-		DB.connect::<Wss>("cloud.surrealdb.com").await?;
+		DB.connect::<Wss>("127.0.0.1:8000").await?;
 		`,
 			py: `
 
@@ -82,11 +82,11 @@ table_name
 		`,
 			java: `
 		// Connect to a local endpoint
-		SurrealWebSocketConnection.connect(timeout)
+		RRFlowWebSocketConnection.connect(timeout)
 		`,
 			php: `
 		// Connect to a local endpoint
-		$db = new SurrealDB();
+		$db = new RRFlow();
 		`,
 		}),
 		[table.schema.name],

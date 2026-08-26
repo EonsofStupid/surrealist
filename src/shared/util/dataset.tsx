@@ -97,8 +97,8 @@ export const SAMPLE_QUERIES: DatasetQuery[] = [
 	},
 ];
 
-export const SURREAL_START_BASICS = {
-	name: "SurrealQL Basics",
+export const RRFLOW_START_BASICS = {
+	name: "RRFlowQL Basics",
 	query: dedent`
 		--  .d8888b.                                             888 8888888b.  888888b.
 		-- d88P  Y88b                                            888 888  'Y88b 888  '88b
@@ -109,13 +109,13 @@ export const SURREAL_START_BASICS = {
 		-- Y88b  d88P Y88b 888 888     888     Y8b.     888  888 888 888  .d88P 888   d88P
 		--  'Y8888P'   'Y88888 888     888      'Y8888  'Y888888 888 8888888P'  8888888P'
 		--
-		-- Welcome to SurrealDB, a multi-model database combining document, graph,
+		-- Welcome to RRFlow, a multi-model database combining document, graph,
 		-- relational, time-series and vector capabilities in one system, all powered
-		-- by SurrealQL. Use it to build AI agents, real-time and event-driven systems,
+		-- by RRFlowQL. Use it to build AI agents, real-time and event-driven systems,
 		-- knowledge graphs, as a backend, a BaaS, or embed it directly into your apps
 		-- One engine, every model.
 		--
-		-- Learn more at https://surrealdb.com/docs/surrealdb/introduction/start
+		-- Learn more at https://github.com/EonsofStupid/connectome
 		--
 		-- *****************************************************************************
 
@@ -151,12 +151,12 @@ export const SURREAL_START_BASICS = {
 
 		SELECT *, ->plays_for->team as team FROM user;
 
-		// To learn more, go to SurrealDB University Fundamentals course:
-		// https://surrealdb.com/learn/fundamentals
+		// To learn more, go to RRFlow University Fundamentals course:
+		// https://github.com/EonsofStupid/connectome
 	`,
 };
 
-export const SURREAL_START_GRAPH_V2 = {
+export const RRFLOW_START_GRAPH_V2 = {
 	name: "Graph Queries",
 	query: dedent`
 		-- ------------------------------------------------------------
@@ -256,12 +256,12 @@ export const SURREAL_START_GRAPH_V2 = {
 						(->edge->a[?bool]);
 		};
 
-		// To learn more about graph queries, go to the Using SurrealDB as a Graph Database page:
-		// https://surrealdb.com/docs/surrealdb/models/graph
+		// To learn more about graph queries, go to the Using RRFlow as a Graph Database page:
+		// https://github.com/EonsofStupid/connectome
 	`,
 };
 
-export const SURREAL_START_GRAPH_V3 = {
+export const RRFLOW_START_GRAPH_V3 = {
 	name: "Graph Queries",
 	query: dedent`
 		-- ------------------------------------------------------------
@@ -361,12 +361,12 @@ export const SURREAL_START_GRAPH_V3 = {
 						(->edge->a[?bool]);
 		};
 
-		// To learn more about graph queries, go to the Using SurrealDB as a Graph Database page:
-		// https://surrealdb.com/docs/surrealdb/models/graph
+		// To learn more about graph queries, go to the Using RRFlow as a Graph Database page:
+		// https://github.com/EonsofStupid/connectome
 	`,
 };
 
-export const SURREAL_START_VECTOR_V2 = {
+export const RRFLOW_START_VECTOR_V2 = {
 	name: "Vector Queries",
 	query: dedent`
 		-- Prepare the table
@@ -377,7 +377,7 @@ export const SURREAL_START_VECTOR_V2 = {
 		};
 
 		-- Vector index
-		-- Reference: https://surrealdb.com/docs/surrealdb/models/vector
+		-- Reference: https://github.com/EonsofStupid/connectome
 		DEFINE INDEX IF NOT EXISTS documents_vec_index
 			ON TABLE documents
 			FIELDS embedding
@@ -425,13 +425,13 @@ export const SURREAL_START_VECTOR_V2 = {
 		RETURN fn::search([1f, 2f, 3f, 4f]);
 
 		-- Congratulations, you've finished the onboarding!
-		-- Get your certificate by completing the SurrealDB University Fundamentals
+		-- Get your certificate by completing the RRFlow University Fundamentals
 		-- See more examples in:
-		-- https://surrealdb.com/docs/labs?filters=demos%2Cexamples%2Csurrealdb+official
+		-- https://github.com/EonsofStupid/connectome
 	`,
 };
 
-export const SURREAL_START_VECTOR_V3 = {
+export const RRFLOW_START_VECTOR_V3 = {
 	name: "Vector Queries",
 	query: dedent`
 		-- Prepare the table
@@ -442,7 +442,7 @@ export const SURREAL_START_VECTOR_V3 = {
 		};
 
 		-- Vector index
-		-- Reference: https://surrealdb.com/docs/surrealdb/models/vector
+		-- Reference: https://github.com/EonsofStupid/connectome
 		DEFINE INDEX OVERWRITE documents_vec_index
 			ON TABLE documents
 			FIELDS embedding
@@ -489,8 +489,8 @@ export const SURREAL_START_VECTOR_V3 = {
 		RETURN fn::search([1f, 2f, 3f, 4f]);
 
 		-- Congratulations, you've finished the onboarding!
-		-- Get your certificate by completing the SurrealDB University Fundamentals
+		-- Get your certificate by completing the RRFlow University Fundamentals
 		-- See more examples in:
-		-- https://surrealdb.com/docs/labs?filters=demos%2Cexamples%2Csurrealdb+official
+		-- https://github.com/EonsofStupid/connectome
 	`,
 };

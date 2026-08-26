@@ -1,6 +1,6 @@
 import { Stack } from "@mantine/core";
-import { NetworkEgressChart } from "~/screens/Connectome/metrics/NetworkEgressChart";
-import { NetworkIngressChart } from "~/screens/Connectome/metrics/NetworkIngressChart";
+import { NetworkEgressChart } from "~/screens/connectome/metrics/NetworkEgressChart";
+import { NetworkIngressChart } from "~/screens/connectome/metrics/NetworkIngressChart";
 import { SharedMetricsPanelProps } from "..";
 
 export function NetworkPanel({

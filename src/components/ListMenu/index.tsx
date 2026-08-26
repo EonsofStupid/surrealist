@@ -1,5 +1,5 @@
 import { Menu, MenuDropdownProps, MenuProps, ScrollArea, Text, ThemeIcon } from "@mantine/core";
-import { Icon } from "@surrealdb/ui";
+import { Icon } from "@rrflow/ui";
 import type { PropsWithChildren } from "react";
 import { useIsLight } from "~/hooks/theme";
 import type { Listable } from "~/types";

@@ -9,7 +9,7 @@ import {
 	iconOpen,
 	iconRefresh,
 	iconText,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { graphql, updateSchema } from "cm6-graphql";
 import { type GraphQLSchema, parse, print } from "graphql";
 import { useEffect, useMemo } from "react";
@@ -27,9 +27,9 @@ import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
-import { useConfigStore } from "~/shell/stores/config";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { showErrorNotification, showInfo, tryParseParams } from "~/shared/util/helpers";
+import { useConfigStore } from "~/shell/stores/config";
 import classes from "./style.module.scss";
 
 export interface QueryPaneProps {
@@ -137,7 +137,7 @@ export function QueryPane({
 			setShowVariables(true);
 			updateConnection({
 				id: connection,
-				graphqlVariables: await getSurrealQL().formatValue(mergedVars, false, true),
+				graphqlVariables: await getRRFlowQL().formatValue(mergedVars, false, true),
 			});
 		} catch {
 			showErrorNotification({
@@ -234,9 +234,9 @@ export function QueryPane({
 					title="GraphQL is not enabled on this remote instance"
 				>
 					<Stack>
-						Visit the SurrealDB documentation to learn how to enable GraphQL on your
+						Visit the RRFlow documentation to learn how to enable GraphQL on your
 						instance
-						<Link href="https://surrealdb.com/docs/surrealdb/querying/graphql/Connectome">
+						<Link href="https://github.com/EonsofStupid/connectome">
 							<Button
 								color="obsidian"
 								variant="light"

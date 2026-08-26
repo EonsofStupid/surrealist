@@ -1,10 +1,10 @@
 import { Box, Button, Divider, Group, ScrollArea, Stack, Text } from "@mantine/core";
-import { Icon, iconOpen } from "@surrealdb/ui";
+import { Icon, iconOpen } from "@rrflow/ui";
 import { useState } from "react";
 import { Tile } from "~/components/Tile";
 import { useStable } from "~/hooks/stable";
+import { openRRFlowChangelog } from "~/shared/util/cloud";
 import { CloudInstance } from "~/types";
-import { openSurrealChangelog } from "~/shared/util/cloud";
 import classes from "../style.module.scss";
 
 export interface ConfigurationVersionProps {
@@ -55,7 +55,7 @@ export function ConfigurationVersion({ instance, onUpdate, onClose }: Configurat
 								mt="sm"
 								fz="lg"
 							>
-								Update your instance to a newer version of SurrealDB to access the
+								Update your instance to a newer version of RRFlow to access the
 								latest features and improvements. Select an available version from
 								the list to update to.
 							</Text>
@@ -77,7 +77,7 @@ export function ConfigurationVersion({ instance, onUpdate, onClose }: Configurat
 											fz="xl"
 											flex={1}
 										>
-											SurrealDB {version}
+											RRFlow {version}
 										</Text>
 										<Button
 											size="xs"
@@ -85,7 +85,7 @@ export function ConfigurationVersion({ instance, onUpdate, onClose }: Configurat
 											variant="light"
 											rightSection={<Icon path={iconOpen} />}
 											onClick={(e) => {
-												openSurrealChangelog(version);
+												openRRFlowChangelog(version);
 												e.stopPropagation();
 											}}
 										>

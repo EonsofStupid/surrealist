@@ -1,6 +1,6 @@
 import { Group, SimpleGrid, Stack, Text } from "@mantine/core";
 import { openModal } from "@mantine/modals";
-import { Icon, iconCreditCard } from "@surrealdb/ui";
+import { Icon, iconCreditCard } from "@rrflow/ui";
 import { useEffect } from "react";
 import {
 	getBillingProviderAction,
@@ -10,7 +10,7 @@ import {
 import { BillingDetails } from "~/components/BillingDetails";
 import { PaymentDetails } from "~/components/PaymentDetails";
 import { CloudOrganization } from "~/types";
-import { BillingRequiredBlock } from "../screens/Connectome/components/BillingRequiredBlock";
+import { BillingRequiredBlock } from "../screens/connectome/components/BillingRequiredBlock";
 
 export function openBillingRequiredModal({
 	organization,

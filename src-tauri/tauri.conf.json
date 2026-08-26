@@ -1,7 +1,7 @@
 {
-	"productName": "Cortex DevTools",
+	"productName": "Connectome",
 	"version": "../package.json",
-	"identifier": "app.devpulse.cortex",
+	"identifier": "dev.eonsofstupid.connectome",
 	"build": {
 		"beforeDevCommand": "pnpm run dev",
 		"beforeBuildCommand": "pnpm run build",
@@ -11,8 +11,8 @@
 	"bundle": {
 		"active": true,
 		"category": "DeveloperTool",
-		"shortDescription": "",
-		"longDescription": "",
+		"shortDescription": "Native RRFlow control surface",
+		"longDescription": "Connect to RRFlow runtimes and inspect their data, graph, query, schema, and observability surfaces.",
 		"copyright": "",
 		"targets": [
 			"nsis",
@@ -34,9 +34,9 @@
 		],
 		"fileAssociations": [
 			{
-				"ext": ["surql", "surrealql"],
-				"name": "SurrealQL",
-				"mimeType": "text/x-surrealql"
+				"ext": ["rrflowql"],
+				"name": "RRFlowQL",
+				"mimeType": "text/x-rrflowql"
 			}
 		],
 		"linux": {
@@ -67,16 +67,10 @@
 		}
 	},
 	"plugins": {
-		"updater": {
-			"pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDcyRDczRTc5RDA4RjVGOEUKUldTT1g0L1FlVDdYY2c5cE1KYmNMUDcrR05CdU9DK3E4Vk1UeGNOOE5wd2ZZb1VMNGdmVm9NMGoK",
-			"endpoints": [
-				"https://updates.devpulse.app/cortex/latest.json"
-			]
-		},
 		"deep-link": {
 			"mobile": [],
 			"desktop": {
-				"schemes": ["cortex"]
+				"schemes": ["connectome"]
 			}
 		}
 	},

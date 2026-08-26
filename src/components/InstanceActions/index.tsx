@@ -7,7 +7,7 @@ import {
 	iconOrganization,
 	iconPause,
 	iconPlay,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { PropsWithChildren, useMemo } from "react";
 import { Link } from "wouter";
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
@@ -16,10 +16,10 @@ import { useDeleteInstance, usePauseInstance, useResumeInstance } from "~/hooks/
 import { useConnectionList } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
 import { openConnectionEditModal } from "~/modals/edit-connection";
-import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
-import { CloudInstance, CloudOrganization } from "~/types";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
+import { CloudInstance, CloudOrganization } from "~/types";
 
 export interface InstanceActionsProps {
 	instance: CloudInstance;

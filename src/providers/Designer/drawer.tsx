@@ -20,10 +20,9 @@ import {
 	iconDelete,
 	iconDesigner,
 	iconWarning,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { capitalize } from "radash";
 import { useState } from "react";
-import { escapeIdent } from "surrealdb";
 import type { Updater } from "use-immer";
 import { ActionButton } from "~/components/ActionButton";
 import { DrawerResizer } from "~/components/DrawerResizer";
@@ -32,10 +31,11 @@ import { Spacer } from "~/components/Spacer";
 import { TABLE_VARIANT_ICONS } from "~/constants";
 import type { SaveableHandle } from "~/hooks/save";
 import { useConfirmation } from "~/providers/Confirmation";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
+import { executeQuery } from "~/screens/connectome/connection/connection";
+import { getTableVariant, syncConnectionSchema } from "~/shared/util/schema";
 import { useConfigStore } from "~/shell/stores/config";
 import type { TableInfo } from "~/types";
-import { getTableVariant, syncConnectionSchema } from "~/shared/util/schema";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { ChangefeedElement } from "./elements/changefeed";
 import { EventsElement } from "./elements/events";
 import { FieldsElement } from "./elements/fields";

@@ -89,7 +89,7 @@ export function getAuthDB(auth: Authentication) {
 	if (auth.mode === "token") {
 		const payload = fastParseJwt(auth.token);
 
-		if (!payload || !payload.DB) {
+		if (!payload?.DB) {
 			return null;
 		}
 
@@ -110,7 +110,7 @@ export function getAuthNS(auth: Authentication) {
 	if (auth.mode === "token") {
 		const payload = fastParseJwt(auth.token);
 
-		if (!payload || !payload.NS) {
+		if (!payload?.NS) {
 			return null;
 		}
 

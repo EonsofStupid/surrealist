@@ -13,19 +13,19 @@ import {
 } from "@mantine/core";
 
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconPlus } from "@surrealdb/ui";
+import { Icon, iconPlus } from "@rrflow/ui";
 import { useLayoutEffect, useMemo, useState } from "react";
-import { escapeIdent } from "surrealdb";
 import { Form } from "~/components/Form";
 import { CodeInput } from "~/components/Inputs";
 import { LearnMore } from "~/components/LearnMore";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
 import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";
-import { executeQuery } from "~/screens/Connectome/connection/connection";
-import type { AccessType, Base, SchemaAccess } from "~/types";
+import { executeQuery } from "~/screens/connectome/connection/connection";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { readBlock, syncConnectionSchema } from "~/shared/util/schema";
+import type { AccessType, Base, SchemaAccess } from "~/types";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 type VerifyMode = "url" | "keyalg";
 
@@ -279,7 +279,7 @@ export function AccessEditorModal({ level, existing, opened, onClose }: AccessEd
 								height={96}
 							/>
 
-							<LearnMore href="https://surrealdb.com/docs/surrealdb/security/authentication#record-users">
+							<LearnMore href="https://github.com/EonsofStupid/connectome">
 								Learn more about sign up and sign in queries
 							</LearnMore>
 						</Stack>
@@ -305,7 +305,7 @@ export function AccessEditorModal({ level, existing, opened, onClose }: AccessEd
 								readOnly={!!existing} // NOTE temp
 							/>
 
-							<LearnMore href="https://surrealdb.com/docs/surrealdb/security/authentication#expiration">
+							<LearnMore href="https://github.com/EonsofStupid/connectome">
 								Learn more about session and token durations
 							</LearnMore>
 						</Stack>

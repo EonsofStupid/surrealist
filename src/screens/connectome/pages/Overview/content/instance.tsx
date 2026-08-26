@@ -10,15 +10,15 @@ import {
 	ThemeIcon,
 	UnstyledButton,
 } from "@mantine/core";
-import { Icon, iconCloud, iconDotsVertical, Spacer } from "@surrealdb/ui";
+import { Icon, iconCloud, iconDotsVertical, Spacer } from "@rrflow/ui";
 import { PropsWithChildren, useMemo, useRef } from "react";
 import { Faint } from "~/components/Faint";
 import { InstanceActions } from "~/components/InstanceActions";
 import { useConnectionList } from "~/hooks/connection";
 import { useStable } from "~/hooks/stable";
-import { CloudInstance, CloudOrganization, CloudRegion } from "~/types";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { USER_ICONS } from "~/shared/util/user-icons";
+import { CloudInstance, CloudOrganization, CloudRegion } from "~/types";
 import { StateBadge } from "../badge";
 
 export interface StartInstanceProps extends BoxProps {
@@ -103,7 +103,7 @@ export function StartInstance({
 										state={instance.state}
 									/>
 								</Group>
-								<Text>SurrealDB {instance.version}</Text>
+								<Text>RRFlow {instance.version}</Text>
 								<Text size="sm">
 									{regions.find((r) => r.slug === instance.region)?.description}
 								</Text>

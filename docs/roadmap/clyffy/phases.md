@@ -1,7 +1,7 @@
 # Cortex DevTools — Phases & Feature Index
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
@@ -10,7 +10,7 @@
 | Phase | Scope | Duration | Status |
 |-------|-------|----------|--------|
 | **0** | Foundation infrastructure (agents, skills, governance, docs) | Current | 🔄 In Progress |
-| **1** | Shell + SurrealDB spoke (fork, strip, adapt) | 1-2 weeks | ⬜ Not Started |
+| **1** | Shell + RRFlow spoke (fork, strip, adapt) | 1-2 weeks | ⬜ Not Started |
 | **2** | Qdrant spoke (collection browser, search playground) | 1-2 weeks | ⬜ Not Started |
 | **3** | Pipeline editor — Configure mode (nodes, edges, properties) | 2-3 weeks | ⬜ Not Started |
 | **4** | Pipeline editor — Observe + Debug modes | 2-3 weeks | ⬜ Not Started |
@@ -29,13 +29,13 @@
 - Build environment hardening
 - Baseline biome/tsc audit
 
-### Phase 1 — Shell + SurrealDB Spoke
-- Fork Surrealist → Cortex DevTools identity
+### Phase 1 — Shell + RRFlow Spoke
+- Fork Connectome → Cortex DevTools identity
 - Strip cloud/SaaS/marketing components
 - Reorganize into hub+spokes directory structure
-- SurrealDB spoke inherits ~80% of existing code
+- RRFlow spoke inherits ~80% of existing code
 - Spoke router for tab-based spoke selection
-- Teaching annotations on inherited SurrealDB features
+- Teaching annotations on inherited RRFlow features
 
 ### Phase 2 — Qdrant Spoke
 - Collection browser component
@@ -98,8 +98,8 @@
 | 1 | Shell fork (identity, strip cloud) | 1 | Shell |
 | 2 | Spoke router (tab-based navigation) | 1 | Shell |
 | 3 | Terminology panel (inline term display) | 1 | Shared |
-| 4 | SurrealDB query editor | 1 | SurrealDB |
-| 5 | SurrealDB table explorer | 1 | SurrealDB |
+| 4 | RRFlow query editor | 1 | RRFlow |
+| 5 | RRFlow table explorer | 1 | RRFlow |
 | 6 | Qdrant collection browser | 2 | Qdrant |
 | 7 | Qdrant search playground | 2 | Qdrant |
 | 8 | Qdrant point inspector | 2 | Qdrant |
@@ -117,9 +117,9 @@
 | # | Feature | Phase | Spoke |
 |---|---------|-------|-------|
 | 14 | Status bar (connection health) | 1 | Shell |
-| 15 | SurrealDB schema designer | 1 | SurrealDB |
-| 16 | SurrealDB graph viz | 1 | SurrealDB |
-| 17 | SurrealDB teaching annotations | 1 | SurrealDB |
+| 15 | RRFlow schema designer | 1 | RRFlow |
+| 16 | RRFlow graph viz | 1 | RRFlow |
+| 17 | RRFlow teaching annotations | 1 | RRFlow |
 | 18 | Qdrant index monitor | 2 | Qdrant |
 | 19 | Qdrant teaching annotations | 2 | Qdrant |
 | 20 | RRO tri-graph view | 5 | RRO |
@@ -155,7 +155,7 @@
 | Spoke | P0 | P1 | P2 | Total |
 |-------|----|----|----|----|
 | Shell | 2 | 1 | 1 | 4 |
-| SurrealDB | 2 | 3 | 0 | 5 |
+| RRFlow | 2 | 3 | 0 | 5 |
 | Qdrant | 3 | 2 | 1 | 6 |
 | Pipeline | 3 | 4 | 1 | 8 |
 | RRO | 1 | 2 | 2 | 5 |

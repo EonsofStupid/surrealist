@@ -1,15 +1,19 @@
 import type { MantineColorScheme } from "@mantine/core";
-import { createWasmEngines } from "@surrealdb/wasm";
-import { Surreal } from "surrealdb";
+import { createWasmEngines } from "@rrflow/wasm";
 import { ORIENTATIONS, RESULT_MODES } from "~/constants";
-import { executeQuery, executeUserQuery } from "~/screens/Connectome/connection/connection";
-import type { MiniAppearance, Orientation, ResultMode, ConnectomeConfig } from "~/types";
+import { executeQuery, executeUserQuery } from "~/screens/connectome/connection/connection";
 import { dedent } from "~/shared/util/dedent";
-import { createBaseQuery, createBaseSettings, createSandboxConnection } from "~/shared/util/defaults";
+import {
+	createBaseQuery,
+	createBaseSettings,
+	createSandboxConnection,
+} from "~/shared/util/defaults";
 import { showErrorNotification } from "~/shared/util/helpers";
 import { getDatasetURL } from "~/shared/util/language";
 import { broadcastMessage } from "~/shared/util/messaging";
-import { createSurrealQL } from "~/shared/util/surql";
+import { createRRFlowQL } from "~/shared/util/rrflowql";
+import type { ConnectomeConfig, MiniAppearance, Orientation, ResultMode } from "~/types";
+import { RRFlow } from "~/vendor/rrflow-client";
 import { BrowserAdapter } from "./browser";
 
 const THEMES = new Set(["light", "dark", "auto"]);
@@ -33,7 +37,7 @@ export class MiniAdapter extends BrowserAdapter {
 		const mainTab = createBaseQuery(settings, "config");
 		const params = new URL(document.location.toString()).searchParams;
 		const version = await this.#getEmbeddedVersion();
-		const surrealql = createSurrealQL(version);
+		const rrflowql = createRRFlowQL(version);
 
 		const {
 			ref,
@@ -96,8 +100,8 @@ export class MiniAdapter extends BrowserAdapter {
 		// Initial variables
 		if (variables) {
 			try {
-				const parsed = await surrealql.parseValue(variables);
-				mainTab.variables = await surrealql.formatValue(parsed, false, true);
+				const parsed = await rrflowql.parseValue(variables);
+				mainTab.variables = await rrflowql.formatValue(parsed, false, true);
 			} catch {
 				showErrorNotification({
 					title: "Startup error",
@@ -210,16 +214,16 @@ export class MiniAdapter extends BrowserAdapter {
 	}
 
 	async #getEmbeddedVersion(): Promise<string> {
-		const surreal = new Surreal({
+		const rrflow = new RRFlow({
 			engines: createWasmEngines(),
 		});
 
-		await surreal.connect("mem://");
+		await rrflow.connect("mem://");
 
 		try {
-			return (await surreal.version()).version.replace(/^surrealdb-/, "");
+			return (await rrflow.version()).version.replace(/^rrflow-/, "");
 		} finally {
-			await surreal.close();
+			await rrflow.close();
 		}
 	}
 }

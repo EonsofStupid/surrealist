@@ -8,10 +8,9 @@ import {
 	Stack,
 	Text,
 } from "@mantine/core";
-import { Icon, iconDatabase, iconPlus, iconTrash } from "@surrealdb/ui";
+import { Icon, iconDatabase, iconPlus, iconTrash } from "@rrflow/ui";
 import { useMutation } from "@tanstack/react-query";
 import { type SyntheticEvent, useMemo } from "react";
-import { escapeIdent } from "surrealdb";
 import { ActionButton } from "~/components/ActionButton";
 import { Spacer } from "~/components/Spacer";
 import { useBoolean } from "~/hooks/boolean";
@@ -23,6 +22,7 @@ import { useConfirmation } from "~/providers/Confirmation";
 import { getAuthDB, getAuthLevel } from "~/shared/util/connection";
 import { createBaseAuthentication } from "~/shared/util/defaults";
 import { parseIdent } from "~/shared/util/language";
+import { escapeIdent } from "~/vendor/rrflow-client";
 import { activateDatabase, executeQuery } from "../../connection/connection";
 import classes from "./style.module.scss";
 
@@ -69,7 +69,7 @@ function Database({ value, activeNamespace, activeDatabase, onOpen, onRemove }: 
 		verification: value,
 		verifyText: "Please type the name of the database to confirm",
 		onConfirm: async () => {
-			await executeQuery(/* surql */ `REMOVE DATABASE ${escapeIdent(value)}`);
+			await executeQuery(/* rrflowql */ `REMOVE DATABASE ${escapeIdent(value)}`);
 
 			if (activeDatabase === value) {
 				activateDatabase(activeNamespace, "");

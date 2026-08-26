@@ -1,30 +1,30 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from "react";
-import { Surreal } from "surrealdb";
 import { adapter } from "~/adapter";
 import { useStable } from "~/hooks/stable";
-import { useCloudStore } from "~/stores/cloud";
 import { __throw } from "~/shared/util/helpers";
+import { useCloudStore } from "~/stores/cloud";
+import { RRFlow } from "~/vendor/rrflow-client";
 
-const CONTEXT_ENDPOINT = "wss://surreal-cloud-06bu9hntp1rdd9dgg57rc0v87s.aws-euw1.surreal.cloud";
+const CONTEXT_ENDPOINT = "wss://rrflow-cloud-06bu9hntp1rdd9dgg57rc0v87s.aws-euw1.rrflow.cloud";
 
 const ContextContext = createContext<{
-	surreal: Surreal;
+	rrflow: RRFlow;
 	connected: boolean;
 	authenticated: boolean;
 } | null>(null);
 
 /**
- * Access the Surreal Context connection
+ * Access the RRFlow Context connection
  */
 export function useContextConnection() {
 	const ctx = useContext(ContextContext) ?? __throw("Missing ContextProvider");
-	return [ctx.surreal, ctx.connected && ctx.authenticated] as const;
+	return [ctx.rrflow, ctx.connected && ctx.authenticated] as const;
 }
 
 export function ContextProvider({ children }: PropsWithChildren) {
 	const accessToken = useCloudStore((s) => s.accessToken);
 
-	const [surreal] = useState(new Surreal());
+	const [rrflow] = useState(new RRFlow());
 	const [connected, setConnected] = useState(false);
 	const [authenticated, setAuthenticated] = useState(false);
 	const initializedRef = useRef(false);
@@ -34,51 +34,51 @@ export function ContextProvider({ children }: PropsWithChildren) {
 	useEffect(() => {
 		if (initializedRef.current) return;
 
-		surreal.subscribe("connecting", () => {
-			adapter.log("Context", "Attempting to connect to SurrealDB Cloud instance");
+		rrflow.subscribe("connecting", () => {
+			adapter.log("Context", "Attempting to connect to RRFlow Cloud instance");
 		});
 
-		surreal.subscribe("connected", () => {
-			adapter.log("Context", "Connected to SurrealDB Cloud instance");
+		rrflow.subscribe("connected", () => {
+			adapter.log("Context", "Connected to RRFlow Cloud instance");
 			setConnected(true);
 		});
 
-		surreal.subscribe("disconnected", () => {
-			adapter.log("Context", "Disconnected from SurrealDB Cloud instance");
+		rrflow.subscribe("disconnected", () => {
+			adapter.log("Context", "Disconnected from RRFlow Cloud instance");
 			setConnected(false);
 			setTimeout(connect, 3000);
 		});
 
-		surreal.subscribe("error", (error) => {
+		rrflow.subscribe("error", (error) => {
 			console.error(error);
 		});
 
 		initializedRef.current = true;
 
-		adapter.log("Context", "Connecting to SurrealDB Cloud instance");
-		surreal.connect(CONTEXT_ENDPOINT, {
-			namespace: "surrealdb",
+		adapter.log("Context", "Connecting to RRFlow Cloud instance");
+		rrflow.connect(CONTEXT_ENDPOINT, {
+			namespace: "rrflow",
 			database: "cloud",
 		});
 		connect();
-	}, [surreal]);
+	}, [rrflow]);
 
 	useEffect(() => {
-		if (!surreal || !connected) return;
+		if (!rrflow || !connected) return;
 
 		if (accessToken) {
-			surreal.authenticate(accessToken).then(() => {
+			rrflow.authenticate(accessToken).then(() => {
 				setAuthenticated(true);
 			});
 		} else {
-			surreal.invalidate().then(() => {
+			rrflow.invalidate().then(() => {
 				setAuthenticated(false);
 			});
 		}
-	}, [surreal, connected, accessToken]);
+	}, [rrflow, connected, accessToken]);
 
 	return (
-		<ContextContext.Provider value={{ surreal, connected, authenticated }}>
+		<ContextContext.Provider value={{ rrflow, connected, authenticated }}>
 			{children}
 		</ContextContext.Provider>
 	);

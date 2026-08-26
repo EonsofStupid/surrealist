@@ -1,7 +1,7 @@
 import type { SelectionRange } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { Box, Group, Image, noop, SegmentedControl, Stack } from "@mantine/core";
-import { pictoConnectome } from "@surrealdb/ui";
+import { pictoBrain } from "@rrflow/ui";
 import { memo, useState } from "react";
 import { Panel, PanelGroup } from "react-resizable-panels";
 import { createHtmlPortalNode, InPortal } from "react-reverse-portal";
@@ -19,8 +19,8 @@ import { useEventSubscription } from "~/hooks/event";
 import { usePanelMinSize } from "~/hooks/panels";
 import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
 import { SetQueryEvent } from "~/shared/util/global-events";
+import { useConfigStore } from "~/shell/stores/config";
 import { QueryPane } from "../QueryPane";
 import { ResultPane } from "../ResultPane";
 import { VariablesPane } from "../VariablesPane";
@@ -100,13 +100,13 @@ export function MiniQueryView() {
 
 				{miniAppearance === "normal" && (
 					<Group>
-						<Link href="https://surrealdb.com/Connectome">
+						<Link href="https://github.com/EonsofStupid/connectome">
 							<Group>
 								<Image
 									h={32}
 									my={-9}
 									w="auto"
-									src={pictoConnectome}
+									src={pictoBrain}
 								/>
 								<Image
 									src={logoUrl}

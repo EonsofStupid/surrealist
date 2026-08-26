@@ -14,9 +14,11 @@ import { CODE_RES_KEY, STATE_RES_KEY } from "~/shared/util/storage";
 /**
  * Automatically set up the cloud authentication flow
  */
-export function useCloudAuthentication() {
+export function useCloudAuthentication(enabled: boolean) {
 	// Check for session expiry every 3 minutes
 	useLayoutEffect(() => {
+		if (!enabled) return;
+
 		const responseCode = sessionStorage.getItem(CODE_RES_KEY);
 		const responseState = sessionStorage.getItem(STATE_RES_KEY);
 
@@ -31,11 +33,15 @@ export function useCloudAuthentication() {
 			refreshAccess();
 		}
 
-		setInterval(checkSessionExpiry, 1000 * 60 * 3);
-	}, []);
+		const interval = setInterval(checkSessionExpiry, 1000 * 60 * 3);
+
+		return () => clearInterval(interval);
+	}, [enabled]);
 
 	// React to authentication intents
 	useIntent("cloud-auth", (payload) => {
+		if (!enabled) return;
+
 		const { code, state } = payload;
 
 		if (!code || !state) {
@@ -48,16 +54,22 @@ export function useCloudAuthentication() {
 
 	// React to signin intents
 	useIntent("cloud-signin", () => {
+		if (!enabled) return;
+
 		openCloudAuthentication();
 	});
 
 	// React to callback intents
 	useIntent("cloud-signout", () => {
+		if (!enabled) return;
+
 		invalidateSession();
 	});
 
 	// React to cloud activation
 	useIntent("cloud-activate", () => {
+		if (!enabled) return;
+
 		featureFlags.set("cloud_access", true);
 	});
 }

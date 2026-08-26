@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useUpdateConfirmation } from "~/cloud/hooks/confirm";
 import { useUpdateInstanceNodeMutation } from "~/cloud/mutations/node";
 import { useStable } from "~/hooks/stable";
-import { CloudInstance } from "~/types";
 import { plural } from "~/shared/util/helpers";
+import { CloudInstance } from "~/types";
 import classes from "../style.module.scss";
 
 export interface ConfigurationNodesProps {

@@ -1,7 +1,7 @@
 import type { CompletionSource } from "@codemirror/autocomplete";
 import type { Extension } from "@codemirror/state";
-import { surrealqlLanguage } from "@surrealdb/codemirror";
 import { useDatabaseStore } from "~/stores/database";
+import { rrflowqlLanguage } from "~/vendor/rrflowql-editor";
 
 const TABLE_SOURCE: CompletionSource = (context) => {
 	const match = context.matchBefore(/(from|update|create|delete|into) \w*/i);
@@ -25,8 +25,8 @@ const TABLE_SOURCE: CompletionSource = (context) => {
 /**
  * An extension used to autocomplete table names
  */
-export const surqlTableCompletion = (): Extension => {
-	return surrealqlLanguage.data.of({
+export const rrflowqlTableCompletion = (): Extension => {
+	return rrflowqlLanguage.data.of({
 		autocomplete: TABLE_SOURCE,
 	});
 };

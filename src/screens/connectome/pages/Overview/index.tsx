@@ -28,18 +28,15 @@ import {
 	iconSearch,
 	iconTune,
 	iconWarning,
+	pictoBrain,
 	pictoHandsOn,
 	pictoSDBCloud,
 	pictoSidekick,
-	pictoSurrealDB,
-	pictoConnectome,
 	pictoUniversity,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { MouseEvent, useState } from "react";
 import { Link } from "wouter";
 import { adapter } from "~/adapter";
-import logoDarkUrl from "~/shared/assets/images/dark/logo.webp";
-import logoLightUrl from "~/shared/assets/images/light/logo.webp";
 import { openCloudAuthentication } from "~/cloud/api/auth";
 import { isOrganisationRestricted } from "~/cloud/helpers";
 import { useCloudBannerQuery } from "~/cloud/queries/banner";
@@ -52,12 +49,11 @@ import { useLatestNewsQuery } from "~/hooks/newsfeed";
 import { OVERVIEW, useSavepoint } from "~/hooks/overview";
 import { useConnectionNavigator } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useThemeImage } from "~/hooks/theme";
+import { resolveInstanceConnection } from "~/shared/util/connection";
+import { dispatchIntent } from "~/shared/util/intents";
 import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
 import { useCloudStore } from "~/stores/cloud";
 import { CloudInstance, Connection } from "~/types";
-import { resolveInstanceConnection } from "~/shared/util/connection";
-import { dispatchIntent } from "~/shared/util/intents";
 import { CloudAlert } from "./banner";
 import { StartBlog } from "./content/blog";
 import { StartCloud } from "./content/cloud";
@@ -120,15 +116,10 @@ export function OverviewPage() {
 	const allRegions = useCloudStore((s) => s.regions);
 	const authState = useCloudStore((s) => s.authState);
 	const newsPosts = newsQuery.data?.slice(0, 2) ?? [];
-	const isLoading = authState === "loading" || isPending;
+	const isLoading = showCloud && (isPending || authState === "loading");
 	const showConnections = !isLoading && (sandbox || userConnections.length > 0);
 	const hasNoResults = !isLoading && organizations.length === 0 && !showConnections;
-	const showOrgCreator = authState === "authenticated" || authState === "loading";
-
-	const logoUrl = useThemeImage({
-		light: logoLightUrl,
-		dark: logoDarkUrl,
-	});
+	const showOrgCreator = showCloud && (authState === "authenticated" || authState === "loading");
 
 	useSavepoint(OVERVIEW);
 
@@ -140,7 +131,7 @@ export function OverviewPage() {
 			<Transition
 				duration={250}
 				transition="fade-up"
-				mounted={authState !== "unknown"}
+				mounted={!showCloud || authState !== "unknown"}
 			>
 				{(style) => (
 					<ScrollArea
@@ -162,15 +153,27 @@ export function OverviewPage() {
 								mb={52}
 							>
 								<Image
-									src={pictoConnectome}
+									src={pictoBrain}
 									w={74}
 								/>
 
-								<Image
-									src={logoUrl}
-									w={200}
+								<Text
+									className={classes.heroWordmark}
 									mt="md"
-								/>
+									fz={32}
+									fw={750}
+									lh={1}
+								>
+									CONNECTOME
+								</Text>
+								<Text
+									className={classes.heroSubtitle}
+									mt={6}
+									fz="xs"
+									fw={650}
+								>
+									NATIVE RRFLOW CONTROL SURFACE
+								</Text>
 
 								<Text
 									mt="xs"
@@ -193,7 +196,7 @@ export function OverviewPage() {
 							)}
 
 							<Group>
-								<PrimaryTitle fz={22}>Your instances</PrimaryTitle>
+								<PrimaryTitle fz={22}>RRFlow instances</PrimaryTitle>
 
 								<Spacer />
 
@@ -352,7 +355,7 @@ export function OverviewPage() {
 										<Box key={organization.info.id}>
 											<Group gap="xl">
 												<Box>
-													<Text>SurrealDB Cloud</Text>
+													<Text>RRFlow Cloud</Text>
 													<Link href={`/o/${organization.info.id}`}>
 														<Group
 															gap="sm"
@@ -438,13 +441,13 @@ export function OverviewPage() {
 									<Box>
 										<Group gap="xl">
 											<Box>
-												<Text>Locally configured</Text>
+												<Text>Runtime profiles</Text>
 												<PrimaryTitle
 													fz={18}
 													lh="h1"
 													fw={600}
 												>
-													Connections
+													Connected brains
 												</PrimaryTitle>
 											</Box>
 											<Divider
@@ -456,7 +459,7 @@ export function OverviewPage() {
 													size="xs"
 													variant="gradient"
 												>
-													Create connection
+													Connect instance
 												</Button>
 											</Link>
 										</Group>
@@ -489,7 +492,7 @@ export function OverviewPage() {
 										mt={36}
 										fz={22}
 									>
-										Sign in to SurrealDB Cloud
+										Sign in to RRFlow Cloud
 									</PrimaryTitle>
 									<StartCloud
 										action="Sign in"
@@ -502,10 +505,10 @@ export function OverviewPage() {
 											inherit
 											c="bright"
 										>
-											SurrealDB Cloud
+											RRFlow Cloud
 										</Text>{" "}
 										redefines the database experience, offering the power and
-										flexibility of SurrealDB without the pain of managing
+										flexibility of RRFlow without the pain of managing
 										infrastructure. Get your own free instance today.
 									</StartCloud>
 								</>
@@ -525,70 +528,77 @@ export function OverviewPage() {
 								}}
 							>
 								<StartResource
-									title="Documentation"
-									subtitle="Explore the SurrealDB documentation"
-									image={pictoSurrealDB}
+									title="Runtime protocol"
+									subtitle="RRFlow transport and RRFlowQL reference"
+									image={pictoBrain}
 									onClick={() =>
-										adapter.openUrl("https://surrealdb.com/docs/surrealdb")
+										adapter.openUrl(
+											"https://github.com/EonsofStupid/connectome",
+										)
 									}
 								/>
 								<StartResource
-									title="Community"
-									subtitle="Join the discussion on Discord"
+									title="Connectome source"
+									subtitle="Inspect and evolve the native desktop client"
 									image={pictoHandsOn}
 									onClick={() =>
-										adapter.openUrl("https://discord.com/invite/surrealdb")
+										adapter.openUrl(
+											"https://github.com/EonsofStupid/connectome",
+										)
 									}
 								/>
 								<StartResource
-									title="University"
-									subtitle="Learn the SurrealDB fundamentals in 3 hours"
+									title="RRFlow engine"
+									subtitle="Inspect the runtime, storage, and execution kernel"
 									image={pictoUniversity}
-									onClick={() => adapter.openUrl("https://surrealdb.com/learn")}
+									onClick={() =>
+										adapter.openUrl(
+											"https://github.com/EonsofStupid/connectome",
+										)
+									}
 								/>
 								<StartResource
-									title="Sidekick"
-									subtitle="Get support from your personal Surreal AI assistant"
+									title="Clyffy"
+									subtitle="Open the local and frontier AI operator surface"
 									image={pictoSidekick}
 									onClick={() => dispatchIntent("open-sidekick")}
 								/>
 							</SimpleGrid>
 
-							<Group mt={36}>
-								<PrimaryTitle
-									fz={22}
-									flex={1}
-								>
-									Featured articles
-								</PrimaryTitle>
-								<Button
-									rightSection={
-										<Icon
-											path={iconArrowLeft}
-											flip="horizontal"
-										/>
-									}
-									onClick={() => dispatchIntent("open-news")}
-									color="obsidian"
-									variant="subtle"
-								>
-									Read all articles
-								</Button>
-							</Group>
+							{newsPosts.length > 0 && (
+								<>
+									<Group mt={36}>
+										<PrimaryTitle
+											fz={22}
+											flex={1}
+										>
+											Featured articles
+										</PrimaryTitle>
+										<Button
+											rightSection={
+												<Icon
+													path={iconArrowLeft}
+													flip="horizontal"
+												/>
+											}
+											onClick={() => dispatchIntent("open-news")}
+											color="obsidian"
+											variant="subtle"
+										>
+											Read all articles
+										</Button>
+									</Group>
 
-							<SimpleGrid
-								cols={{
-									xs: 1,
-									sm: 2,
-								}}
-							>
-								{newsPosts.map((article, i) => (
-									<StartBlog
-										key={i}
-										post={article}
-									/>
-								))}
-							</SimpleGrid>
+									<SimpleGrid cols={{ xs: 1, sm: 2 }}>
+										{newsPosts.map((article, i) => (
+											<StartBlog
+												key={i}
+												post={article}
+											/>
+										))}
+									</SimpleGrid>
+								</>
+							)}
 						</Stack>
 					</ScrollArea>
 				)}

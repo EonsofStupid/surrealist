@@ -1,6 +1,6 @@
 import { Stack } from "@mantine/core";
-import { HTTPRequestsChart } from "~/screens/Connectome/metrics/HTTPRequestsChart";
-import { RPCRequestsChart } from "~/screens/Connectome/metrics/RPCRequestsChart";
+import { HTTPRequestsChart } from "~/screens/connectome/metrics/HTTPRequestsChart";
+import { RPCRequestsChart } from "~/screens/connectome/metrics/RPCRequestsChart";
 import { SharedMetricsPanelProps } from "..";
 
 export function ConnectionsPanel({

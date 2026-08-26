@@ -1,5 +1,5 @@
 import { Box, Divider, Flex, Group, Paper, ScrollArea, Stack, Text, Tooltip } from "@mantine/core";
-import { Icon, iconBullhorn, iconIndex, iconJSON } from "@surrealdb/ui";
+import { Icon, iconBullhorn, iconIndex, iconJSON } from "@rrflow/ui";
 import { Handle, Position } from "@xyflow/react";
 import {
 	createContext,
@@ -14,12 +14,12 @@ import { Spacer } from "~/components/Spacer";
 import { TABLE_VARIANT_ICONS } from "~/constants";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
-import { GraphWarning } from "~/screens/Connectome/views/designer/TableGraphPane/helpers";
-import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
+import { GraphWarning } from "~/screens/connectome/views/designer/TableGraphPane/helpers";
 import { ON_STOP_PROPAGATION } from "~/shared/util/helpers";
 import { themeColor } from "~/shared/util/mantine";
 import { getTableVariant } from "~/shared/util/schema";
+import type { DiagramDirection, DiagramMode, TableInfo } from "~/types";
 import classes from "../style.module.scss";
 
 export type DiagramContextProps = {
@@ -36,7 +36,7 @@ interface SummaryProps {
 }
 
 function Summary(props: SummaryProps) {
-	const valueColor = props.value > 0 ? "surreal" : "dimmed";
+	const valueColor = props.value > 0 ? "rrflow" : "dimmed";
 
 	return (
 		<Group
@@ -362,13 +362,13 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 
 		const loadRecords = async () => {
 			if (inField) {
-				const records = await getSurrealQL().extractKindRecords(inField.kind ?? "");
+				const records = await getRRFlowQL().extractKindRecords(inField.kind ?? "");
 				if (!cancelled) {
 					setInRecords(records.join(", "));
 				}
 			}
 			if (outField) {
-				const records = await getSurrealQL().extractKindRecords(outField.kind ?? "");
+				const records = await getRRFlowQL().extractKindRecords(outField.kind ?? "");
 				if (!cancelled) {
 					setOutRecords(records.join(", "));
 				}
@@ -407,7 +407,7 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 					bg={isLight ? "white" : "obsidian.6"}
 					shadow={`0 4px 8px rgba(0, 0, 0, ${isLight ? 0.1 : 0.35})`}
 					style={{
-						border: `2px solid ${themeColor(isSelected ? "surreal" : isLight ? "obsidian.2" : "obsidian.5")}`,
+						border: `2px solid ${themeColor(isSelected ? "rrflow" : isLight ? "obsidian.2" : "obsidian.5")}`,
 						userSelect: "none",
 						overflow: "hidden",
 						height: "100%",
@@ -421,7 +421,7 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 						<Icon
 							path={TABLE_VARIANT_ICONS[variant]}
 							size="xs"
-							color={isSelected ? "surreal" : isLight ? "obsidian.7" : "obsidian.2"}
+							color={isSelected ? "rrflow" : isLight ? "obsidian.7" : "obsidian.2"}
 						/>
 						<Text
 							fz="xs"
@@ -454,7 +454,7 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 				style={{
 					"--diagonal-color-1": `var(${isLight ? "white" : "--mantine-color-obsidian-7"})`,
 					"--diagonal-color-2": `var(${isLight ? "--mantine-color-obsidian-1" : "--mantine-color-obsidian-6"})`,
-					border: `${table.schema.full ? "2px solid" : "2px dashed"} ${themeColor(isSelected ? "surreal" : isLight ? "obsidian.2" : "obsidian.5")}`,
+					border: `${table.schema.full ? "2px solid" : "2px dashed"} ${themeColor(isSelected ? "rrflow" : isLight ? "obsidian.2" : "obsidian.5")}`,
 					userSelect: "none",
 					backgroundSize: "8px 8px",
 					overflow: "hidden",
@@ -468,7 +468,7 @@ export function BaseTableNode({ table, direction, mode, isSelected, isEdge }: Ba
 				>
 					<Icon
 						path={TABLE_VARIANT_ICONS[variant]}
-						color={isSelected ? "surreal" : isLight ? "obsidian.7" : "obsidian.2"}
+						color={isSelected ? "rrflow" : isLight ? "obsidian.7" : "obsidian.2"}
 					/>
 					<Text
 						style={{

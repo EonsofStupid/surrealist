@@ -1,16 +1,16 @@
 import { Badge, Group } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconClose, iconDollar } from "@surrealdb/ui";
+import { Icon, iconClose, iconDollar } from "@rrflow/ui";
 import { useMemo } from "react";
 import { ActionButton } from "~/components/ActionButton";
 import { CodeEditor } from "~/components/CodeEditor";
 import { ContentPane } from "~/components/Pane";
-import { surqlLinting } from "~/editor";
+import { rrflowqlLinting } from "~/editor";
 import { useConnection } from "~/hooks/connection";
 import { useDebouncedFunction } from "~/hooks/debounce";
 import { useConnectionAndView } from "~/hooks/routing";
-import { getSurrealQL } from "~/screens/Connectome/connection/connection";
+import { getRRFlowQL } from "~/screens/connectome/connection/connection";
 import { useConfigStore } from "~/shell/stores/config";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export interface VariablesPaneProps {
 	isValid: boolean;
@@ -28,7 +28,7 @@ export function VariablesPane(props: VariablesPaneProps) {
 
 		try {
 			const json = content || "";
-			const parsed = await getSurrealQL().parseValue(json);
+			const parsed = await getRRFlowQL().parseValue(json);
 
 			if (typeof parsed !== "object" || Array.isArray(parsed)) {
 				throw new TypeError("Must be object");
@@ -45,7 +45,7 @@ export function VariablesPane(props: VariablesPaneProps) {
 		}
 	}, 50);
 
-	const extensions = useMemo(() => [surrealql(), surqlLinting()], []);
+	const extensions = useMemo(() => [rrflowql(), rrflowqlLinting()], []);
 
 	return (
 		<ContentPane

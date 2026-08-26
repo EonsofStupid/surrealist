@@ -1,6 +1,6 @@
 import { type ComboboxData, Group, Select, Text, TextInput } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
-import { Icon, iconChevronLeft, iconChevronRight } from "@surrealdb/ui";
+import { Icon, iconChevronLeft, iconChevronRight } from "@rrflow/ui";
 import { type FocusEvent, type KeyboardEvent, useLayoutEffect } from "react";
 import { useStable } from "~/hooks/stable";
 import { ActionButton } from "../ActionButton";
@@ -26,7 +26,7 @@ export function Pagination({ store, loading }: PaginationProps) {
 			return;
 		}
 
-		const entered = Number.parseInt(customPage);
+		const entered = Number.parseInt(customPage, 10);
 
 		store.setCurrentPage(entered);
 		setCustomPage(store.clampPage(entered).toString());
@@ -89,7 +89,7 @@ export function Pagination({ store, loading }: PaginationProps) {
 
 			<Select
 				value={store.pageSize.toString()}
-				onChange={(v) => store.setPageSize(Number.parseInt(v ?? "0"))}
+				onChange={(v) => store.setPageSize(Number.parseInt(v ?? "0", 10))}
 				data={PAGE_SIZES}
 				size="xs"
 			/>

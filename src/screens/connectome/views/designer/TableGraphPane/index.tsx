@@ -26,7 +26,7 @@ import {
 	iconRefresh,
 	iconRelation,
 	iconReset,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import {
 	Background,
 	type Edge,
@@ -69,7 +69,9 @@ import { useConnectionAndView, useIntent } from "~/hooks/routing";
 import { useDatabaseSchema } from "~/hooks/schema";
 import { useStable } from "~/hooks/stable";
 import { useIsLight } from "~/hooks/theme";
-import { DiagramContext } from "~/screens/Connectome/views/designer/TableGraphPane/nodes/BaseTableNode";
+import { DiagramContext } from "~/screens/connectome/views/designer/TableGraphPane/nodes/BaseTableNode";
+import { showInfo } from "~/shared/util/helpers";
+import { themeColor } from "~/shared/util/mantine";
 import { useConfigStore } from "~/shell/stores/config";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import type {
@@ -82,8 +84,6 @@ import type {
 	DiagramStrategy,
 	TableInfo,
 } from "~/types";
-import { showInfo } from "~/shared/util/helpers";
-import { themeColor } from "~/shared/util/mantine";
 import { GraphWarningLine } from "./components";
 import {
 	applyDefault,
@@ -190,7 +190,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 			.finally(() => {
 				setRendering(false);
 			});
-	}, [nodesInitialized, algorithm, direction, strategy]);
+	}, [nodesInitialized, algorithm, direction, strategy, fitView, getEdges, getNodes]);
 
 	const renderGraph = useStable(async () => {
 		const [nodes, edges, warnings] = await buildFlowNodes(
@@ -544,7 +544,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 				};
 			}),
 		);
-	}, [hoveredNode, hoverFocus, isDragging]);
+	}, [hoveredNode, hoverFocus, isDragging, getEdges]);
 
 	useIntent("focus-table", ({ table }) => {
 		const node = getNodes().find((node) => node.id === table);
@@ -697,7 +697,7 @@ export function TableGraphPane(props: TableGraphPaneProps) {
 								</Text>
 							</Popover.Dropdown>
 						</Popover>
-						<Link href="https://surrealdb.com/docs/Connectome/concepts/designing-the-database-schema">
+						<Link href="https://github.com/EonsofStupid/connectome">
 							<ActionButton label="Designer help">
 								<Icon path={iconHelp} />
 							</ActionButton>

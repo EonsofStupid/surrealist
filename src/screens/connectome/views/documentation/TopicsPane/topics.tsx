@@ -1,6 +1,6 @@
 import { ActionIcon, Collapse, Group, Stack, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconChevronDown, iconChevronUp, iconOpen } from "@surrealdb/ui";
+import { Icon, iconChevronDown, iconChevronUp, iconOpen } from "@rrflow/ui";
 import { adapter } from "~/adapter";
 import { Entry } from "~/components/Entry";
 import { Spacer } from "~/components/Spacer";
@@ -15,7 +15,7 @@ import {
 	isGroup,
 	isLink,
 	isSection,
-} from "~/screens/Connectome/docs/types";
+} from "~/screens/connectome/docs/types";
 import type { CodeLang } from "~/types";
 import classes from "./style.module.scss";
 
@@ -181,5 +181,7 @@ export function renderTopics(
 					/>
 				);
 			}
+
+			return null;
 		});
 }

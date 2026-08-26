@@ -2,10 +2,10 @@ import { Alert, Box, Button, Group, Paper, Progress, Skeleton, Stack, Text } fro
 import { hasOrganizationRoles, ORG_ROLES_ADMIN } from "~/cloud/helpers";
 import { Spacer } from "~/components/Spacer";
 import { useStable } from "~/hooks/stable";
-import { CloudInstance, CloudMeasurement, CloudOrganization } from "~/types";
 import { tagEvent } from "~/shared/util/analytics";
 import { measureStorageUsage } from "~/shared/util/cloud";
 import { formatMemory } from "~/shared/util/helpers";
+import { CloudInstance, CloudMeasurement, CloudOrganization } from "~/types";
 
 export interface DiskUsageBlockProps {
 	usage: CloudMeasurement[] | undefined;

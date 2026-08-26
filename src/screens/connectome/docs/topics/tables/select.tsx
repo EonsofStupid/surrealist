@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
-import { Article, DocsPreview, TableTitle } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview, TableTitle } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 import { useDocsTable } from "../../hooks/table";
 
 export function DocsTablesSelect({ language }: TopicProps) {
@@ -36,7 +36,7 @@ export function DocsTablesSelect({ language }: TopicProps) {
 		driver.select("${fieldName}", rowType)
 		`,
 			php: `
-		$record = new \\Surreal\\Cbor\\Types\\StringRecordId("${fieldName}");
+		$record = new \\RRFlow\\Cbor\\Types\\StringRecordId("${fieldName}");
 		$db->select($record);
 		`,
 		}),

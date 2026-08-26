@@ -1,4 +1,4 @@
-import { Icon, iconChevronRight } from "@surrealdb/ui";
+import { Icon, iconChevronRight } from "@rrflow/ui";
 import { useStable } from "~/hooks/stable";
 import { useInterfaceStore } from "~/shell/stores/interface";
 import { ActionButton } from "../ActionButton";

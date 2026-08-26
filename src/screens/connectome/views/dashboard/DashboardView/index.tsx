@@ -29,7 +29,7 @@ import {
 	pictoHandsOn,
 	pictoPlay,
 	pictoSDBCloud,
-} from "@surrealdb/ui";
+} from "@rrflow/ui";
 import { memo, useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 import { Redirect } from "wouter";
@@ -50,18 +50,18 @@ import { useConnection, useIsConnected, useRequireDatabase } from "~/hooks/conne
 import { useDatasets } from "~/hooks/dataset";
 import { useStable } from "~/hooks/stable";
 import { openBillingRequiredModal } from "~/modals/billing-required";
-import { activateDatabase, executeQuery } from "~/screens/Connectome/connection/connection";
-import { ComputeUsageChart } from "~/screens/Connectome/metrics/ComputeUsageChart";
-import { MemoryUsageChart } from "~/screens/Connectome/metrics/MemoryUsageChart";
-import { NetworkEgressChart } from "~/screens/Connectome/metrics/NetworkEgressChart";
-import { NetworkIngressChart } from "~/screens/Connectome/metrics/NetworkIngressChart";
-import { StateBadge } from "~/screens/Connectome/pages/Overview/badge";
-import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
-import { useDatabaseStore } from "~/stores/database";
-import { useDeployStore } from "~/stores/deploy";
+import { activateDatabase, executeQuery } from "~/screens/connectome/connection/connection";
+import { ComputeUsageChart } from "~/screens/connectome/metrics/ComputeUsageChart";
+import { MemoryUsageChart } from "~/screens/connectome/metrics/MemoryUsageChart";
+import { NetworkEgressChart } from "~/screens/connectome/metrics/NetworkEgressChart";
+import { NetworkIngressChart } from "~/screens/connectome/metrics/NetworkIngressChart";
+import { StateBadge } from "~/screens/connectome/pages/Overview/badge";
 import { showErrorNotification, showInfo } from "~/shared/util/helpers";
 import { dispatchIntent } from "~/shared/util/intents";
 import { APPLY_DATA_FILE_KEY, APPLY_DATASET_KEY } from "~/shared/util/storage";
+import { openResourcesLockedModal } from "~/shell/components/App/modals/resources-locked";
+import { useDatabaseStore } from "~/stores/database";
+import { useDeployStore } from "~/stores/deploy";
 import { MonitorMetricOptions } from "../../monitor/helpers";
 import { MetricActions } from "../../monitor/MetricPane/actions";
 import { BackupsBlock } from "../BackupsBlock";
@@ -175,10 +175,10 @@ export function DashboardView() {
 			});
 
 			await executeQuery(
-				"DEFINE NAMESPACE demo; USE NS demo; DEFINE DATABASE surreal_deal_store;",
+				"DEFINE NAMESPACE demo; USE NS demo; DEFINE DATABASE rrflow_deal_store;",
 			);
 
-			await activateDatabase("demo", "surreal_deal_store");
+			await activateDatabase("demo", "rrflow_deal_store");
 			await applyDataset(version);
 		} catch (error) {
 			showErrorNotification({
@@ -422,7 +422,7 @@ export function DashboardView() {
 									<Box mt={32}>
 										<PrimaryTitle>Your instance</PrimaryTitle>
 										<Text>
-											Customise and connect to your SurrealDB Cloud instance
+											Customise and connect to your RRFlow Cloud instance
 										</Text>
 									</Box>
 
@@ -668,13 +668,13 @@ function LoadingScreen() {
 				ta="center"
 				my={38}
 			>
-				<PrimaryTitle>Deploying your SurrealDB Cloud instance...</PrimaryTitle>
+				<PrimaryTitle>Deploying your RRFlow Cloud instance...</PrimaryTitle>
 
 				<Text
 					fz="xl"
 					mt="sm"
 				>
-					While you wait, feel free to explore SurrealDB Cloud
+					While you wait, feel free to explore RRFlow Cloud
 				</Text>
 			</Box>
 
@@ -687,19 +687,19 @@ function LoadingScreen() {
 			>
 				<GettingStartedLink
 					title="Cloud Documentation"
-					description="Learn more about SurrealDB Cloud features and capabilities."
+					description="Learn more about RRFlow Cloud features and capabilities."
 					image={pictoDocument}
-					href="https://surrealdb.com/docs/cloud"
+					href="https://github.com/EonsofStupid/connectome"
 				/>
 				<GettingStartedLink
 					title="Join the Community"
 					description="Get help from the community and share your experiences."
 					image={pictoHandsOn}
-					href="https://surrealdb.com/community"
+					href="https://github.com/EonsofStupid/connectome"
 				/>
 				<GettingStartedLink
 					title="Quick Start Tutorial"
-					description="Watch a quick tutorial to get started with SurrealDB Cloud."
+					description="Watch a quick tutorial to get started with RRFlow Cloud."
 					image={pictoPlay}
 					href="https://www.youtube.com/watch?v=S04qOKkVcmE"
 				/>

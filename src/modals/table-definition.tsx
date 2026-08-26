@@ -1,10 +1,10 @@
 import { Stack, Text } from "@mantine/core";
 import { openModal } from "@mantine/modals";
-import { CodeBlock } from "@surrealdb/ui";
-import { escapeIdent } from "surrealdb";
+import { CodeBlock } from "@rrflow/ui";
 import { PrimaryTitle } from "~/components/PrimaryTitle";
-import { executeQuerySingle } from "~/screens/Connectome/connection/connection";
+import { executeQuerySingle } from "~/screens/connectome/connection/connection";
 import { showErrorNotification } from "~/shared/util/helpers";
+import { escapeIdent } from "~/vendor/rrflow-client";
 
 function header(name: string) {
 	return `\n\n-- ------------------------------\n-- ${name}\n-- ------------------------------ \n\n`;
@@ -44,7 +44,7 @@ export async function showTableDefinitionModal(table: string) {
 					</Text>
 					<CodeBlock
 						mt="xl"
-						lang="surrealql"
+						lang="rrflowql"
 						value={fullDefinition}
 					/>
 				</Stack>

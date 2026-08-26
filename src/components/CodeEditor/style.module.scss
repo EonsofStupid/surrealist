@@ -55,7 +55,7 @@
 	}
 
 	:global(.cm-searchMatch) {
-		background-color: var(--mantine-color-surreal-6) !important;
+		background-color: var(--mantine-color-rrflow-6) !important;
 		border-radius: 6px;
 
 		* {
@@ -148,7 +148,7 @@
 		}
 
 		input[type="checkbox"] {
-			accent-color: var(--mantine-color-surreal-7);
+			accent-color: var(--mantine-color-rrflow-7);
 		}
 
 		button:focus-visible,

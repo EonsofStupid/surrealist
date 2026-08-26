@@ -1,8 +1,8 @@
 import { Box } from "@mantine/core";
 import { useMemo } from "react";
 import { useDatabaseSchema } from "~/hooks/schema";
-import { Article, DocsPreview } from "~/screens/Connectome/docs/components";
-import type { Snippets, TopicProps } from "~/screens/Connectome/docs/types";
+import { Article, DocsPreview } from "~/screens/connectome/docs/components";
+import type { Snippets, TopicProps } from "~/screens/connectome/docs/types";
 
 export function DocsGlobalHandlingErrors({ language, topic }: TopicProps) {
 	const schema = useDatabaseSchema();
@@ -10,7 +10,7 @@ export function DocsGlobalHandlingErrors({ language, topic }: TopicProps) {
 	const snippets = useMemo<Snippets>(
 		() => ({
 			cli: `
-			surreal sql --endpoint ${topic.extra?.connectionUri} --namespace ${topic.extra?.namespace} --database ${topic.extra?.database}
+			rrflow sql --endpoint ${topic.extra?.connectionUri} --namespace ${topic.extra?.namespace} --database ${topic.extra?.database}
 		`,
 			js: `
 			// some comment
@@ -30,7 +30,7 @@ export function DocsGlobalHandlingErrors({ language, topic }: TopicProps) {
 			<div>
 				<p>
 					Handling errors is an important part of any application. Here's how to handle
-					errors in SurrealDB.
+					errors in RRFlow.
 				</p>
 				<p>{topic.extra?.table?.schema?.name}</p>
 			</div>

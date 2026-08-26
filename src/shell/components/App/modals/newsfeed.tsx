@@ -16,7 +16,7 @@ import {
 	UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Icon, iconArrowLeft, iconArrowUpRight, iconClose, Markdown } from "@surrealdb/ui";
+import { Icon, iconArrowLeft, iconArrowUpRight, iconClose, Markdown } from "@rrflow/ui";
 import { format } from "date-fns";
 import dayjs from "dayjs";
 import { Fragment, useState } from "react";
@@ -26,8 +26,8 @@ import { Spacer } from "~/components/Spacer";
 import { useLatestNewsQuery, useUnreadNewsPosts } from "~/hooks/newsfeed";
 import { useIntent } from "~/hooks/routing";
 import { useStable } from "~/hooks/stable";
-import { useConfigStore } from "~/shell/stores/config";
 import { tagEvent } from "~/shared/util/analytics";
+import { useConfigStore } from "~/shell/stores/config";
 import classes from "../style.module.scss";
 
 interface NewsItem {
@@ -186,7 +186,7 @@ export function NewsFeedDrawer() {
 													fw={600}
 													fz={14}
 												>
-													Read on surrealdb.com
+													Read project update
 													<Icon path={iconArrowUpRight} />
 												</Text>
 											</Link>

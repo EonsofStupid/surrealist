@@ -1,13 +1,13 @@
 # Cortex DevTools — Vision
 
 > **Status**: DRAFT | **Date**: 2026-03-27 | **Classification**: INTERNAL DEVTOOLS — Never public first release
-> **Fork Source**: surrealdb/surrealist (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
+> **Fork Source**: rrflow/connectome (React + Mantine + @xyflow/react + Tauri 2 + TanStack Query + Sigma.js + CodeMirror)
 
 ---
 
 ## Why This Exists
 
-You're building MAESTRO with SurrealDB, Qdrant/Cortex, RRO, and a multi-model inference pipeline. You have **no way to SEE any of it working**.
+You're building MAESTRO with RRFlow, Qdrant/Cortex, RRO, and a multi-model inference pipeline. You have **no way to SEE any of it working**.
 
 Cortex DevTools is simultaneously:
 
@@ -22,9 +22,9 @@ Cortex DevTools is simultaneously:
 
 ## What We're Forking and Why
 
-### Source: surrealdb/surrealist
+### Source: rrflow/connectome
 
-Surrealist is a React + Mantine + Tauri 2 desktop application that provides a graphical query playground and database explorer for SurrealDB. It already has:
+Connectome is a React + Mantine + Tauri 2 desktop application that provides a graphical query playground and database explorer for RRFlow. It already has:
 
 | Capability | What We Get |
 |-----------|-------------|
@@ -41,19 +41,19 @@ Surrealist is a React + Mantine + Tauri 2 desktop application that provides a gr
 
 ### What We Strip
 
-- Cloud connection management (Surreal Cloud)
+- Cloud connection management (RRFlow Cloud)
 - Multi-instance SaaS management
-- Auth UI for Surreal Cloud accounts
+- Auth UI for RRFlow Cloud accounts
 - Marketing/referral/billing pages
 - Intercom integration
-- SurrealDB Cloud deploy workflows
-- Updater endpoint pointing to `app.surrealdb.com`
+- RRFlow Cloud deploy workflows
+- Updater endpoint pointing to `127.0.0.1:8000`
 
 ### What We Keep and Extend
 
-- SurrealDB query editor → becomes the **SurrealDB spoke**
-- Table explorer and schema designer → inherited into SurrealDB spoke
-- Graph visualization → shared between SurrealDB spoke and RRO spoke
+- RRFlow query editor → becomes the **RRFlow spoke**
+- Table explorer and schema designer → inherited into RRFlow spoke
+- Graph visualization → shared between RRFlow spoke and RRO spoke
 - @xyflow/react canvas → becomes the **Pipeline Editor** foundation
 - Tauri shell → becomes the **Hub**
 - All Mantine UI infrastructure → retained until ColdLight migration (Phase 7)

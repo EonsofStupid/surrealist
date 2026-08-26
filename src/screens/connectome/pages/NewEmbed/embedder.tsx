@@ -8,15 +8,15 @@ import {
 	Text,
 	Tooltip,
 } from "@mantine/core";
-import { surrealql } from "@surrealdb/codemirror";
-import { Icon, iconHelp } from "@surrealdb/ui";
+import { Icon, iconHelp } from "@rrflow/ui";
 import { type PropsWithChildren, type ReactNode, useEffect, useLayoutEffect, useMemo } from "react";
 import { useImmer } from "use-immer";
 import { CodeInput } from "~/components/Inputs";
 import { Spacer } from "~/components/Spacer";
 import { ORIENTATIONS, RESULT_MODES, THEMES } from "~/constants";
-import type { ColorScheme, Orientation, ResultMode } from "~/types";
 import { isDevelopment, isProduction } from "~/shared/util/environment";
+import type { ColorScheme, Orientation, ResultMode } from "~/types";
+import { rrflowql } from "~/vendor/rrflowql-editor";
 
 export const DEFAULT_STATE: EmbedState = {
 	dataset: "none",
@@ -157,7 +157,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 
 		if (isProduction) {
 			url.protocol = "https:";
-			url.hostname = "app.surrealdb.com";
+			url.hostname = "127.0.0.1:8000";
 			url.port = "";
 		}
 
@@ -187,7 +187,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.query = e;
 						});
 					}}
-					extensions={[surrealql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>
@@ -202,7 +202,7 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.variables = e;
 						});
 					}}
-					extensions={[surrealql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>
@@ -218,18 +218,18 @@ export function Embedder({ value, onChangeURL }: EmbedderProps) {
 							draft.setup = e;
 						});
 					}}
-					extensions={[surrealql()]}
+					extensions={[rrflowql()]}
 				/>
 			</Box>
 			<Box>
-				<SectionTitle help="An official SurrealDB dataset to load into the mini on load">
+				<SectionTitle help="An official RRFlow dataset to load into the mini on load">
 					Dataset
 				</SectionTitle>
 				<Select
 					data={[
 						{
-							label: "Surreal Deal Store (Mini)",
-							value: "surreal-deal-store-mini",
+							label: "RRFlow Deal Store (Mini)",
+							value: "rrflow-deal-store-mini",
 						},
 					]}
 					value={state.dataset}

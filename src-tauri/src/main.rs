@@ -17,6 +17,7 @@ mod analytics;
 mod appbar;
 mod config;
 mod database;
+mod diagnostics;
 mod open;
 mod paths;
 mod whitelist;
@@ -77,7 +78,7 @@ fn main() {
                     Target::new(TargetKind::Webview),
                     Target::new(TargetKind::Folder {
                         path: get_logs_directory(),
-                        file_name: Some("surrealist".into()),
+                        file_name: Some("connectome".into()),
                     }),
                 ])
                 .build(),
@@ -93,6 +94,7 @@ fn main() {
             config::restore_config_backup,
             database::start_database,
             database::stop_database,
+            diagnostics::runtime_diagnostics_request,
             window::toggle_devtools,
             window::new_window,
             open::get_opened_resources,
@@ -136,7 +138,7 @@ fn main() {
             let process = state.0.lock().unwrap().take();
 
             if let Some(child) = process {
-                database::kill_surreal_process(child.id())
+                database::kill_rrflow_process(child.id())
             }
         }
         _ => (),

@@ -1,16 +1,16 @@
 import { useColorScheme } from "@mantine/hooks";
 import { useMemo } from "react";
+import { renderHighlighting } from "~/shared/util/highlighting";
 import { useConfigStore } from "~/shell/stores/config";
 import { CodeLang } from "~/types";
-import { renderHighlighting } from "~/shared/util/highlighting";
 import classes from "./style.module.scss";
 
 export interface HighlightedTextProps {
 	children: string;
-	language?: CodeLang | "surrealql";
+	language?: CodeLang | "rrflowql";
 }
 
-export function HighlightedText({ children, language = "surrealql" }: HighlightedTextProps) {
+export function HighlightedText({ children, language = "rrflowql" }: HighlightedTextProps) {
 	const colorScheme = useColorScheme();
 	const syntaxTheme = useConfigStore((state) => state.settings.appearance.syntaxTheme);
 
